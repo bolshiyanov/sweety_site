@@ -1,0 +1,17 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  display: none;
+  transition: .3s opacity;
+  opacity: 0;
+  z-index: 200;
+
+  &__visible {
+    display: block;
+    opacity: 1;
+  }
+}

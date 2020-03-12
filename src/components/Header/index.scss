@@ -1,0 +1,35 @@
+header {
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 16px 24px;
+  align-items: center;
+  
+  .avatar {
+    margin-right: 16px;
+  }
+}
+
+h4 {
+  font-size: 1em;
+  display: block;
+  font-weight: 400;
+  
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.advanced-settings {
+  display: block;
+  max-width: 100%;
+  
+  .horizontal-picker {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    
+    .picker__item {
+      display: inline-block;
+    }
+  }
+}

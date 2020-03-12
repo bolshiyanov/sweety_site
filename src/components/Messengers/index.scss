@@ -1,0 +1,42 @@
+.messengers {
+  margin: 12px 0;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  
+  .messenger {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin: 12px;
+    min-width: calc(30% - 12px);
+    
+    .icon {
+      font-size: 36px;
+    }
+    
+    &__button {
+      flex-grow: 1;
+      min-height: 62px;
+
+      &.tech-button {
+        margin: 0 auto 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row nowrap;
+        width: calc(100% - 24px);
+      
+        span {
+          font-size: 28px;
+          font-weight: 500;
+        }
+  
+        .icon {
+          font-size: 36px;
+          margin-right: 24px;
+        }
+      }
+    }
+  }
+}

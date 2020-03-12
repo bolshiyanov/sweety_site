@@ -1,0 +1,62 @@
+.block-settings {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+
+  &__settings {
+    margin: 24px;
+    display: flex;
+    flex-flow: column nowrap;
+    
+    &__animation {
+      text-align: center;
+
+      &__button {
+        width: 100px;
+        height: 100px;
+        color: gray;
+        
+        svg {
+          width: 100% !important;
+          height: 100% !important;
+        }
+        
+        &__checked {
+          color: #1d90ff;
+        }
+      }
+    }
+  }
+
+  &__preview {
+    margin: 12px 24px 24px;
+    text-align: center;
+
+    &__title {
+      color: #888;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+    
+    .button-in-block {
+      width: 100%;
+    }
+
+    &__block {
+
+    }
+  }
+  
+  &__types {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+
+    margin: 24px;
+    
+    &__selected {
+      color: blue;
+    }
+  }
+}

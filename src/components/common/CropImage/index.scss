@@ -1,0 +1,29 @@
+.crop-image {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: flex-start;
+
+  &__container {
+    width: 100%;
+    height: calc(100vh - 200px);
+    position: relative;
+  }
+  
+  &__footer {
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  &__button {
+    margin: 24px auto;
+    min-width: 100px;
+    
+    &__redo {
+      color: #000;
+      margin-right: 48px;
+    }
+  }
+}
