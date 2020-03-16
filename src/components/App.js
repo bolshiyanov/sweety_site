@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useParams } from 'react-router-dom';
 
 import Loading from 'components/common/Loading';
 
@@ -12,12 +12,18 @@ import Social from 'components/Social';
 import Footer from 'components/Footer';
 import Title from 'components/Title';
 
+import API from 'utils/api';
+
 import { CONFIG_LOAD } from 'constants/actions';
 
 const App = () => {
   const dispatch = useDispatch();
 
+  const { profile } = useParams();
+
   useEffect(() => {
+    API.updateProfile(profile);
+
     dispatch({ type: CONFIG_LOAD });
   }, []); // eslint-disable-line
 
@@ -47,7 +53,7 @@ const App = () => {
 
 const Router = () => (
   <Switch>
-    <Route component={App} />
+    <Route path="/:profile" component={App} />
   </Switch>
 );
 

@@ -3,7 +3,12 @@ import superagent from 'superagent';
 const SOMETHING_WENT_WRONG = 'Что-то пошло не так!';
 
 const host = 'https://admapi.itsinsta.site';
+let profile = null;
 
+const setProfile = (newProfile) => {
+  profile = newProfile;
+};
+  
 const responseBody = (res) => res.body;
 
 const handleError = (e) => {
@@ -26,7 +31,8 @@ const requests = {
 };
 
 const API = {
-  getData: () => requests.get('/api/profiles/pages/public/maman_makarova')
+  updateProfile: (value) => setProfile(value),
+  getData: () => requests.get(`/api/profiles/pages/public/${profile}`)
 };
 
 export default API;
