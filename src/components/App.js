@@ -6,6 +6,7 @@ import { Route, Switch, useParams } from 'react-router-dom';
 import Loading from 'components/common/Loading';
 
 import Header from 'components/Header';
+import Notification from 'components/Notification';
 import Messengers from 'components/Messengers';
 import Blocks from 'components/Blocks';
 import Social from 'components/Social';
@@ -33,6 +34,8 @@ const App = () => {
   if (!data)
     return <Loading />;
 
+  const { settings = {} } = data;
+
   const backgroundStyles = currentTheme.getBackgroundStyles();
   return (
     <div className="app" style={backgroundStyles}>
@@ -40,6 +43,12 @@ const App = () => {
         <Header
           userName={data.name}
           avatar={data.avatar}
+        />
+        <Notification
+          link={data.url}
+          message={settings.advanced}
+          url={settings.advancedLink}
+          buttonTitle={settings.advancedTitle}
         />
         <Title />
         <Messengers />

@@ -1,0 +1,38 @@
+.notification {
+  background-color: #fff;
+  padding: 16px 32px;
+  color: #888;
+  text-transform: uppercase;
+  text-align: center;
+  transition: .4s;
+  font-size: 12px;
+  position: relative;
+  
+  &__close {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    
+    svg {
+      color: red;
+    }
+  }
+
+  .notify-link {
+    display: block;
+    font-weight: bold;
+    color: #888;
+    margin: 2px auto;
+    text-transform: none;
+  }
+  
+  .notify-button {
+    margin-top: 16px;
+    background-color: rgb(30, 144, 255);
+    color: #fff;
+  }
+  
+  &.hidden {
+    display: none;
+  }
+}
