@@ -7,13 +7,6 @@ import ButtonColor from 'utils/buttonColor';
 import {
   LOADING_ERROR,
   SET_DATA,
-  CHANGE_THEME,
-  CHANGE_BACKGROUND,
-  CHANGE_BUTTON_COLOR,
-  EDIT_BLOCK,
-  REMOVE_BLOCK,
-  EDIT_MESSENGERS_DATA,
-  EDIT_SOCIAL_DATA,
   UPDATE_CONFIG_DATA
 } from 'constants/actions';
 
@@ -24,7 +17,9 @@ const initialState = {
   themes: [defaultTheme],
   currentTheme: defaultTheme,
   backgrounds: [],
-  buttonColors: []
+  buttonColors: [],
+  config: {},
+  account: {}
 };
 
 const reducer = handleActions({
@@ -71,98 +66,6 @@ const reducer = handleActions({
       error: null
     };
   },
-
-  [CHANGE_THEME]: (state, { name }) => {
-    const currentTheme = state.themes.find((theme) => name === theme.name) || { ...state.themes[0] };
-    return {
-      ...state,
-      currentTheme,
-      data: {
-        ...state.data,
-        settings: {
-          ...state.data.settings,
-          theme: name,
-          background: undefined,
-          button: undefined
-        }
-      }
-    };
-  },
-
-  [CHANGE_BACKGROUND]: (state, { name }) => {
-    const currentBackground = state.backgrounds.find((background) => name === background.name);
-    const newTheme = new Theme({ ...state.currentTheme, background: currentBackground });
-
-    return {
-      ...state,
-      currentTheme: newTheme,
-      data: {
-        ...state.data,
-        settings: { ...state.data.settings, background: name }
-      }
-    };
-  },
-
-  [CHANGE_BUTTON_COLOR]: (state, { name }) => {
-    const currentButtonColor = state.buttonColors.find((buttonColor) => name === buttonColor.name);
-    const newTheme = new Theme({ ...state.currentTheme, button: currentButtonColor });
-
-    return {
-      ...state,
-      currentTheme: newTheme,
-      data: {
-        ...state.data,
-        settings: { ...state.data.settings, color: name }
-      }
-    };
-  },
-
-  [EDIT_BLOCK]: (state, { payload }) => {
-    const currentBlock = state.data.blocks.find((block) => payload.guid === block.guid);
-    const { blocks } = state.data;
-    const order = blocks.reduce((result, block) => (block.order > result ? block.order : result), 0) + 1;
-
-    if (!currentBlock) {
-      return {
-        ...state,
-        data: {
-          ...state.data,
-          blocks: [...blocks, { ...payload, order }]
-        }
-      };
-    }
-    return {
-      ...state,
-      data: {
-        ...state.data,
-        blocks: blocks.map((block) => (block.guid === payload.guid ? payload : block))
-      }
-    };
-  },
-
-  [REMOVE_BLOCK]: (state, { guid }) => ({
-    ...state,
-    data: {
-      ...state.data,
-      blocks: state.data.blocks.filter((block) => block.guid !== guid)
-    }
-  }),
-
-  [EDIT_SOCIAL_DATA]: (state, { data }) => ({
-    ...state,
-    data: {
-      ...state.data,
-      social: data
-    }
-  }),
-
-  [EDIT_MESSENGERS_DATA]: (state, { data }) => ({
-    ...state,
-    data: {
-      ...state.data,
-      messengers: data
-    }
-  }),
 
   [UPDATE_CONFIG_DATA]: (state, { title, description }) => ({
     ...state,

@@ -1,4 +1,4 @@
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 
 import {
   CONFIG_LOAD,
@@ -6,11 +6,12 @@ import {
   SET_DATA
 } from 'constants/actions';
 
-import mockData from 'mocks/data.json';
+import API from 'utils/api';
+//import mockData from 'mocks/data.json';
 
 function* loadConfig() {
   try {
-    // const data = yield call(superagent.get(mockData), {});
+    const mockData = yield call(API.getData, {});
     const {
       themes,
       buttonColors,
