@@ -33,3 +33,26 @@ h4 {
     }
   }
 }
+
+.pulse2 {
+  animation: 2s pulsar2 0.8s infinite linear;
+}
+
+
+@keyframes pulsar2 {
+  from {
+    transform: scale3d(2, 2, 2);
+  }
+  2%, 4% {
+    transform: scale3d(0.95, 0.95, 0.95) rotate3d(0, 0, 2, -1deg);
+  }
+  6%, 10%, 14%, 18% {
+    transform: scale3d(1.05, 1.05, 1.05) rotate3d(0, 0, 2, 1deg);
+  }
+  8%, 12% {
+    transform: scale3d(1.05, 1.05, 1.05) rotate3d(0, 0, 2, -1deg);
+  }
+  20%, to {
+    transform: scale3d(1.5, 1.5, 1.5);
+  }
+}

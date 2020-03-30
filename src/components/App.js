@@ -43,6 +43,7 @@ const App = () => {
         <Header
           userName={data.name}
           avatar={data.avatar}
+          profile={profile}
         />
         <Notification
           link={data.url}

@@ -1,4 +1,5 @@
 import superagent from 'superagent';
+import { getSearchString } from 'utils/url';
 
 const SOMETHING_WENT_WRONG = 'Что-то пошло не так!';
 
@@ -9,6 +10,10 @@ const setProfile = (newProfile) => {
   profile = newProfile;
 };
   
+export const getInvite = () => {
+  return getSearchString(window.location.search, 'invid');
+};
+
 const responseBody = (res) => res.body;
 
 const handleError = (e) => {
