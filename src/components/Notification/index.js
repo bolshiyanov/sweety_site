@@ -46,7 +46,7 @@ const Notification = ({ message, link, url, buttonTitle }) => {
       >
         <Icon type="timesCircle" />
       </Button>
-      {message}
+      {message}<br/>
       {(link || url) && (
         <React.Fragment>
           {link && (<a
