@@ -18,6 +18,9 @@ const Header = ({ avatar, userName, profile }) => {
   } else {
     inviteId = cookies[profile];
   }
+  if (inviteId == "undefined") {
+    inviteId = null;
+  }
 
   const handleClick = () => {
     window.location.href = `${host}?invitationId=${inviteId}`;
@@ -32,7 +35,7 @@ const Header = ({ avatar, userName, profile }) => {
         <span className="user-name">{userName}</span>
         <span className="flex-delimiter" />
         { inviteId &&
-        (<Button onClick={handleClick} isInline>
+        (<Button onClick={handleClick} isInline className="pulse2">
           <Icon type="edit" />
         </Button>)}
       </header>
