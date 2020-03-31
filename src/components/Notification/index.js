@@ -4,6 +4,7 @@ import copy from 'clipboard-copy';
 import classnames from 'classnames';
 
 import history from 'utils/history';
+import { getInvite } from 'utils/api';
 
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
@@ -18,8 +19,14 @@ const Notification = ({ message, link, url, buttonTitle }) => {
 
   const copyToClipboard = () => {
     if (url) {
-      if (url.substr(0, 4) === 'http')
-        window.location.href = url;
+      if (url.substr(0, 4) === 'http') {
+        var inviteId = getInvite();
+        if (!inviteId)
+          window.location.href = url;
+        else {
+          window.location.href = `${url}?invitationId=${inviteId}`;
+        }
+      }
       else
         history.push(url);
     }
