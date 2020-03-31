@@ -47,16 +47,16 @@ const Notification = ({ message, link, url, buttonTitle }) => {
         <Icon type="timesCircle" />
       </Button>
       {message}
-      {link && (
+      {(link || url) && (
         <React.Fragment>
-          <a
+          {link && (<a
             className="notify-link"
             href={link}
             target="_blank"
             rel="noopener noreferrer"
           >
             {link}
-          </a>
+          </a>)}
           <Button
             toClipboard={link}
             className="notify-button"
