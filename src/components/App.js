@@ -50,6 +50,7 @@ const App = () => {
           message={settings.advanced}
           url={settings.advancedLink}
           buttonTitle={settings.advancedTitle}
+          profile={profile}
         />
         <Title />
         <Messengers />

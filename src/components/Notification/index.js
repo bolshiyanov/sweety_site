@@ -1,18 +1,19 @@
 import React, { useState } from 'react';
+import { useCookies } from 'react-cookie';
 import PropTypes from 'prop-types';
 import copy from 'clipboard-copy';
 import classnames from 'classnames';
 
 import history from 'utils/history';
-import { getInvite } from 'utils/api';
 
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 
 import './index.scss';
 
-const Notification = ({ message, link, url, buttonTitle }) => {
+const Notification = ({ message, link, url, buttonTitle, profile }) => {
   const [showNotification, setShowNotification] = useState(true);
+  const [cookies] = useCookies();
 
   if (!message)
     return null;
@@ -20,7 +21,8 @@ const Notification = ({ message, link, url, buttonTitle }) => {
   const copyToClipboard = () => {
     if (url) {
       if (url.substr(0, 4) === 'http') {
-        var inviteId = getInvite();
+        const inviteId = cookies[profile];
+        
         if (!inviteId)
           window.location.href = url;
         else {
