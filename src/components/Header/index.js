@@ -32,8 +32,8 @@ const Header = ({ avatar, userName, profile }) => {
         <span className="user-name">{userName}</span>
         <span className="flex-delimiter" />
         { inviteId &&
-        (<Button onClick={handleClick} isInline className="pulse2">
-          <Icon type="slidersH" />
+        (<Button onClick={handleClick} isInline>
+          <Icon type="edit" />
         </Button>)}
       </header>
     </React.Fragment>
