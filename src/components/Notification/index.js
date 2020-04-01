@@ -18,11 +18,12 @@ const Notification = ({ message, link, url, buttonTitle, profile }) => {
   if (!message)
     return null;
 
+  const inviteId = cookies[profile];
+
   const copyToClipboard = () => {
     if (url) {
       if (url.substr(0, 4) === 'http') {
-        const inviteId = cookies[profile];
-        
+
         if (!inviteId)
           window.location.href = url;
         else {
@@ -49,26 +50,26 @@ const Notification = ({ message, link, url, buttonTitle, profile }) => {
         <Icon type="timesCircle" />
       </Button>
       {message}<br/>
-      {(link || url) && (
+      {(link || url) && inviteId &&
         <React.Fragment>
-          {link && (<a
+          {link && <a
             className="notify-link"
             href={link}
             target="_blank"
             rel="noopener noreferrer"
           >
             {link}
-          </a>)}
-          <Button
+          </a>}
+          {buttonTitle && <Button
             toClipboard={link}
             className="notify-button"
             onClick={copyToClipboard}
             noStyled
           >
             {buttonTitle}
-          </Button>
+          </Button>}
         </React.Fragment>
-      )}
+      }
     </div>
   );
 };
