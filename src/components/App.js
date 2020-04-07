@@ -12,7 +12,6 @@ import Blocks from 'components/Blocks';
 import Social from 'components/Social';
 import Footer from 'components/Footer';
 import Title from 'components/Title';
-import RedirectDash from 'components/Title';
 
 import API from 'utils/api';
 
