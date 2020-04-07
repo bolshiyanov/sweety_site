@@ -6,6 +6,7 @@ import Avatar from 'components/common/Avatar';
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import { getInvite } from 'utils/api';
+import { getAdminSite } from 'utils/api';
 
 import './index.scss';
 
@@ -23,10 +24,8 @@ const Header = ({ avatar, userName, profile }) => {
   }
 
   const handleClick = () => {
-    window.location.href = `${host}?invitationId=${inviteId}`;
+    window.location.href = `${getAdminSite()}?invitationId=${inviteId}`;
   }
-
-  const host = "https://devadmin.itsinsta.site"; 
 
   return (
     <React.Fragment>

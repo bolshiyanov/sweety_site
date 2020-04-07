@@ -14,6 +14,7 @@ import Footer from 'components/Footer';
 import Title from 'components/Title';
 
 import API from 'utils/api';
+import { getAdminSite } from 'utils/api';
 
 import { CONFIG_LOAD } from 'constants/actions';
 
@@ -65,7 +66,7 @@ const App = () => {
 const Router = () => (
   <Switch>
     <Route path="/:profile" component={App} />
-    <Route component={() => { window.location.href = "https://dash.sweety.link"; return null; }} />
+    <Route component={() => { window.location.href = getAdminSite(); return null; }} />
   </Switch>
 );
 
