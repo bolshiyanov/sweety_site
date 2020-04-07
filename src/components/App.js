@@ -12,6 +12,7 @@ import Blocks from 'components/Blocks';
 import Social from 'components/Social';
 import Footer from 'components/Footer';
 import Title from 'components/Title';
+import RedirectDash from 'components/Title';
 
 import API from 'utils/api';
 
@@ -65,6 +66,7 @@ const App = () => {
 const Router = () => (
   <Switch>
     <Route path="/:profile" component={App} />
+    <Route component={() => { window.location.href = "https://dash.sweety.link"; return null; }} />
   </Switch>
 );
 
