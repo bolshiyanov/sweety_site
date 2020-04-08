@@ -5,8 +5,7 @@ import PropTypes from 'prop-types';
 import Avatar from 'components/common/Avatar';
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
-import { getInvite } from 'utils/api';
-import { getAdminSite } from 'utils/api';
+import { getInvite, getAdminSite } from 'utils/api';
 
 import './index.scss';
 
