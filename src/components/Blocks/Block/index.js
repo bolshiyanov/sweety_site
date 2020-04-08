@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -22,19 +22,37 @@ const Block = ({
   animation,
   technical
 }) => {
+  const isVideo = link.indexOf("youtube.com/embed") >= 0;
+
+  const [showBlock, setShowBlock] = useState(!isVideo || type != BLOCK_PICTURE);
+
+  const video = (!isVideo ? null :
+    <div className={classnames([
+        'block',
+        'block__video',
+        { hidden: showBlock }
+      ])}>
+      <iframe src={link} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" allowFullScreen></iframe>
+    </div>);
+
+  if (!showBlock) {
+    return video;
+  }
+
+  const clickHandle = () => {
+    if (isVideo) {
+      setShowBlock(false);
+    }
+    else
+    {
+      window.open(link, "_blank");
+    }
+  };
+
+  var block = null;
   switch (type) {
     case BLOCK_PICTURE: {
-      if (link.indexOf("youtube.com/embed") >= 0) {
-        return (
-          <div className={classnames([
-              'block',
-              'block__video'
-            ])}>
-            <iframe src={link} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" allowFullScreen></iframe>
-          </div>);
-      }
-    
-      const block = (
+      block = (
         <div
           className={classnames([
             'block',
@@ -42,7 +60,8 @@ const Block = ({
             { 'block__picture__with-image': image },
             { 'block__picture__with-button': link },
             { 'block__picture__with-image__with-button': image && link },
-            className
+            className,
+            { hidden: !showBlock }
           ])}
           onClick={onClick}
         >
@@ -55,9 +74,7 @@ const Block = ({
         </div>
       );
 
-      if (link)
-        return <Button className="button-in-block" isPulse={animation} onClick={() => window.open(link, "_blank")} technical={technical}>{block}</Button>;
-      return block;
+      break;
     }
 
     case BLOCK_TEXT: {
@@ -65,7 +82,7 @@ const Block = ({
       if (image)
         style.backgroundImage = `URL(${image})`;
 
-      const block = (
+      block = (
         <div
           className={classnames([
             'block',
@@ -73,7 +90,8 @@ const Block = ({
             { 'block__text__with-image': image },
             { 'block__text__with-button': link },
             { 'block__text__with-image__with-button': image && link },
-            className
+            className,
+            { hidden: !showBlock }
           ])}
           style={style}
           onClick={onClick}
@@ -82,14 +100,12 @@ const Block = ({
         </div>
       );
 
-      if (link)
-        return <Button className="button-in-block" isPulse={animation} onClick={() => window.open(link, "_blank")} technical={technical}>{block}</Button>;
-      return block;
+      break;
     }
 
     case BLOCK_PREVIEW:
     default: {
-      const block = (
+      block = (
         <div
           className={classnames([
             'block',
@@ -97,7 +113,8 @@ const Block = ({
             { 'block__preview__with-image': image },
             { 'block__preview__with-button': link },
             { 'block__preview__with-image__with-button': image && link },
-            className
+            className,
+            { hidden: !showBlock }
           ])}
           onClick={onClick}
         >
@@ -107,12 +124,29 @@ const Block = ({
           <div className="block__title">{text}</div>
         </div>
       );
-
-      if (link)
-        return <Button className="button-in-block" isPulse={animation} onClick={() => window.open(link, "_blank")} technical={technical}>{block}</Button>;
-      return block;
     }
   }
+
+  if (link) {
+    block = (<Button 
+      className={classnames([
+        'button-in-block',
+        { hidden: !showBlock }
+      ])}
+      isPulse={animation} onClick={clickHandle} technical={technical}>
+      {block}
+      </Button>);
+  }
+
+  if (isVideo) {
+    return (
+      <React.Fragment>
+        {!showBlock && video}
+        {block}
+      </React.Fragment>);
+  }
+  else
+    return block;
 };
 
 Block.propTypes = {
