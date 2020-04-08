@@ -22,18 +22,18 @@ const Block = ({
   animation,
   technical
 }) => {
-  if (link.indexOf("youtube.com/embed") >= 0) {
-    return (
-      <div className={classnames([
-          'block',
-          'block__video'
-        ])}>
-        <iframe src={link} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" allowFullScreen></iframe>
-      </div>);
-  }
-
   switch (type) {
     case BLOCK_PICTURE: {
+      if (link.indexOf("youtube.com/embed") >= 0) {
+        return (
+          <div className={classnames([
+              'block',
+              'block__video'
+            ])}>
+            <iframe src={link} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" allowFullScreen></iframe>
+          </div>);
+      }
+    
       const block = (
         <div
           className={classnames([
