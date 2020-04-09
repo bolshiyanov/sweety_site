@@ -1,5 +1,5 @@
 .messengers {
-  margin: 12px 0;
+  margin: -12px 6px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -8,7 +8,7 @@
   .messenger {
     flex-grow: 1;
     flex-shrink: 1;
-    margin: 12px;
+    margin: 0 6px 12px;
     min-width: calc(30% - 12px);
     
     .icon {
@@ -20,12 +20,11 @@
       min-height: 62px;
 
       &.tech-button {
-        margin: 0 auto 12px;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-flow: row nowrap;
-        width: calc(100% - 24px);
+        margin: 0px 6px 12px;
       
         span {
           font-size: 28px;
