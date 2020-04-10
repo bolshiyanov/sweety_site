@@ -10,14 +10,9 @@ import { getInvite, getAdminSite } from 'utils/api';
 import './index.scss';
 
 const Header = ({ avatar, userName, profile }) => {
-  const [cookies, setCookie] = useCookies();
+  const [cookies] = useCookies();
 
-  var inviteId = getInvite();
-  if (inviteId) {
-    setCookie(profile, inviteId, { path: '/' });
-  } else {
-    inviteId = cookies[profile];
-  }
+  const inviteId = cookies[profile];
   if (inviteId == "undefined") {
     inviteId = null;
   }

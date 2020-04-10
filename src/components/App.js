@@ -12,6 +12,7 @@ import Blocks from 'components/Blocks';
 import Social from 'components/Social';
 import Footer from 'components/Footer';
 import Title from 'components/Title';
+import Admin from 'components/Admin';
 
 import API from 'utils/api';
 import { getAdminSite } from 'utils/api';
@@ -65,6 +66,7 @@ const App = () => {
 
 const Router = () => (
   <Switch>
+    <Route path="/:profile/admin" component={Admin} />
     <Route path="/:profile" component={App} />
     <Route component={() => { window.location.href = getAdminSite(); return null; }} />
   </Switch>
