@@ -16,6 +16,7 @@ import Admin from 'components/Admin';
 
 import API from 'utils/api';
 import { getAdminSite } from 'utils/api';
+import GoogleAnalytics from 'utils/googleAnalytics';
 
 import { CONFIG_LOAD } from 'constants/actions';
 
@@ -41,6 +42,7 @@ const App = () => {
   const backgroundStyles = currentTheme.getBackgroundStyles();
   return (
     <div className="app" style={backgroundStyles}>
+      { GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker /> }
       <div className="app-container">
         <Header
           userName={data.name}
