@@ -27,7 +27,7 @@ const handleError = (e) => {
 
 const requests = {
   get: (url, params) => superagent.get(`${host}${url}`).query(params)
-    .retry(100, 1000, [401, 404])
+    .retry(100)
     .catch(handleError)
     .then(responseBody),
   post: (url, params) => superagent.post(`${host}${url}`).send(params)
