@@ -22,7 +22,7 @@ const Block = ({
   animation,
   technical
 }) => {
-  const isVideo = link.indexOf("youtube.com/embed") >= 0;
+  const isVideo = link && link.indexOf("youtube.com/embed") >= 0;
 
   const [showBlock, setShowBlock] = useState(!isVideo || type != BLOCK_PICTURE);
 
