@@ -24,6 +24,7 @@
     "react-cookie": "^4.0.3",
     "react-dom": "^16.12.0",
     "react-easy-crop": "^2.1.0",
+    "react-ga": "^2.7.0",
     "react-redux": "^7.1.3",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",

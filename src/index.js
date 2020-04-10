@@ -6,6 +6,7 @@ import { CookiesProvider } from 'react-cookie';
 
 import history from 'utils/history';
 import store from 'store';
+import GoogleAnalytics from 'utils/googleAnalytics';
 
 import App from 'components/App';
 
@@ -17,6 +18,7 @@ ReactDOM.render(
   (
     <CookiesProvider>
       <Router history={history}>
+        { GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker /> }
         <Provider store={store}>
           <App />
         </Provider>
