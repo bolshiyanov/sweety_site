@@ -1,5 +1,4 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import Swiper from 'react-id-swiper';
 import classnames from 'classnames';
 
@@ -9,8 +8,6 @@ import Loading from 'components/common/Loading';
 
 import Header from 'components/Header';
 import Start from 'components/Start';
-
-import { HIDE_LANDING } from 'constants/actions';
 
 import referrerAvatar from 'images/referrer_avatar.jpg';
 import backgroundImage1 from 'images/main-background1.jpg';
@@ -40,8 +37,7 @@ const Landing = () => {
     title: "Free links creator",
     avatar: referrerAvatar
   }
-  const dispatch = useDispatch();
-
+  
   useEffect(() => {
     if (swiper) {
       swiper.on('slideChange', () => {
@@ -50,20 +46,18 @@ const Landing = () => {
       swiper.on('touchEnd', () => {
         setTimeout(() => {
           if (swiper.isEnd) {
-            swiper.slideTo(0, 500);
+            swiper.slideTo(6);
           }
-        }, 1000);
+        }, 100);
       });
     }
   }, [swiper]);
 
   const handleClick = useCallback(() => {
     if (swiper) {
-      swiper.slideNext(500, () => {
-        if (swiper.isEnd) {
-          swiper.slideTo(0, 500);
-        }
-      });
+      if (!swiper.isEnd) {
+        swiper.slideNext(500);
+      }
     }
   }, [swiper]);
 
