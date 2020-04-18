@@ -1,4 +1,5 @@
 export const LOADING_ERROR = 'LOADING_ERROR';
+export const HIDE_LANDING = 'HIDE_LANDING';
 
 export const CONFIG_LOAD = 'CONFIG_LOAD';
 export const SET_DATA = 'SET_DATA';

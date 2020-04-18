@@ -8,6 +8,7 @@ const Title = () => {
 
   const { title, description } = useSelector((state) => state.config.data);
 
+  
   useEffect(() => {
     setData({ title, description });
   }, [title, description]);

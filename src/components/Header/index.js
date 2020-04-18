@@ -5,15 +5,15 @@ import PropTypes from 'prop-types';
 import Avatar from 'components/common/Avatar';
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
-import { getInvite, getAdminSite } from 'utils/api';
+import { getAdminSite } from 'utils/api';
 
 import './index.scss';
 
-const Header = ({ avatar, userName, profile }) => {
+const Header = ({ avatar, name, className, profile }) => {
   const [cookies] = useCookies();
 
-  const inviteId = cookies[profile];
-  if (inviteId == "undefined") {
+  var inviteId = cookies[profile];
+  if (inviteId === "undefined") {
     inviteId = null;
   }
 
@@ -23,9 +23,9 @@ const Header = ({ avatar, userName, profile }) => {
 
   return (
     <React.Fragment>
-      <header>
+      <header className={className}>
         <Avatar image={avatar} />
-        <span className="user-name">{userName}</span>
+        <span className="user-name">{name}</span>
         <span className="flex-delimiter" />
         { inviteId &&
         (<Button onClick={handleClick} isInline className="pulse2">
@@ -38,13 +38,15 @@ const Header = ({ avatar, userName, profile }) => {
 
 Header.propTypes = {
   avatar: PropTypes.string,
-  userName: PropTypes.string,
+  name: PropTypes.string,
+  className: PropTypes.string,
   profile: PropTypes.string
 };
 
 Header.defaultProps = {
   avatar: null,
-  userName: ''
+  name: '',
+  className: undefined
 };
 
 export default Header;

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 
+import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams } from 'react-router-dom';
 
@@ -13,6 +14,7 @@ import Social from 'components/Social';
 import Footer from 'components/Footer';
 import Title from 'components/Title';
 import Admin from 'components/Admin';
+import Landing from 'components/Landing';
 
 import API from 'utils/api';
 import { getAdminSite } from 'utils/api';
@@ -41,28 +43,34 @@ const App = () => {
 
   const backgroundStyles = currentTheme.getBackgroundStyles();
   return (
-    <div className="app" style={backgroundStyles}>
-      { GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker /> }
-      <div className="app-container">
-        <Header
-          userName={data.name}
-          avatar={data.avatar}
-          profile={profile}
-        />
-        <Notification
-          link={data.url}
-          message={settings.advanced}
-          url={settings.advancedLink}
-          buttonTitle={settings.advancedTitle}
-          profile={profile}
-        />
-        <Title />
-        <Messengers />
-        <Blocks data={data.blocks} />
-        <Social />
-        <Footer />
+    <React.Fragment>
+      <Helmet>
+        <title>{data.name ?? data.title}</title>
+        <meta name="description" content={data.description} />
+      </Helmet>
+      <div className="app" style={backgroundStyles}>
+        { GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker /> }
+        <div className="app-container">
+          <Header
+            name={data.name}
+            avatar={data.avatar}
+            profile={profile}
+          />
+          <Notification
+            link={data.url}
+            message={settings.advanced}
+            url={settings.advancedLink}
+            buttonTitle={settings.advancedTitle}
+            profile={profile}
+          />
+          <Title />
+          <Messengers />
+          <Blocks data={data.blocks} />
+          <Social />
+          <Footer />
+        </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
@@ -70,7 +78,7 @@ const Router = () => (
   <Switch>
     <Route path="/:profile/admin" component={Admin} />
     <Route path="/:profile" component={App} />
-    <Route component={() => { window.location.href = getAdminSite(); return null; }} />
+    <Route component={Landing} />
   </Switch>
 );
 

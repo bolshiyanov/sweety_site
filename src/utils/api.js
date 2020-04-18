@@ -19,6 +19,10 @@ export const getAdminSite = () => {
   return adminSite;
 };
 
+export const getAdminSiteByInvitation = (invId) => {
+  return adminSite + "?invitationId=" + invId;
+};
+
 const responseBody = (res) => res.body;
 
 const handleError = (e) => {
@@ -43,7 +47,8 @@ const requests = {
 
 const API = {
   updateProfile: (value) => setProfile(value),
-  getData: () => requests.get(`/api/profiles/pages/public/${profile}`)
+  getData: () => requests.get(`/api/profiles/pages/public/${profile}`),
+  register: (data) => requests.post('/api/users/register', data),
 };
 
 export default API;

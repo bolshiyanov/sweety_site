@@ -24,7 +24,7 @@ const Block = ({
 }) => {
   const isVideo = link && link.indexOf("youtube.com/embed") >= 0;
 
-  const [showBlock, setShowBlock] = useState(!isVideo || type != BLOCK_PICTURE);
+  const [showBlock, setShowBlock] = useState(!isVideo || type !== BLOCK_PICTURE);
 
   const video = (!isVideo ? null :
     <div className={classnames([
@@ -32,7 +32,7 @@ const Block = ({
         'block__video',
         { hidden: showBlock }
       ])}>
-      <iframe src={link} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" allowFullScreen></iframe>
+      <iframe src={link} title="siteFrame" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" allowFullScreen></iframe>
     </div>);
 
   if (!showBlock) {
