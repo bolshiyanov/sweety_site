@@ -10,7 +10,7 @@ const Admin = () => {
   var inviteId = getInvite();
   if (inviteId) {
     setCookie(profile, inviteId, { domain: getPublicDomain() });
-    removeCookie("last");
+    removeCookie("last", { domain: getPublicDomain() });
     setCookie("last", profile, { domain: getPublicDomain() });
   }
 
