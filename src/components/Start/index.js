@@ -129,7 +129,7 @@ const Start = () => {
         <a href="#" onClick={handleQuickStart}>Войти без Instagram</a>
       </div>
       {lastId && <div className="start__text">
-        или <a href="#" onClick={handleContinue}>Продолжить последнее</a>
+        или <a href="#" onClick={handleContinue}>продолжить последнее</a>
       </div>}
     </div>
   );
