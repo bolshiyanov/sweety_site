@@ -114,7 +114,7 @@ const Landing = () => {
               <h2 className="main-page__page1__subtitle">Sweety - это очень простой конструктор микро-целевых страниц для ваших соцсетей, чтобы 
               вы получали больше обращений через ваши мессенджеры. Используйте БЕЗ РЕГИСТРАЦИИ, бесплатно, навсегда.</h2>
                <div className="main-page__page1__container2">
-                <div className="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/xxxxxxx" frameBorder="0" rel="0" 
+                <div className="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/V6WZaUR8zbU" frameBorder="0" rel="0" 
                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                 </div>
                </div>
