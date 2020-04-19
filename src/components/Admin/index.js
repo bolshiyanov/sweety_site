@@ -10,6 +10,7 @@ const Admin = () => {
   var inviteId = getInvite();
   if (inviteId) {
     setCookie(profile, inviteId, { path: '/' });
+    setCookie("last", profile, { path: '/' });
   }
 
   return (
