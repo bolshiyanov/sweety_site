@@ -32,7 +32,7 @@ const Block = ({
         'block__video',
         { hidden: showBlock }
       ])}>
-      <iframe src={link} title="siteFrame" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" allowFullScreen></iframe>
+      <iframe src={link} title="siteFrame" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" rel="0" allowFullScreen></iframe>
     </div>);
 
   if (!showBlock) {

@@ -5,6 +5,7 @@ const SOMETHING_WENT_WRONG = 'Something went wrong!';
 
 const host = 'https://admapi.itsinsta.site';
 const adminSite = "https://dash.sweety.link";
+const publicDomain = "sweety.link";
 let profile = null;
 
 const setProfile = (newProfile) => {
@@ -15,12 +16,16 @@ export const getInvite = () => {
   return getSearchString(window.location.search, 'invid');
 };
 
-export const getReferral = () => {
+export const getRef = () => {
   return getSearchString(window.location.search, 'ref');
 };
 
 export const getAdminSite = () => {
   return adminSite;
+};
+
+export const getPublicDomain = () => {
+  return publicDomain;
 };
 
 export const getAdminSiteByInvitation = (invId) => {
