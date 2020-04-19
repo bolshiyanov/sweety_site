@@ -38,7 +38,7 @@ const Start = () => {
       return;
     }
     if (!instagram) {
-      setInstagramInvalid("Instagram не заполнен");
+      setInstagramInvalid("Поле обязательно");
 
       return;
     }
@@ -48,13 +48,13 @@ const Start = () => {
       console.log(response);
       if (response?.errors) {
         if (response.errors.Instagram) {
-          setInstagramInvalid("Указан некорректный Instagram");
+          setInstagramInvalid("Аккаунт не найден");
         }
         if (response.errors.Youtube) {
-          setYoutubeInvalid("Указан некорректный YouTube");
+          setYoutubeInvalid("Канал или видео не найдены");
         }
         if (response.errors.WhatsApp) {
-          setWhatsappInvalid("Указан некорректный WhatsApp");
+          setWhatsappInvalid("Некорректный номер телефона");
         }
       }
       else if (response?.invitationId) {
