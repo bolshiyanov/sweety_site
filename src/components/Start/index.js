@@ -38,8 +38,7 @@ const Start = () => {
       return;
     }
     if (!instagram) {
-      setInstagramInvalid("Поле обязательно");
-
+      setInstagramInvalid("Укажите ваш Instagram");
       return;
     }
 
@@ -48,7 +47,7 @@ const Start = () => {
       console.log(response);
       if (response?.errors) {
         if (response.errors.Instagram) {
-          setInstagramInvalid("Аккаунт не найден");
+          setInstagramInvalid("Instagram не найден");
         }
         if (response.errors.Youtube) {
           setYoutubeInvalid("Канал или видео не найдены");
