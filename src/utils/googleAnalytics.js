@@ -63,7 +63,7 @@ const init = (options = {}) => {
  * @param {string} action 
  * @param {string} label 
  */
-const event = (category, action, label) => {
+export const event = (category, action, label) => {
   ReactGA.event({
     category: category,
     action: action,
@@ -74,6 +74,5 @@ const event = (category, action, label) => {
 export default {
     GoogleAnalytics,
     RouteTracker,
-    init,
-    event
+    init
 };

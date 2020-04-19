@@ -17,7 +17,6 @@ import Admin from 'components/Admin';
 import Landing from 'components/Landing';
 
 import API from 'utils/api';
-import { getAdminSite } from 'utils/api';
 import GoogleAnalytics from 'utils/googleAnalytics';
 
 import { CONFIG_LOAD } from 'constants/actions';

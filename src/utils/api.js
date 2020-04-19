@@ -15,6 +15,10 @@ export const getInvite = () => {
   return getSearchString(window.location.search, 'invid');
 };
 
+export const getReferral = () => {
+  return getSearchString(window.location.search, 'ref');
+};
+
 export const getAdminSite = () => {
   return adminSite;
 };

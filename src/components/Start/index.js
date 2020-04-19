@@ -2,7 +2,8 @@ import React, { useState, useCallback } from 'react';
 import { useCookies } from 'react-cookie';
 import classnames from 'classnames';
 
-import API, { getAdminSiteByInvitation, getAdminSite } from 'utils/api';
+import API, { getAdminSiteByInvitation, getAdminSite, getReferral } from 'utils/api';
+import { event } from 'utils/googleAnalytics';
 
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
@@ -57,6 +58,7 @@ const Start = () => {
         }
       }
       else if (response?.invitationId) {
+        event("signup", "instagram", getReferral());
         setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1), response.invitationId, { path: '/' });
         window.location.href = getAdminSiteByInvitation(response.invitationId);
       }
@@ -72,6 +74,7 @@ const Start = () => {
     }
     setStarting(true);
     API.register({}).then((response) => {
+      event("signup", "anonymous", getReferral());
       if (response?.invitationId) {
         setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1), response.invitationId, { path: '/' });
         window.location.href = getAdminSiteByInvitation(response.invitationId);
