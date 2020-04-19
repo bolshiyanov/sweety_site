@@ -61,8 +61,7 @@ const Input = ({
             className="input input__grouped"
             value={value}
             onChange={(e) => onChange(e.target.value)}
-          />
-        )}
+          />)}
       </InputGroup>
     );
   }
@@ -74,8 +73,7 @@ const Input = ({
       className={inputClassName}
       value={value}
       onChange={(e) => onChange(e.target.value)}
-    />
-  );
+    />);
 };
 
 Input.propTypes = {

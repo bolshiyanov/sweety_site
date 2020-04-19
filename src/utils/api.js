@@ -1,7 +1,7 @@
 import superagent from 'superagent';
 import { getSearchString } from 'utils/url';
 
-const SOMETHING_WENT_WRONG = 'Что-то пошло не так!';
+const SOMETHING_WENT_WRONG = 'Something went wrong!';
 
 const host = 'https://admapi.itsinsta.site';
 const adminSite = "https://dash.sweety.link";
@@ -23,10 +23,17 @@ export const getAdminSiteByInvitation = (invId) => {
   return adminSite + "?invitationId=" + invId;
 };
 
-const responseBody = (res) => res.body;
+const responseBody = (res) => {
+  if (res?.body)
+    return res.body;
+  return res;
+}
 
 const handleError = (e) => {
   console.error(SOMETHING_WENT_WRONG, e);
+
+  var errors = JSON.parse(e.response.text)?.errors;
+  return !errors ? null : { errors };
 };
 
 const requests = {

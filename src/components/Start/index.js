@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { useCookies } from 'react-cookie';
+import classnames from 'classnames';
 
-import API, { getAdminSiteByInvitation } from 'utils/api';
+import API, { getAdminSiteByInvitation, getAdminSite } from 'utils/api';
 
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
@@ -9,9 +10,13 @@ import Button from 'components/common/Button';
 import './index.scss';
 
 const Start = () => {
+  const [ starting, setStarting] = useState(false);
   const [instagram, setInstagram] = useState('');
+  const [instagramInvalid, setInstagramInvalid] = useState('');
   const [youtube, setYoutube] = useState('');
+  const [youtubeInvalid, setYoutubeInvalid] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
+  const [whatsappInvalid, setWhatsappInvalid] = useState('');
   const [_, setCookie] = useCookies();
 
   const handleChangeInstagram = useCallback((value) => {
@@ -26,10 +31,54 @@ const Start = () => {
     setWhatsapp(value);
   }, [setWhatsapp]);
 
-  const handleStart = () => {
+  const handleStart = e => {
+    e.preventDefault();
+
+    if (starting) {
+      return;
+    }
+    if (!instagram) {
+      setInstagramInvalid("Instagram не заполнен");
+
+      return;
+    }
+
+    setStarting(true);
     API.register({ instagram, youtube, whatsapp }).then((response) => {
-      setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1), response.invitationId, { path: '/' });
-      window.location.href = getAdminSiteByInvitation(response.invitationId);
+      console.log(response);
+      if (response?.errors) {
+        if (response.errors.Instagram) {
+          setInstagramInvalid("Указан некорректный Instagram");
+        }
+        if (response.errors.Youtube) {
+          setYoutubeInvalid("Указан некорректный YouTube");
+        }
+        if (response.errors.WhatsApp) {
+          setWhatsappInvalid("Указан некорректный WhatsApp");
+        }
+      }
+      else if (response?.invitationId) {
+        setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1), response.invitationId, { path: '/' });
+        window.location.href = getAdminSiteByInvitation(response.invitationId);
+      }
+      setStarting(false);
+    });
+  };
+
+  const handleQuickStart = e => {
+    e.preventDefault();
+
+    if (starting) {
+      return;
+    }
+    setStarting(true);
+    API.register({}).then((response) => {
+      if (response?.invitationId) {
+        setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1), response.invitationId, { path: '/' });
+        window.location.href = getAdminSiteByInvitation(response.invitationId);
+      } else {
+        window.location.href = getAdminSite();
+      }
     });
   };
 
@@ -40,32 +89,32 @@ const Start = () => {
         value={instagram}
         onChange={handleChangeInstagram}
         placeholder="Ваш Instagram*"
+        required
       />
+      {instagramInvalid && <label htmlFor="" className="start__error">{instagramInvalid}</label>}
       <Input
         className="start__field"
         value={youtube}
         onChange={handleChangeYoutube}
         placeholder="Ваш YouTube"
       />
+      {youtubeInvalid && <label htmlFor="" className="start__error">{youtubeInvalid}</label>}
       <Input
         className="start__field"
         value={whatsapp}
         onChange={handleChangeWhatsapp}
         placeholder="Ваш WhatsApp"
-        
       />
+      {whatsappInvalid && <label htmlFor="" className="start__error">{whatsappInvalid}</label>}
       <Button
-        className="start__button"
+        className={classnames(["start__button", { start__button__starting: starting }])}
         onClick={handleStart}
         noStyled
       >
-        НАЧАТЬ
+        {!starting ? 'НАЧАТЬ' : 'Проверяем...'}
       </Button>
       <div className="start__text">
-        * Обязательное поле. Нажмите на эту&nbsp;
-        <a href="#">ссылку</a>
-        &nbsp;чтобы пропустить упрощенную настройку. YouTube и WhatsApp не обязательные поля. Если же вы установите ссылки, то последние посты Instagram и 
-        видео из YouTube будут обновляться автоматически. РЕКОМЕНДУЕТСЯ!
+        <a href="#" onClick={handleQuickStart}>Продолжить без Instagram</a>
       </div>
     </div>
   );

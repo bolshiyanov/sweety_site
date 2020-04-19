@@ -17,8 +17,17 @@
     text-transform: uppercase;
     color: #fff;
     margin-top: 6px;
+
+    &__starting {
+      background-color: rgba(30, 144, 255, .1);
+      color: #000;
+    }
   }
-  
+
+  &__error {
+    color: red,
+  }
+
   &__text {
     margin-top: 12px;
   }
