@@ -10,6 +10,8 @@ const Admin = () => {
   var inviteId = getInvite();
   if (inviteId) {
     setCookie(profile, inviteId, { path: '/' });
+    removeCookie('lastId', { path: '/', domain: getCookieDomain() });
+    setCookie('lastId', inviteId, { path: '/', domain: getCookieDomain() });
   }
 
   return (

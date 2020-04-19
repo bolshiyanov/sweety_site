@@ -18,7 +18,7 @@ const Start = () => {
   const [youtubeInvalid, setYoutubeInvalid] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [whatsappInvalid, setWhatsappInvalid] = useState('');
-  const [_, setCookie] = useCookies();
+  const [cookies, setCookie] = useCookies();
 
   const handleChangeInstagram = useCallback((value) => {
     setInstagram(value);
@@ -31,6 +31,8 @@ const Start = () => {
   const handleChangeWhatsapp = useCallback((value) => {
     setWhatsapp(value);
   }, [setWhatsapp]);
+
+  const lastId = cookies["lastId"];
 
   const handleStart = e => {
     e.preventDefault();
@@ -86,6 +88,12 @@ const Start = () => {
     });
   };
 
+  const handleContinue = e => {
+    e.preventDefault();
+
+    window.location.href = getAdminSiteByInvitation(lastId);
+  };
+
   return (
     <div className="start">
       <Input
@@ -118,8 +126,11 @@ const Start = () => {
         {!starting ? 'НАЧАТЬ' : 'Проверяем...'}
       </Button>
       <div className="start__text">
-        <a href="#" onClick={handleQuickStart}>Продолжить без Instagram</a>
+        <a href="#" onClick={handleQuickStart}>Войти без Instagram</a>
       </div>
+      {lastId && <div className="start__text">
+        или <a href="#" onClick={handleContinue}>Продолжить последнее</a>
+      </div>}
     </div>
   );
 };

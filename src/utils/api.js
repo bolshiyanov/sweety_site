@@ -5,7 +5,7 @@ const SOMETHING_WENT_WRONG = 'Something went wrong!';
 
 const host = 'https://admapi.itsinsta.site';
 const adminSite = "https://dash.sweety.link";
-const cookieDomain = ".sweety.link";
+const cookieDomain = "sweety.link";
 let profile = null;
 
 const setProfile = (newProfile) => {
