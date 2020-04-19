@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useCookies } from 'react-cookie';
 import classnames from 'classnames';
 
-import API, { getAdminSiteByInvitation, getAdminSite, getReferral } from 'utils/api';
+import API, { getAdminSiteByInvitation, getAdminSite, getReferral as getRef } from 'utils/api';
 import { event } from 'utils/googleAnalytics';
 
 import Input from 'components/common/Input';
@@ -44,7 +44,7 @@ const Start = () => {
     }
 
     setStarting(true);
-    API.register({ instagram, youtube, whatsapp }).then((response) => {
+    API.register({ instagram, youtube, whatsapp, referer: getRef() }).then((response) => {
       console.log(response);
       if (response?.errors) {
         if (response.errors.Instagram) {
@@ -58,7 +58,7 @@ const Start = () => {
         }
       }
       else if (response?.invitationId) {
-        event("signup", "instagram", getReferral());
+        event("signup", "instagram", getRef());
         setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1), response.invitationId, { path: '/' });
         window.location.href = getAdminSiteByInvitation(response.invitationId);
       }
@@ -73,8 +73,8 @@ const Start = () => {
       return;
     }
     setStarting(true);
-    API.register({}).then((response) => {
-      event("signup", "anonymous", getReferral());
+    API.register({ referer: getRef() }).then((response) => {
+      event("signup", "anonymous", getRef());
       if (response?.invitationId) {
         setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1), response.invitationId, { path: '/' });
         window.location.href = getAdminSiteByInvitation(response.invitationId);
