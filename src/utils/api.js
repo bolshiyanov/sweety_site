@@ -5,7 +5,7 @@ const SOMETHING_WENT_WRONG = 'Something went wrong!';
 
 const host = 'https://admapi.itsinsta.site';
 const adminSite = "https://dash.sweety.link";
-const publicDomain = "sweety.link";
+const cookieDomain = ".sweety.link";
 let profile = null;
 
 const setProfile = (newProfile) => {
@@ -24,8 +24,8 @@ export const getAdminSite = () => {
   return adminSite;
 };
 
-export const getPublicDomain = () => {
-  return publicDomain;
+export const getCookieDomain = () => {
+  return cookieDomain;
 };
 
 export const getAdminSiteByInvitation = (invId) => {
