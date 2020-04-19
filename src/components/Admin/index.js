@@ -5,11 +5,12 @@ import { useParams } from 'react-router-dom';
 
 const Admin = () => {
   const { profile } = useParams();
-  const [_, setCookie] = useCookies();
+  const [_, setCookie, removeCookie] = useCookies();
 
   var inviteId = getInvite();
   if (inviteId) {
     setCookie(profile, inviteId, { domain: getPublicDomain() });
+    removeCookie("last");
     setCookie("last", profile, { domain: getPublicDomain() });
   }
 
