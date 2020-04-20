@@ -123,7 +123,7 @@ const Start = () => {
         onClick={handleStart}
         noStyled
       >
-        {!starting ? 'НАЧАТЬ' : 'Проверяем...'}
+        {!starting ? 'НАЧАТЬ' : 'Собираем проект...'}
       </Button>
       <div className="start__text">
         <a href="#" onClick={handleQuickStart}>Войти без Instagram</a>
