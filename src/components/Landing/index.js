@@ -70,7 +70,7 @@ const Landing = () => {
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Оформи красиво свой онлайн бизнес</h1>
               <h2 className="main-page__page1__subtitle">Легко, просто и быстро создай свое модное приложение без дизайнеров и вэб мастеров. 
-              Получай больше обращений и продаж через  свои соцсети. id_PdoOvGBv</h2>
+              Получай больше обращений и продаж через  свои соцсети.</h2>
             </div>
           </div>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage2})` }}>
