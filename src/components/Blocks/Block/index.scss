@@ -1,10 +1,11 @@
 .block {
   flex-grow: 1;
   width: 100%;
-  margin: 12px 0;
+  margin: 6px 0;
   overflow: hidden;
   font-size: 16px;
-  padding: 24px 36px;
+  padding: 12px 36px;
+  overflow-wrap: anywhere;
 
   &__picture {
     padding: 0;
