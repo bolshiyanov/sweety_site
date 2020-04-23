@@ -7,7 +7,7 @@ import Slider from 'components/common/Slider';
 import Loading from 'components/common/Loading';
 
 import Header from 'components/Header';
-import Start from 'components/Start';
+import Start from 'components/Landing/Start';
 
 import referrerAvatar from 'images/referrer_avatar.jpg';
 import backgroundImage1 from 'images/main-background1.jpg';
