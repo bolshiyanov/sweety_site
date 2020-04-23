@@ -7,7 +7,8 @@ import ButtonColor from 'utils/buttonColor';
 import {
   LOADING_ERROR,
   SET_DATA,
-  UPDATE_CONFIG_DATA
+  UPDATE_CONFIG_DATA,
+  SET_INSTAGRAM_FEED
 } from 'constants/actions';
 
 const defaultTheme = new Theme({ name: 'Default' });
@@ -74,6 +75,11 @@ const reducer = handleActions({
       title,
       description
     }
+  }),
+
+  [SET_INSTAGRAM_FEED]: (state, { data }) => ({
+    ...state,
+    instagramFeed: data
   })
 
 }, initialState);

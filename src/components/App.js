@@ -15,6 +15,7 @@ import Footer from 'components/Footer';
 import Title from 'components/Title';
 import Admin from 'components/Admin';
 import Landing from 'components/Landing';
+import Rss from 'components/Rss';
 
 import API from 'utils/api';
 import GoogleAnalytics from 'utils/googleAnalytics';
@@ -65,6 +66,7 @@ const App = () => {
           <Title />
           <Messengers />
           <Blocks data={data.blocks} />
+          <Rss />
           <Social />
           <Footer />
         </div>
