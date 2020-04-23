@@ -4,6 +4,7 @@ import Header from 'components/Header';
 import { getSearchString } from 'utils/url';
 
 import API, { getAdminSiteByInvitation } from 'utils/api';
+import { event } from 'utils/googleAnalytics';
 
 import referrerAvatar from 'images/referrer_avatar.jpg';
 
@@ -19,6 +20,7 @@ const Start = () => {
     if (response?.errors) {
       window.location.href = "/";
     }
+    event("signup", "start");
     window.location.href = getAdminSiteByInvitation(response.invitationId);
   });
 
