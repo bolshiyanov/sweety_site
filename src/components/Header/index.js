@@ -6,6 +6,7 @@ import Avatar from 'components/common/Avatar';
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import { getAdminSite } from 'utils/api';
+import classnames from 'classnames';
 
 import './index.scss';
 
@@ -28,8 +29,9 @@ const Header = ({ avatar, name, className, profile }) => {
         <span className="user-name">{name}</span>
         <span className="flex-delimiter" />
         { inviteId &&
-        (<Button onClick={handleClick} isInline className="pulse2">
+        (<Button onClick={handleClick} isInline className={classnames["pulse2", "tooltip"]}>
           <Icon type="edit" />
+          <span class="tooltip__text">Только вы можете редактировать эту страницу</span>
         </Button>)}
       </header>
     </React.Fragment>

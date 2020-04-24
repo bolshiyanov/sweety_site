@@ -31,7 +31,7 @@ const Start = () => {
         <div className="main-page__page1">
           <div className="main-page__page1__container1">
             <h1 className="main-page__page1__header">В течение 30 секунд!</h1>
-            <h2 className="main-page__page1__subtitle">Ваша страница для Instagram <b>{instagram}</b> будет готова.</h2>
+            <h2 className="main-page__page1__subtitle">И ваша страница для Instagram <b>{instagram}</b> будет готова.</h2>
           </div>
         </div>
         <Loading />
