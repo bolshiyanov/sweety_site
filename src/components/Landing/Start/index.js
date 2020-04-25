@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useCookies } from 'react-cookie';
 import classnames from 'classnames';
 
-import API, { getAdminSiteByInvitation, getAdminSite, getRef } from 'utils/api';
+import API, { getAdminSiteByInvitation, getRef, getInstagram } from 'utils/api';
 import { event } from 'utils/googleAnalytics';
 
 import Input from 'components/common/Input';
@@ -12,7 +12,7 @@ import './index.scss';
 
 const Start = () => {
   const [starting, setStarting] = useState(false);
-  const [instagram, setInstagram] = useState('');
+  const [instagram, setInstagram] = useState(getInstagram());
   const [instagramInvalid, setInstagramInvalid] = useState('');
   const [youtube, setYoutube] = useState('');
   const [youtubeInvalid, setYoutubeInvalid] = useState('');
@@ -68,7 +68,7 @@ const Start = () => {
     });
   };
 
-  const handleQuickStart = e => {
+  /*const handleQuickStart = e => {
     e.preventDefault();
 
     if (starting) {
@@ -85,7 +85,7 @@ const Start = () => {
         window.location.href = getAdminSite();
       }
     });
-  };
+  };*/
 
   const handleContinue = e => {
     e.preventDefault();
@@ -124,11 +124,8 @@ const Start = () => {
       >
         {!starting ? 'НАЧАТЬ' : 'Собираем проект...'}
       </Button>
-      <div className="start__text">
-        <a href="#" onClick={handleQuickStart}>Войти без Instagram</a>
-      </div>
       {lastId && <div className="start__text">
-        или <a href="#" onClick={handleContinue}>продолжить последнее</a>
+        <a href="#" onClick={handleContinue}>Продолжить последнее</a>
       </div>}
     </div>
   );

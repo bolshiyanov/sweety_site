@@ -20,6 +20,10 @@ export const getRef = () => {
   return getSearchString(window.location.search, 'ref');
 };
 
+export const getInstagram = () => {
+  return getSearchString(window.location.search, 'instagram');
+};
+
 export const getAdminSite = () => {
   return adminSite;
 };
