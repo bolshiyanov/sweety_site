@@ -92,7 +92,7 @@ const API = {
         url: `https://instagram.com/p/${node.shortcode}/`,
         thumbnailUrl: node.thumbnail_src,
         displayUrl: node.display_url,
-        caption: node.edge_media_to_caption.edges[0].node.text
+        caption: node.edge_media_to_caption.edges[0]?.node?.text
       }));
 
       return photos;
