@@ -103,20 +103,6 @@ const Start = () => {
         required
       />
       {instagramInvalid && <label htmlFor="" className="start__error">{instagramInvalid}</label>}
-      <Input
-        className="start__field"
-        value={youtube}
-        onChange={handleChangeYoutube}
-        placeholder="Ваш YouTube"
-      />
-      {youtubeInvalid && <label htmlFor="" className="start__error">{youtubeInvalid}</label>}
-      <Input
-        className="start__field"
-        value={whatsapp}
-        onChange={handleChangeWhatsapp}
-        placeholder="Ваш WhatsApp"
-      />
-      {whatsappInvalid && <label htmlFor="" className="start__error">{whatsappInvalid}</label>}
       <Button
         className={classnames(["start__button", { start__button__starting: starting }])}
         onClick={handleStart}

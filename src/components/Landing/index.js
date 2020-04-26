@@ -105,23 +105,11 @@ const Landing = () => {
               <div className={classnames({ 'main-page__pages__selected': currentPage === 2 })} />
               <div className={classnames({ 'main-page__pages__selected': currentPage === 3 })} />
             </div>
-            <Button
-              noStyled
-              onClick={openStart}
-            >
-              Упрощенная настройка
-            </Button>
-
-          </div>
+            <Start />
+            </div>
         )}
       </div>
-      <Slider
-        opened={startOpened}
-        onClose={closeStart}
-        title="Введите данные"
-      >
-        <Start />
-      </Slider>
+      
     </React.Fragment>
   );
 };
