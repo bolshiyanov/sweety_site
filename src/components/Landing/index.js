@@ -83,7 +83,7 @@ const Landing = () => {
           </div>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage4})` }}>
             <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">Посмотри, как микроблогер из Инстаграм использует Sweety</h1>
+              <h1 className="main-page__page1__header">Как микроблогеры использует Sweety</h1>
               <h2 className="main-page__page1__subtitle" >Пример: <a href="https://sweety.link/vika" target="_blank">sweety.link/vika</a></h2>
               <div className="main-page__page1__container2">
                 <div className="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/zsy0pbMBBRI?controls=0" 
