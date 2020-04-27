@@ -46,7 +46,7 @@ const Landing = () => {
       swiper.on('touchEnd', () => {
         setTimeout(() => {
           if (swiper.isEnd) {
-            swiper.slideTo(6);
+            swiper.slideTo(3);
           }
         }, 100);
       });
