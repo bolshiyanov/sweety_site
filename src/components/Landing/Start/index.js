@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import classnames from 'classnames';
 
@@ -19,6 +19,7 @@ const Start = () => {
   const [whatsapp, setWhatsapp] = useState('');
   const [whatsappInvalid, setWhatsappInvalid] = useState('');
   const [cookies, setCookie] = useCookies();
+  const [counter, setCounter] = useState(null);
 
   const handleChangeInstagram = useCallback((value) => {
     setInstagram(value);
@@ -46,8 +47,10 @@ const Start = () => {
     }
 
     setStarting(true);
+    setCounter(30);
     API.register({ instagram, youtube, whatsapp, referer: getRef() }).then((response) => {
       if (response?.errors) {
+        setCounter(null);
         if (response.errors.Instagram) {
           setInstagramInvalid("Instagram не найден");
         }
@@ -93,6 +96,15 @@ const Start = () => {
     window.location.href = getAdminSiteByInvitation(lastId);
   };
 
+  useEffect(() => {
+    counter && counter > 0 && setTimeout(() => {
+      setCounter(counter - 1);
+      if (counter <= 1) {
+        setCounter(null);
+      }
+    }, 1000);
+  }, [counter]);
+
   return (
     <div className="start">
       <Input
@@ -108,7 +120,7 @@ const Start = () => {
         onClick={handleStart}
         noStyled
       >
-        {!starting ? 'НАЧАТЬ' : 'Собираем проект... до 30с'}
+        {!starting ? 'НАЧАТЬ' : 'Собираем проект...'} {counter}
       </Button>
       {lastId && <div className="start__text">
         <a href="#" onClick={handleContinue}>Продолжить последнее</a>
