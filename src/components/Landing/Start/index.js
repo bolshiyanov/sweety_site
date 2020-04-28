@@ -50,7 +50,6 @@ const Start = () => {
     setCounter(30);
     API.register({ instagram, youtube, whatsapp, referer: getRef() }).then((response) => {
       if (response?.errors) {
-        setCounter(null);
         if (response.errors.Instagram) {
           setInstagramInvalid("Instagram не найден");
         }
@@ -67,6 +66,7 @@ const Start = () => {
           response.invitationId, { path: '/' });
         window.location.href = getAdminSiteByInvitation(response.invitationId);
       }
+      setCounter(null);
       setStarting(false);
     });
   };
@@ -120,7 +120,7 @@ const Start = () => {
         onClick={handleStart}
         noStyled
       >
-        {!starting ? 'НАЧАТЬ' : 'Собираем проект...'} {counter}
+        {!starting ? 'НАЧАТЬ' : 'Собираем проект...'} {starting}
       </Button>
       {lastId && <div className="start__text">
         <a href="#" onClick={handleContinue}>Продолжить последнее</a>
