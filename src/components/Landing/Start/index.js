@@ -120,7 +120,7 @@ const Start = () => {
         onClick={handleStart}
         noStyled
       >
-        {!starting ? 'НАЧАТЬ' : 'Собираем проект...'} {starting}
+        {!starting ? 'НАЧАТЬ' : 'Собираем проект...'} {counter}
       </Button>
       {lastId && <div className="start__text">
         <a href="#" onClick={handleContinue}>Продолжить последнее</a>
