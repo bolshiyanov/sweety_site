@@ -67,6 +67,7 @@ const App = () => {
           <Title />
           <Messengers />
           <Blocks data={data.blocks} />
+          {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
           <Rss />
           <Social />
           <Footer />

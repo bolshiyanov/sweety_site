@@ -1,18 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
 
 import Block from './Block';
 
 import './index.scss';
 
-const Blocks = ({ data }) => {
-  const { blocks } = useSelector((state) => state.config.data);
-
-  blocks.sort((a, b) => b.order - a.order);
+const Blocks = ({ data, referrerTitle }) => {
   return (
     <React.Fragment>
       <div className="blocks">
+        {referrerTitle && <div className="ad-label">реклама от @{referrerTitle}</div>}
         {
           data.map((block) => <Block key={block.guid} {...block} />)
         }
@@ -22,11 +19,13 @@ const Blocks = ({ data }) => {
 };
 
 Blocks.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape({}))
+  data: PropTypes.arrayOf(PropTypes.shape({})),
+  referrerTitle: PropTypes.string
 };
 
 Blocks.defaultProps = {
-  data: []
+  data: [],
+  referrerTitle: ''
 };
 
 export default Blocks;
