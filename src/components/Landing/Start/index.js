@@ -98,6 +98,10 @@ const Start = () => {
 
   useEffect(() => {
     counter && counter > 0 && setTimeout(() => {
+      if (!starting) {
+        setCounter(null);
+        return;
+      }
       setCounter(counter - 1);
       if (counter <= 1) {
         setCounter(null);
