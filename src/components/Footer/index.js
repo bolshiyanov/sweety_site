@@ -9,7 +9,10 @@ const Footer = () => {
   const fontStyles = currentTheme.getFontColorStyles();
   return (
     <footer>
-      <a href={url} style={fontStyles}>{title}</a>
+      <a href={url} className="textfooter">Создай страницу как у меня бесплатно</a>
+      <br />
+      <br />
+      <a href={url} className="textlogofooter">SWEETY_2020</a>
     </footer>
   );
 };
