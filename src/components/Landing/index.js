@@ -69,6 +69,11 @@ const Landing = () => {
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage1})` }}>
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Оформи красиво ссылку<br />в профиле своего<br />Инстаграм!</h1>
+              <div className="main-page__page1__container2">
+                <div className="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/zsy0pbMBBRI?controls=0" 
+                frameborder="0" rel="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+              </div>
             </div>
           </div>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage2})` }}>
@@ -85,11 +90,6 @@ const Landing = () => {
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Как микроблогеры использует Sweety</h1>
               <h2 className="main-page__page1__subtitle" >Пример: <a href="https://sweety.link/vika" target="_blank">sweety.link/vika</a></h2>
-              <div className="main-page__page1__container2">
-                <div className="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/zsy0pbMBBRI?controls=0" 
-                frameborder="0" rel="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-               </div>
             </div>
           </div>
           
