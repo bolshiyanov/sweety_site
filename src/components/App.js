@@ -51,7 +51,7 @@ const App = () => {
       </Helmet>
       <div className="app" style={backgroundStyles}>
         { GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker /> }
-        <div className="app-container" style={backgroundStyles}>
+        <div className="app-container">
           <Header
             name={data.name}
             avatar={data.avatar}
