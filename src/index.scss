@@ -21,6 +21,7 @@ div {
 .app {
   width: 100vw;
   min-height: 100vh;
+  background-attachment:fixed;
 
   .app-container {
     max-width: 600px;
