@@ -23,11 +23,11 @@ div {
   min-height: 100vh;
   display: flex;
   flex-wrap: nowrap;
-  background-attachment:fixed !important;
   justify-content: center;
   
 
   .app-container {
+    background-attachment:fixed;
     max-width: 600px;
     margin: 0 8px 0 8px;
     padding: 0 0 138px 0;
