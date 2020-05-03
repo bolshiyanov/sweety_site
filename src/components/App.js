@@ -51,6 +51,7 @@ const App = () => {
       </Helmet>
       <div className="app" style={backgroundStyles}>
         { GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker /> }
+        <div className="app-background" >
         <div className="app-container">
           <Header
             name={data.name}
@@ -71,6 +72,7 @@ const App = () => {
           <Rss />
           <Social />
           <Footer />
+        </div>
         </div>
       </div>
     </React.Fragment>
