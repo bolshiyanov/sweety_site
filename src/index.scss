@@ -21,7 +21,6 @@ div {
 .app {
   display: block;
   width: 100%;
-  max-width: 600px;
   height: 100vh;
   position: fixed;
   top: 0;
@@ -35,6 +34,8 @@ div {
     height: 100%;
     background-color: rgba(0, 0, 0, 0);
     z-index: 1;
+    display: flex;
+    justify-content: center;
   }
   
 
@@ -45,6 +46,7 @@ div {
     border-radius: 24px;
     box-shadow: -2px -1px 10px rgba(0, 0, 0, 0.3);
     padding-bottom: 64px;
+    max-width: 600px;
   }
 }
 
