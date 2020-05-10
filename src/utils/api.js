@@ -96,7 +96,8 @@ const API = {
       }));
 
       return photos;
-    })
-};
+    }),
+    recoverPassword: (profile) => requests.post('/api/users/password/recover', { page: profile })
+  };
 
 export default API;

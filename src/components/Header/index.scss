@@ -89,3 +89,13 @@ h4 {
     border-color: transparent transparent white transparent;
   }
 }
+
+.recovery {
+  &__button {
+    width: 100%;
+    background-color: red !important;
+    text-transform: uppercase;
+    color: #fff !important;
+    margin-top: 6px;
+  }
+}
