@@ -75,24 +75,24 @@ const Header = ({ avatar, name, className, profile }) => {
         title="О редактировании"> 
         <div>
           {!recoverSent && <React.Fragment>
-            <div>Для входа в режим редактирования страницы вам будет отправлена секретная ссылка в Instagram Direct <b>@{name}</b> от пользователя <b>@sweety_link</b>.</div>
-            <div>Убедитесь, что вы подписаны на наш аккаунт <b>@sweety_link</b></div>
+            <div>Для входа в режим редактирования страницы вам будет отправлена секретная ссылка в Instagram Direct <b>@{name}</b> от пользователя <b><a href="@free_link_creator">@free_link_creator</a></b>.</div>
+            <div>Убедитесь, что вы подписаны на наш аккаунт <b><a href="@free_link_creator">@free_link_creator</a></b></div>
             <Button className="recovery__button" onClick={recover}>{!recoverSending ? "Отправить ссылку" : "Отправляем ссылку..."}</Button>
           </React.Fragment>}
 
           {lastDate && <React.Fragment>
-            <div>Ранее {lastDate} в Instagram Direct вам была отправлена ссылка на ваш редактор сайта. Пожалуйста, проверьте сообщения и вкладку Запросы от @sweety_link на эту дату.</div>
-            <div>Если вы не смогли найти ссылку, пожалуйста, отправьте сообщение в произвольной форме на @sweety_link: ссылка будет продублирована в течение 24 часов.</div>
+            <div>Ранее {lastDate} в Instagram Direct вам была отправлена ссылка на ваш редактор сайта. Пожалуйста, проверьте сообщения и вкладку Запросы от <b><a href="@free_link_creator">@free_link_creator</a></b> на эту дату.</div>
+            <div>Если вы не смогли найти ссылку, пожалуйста, отправьте сообщение в произвольной форме на <b><a href="@free_link_creator">@free_link_creator</a></b>: ссылка будет продублирована в течение 24 часов.</div>
           </React.Fragment>}
 
           {!lastDate && directUrl && <React.Fragment>
             <div>Мы попытались отправить вам ссылку на редактор, но Instagram Direct не позволил нам начать переписку с вами.</div>
-            <div>Откройте наш аккаунт по ссылке <a href={directUrl}>@sweety_link</a> и напишите Хочу в сообщении.</div>
+            <div>Откройте наш аккаунт по ссылке <b><a href="@free_link_creator">@free_link_creator</a></b> и напишите Хочу в сообщении.</div>
             <div>Ваша ссылка будет отправлена в ответ на это сообщение.</div>
           </React.Fragment>}
 
           {recoverSent && !lastDate && !directUrl && <React.Fragment>
-            <div>Мы отправили ссылку для редактирования сайта в Instagram Direct @{name}. Проверьте сообщения в Direct и вкладку Запросы.</div>
+            <div>Мы отправили ссылку для редактирования сайта в Instagram Direct @{name}. Проверьте сообщения в Direct и вкладку Запросы от <b><a href="@free_link_creator">@free_link_creator</a></b>.</div>
           </React.Fragment>}
         </div>
       </Slider>
