@@ -17,6 +17,7 @@ const Header = ({ avatar, name, className, profile }) => {
   const [recoverSent, setRecoverSent] = useState(false);
   const [recoverSending, setRecoverSending] = useState(false);
   const [lastDate, setLastDate] = useState(null);
+  const [directUrl, setDirectUrl] = useState(null);
 
   var inviteId = cookies[profile];
   if (inviteId === "undefined") {
@@ -48,6 +49,7 @@ const Header = ({ avatar, name, className, profile }) => {
       if (response?.lastDate) {
         const date = response?.lastDate;
         setLastDate(`${date.substring(8, 10)}.${date.substring(5, 7)}.${date.substring(0, 4)}`);
+        setDirectUrl(response.directUrl);
       }
       setRecoverSent(true);
       setRecoverSending(false);
@@ -82,8 +84,14 @@ const Header = ({ avatar, name, className, profile }) => {
             <div>Ранее {lastDate} в Instagram Direct вам была отправлена ссылка на ваш редактор сайта. Пожалуйста, проверьте сообщения и вкладку Запросы от @sweety_link на эту дату.</div>
             <div>Если вы не смогли найти ссылку, пожалуйста, отправьте сообщение в произвольной форме на @sweety_link: ссылка будет продублирована в течение 24 часов.</div>
           </React.Fragment>}
-          
-          {recoverSent && !lastDate && <React.Fragment>
+
+          {!lastDate && directUrl && <React.Fragment>
+            <div>Мы попытались отправить вам ссылку на редактор, но Instagram Direct не позволил нам начать переписку с вами.</div>
+            <div>Откройте наш аккаунт по ссылке <a href={directUrl}>@sweety_link</a> и напишите Хочу в сообщении.</div>
+            <div>Ваша ссылка будет отправлена в ответ на это сообщение.</div>
+          </React.Fragment>}
+
+          {recoverSent && !lastDate && !directUrl && <React.Fragment>
             <div>Мы отправили ссылку для редактирования сайта в Instagram Direct @{name}. Проверьте сообщения в Direct и вкладку Запросы.</div>
           </React.Fragment>}
         </div>
