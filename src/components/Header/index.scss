@@ -92,10 +92,40 @@ h4 {
 
 .recovery {
   &__button {
-    width: 100%;
+    width: calc(100% - 12px);
     background-color: red !important;
     text-transform: uppercase;
     color: #fff !important;
-    margin-top: 6px;
+    margin: 24px 6px 24px;
   }
+}
+
+.footerbox {
+  padding: 0 12px;
+  
+
+}
+.footertext {
+padding: 6px 12px 6px;
+overflow-wrap: anywhere;
+white-space: pre-line;
+}
+
+.footerlink {
+ font-weight: bold;
+ padding: 0 12px;   
+ margin-top: -6px;
+ overflow-wrap: anywhere;
+ white-space: pre-line;
+}
+
+.textfooter1 {
+  font-size: 18px;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 4px 12px 6px;
+  border-radius: 4px;
+  margin-bottom: 32px;
+  overflow-wrap: anywhere;
+  white-space: pre-line;
 }

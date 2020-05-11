@@ -73,26 +73,26 @@ const Header = ({ avatar, name, className, profile }) => {
         onClose={closeEdit}
         onSubmit={() => setEditOpened(false)}
         title="О редактировании"> 
-        <div>
+        <div className='footerbox'>
           {!recoverSent && <React.Fragment>
-            <div>Для входа в режим редактирования страницы будет отправлена секретная ссылка в ваш Instagram Direct <b>@{name}</b> от пользователя <b>@free_link_creator</b>.</div>
-            <div>Убедитесь, что вы подписаны на наш аккаунт <b><a href="https://instagram.com/free_link_creator" target="_blank">https://instagram.com/free_link_creator</a></b></div>
+            <div className='footertext'>Для входа в режим редактирования страницы будет отправлена секретная ссылка в ваш Instagram Direct <b>@{name}</b> от пользователя <b>@free_link_creator</b>.</div>
+            <div className='footertext'>Убедитесь, что вы подписаны на наш аккаунт <b><a href="https://instagram.com/free_link_creator" target="_blank">https://instagram.com/free_link_creator</a></b></div>
             <Button className="recovery__button" onClick={recover}>{!recoverSending ? "Отправить ссылку" : "Отправляем ссылку..."}</Button>
           </React.Fragment>}
 
           {lastDate && <React.Fragment>
-            <div>Ранее {lastDate} в Instagram Direct вам была отправлена ссылка на ваш редактор сайта. Пожалуйста, проверьте Сообщения в Direct и вкладку Запросы от <b>@free_link_creator</b> на эту дату.</div>
+            <div className='footertext'>Ранее {lastDate} в Instagram Direct вам была отправлена ссылка на ваш редактор сайта. Пожалуйста, проверьте Сообщения в Direct и вкладку Запросы от <b>@free_link_creator</b> на эту дату.</div>
             <div>Если вы не смогли найти ссылку, пожалуйста, отправьте сообщение в произвольной форме на <b><a href="https://instagram.com/free_link_creator" target="_blank">https://instagram.com/free_link_creator</a></b>: ссылка будет продублирована в течение 24 часов.</div>
           </React.Fragment>}
 
           {!lastDate && directUrl && <React.Fragment>
-            <div>Мы попытались отправить вам ссылку на редактор, но Instagram Direct не позволил нам начать переписку с вами.</div>
-            <div>Откройте наш аккаунт по ссылке <b><a href="https://instagram.com/free_link_creator" target="_blank">https://instagram.com/free_link_creator</a></b> и первыми, в Cообщении, напишите нам &laquo;СВИТИ&raquo; .</div>
-            <div>Ваша ссылка будет сразу же отправлена в ответ на это сообщение.</div>
+            <div className='footertext'>Мы попытались отправить вам ссылку на редактор, но Instagram Direct не позволил нам начать переписку с вами.</div>
+            <div className='footertext'>Откройте наш аккаунт по ссылке <b><a href="https://instagram.com/free_link_creator" target="_blank">https://instagram.com/free_link_creator</a></b> и первыми, в Cообщении, напишите нам &laquo;СВИТИ&raquo; .</div>
+            <div className='footertext'>Ваша ссылка будет сразу же отправлена в ответ на это сообщение.</div>
           </React.Fragment>}
 
           {recoverSent && !lastDate && !directUrl && <React.Fragment>
-            <div>Мы отправили вашу ссылку для редактирования сайта в Instagram Direct @{name}. Проверьте Сообщения в Direct и вкладку Запросы от <b><a href="https://instagram.com/free_link_creator" target="_blank">https://instagram.com/free_link_creator</a></b>.</div>
+            <div className='footertext'>Мы отправили вашу ссылку для редактирования сайта в Instagram Direct @{name}. Проверьте Сообщения в Direct и вкладку Запросы от <b><a href="https://instagram.com/free_link_creator" target="_blank">https://instagram.com/free_link_creator</a></b>.</div>
           </React.Fragment>}
         </div>
       </Slider>
