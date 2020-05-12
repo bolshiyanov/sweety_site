@@ -66,6 +66,9 @@ const Start = () => {
           response.invitationId, { path: '/' });
         window.location.href = getAdminSiteByInvitation(response.invitationId);
       }
+      else if (response?.siteUrl) {
+        window.location.href = response.siteUrl;
+      }
       setCounter(null);
       setStarting(false);
     });
