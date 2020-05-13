@@ -1,25 +1,27 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
-    }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+	"short_name" : "SweetyLink",
+	"name" : "Free link Creator",
+	"icons" : [
+		{
+			"src": "https://sweety.link/favicon.ico",
+			"sizes": "64x64 32x32 24x24 16x16"
+		},
+		{
+			"src": "https://sweety.link/logo192.png",
+			"sizes": "192x192"
+		},
+		{
+			"src": "https://sweety.link/logo512.png",
+			"sizes": "512x512"
+		}],
+	"start_url" : "https://sweety.link/",
+	"display" : "standalone",
+	"theme_color" : "#000000",
+	"background_color" : "#ffffff",
+	"url" : "https://sweety.link",
+	"lang" : "Ru",
+	"screenshots" : [],
+	"description" : "Сохрани мое приложение на своем телефоне, чтобы оставаться на связи без интернета и следить за моими новостями",
+	"orientation" : "",
+	"generated" : ""
 }
