@@ -64,7 +64,7 @@ const Landing = () => {
   return (
     <React.Fragment>
       <div className="main-page">
-        <Header className="main-page__header" avatar={referrer.avatar} name={referrer.title} noConfig />
+        <div className="main-page__header" avatar={referrer.avatar} name={referrer.title} noConfig ></div>
         <Swiper getSwiper={setSwiper}>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage1})` }}>
             <div className="main-page__page1__container1">
