@@ -6,7 +6,7 @@ import Button from 'components/common/Button';
 import Slider from 'components/common/Slider';
 import Loading from 'components/common/Loading';
 
-import Header from 'components/Header';
+import Headerlanding from 'components/Headerlanding';
 import Start from 'components/Landing/Start';
 
 import referrerAvatar from 'images/referrer_avatar.jpg';
@@ -64,7 +64,7 @@ const Landing = () => {
   return (
     <React.Fragment>
       <div className="main-page">
-        <Header className="main-page__header" avatar={referrer.avatar} name={referrer.title} noConfig />
+        <Headerlanding className="main-page__header" avatar={referrer.avatar} name={referrer.title} noConfig />
         <Swiper getSwiper={setSwiper}>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage1})` }}>
             <div className="main-page__page1__container1">
