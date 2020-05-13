@@ -6,7 +6,7 @@ import Button from 'components/common/Button';
 import Slider from 'components/common/Slider';
 import Loading from 'components/common/Loading';
 
-import Headerlanding from 'components/Headerlanding';
+import Header from 'components/Header';
 import Start from 'components/Landing/Start';
 
 import referrerAvatar from 'images/referrer_avatar.jpg';
@@ -64,7 +64,7 @@ const Landing = () => {
   return (
     <React.Fragment>
       <div className="main-page">
-        <Headerlanding className="main-page__header" avatar={referrer.avatar} name={referrer.title} noConfig />
+        <Header className="main-page__header" avatar={referrer.avatar} name={referrer.title} noConfig />
         <Swiper getSwiper={setSwiper}>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage1})` }}>
             <div className="main-page__page1__container1">
@@ -80,7 +80,7 @@ const Landing = () => {
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Это просто,<br />без регистрации,<br />бесплатно и красиво!</h1>
               <h2 className="main-page__page1__subtitle" >Попробуйте без шаблонов.<br />Для тех, у кого нет Инстаграм:<br /> 
-              <a href="https://dash.sweety.link/" target="_blank">https://dash.sweety.link</a></h2>
+              <a href="https://dash.sweety.link/" target="_blank">ССЫЛКА</a></h2>
             </div>
           </div>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage3})` }}>
