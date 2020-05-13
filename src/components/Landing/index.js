@@ -68,7 +68,7 @@ const Landing = () => {
         <Swiper getSwiper={setSwiper}>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage1})` }}>
             <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">Оформи красиво ссылку<br />в профиле своего<br />Инстаграм!</h1>
+              <h1 className="main-page__page1__header">Активная ссылка<br />в профиле тових<br />Соцсетей!</h1>
               <div className="main-page__page1__container2">
                 <div className="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/zsy0pbMBBRI?controls=0" 
                 frameborder="0" rel="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
