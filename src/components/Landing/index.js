@@ -80,7 +80,7 @@ const Landing = () => {
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Это просто,<br />без регистрации,<br />бесплатно и красиво!</h1>
               <h2 className="main-page__page1__subtitle" >Попробуйте без шаблонов.<br />Для тех, у кого нет Инстаграм:<br /> 
-              <a href="https://dash.sweety.link/" target="_blank">ССЫЛКА</a></h2>
+              <a href="https://dash.sweety.link/"  target="_blank">ССЫЛКА</a></h2>
             </div>
           </div>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage3})` }}>
@@ -91,8 +91,10 @@ const Landing = () => {
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage4})` }}>
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Как микроблогеры использует Sweety</h1>
-              <h2 className="main-page__page1__subtitle" >Пример: 
-              <a href="https://sweety.link/vika" target="_blank">sweety.link/vika</a></h2>
+              <h2 className="main-page__page1__subtitle" >Пример:<br /> 
+              <a href="https://sweety.link/vika" target="_blank">МИКРО БЛОГЕР</a><br />
+              <a href="https://sweety.link/sweety_pizza_ru" target="_blank">МИКРО ПИЦЦА</a><br />
+              <a href="https://sweety.link/sweety_de_school" target="_blank">МИКРО КУРСЫ</a></h2>
             </div>
           </div>
           
