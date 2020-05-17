@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
 import InstagramFeed from 'components/InstagramFeed';
+import YouTubeFeed from 'components/YouTubeFeed';
 
 import './index.scss';
 
@@ -21,7 +22,8 @@ const Rss = () => {
       <div className="rss">
         {
           filteredRss.map((item) => (
-            item.icon == 'instagram' ? <InstagramFeed account={item.value} {...item} /> : 
+            item.icon === 'instagram' ? <InstagramFeed key={item.value} account={item.value} {...item} /> : 
+            item.icon === 'youtube' ? <YouTubeFeed key={item.value} account={item.value} {...item} /> :
             null
           ))
         }

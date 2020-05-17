@@ -8,7 +8,8 @@ import {
   LOADING_ERROR,
   SET_DATA,
   UPDATE_CONFIG_DATA,
-  SET_INSTAGRAM_FEED
+  SET_INSTAGRAM_FEED,
+  SET_YOUTUBE_FEED
 } from 'constants/actions';
 
 const defaultTheme = new Theme({ name: 'Default' });
@@ -80,6 +81,11 @@ const reducer = handleActions({
   [SET_INSTAGRAM_FEED]: (state, { data }) => ({
     ...state,
     instagramFeed: data
+  }),
+
+  [SET_YOUTUBE_FEED]: (state, { data }) => ({
+    ...state,
+    youTubeFeed: data
   })
 
 }, initialState);

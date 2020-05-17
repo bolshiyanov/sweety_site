@@ -97,6 +97,51 @@ const API = {
 
       return photos;
     }),
+    getYouTubeFeed: (url) => {
+      let feedsUrl = null;
+      if (url && url.indexOf("channel") >= 0) {
+        const channelId = url.substring(url.lastIndexOf('/') + 1);
+        feedsUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+      }
+      else if (url && url.indexOf("user") >= 0) {
+        var pathArray = url.toLowerCase().split('/');
+        let userId = pathArray[pathArray.indexOf('user') + 1];
+        if (userId && userId.indexOf("?") >= 0) {
+          userId = userId.substring(1, userId.indexOf(userId.indexOf("?")));
+        }
+        feedsUrl = `https://www.youtube.com/feeds/videos.xml?user=${userId}`;
+      }
+      else if (url && url.indexOf("playlist") >= 0) {
+        const playlistId = getSearchString('list');
+        feedsUrl = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
+      }
+      const requestUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURI(feedsUrl)}`;
+  console.log(requestUrl);
+      return superagent.get(requestUrl)
+      .catch(handleError)
+      .then(responseBody)
+      .then((response) => {
+        if (response?.status != 'ok') {
+          return null;
+        }
+  
+        return {
+          feed: {
+            title: response?.feed?.title,
+            link: response?.feed?.link,
+            author: response?.feed?.title,
+            image: response?.feed?.image
+          },
+          items: response.items.splice(0, 6).map((item) => ({
+            code: item?.guid,
+            url: item?.link,
+            thumbnailUrl: item?.thumbnail,
+            displayUrl: item?.thumbnail,
+            caption: item?.title
+          }))
+        };
+      });
+    },
     recoverPassword: (profile) => requests.post('/api/users/password/recover', { page: profile })
   };
 

@@ -4,12 +4,12 @@ import classnames from 'classnames';
 
 import './index.scss';
 
-const Picker = ({ selected, items, className }) => (
+const Picker = ({ selected, items, className, itemClassName }) => (
   <div className={classnames(['picker__container', className])}>
     {
       items.map((item) => (
         <div
-          className={classnames(['picker__item', { picker__item__selected: selected === item.id }])}
+          className={classnames([itemClassName, { picker__item__selected: selected === item.id }])}
           key={item.id}
         >
           {item.component}
@@ -25,13 +25,15 @@ Picker.propTypes = {
     id: PropTypes.string,
     component: PropTypes.node
   })),
-  className: PropTypes.string
+  className: PropTypes.string,
+  itemClassName: PropTypes.string
 };
 
 Picker.defaultProps = {
   selected: null,
   items: [],
-  className: undefined
+  className: undefined,
+  itemClassName: 'picker__item'
 };
 
 export default Picker;
