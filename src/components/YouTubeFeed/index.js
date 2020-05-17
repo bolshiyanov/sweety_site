@@ -42,11 +42,13 @@ const YouTubeFeed = ({ account, onClick }) => {
       />)
   }));
 
+  const openFeedLink = () => { window.open(youTubeFeed?.feed?.link, "_blank") };
+
   return (
     <div className="youtube-block">
       <div className='youtube-header-box'>
-         <div className='logomargin'> <Icon type="youtube" /></div> 
-         <div className='namemargin'>{youTubeFeed?.feed?.title}</div>
+        <div className='logomargin' onClick={openFeedLink}> <Icon type="youtube" /></div> 
+        <div className='namemargin' onClick={openFeedLink}>{youTubeFeed?.feed?.title}</div>
       </div>
       
       <Picker

@@ -43,14 +43,16 @@ const InstagramFeed = ({ account, isPicker }) => {
       />)
   }));
 
+  const openFeedLink = () => { window.open(instagramFeed?.feed?.link, "_blank") };
+
   return (
   <React.Fragment>
     {isPicker && (
     <div className="instagram-block">
       <div className='instagram-header-box'>
-          <div className='logomargin'> <Icon type="instagram" /></div> 
-          <div className='namemargin'> {instagramFeed?.feed?.title}</div>
-         </div>
+        <div className='logomargin' onClick={openFeedLink}> <Icon type="instagram" /></div> 
+        <div className='namemargin' onClick={openFeedLink}> {instagramFeed?.feed?.title}</div>
+      </div>
       <Picker
         items={pickerItems}
         className="horizontal-picker"
