@@ -9,21 +9,24 @@ import API from 'utils/api';
 import { SET_YOUTUBE_FEED } from 'constants/actions';
 import './index.scss';
 
-const YouTubeFeed = ({ account, onClick }) => {
+const YouTubeFeed = ({ account, title, onClick }) => {
   const dispatch = useDispatch();
 
-  const { youTubeFeed } = useSelector((state) => state.config);
+  const { youTubeFeeds } = useSelector((state) => state.config);
+  const youTubeFeed = youTubeFeeds ? youTubeFeeds[title] : null;
 
   useEffect(() => {
     if (account) {
       API.getYouTubeFeed(account)
         .then((data) => {
-          dispatch({ type: SET_YOUTUBE_FEED, data });
+            if ((data?.items?.length ?? 0) > 0) {
+                dispatch({ type: SET_YOUTUBE_FEED, title, data });
+            }
         });
     }
   }, []);
 
-  if (!account)
+  if (!youTubeFeed)
     return null;
 
   const getPickerPreviewStyles = (image) => ({
@@ -62,6 +65,7 @@ const YouTubeFeed = ({ account, onClick }) => {
 
 YouTubeFeed.propTypes = {
   account: PropTypes.string,
+  title: PropTypes.string,
   onClick: PropTypes.func
 };
 

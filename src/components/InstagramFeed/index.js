@@ -10,21 +10,25 @@ import API from 'utils/api';
 import { SET_INSTAGRAM_FEED } from 'constants/actions';
 import './index.scss';
 
-const InstagramFeed = ({ account, isPicker }) => {
+const InstagramFeed = ({ account, title, isPicker }) => {
   const dispatch = useDispatch();
 
-  const { instagramFeed } = useSelector((state) => state.config); 
+  const { instagramFeeds } = useSelector((state) => state.config);
+  const instagramFeed = instagramFeeds ? instagramFeeds[title] : null;
 
   useEffect(() => {
     if (account) {
-      API.getInstagramFeed(account)
+      API.getInstagramFeed(account.indexOf('instagram.com') > -1 ? account :
+          `https://www.instagram.com/${account}/`)
         .then((data) => {
-          dispatch({ type: SET_INSTAGRAM_FEED, data });
+          if ((data?.items?.length ?? 0) > 0) {
+            dispatch({ type: SET_INSTAGRAM_FEED, title, data }); 
+          }
         });
     }
   }, []);
 
-  if (!account)
+  if (!instagramFeed)
     return null;
 
   const getPickerPreviewStyles = (image) => ({
@@ -64,8 +68,8 @@ const InstagramFeed = ({ account, isPicker }) => {
       <div className="instagram-feed">
         {
           instagramFeed?.items?.map((image) => (
-            <Button className="instagram-feed__button" onClick={() => { window.open(image.url, "_blank"); return null;}}>
-              <img src={image.thumbnailUrl} key={image.url} className="instagram-feed__photo" alt="" />
+            <Button key={image.url} className="instagram-feed__button" onClick={() => { window.open(image.url, "_blank"); return null;}}>
+              <img src={image.thumbnailUrl} className="instagram-feed__photo" alt="" />
             </Button>
           ))
         }
@@ -76,6 +80,7 @@ const InstagramFeed = ({ account, isPicker }) => {
 
 InstagramFeed.propTypes = {
   account: PropTypes.string,
+  title: PropTypes.string,
   link: PropTypes.string,
   onClick: PropTypes.func,
   isPicker: PropTypes.bool

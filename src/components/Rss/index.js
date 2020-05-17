@@ -10,7 +10,11 @@ const Rss = () => {
   const [data, setData] = useState([]);
 
   const { rss } = useSelector((state) => state.config.data);
-  const { youTubeFeed } = useSelector((state) => state.config);
+  const { instagramFeeds, youTubeFeeds } = useSelector((state) => state.config);
+
+  const instagramRssCount = !instagramFeeds ? 0 : Object.keys(instagramFeeds).length;
+  const youTubeRssCount = !youTubeFeeds ? 0 : Object.keys(youTubeFeeds).length;
+  const instagramHasPicker = youTubeRssCount > 0 || instagramRssCount > 1;
 
   const filteredRss = data.filter((item) => item.value !== '');
 
@@ -23,8 +27,8 @@ const Rss = () => {
       <div className="rss">
         {
           filteredRss.map((item) => (
-            item.icon === 'instagram' ? <InstagramFeed key={item.value} account={item.value} isPicker={youTubeFeed && youTubeFeed?.items?.length > 0} {...item} /> : 
-            item.icon === 'youtube' ? <YouTubeFeed key={item.value} account={item.value} {...item} /> :
+            item.icon == 'instagram' ? (<InstagramFeed key={`${item.title}-${item.value}`} account={item.value} isPicker={instagramHasPicker} {...item} />) :
+            item.icon == 'youtube' ? (<YouTubeFeed key={`${item.title}-${item.value}`} account={item.value} {...item} />) :
             null
           ))
         }

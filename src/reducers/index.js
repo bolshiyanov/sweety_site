@@ -78,15 +78,27 @@ const reducer = handleActions({
     }
   }),
 
-  [SET_INSTAGRAM_FEED]: (state, { data }) => ({
-    ...state,
-    instagramFeed: data
-  }),
+  [SET_INSTAGRAM_FEED]: (state, { title, data }) => {
+    var store = {
+      ...state.instagramFeeds
+    };
+    store[title] = data;
+    return { 
+      ...state,
+      instagramFeeds: store
+    };
+  },
 
-  [SET_YOUTUBE_FEED]: (state, { data }) => ({
-    ...state,
-    youTubeFeed: data
-  })
+  [SET_YOUTUBE_FEED]: (state, { title, data }) => {
+    var store = {
+      ...state.youTubeFeeds
+    };
+    store[title] = data;
+    return { 
+      ...state,
+      youTubeFeeds: store
+    };
+  }
 
 }, initialState);
 
