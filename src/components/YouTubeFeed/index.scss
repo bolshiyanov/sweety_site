@@ -1,6 +1,8 @@
 .youtube-block {
   display: block;
   max-width: 100%;
+  background-color: rgba($color: #fff, $alpha: 0.2);
+  margin: 4px 0 ;
   
   .horizontal-picker {
     display: block;
@@ -11,13 +13,13 @@
       display: inline-block;
 
       position: relative;
-      width: 150px;
-      height: 85px;
+      width: 250px;
+      height: 142px;
       margin: 5px;
       overflow: hidden;
       cursor: pointer;
       padding: 2px;
-      //border: 1px solid rgba(0, 0, 0, .3);
+      //border: 1px solid rgba(0, 0, 0, .);
       border-radius: 8px;
       box-sizing: content-box;
   
@@ -28,4 +30,17 @@
       }
     }
   }
+}
+
+.youtube-header-box {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.logomargin {
+  margin: 5px 12px 0 16px;
+}
+
+.namemargin {
+  margin: 5px 12px 0 0;
 }

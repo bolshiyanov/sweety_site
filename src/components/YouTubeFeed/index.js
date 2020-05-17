@@ -44,7 +44,11 @@ const YouTubeFeed = ({ account, onClick }) => {
 
   return (
     <div className="youtube-block">
-      <div><Icon type="youtube" /> {youTubeFeed?.feed?.title}</div>
+      <div className='youtube-header-box'>
+         <div className='logomargin'> <Icon type="youtube" /></div> 
+         <div className='namemargin'>{youTubeFeed?.feed?.title}</div>
+      </div>
+      
       <Picker
         items={pickerItems}
         className="horizontal-picker"

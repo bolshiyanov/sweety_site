@@ -13,7 +13,7 @@ import './index.scss';
 const InstagramFeed = ({ account, isPicker }) => {
   const dispatch = useDispatch();
 
-  const { instagramFeed } = useSelector((state) => state.config);
+  const { instagramFeed } = useSelector((state) => state.config); 
 
   useEffect(() => {
     if (account) {
@@ -47,7 +47,10 @@ const InstagramFeed = ({ account, isPicker }) => {
   <React.Fragment>
     {isPicker && (
     <div className="instagram-block">
-      <div><Icon type="instagram" /> {instagramFeed?.feed?.title}</div>
+      <div className='instagram-header-box'>
+          <div className='logomargin'> <Icon type="instagram" /></div> 
+          <div className='namemargin'> {instagramFeed?.feed?.title}</div>
+         </div>
       <Picker
         items={pickerItems}
         className="horizontal-picker"
