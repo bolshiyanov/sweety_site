@@ -26,27 +26,27 @@ const YouTubeFeed = ({ account, onClick }) => {
   if (!account)
     return null;
 
-  const getPreviewStyles = (image) => ({
+  const getPickerPreviewStyles = (image) => ({
     backgroundImage: `URL(${image})`,
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat'
   });
     
-  var items = youTubeFeed?.items?.map((item) => ({
+  var pickerItems = youTubeFeed?.items?.map((item) => ({
     id: item.code,
     component: (
       <div
         onClick={() => { window.open(item.url, "_blank"); }}
-        style={getPreviewStyles(item.thumbnailUrl)}
+        style={getPickerPreviewStyles(item.thumbnailUrl)}
       />)
   }));
 
   return (
     <div className="youtube-block">
-      <div><Icon type="youtube" />{youTubeFeed?.feed?.title}</div>
+      <div><Icon type="youtube" /> {youTubeFeed?.feed?.title}</div>
       <Picker
-        items={items}
+        items={pickerItems}
         className="horizontal-picker"
         itemClassName="youtube-picker__item"
         />

@@ -69,7 +69,9 @@ const API = {
   updateProfile: (value) => setProfile(value),
   getData: () => requests.get(`/api/profiles/pages/public/${profile}`),
   register: (data) => requests.post('/api/users/register', data),
-  getInstagramFeed: (account) => superagent.get(account.indexOf("http") === -1 ? `https://instagram.com/${account}/` : account)
+  getInstagramFeed: (account) => {
+    const url = account.indexOf("http") === -1 ? `https://instagram.com/${account}/` : account;
+    return superagent.get(url)
     .catch(handleError)
     .then((response) => {
       if (!response?.text) {
@@ -80,44 +82,55 @@ const API = {
         new RegExp('<script type="text/javascript">window\._sharedData = (.*);</script>')
       )[1]);
 
-      const edges = json.entry_data
+      const user = json.entry_data
         .ProfilePage[0]
         .graphql
-        .user
+        .user;
+      const edges = user 
         .edge_owner_to_timeline_media
         .edges
         .splice(0, 4);
 
       const photos = edges.map(({ node }) => ({
+        code: node.shortcode,
         url: `https://instagram.com/p/${node.shortcode}/`,
         thumbnailUrl: node.thumbnail_src,
         displayUrl: node.display_url,
         caption: node.edge_media_to_caption.edges[0]?.node?.text
       }));
 
-      return photos;
-    }),
-    getYouTubeFeed: (url) => {
-      let feedsUrl = null;
-      if (url && url.indexOf("channel") >= 0) {
-        const channelId = url.substring(url.lastIndexOf('/') + 1);
-        feedsUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+      return {
+        feed: {
+          title: user?.username,
+          link: url,
+          image: user?.profile_pic_url
+        },
+        items: photos
+      };
+    });
+  },
+
+  getYouTubeFeed: (url) => {
+    let feedsUrl = null;
+    if (url && url.indexOf("channel") >= 0) {
+      const channelId = url.substring(url.lastIndexOf('/') + 1);
+      feedsUrl = `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+    }
+    else if (url && url.indexOf("user") >= 0) {
+      var pathArray = url.toLowerCase().split('/');
+      let userId = pathArray[pathArray.indexOf('user') + 1];
+      if (userId && userId.indexOf("?") >= 0) {
+        userId = userId.substring(1, userId.indexOf(userId.indexOf("?")));
       }
-      else if (url && url.indexOf("user") >= 0) {
-        var pathArray = url.toLowerCase().split('/');
-        let userId = pathArray[pathArray.indexOf('user') + 1];
-        if (userId && userId.indexOf("?") >= 0) {
-          userId = userId.substring(1, userId.indexOf(userId.indexOf("?")));
-        }
-        feedsUrl = `https://www.youtube.com/feeds/videos.xml?user=${userId}`;
-      }
-      else if (url && url.indexOf("playlist") >= 0) {
-        const playlistId = getSearchString('list');
-        feedsUrl = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
-      }
-      const requestUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURI(feedsUrl)}`;
-  console.log(requestUrl);
-      return superagent.get(requestUrl)
+      feedsUrl = `https://www.youtube.com/feeds/videos.xml?user=${userId}`;
+    }
+    else if (url && url.indexOf("playlist") >= 0) {
+      const playlistId = getSearchString('list');
+      feedsUrl = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
+    }
+    const requestUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURI(feedsUrl)}`;
+
+    return superagent.get(requestUrl)
       .catch(handleError)
       .then(responseBody)
       .then((response) => {
@@ -129,7 +142,6 @@ const API = {
           feed: {
             title: response?.feed?.title,
             link: response?.feed?.link,
-            author: response?.feed?.title,
             image: response?.feed?.image
           },
           items: response.items.splice(0, 6).map((item) => ({
