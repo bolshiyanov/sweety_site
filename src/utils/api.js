@@ -89,7 +89,7 @@ const API = {
       const edges = user 
         .edge_owner_to_timeline_media
         .edges
-        .splice(0, 4);
+        .splice(0, 8);
 
       const photos = edges.map(({ node }) => ({
         code: node.shortcode,
@@ -140,11 +140,11 @@ const API = {
   
         return {
           feed: {
-            title: response?.feed?.title,
+            title: response?.feed?.title?.replace("&quote;", '"'),
             link: response?.feed?.link,
             image: response?.feed?.image
           },
-          items: response.items.splice(0, 6).map((item) => ({
+          items: response.items.splice(0, 8).map((item) => ({
             code: item?.guid,
             url: item?.link,
             thumbnailUrl: item?.thumbnail,
