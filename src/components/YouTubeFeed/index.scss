@@ -45,4 +45,6 @@
 .namemargin {
   margin: 5px 12px 0 0;
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
 }
