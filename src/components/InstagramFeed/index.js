@@ -63,11 +63,11 @@ const InstagramFeed = ({ account, title, isPicker }) => {
         itemClassName="instagram-picker__item"
       />
     </div>)}
-    {!isPicker && (
+    {!isPicker && instagramFeed?.items && (
     <div className="instagram-feed-box">
       <div className="instagram-feed">
         {
-          instagramFeed?.items?.map((image) => (
+          instagramFeed.items.splice(0, 4).map((image) => (
             <Button key={image.url} className="instagram-feed__button" onClick={() => { window.open(image.url, "_blank"); return null;}}>
               <img src={image.thumbnailUrl} className="instagram-feed__photo" alt="" />
             </Button>
