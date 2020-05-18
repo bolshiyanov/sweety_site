@@ -125,7 +125,7 @@ const API = {
       feedsUrl = `https://www.youtube.com/feeds/videos.xml?user=${userId}`;
     }
     else if (url && url.indexOf("playlist") >= 0) {
-      const playlistId = getSearchString('list');
+      const playlistId = getSearchString(url, 'list');
       feedsUrl = `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`;
     }
     const requestUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURI(feedsUrl)}`;
