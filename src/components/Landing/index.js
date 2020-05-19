@@ -75,7 +75,7 @@ const Landing = () => {
           </div>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage2})` }}>
             <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">Это просто,<br />без регистрации,<br />восхитительно!</h1>
+              <h1 className="main-page__page1__header">Бесплатно,<br />без регистрации,<br />восхитительно!</h1>
               
               <p><a href="https://dash.sweety.link/"  target="_blank">БЫСТРЫЙ СТАРТ ЗДЕСЬ...</a></p>
             </div>
