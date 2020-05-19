@@ -69,32 +69,32 @@ const Landing = () => {
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage1})` }}>
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Активная ссылка<br />в профиле твоих<br />Соцсетей!</h1>
-              <div className="main-page__page1__container2">
-                <div className="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/zsy0pbMBBRI?controls=0" 
-                frameborder="0" rel="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-              </div>
+              <p>ТВОЕ PWA ПРИЛОЖЕНИЕ...</p>
+              
             </div>
           </div>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage2})` }}>
             <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">Это просто,<br />без регистрации,<br />бесплатно и красиво!</h1>
-              <h2 className="main-page__page1__subtitle" >Попробуйте без шаблонов.<br />Для тех, у кого нет Инстаграм:<br /> 
-              <a href="https://dash.sweety.link/"  target="_blank">ССЫЛКА</a></h2>
+              <h1 className="main-page__page1__header">Это просто,<br />без регистрации и<br />совершенно восхитительно!</h1>
+              
+              <p><a href="https://dash.sweety.link/"  target="_blank">БЫСТРЫЙ СТАРТ ЗДЕСЬ...</a></p>
             </div>
           </div>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage3})` }}>
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Добавь мессенджеры,<br />соцсети, YouTube и...<br />все, что угодно!</h1>
+              <p>ЗАРАБАТЫВАЙ ПРОЩЕ...</p>
             </div>
           </div>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage4})` }}>
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Как микроблогеры использует Sweety</h1>
-              <h2 className="main-page__page1__subtitle" >Пример:<br /> 
-              <a href="https://sweety.link/vika" target="_blank">МИКРО БЛОГЕР</a><br />
-              <a href="https://sweety.link/sweety_pizza_ru" target="_blank">МИКРО ПИЦЦА</a><br />
-              <a href="https://sweety.link/sweety_de_school" target="_blank">МИКРО КУРСЫ</a></h2>
+              <p><a href="https://dash.sweety.link/"  target="_blank">БЫСТРЫЙ СТАРТ ЗДЕСЬ</a></p>
+              <div className="main-page__page1__container2">
+                <div className="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/zsy0pbMBBRI?controls=0" 
+                frameborder="0" rel="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+              </div>
             </div>
           </div>
           
