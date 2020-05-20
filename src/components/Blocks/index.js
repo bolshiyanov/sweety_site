@@ -1,19 +1,18 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import './index.scss';
-const Block = React.lazy(() => import('./Block'));
 
+import Block from './Block';
+
+import './index.scss';
 
 const Blocks = ({ data, referrerTitle }) => {
   return (
     <React.Fragment>
       <div className="blocks">
-        <Suspense fallback={<div>Загрузка...</div>}>
-          {referrerTitle && <div className="ad-label">реклама от @{referrerTitle}</div>}
-          {
-            data.map((block) => <Block key={block.guid} {...block} />)
-          }
-         </Suspense>
+        {referrerTitle && <div className="ad-label">реклама от @{referrerTitle}</div>}
+        {
+          data.map((block) => <Block key={block.guid} {...block} />)
+        }
       </div>
     </React.Fragment>
   );
