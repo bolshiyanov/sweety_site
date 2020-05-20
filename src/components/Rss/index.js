@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 
-import InstagramFeed from 'components/InstagramFeed';
-import YouTubeFeed from 'components/YouTubeFeed';
-
 import './index.scss';
+
+const InstagramFeed = React.lazy(() => import('components/InstagramFeed'));
+const YouTubeFeed = React.lazy(() => import('components/YouTubeFeed'));
 
 const Rss = () => {
   const [data, setData] = useState([]);
@@ -25,13 +25,15 @@ const Rss = () => {
   return (
     <React.Fragment>
       <div className="rss">
-        {
-          filteredRss.map((item) => (
-            item.icon == 'instagram' ? (<InstagramFeed key={`${item.title}-${item.value}`} account={item.value} isPicker={instagramHasPicker} {...item} />) :
-            item.icon == 'youtube' ? (<YouTubeFeed key={`${item.title}-${item.value}`} account={item.value} {...item} />) :
-            null
-          ))
-        }
+        <Suspense fallback={<div>Загрузка...</div>}>
+          {
+            filteredRss.map((item) => (
+              item.icon == 'instagram' ? (<InstagramFeed key={`${item.title}-${item.value}`} account={item.value} isPicker={instagramHasPicker} {...item} />) :
+              item.icon == 'youtube' ? (<YouTubeFeed key={`${item.title}-${item.value}`} account={item.value} {...item} />) :
+              null
+            ))
+          }
+        </Suspense>  
       </div>
     </React.Fragment>
   );
