@@ -69,7 +69,7 @@ const Landing = () => {
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage1})` }}>
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Активная ссылка<br />в профиле твоих<br />Соцсетей!</h1>
-              <p>ТВОЕ PWA ПРИЛОЖЕНИЕ...</p>
+              <p>ТВОЕ PWA ПРИЛОЖЕНИЕ....</p>
               
             </div>
           </div>
@@ -99,7 +99,7 @@ const Landing = () => {
           </div>
           
           <div className="main-page__page">
-            <Loading />
+            <Loading /> 
           </div>
         </Swiper>
         {!startOpened && currentPage < 4 && (
