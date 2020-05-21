@@ -14,11 +14,11 @@
 			"src": "https://sweety.link/logo512.png",
 			"sizes": "512x512"
 		}],
-	"start_url" : "https://sweety.link/vika",
+	"start_url" : "https://sweety.link",
 	"display" : "standalone",
 	"theme_color" : "#000000",
 	"background_color" : "#ffffff",
-	"url" : "https://sweety.link/vika",
+	"url" : "https://sweety.link",
 	"lang" : "Ru",
 	"screenshots" : [],
 	"description" : "Сохрани мое приложение на своем телефоне, чтобы оставаться на связи без интернета и следить за моими новостями",

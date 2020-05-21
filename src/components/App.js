@@ -46,8 +46,31 @@ const App = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>{data.name ?? data.title}</title>
-        <meta name="description" content={data.description} />
+        <html lang={data.lang} amp />
+        <title>{data.title || "Активная ссылка Sweety link"}</title>
+        <meta name="description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
+        <link rel="canonical" href={data.url} />
+        <meta property="og:site_name" content={data.name || "Free Link Creator"} />
+        <link rel="apple-touch-icon" href={`${data.url}/logo192.png`} />
+        <link rel="icon" href={`${data.url}/logo192.png`} />
+        <link rel="manifest" href={`${data.url}/manifest.json`} />
+        <meta property="og:url" content={data.url}/>
+        <meta property="og:locale" content={data.lang} />
+        <meta property="og:type:profile:username" content={data.name || "Free Link Creator"} />
+        <meta property="og:type:article:published_time" content={data.paymentData} />
+        <meta property="og:image" content={data.title || "Активная ссылка Sweety link"} />
+        <meta property="og:image:secure_url" content={`${data.url}/logo512.png`} />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:title"  content={data.title || "Активная ссылка Sweety link"} />  
+        <meta property="og:description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content={data.url} />
+        <meta name="twitter:title" content={data.title || "Активная ссылка Sweety link"} /> 
+        <meta name="twitter:description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
+        <meta name="twitter:creator" content={data.name || "Free Link Creator"} />
+        <meta name="twitter:image:src" content={`${data.url}/logo512.png`} />
+        <meta name="twitter:domain" content={data.url} />     
       </Helmet>
       <div className="app" style={backgroundStyles}>
         { GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker /> }

@@ -2,6 +2,9 @@ import React, { useState, useCallback, useEffect } from 'react';
 import Swiper from 'react-id-swiper';
 import classnames from 'classnames';
 
+
+import { Helmet } from 'react-helmet';
+
 import Button from 'components/common/Button';
 import Slider from 'components/common/Slider';
 import Loading from 'components/common/Loading';
@@ -63,6 +66,33 @@ const Landing = () => {
 
   return (
     <React.Fragment>
+    <Helmet>
+    <html lang="ru" amp />
+        <title>Активная ссылка Sweety link</title>
+        <meta name="description" content="Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее" />
+        <link rel="canonical" href="https://sweety.link" />
+        <meta property="og:site_name" content="Free Link Creator" />
+        <link rel="apple-touch-icon" href="https://sweety.link/logo192.png" />
+        <link rel="icon" href="https://sweety.link/logo192.png" />
+        <link rel="manifest" href="https://sweety.link/manifest.json" />
+        <meta property="og:url" content="https://sweety.link/" />
+        <meta property="og:locale" content="https://sweety.link/" />
+        <meta property="og:type:profile:username" content="Free Link Creator" />
+        <meta property="og:type:article:published_time" content="May 01 2020 10:12 GMT" />
+        <meta property="og:image" content="Free Link Creator" />
+        <meta property="og:image:secure_url" content="https://sweety.link/logo512.png" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:title"  content="Активная ссылка Sweety link" />  
+        <meta property="og:description" content="Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="https://sweety.link" />
+        <meta name="twitter:title" content="Активная ссылка Sweety link" /> 
+        <meta name="twitter:description" content="Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее" />
+        <meta name="twitter:creator" content="Free Link Creator" />
+        <meta name="twitter:image:src" content="https://sweety.link/logo512.png/logo512.png" />
+        <meta name="twitter:domain" content="https://sweety.link/logo512.png" /> 
+      </Helmet>
       <div className="main-page">
         <Headerlanding className="main-page__header" avatar={referrer.avatar} name={referrer.title} noConfig />
         <Swiper getSwiper={setSwiper}>
