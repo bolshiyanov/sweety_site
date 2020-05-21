@@ -91,7 +91,21 @@ const Landing = () => {
         <meta name="twitter:description" content="Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее" />
         <meta name="twitter:creator" content="Free Link Creator" />
         <meta name="twitter:image:src" content="https://sweety.link/logo512.png/logo512.png" />
-        <meta name="twitter:domain" content="https://sweety.link/logo512.png" /> 
+        <meta name="twitter:domain" content="https://sweety.link/logo512.png" />
+        <link rel="icon" href="https://sweety.link/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#fff" /> 
+        <meta name="author" content="Roman Bolshiyanov bolshiyanov@gmail.com" />
+        <link rel="author" href="https://instagram.com/free_link_creator" />
+        <meta name="date" content="May 01 2020 10:10 GMT" />
+        <meta name="revisit-after" content="1 days" />
+        <meta name="robots" content="all" />
+        <meta property="og:type" content="website" />
+        <meta property="og:video" content="https://youtu.be/zsy0pbMBBRI" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="msapplication-navbutton-color" content="#ffffff" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff" /> 
       </Helmet>
       <div className="main-page">
         <Headerlanding className="main-page__header" avatar={referrer.avatar} name={referrer.title} noConfig />
@@ -99,7 +113,7 @@ const Landing = () => {
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage1})` }}>
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Активная ссылка<br />в профиле твоих<br />Соцсетей!</h1>
-              <p>ТВОЕ PWA ПРИЛОЖЕНИЕ.....</p>
+              <p>ТВОЕ PWA ПРИЛОЖЕНИЕ...</p>
               
             </div>
           </div>
