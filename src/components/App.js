@@ -17,6 +17,7 @@ import Admin from 'components/Admin';
 import Landing from 'components/Landing';
 import Rss from 'components/Rss';
 import Start from 'components/Start';
+import Stories from 'components/Stories';
 
 import API from 'utils/api';
 import GoogleAnalytics from 'utils/googleAnalytics';
@@ -102,6 +103,7 @@ const App = () => {
             buttonTitle={settings.advancedTitle}
             profile={profile}
           />
+          <Stories data={data.stories} />
           <Title />
           <Messengers />
           <Blocks data={data.blocks} />
