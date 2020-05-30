@@ -36,16 +36,8 @@ const Stories = ({ data }) => {
   };
 
   const dispatch = useDispatch();
-  const submitSettings = () => {
-    if (storyData.description || storyData.image)
-      dispatch({ type: EDIT_STORY, payload: storyData });
-    closeStoriesSettings();
-  };
-
-  const removeSettings = () => {
-    dispatch({ type: REMOVE_STORY, guid: storyData.guid });
-    closeStoriesSettings();
-  };
+  
+ 
 
   const { stories } = useSelector((state) => state.config.data);
 
@@ -71,10 +63,9 @@ const Stories = ({ data }) => {
       <Slider
         opened={settingsOpened !== null}
         onClose={closeStoriesSettings}
-        onRemove={settingsOpened && removeSettings}
-        onSubmit={submitSettings}
+       
       >
-        <StorySettings {...storyData}  onChange={(settings) => setStoryData({ ...storyData, ...settings })} />
+        <StorySettings {...storyData} />
       </Slider>
       
     </React.Fragment>

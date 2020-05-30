@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import Button from 'components/common/Button';
+
+
 import './index.scss';
 
 const StorySettings = (props) => {
@@ -43,7 +46,7 @@ const StorySettings = (props) => {
                     frameborder="0" rel="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div className="story-settings__preview__price">{price}</div>
-                <a href={linkUrl} target="_blank"><div className="story-settings__preview__button">{cta}</div></a>
+                <Button name={title} className="story-settings__preview__button" onClick={() => window.open(linkUrl, "_blank")}>{cta}</Button>
                 <div className="story-settings__preview__actionTimeout">{actionTimeout}</div>
                 <div className="story-settings__preview__termtitle">{termTitle}</div>
                 <div className="story-settings__preview__termtext">{termText}</div>
