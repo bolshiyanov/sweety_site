@@ -33,23 +33,35 @@ const StorySettings = (props) => {
       <div className="story-settings__preview">
                 <div className="story-settings__preview__title">{title}</div>
                 <div className="stories-preview-slider-box">
-                  <div className="preview-slider-box"> 
-                      <div className='picters-item'><img src={image} alt={title} /></div>
-                      <div className='picters-item'><img src={image2} alt={title} /></div>
-                      <div className='picters-item'><img src={image3} alt={title} /></div>
-                      <div className='picters-item'><img src={image4} alt={title} /></div>
-                      <div className='picters-item'><img src={image5} alt={title} /></div>
+                <div className="preview-slider-box"> 
+                      {image && 
+                      <div className='picters-item'><img src={image} alt={title} /></div>}
+                      {image2 && 
+                      <div className='picters-item'><img src={image2} alt={title} /></div>}
+                      {image3 && 
+                      <div className='picters-item'><img src={image3} alt={title} /></div>}
+                      {image4 && 
+                      <div className='picters-item'><img src={image4} alt={title} /></div>}
+                      {image5 && 
+                      <div className='picters-item'><img src={image5} alt={title} /></div>}
                    </div>  
-                <div className="story-settings__preview__description">{description}</div>  
+                   {description &&
+                <div className="story-settings__preview__description">{description}</div>}  
                 </div>
+                {video &&
                 <div className="video"><iframe width="560" height="315" src={video} 
                     frameborder="0" rel="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div className="story-settings__preview__price">{price}</div>
-                <Button name={title} className="story-settings__preview__button" onClick={() => window.open(linkUrl, "_blank")}>{cta}</Button>
-                <div className="story-settings__preview__actionTimeout">{actionTimeout}</div>
-                <div className="story-settings__preview__termtitle">{termTitle}</div>
-                <div className="story-settings__preview__termtext">{termText}</div>
+                </div>}
+                {price &&
+                <div className="story-settings__preview__price">{price}</div>}
+                {linkUrl &&
+                <Button name={title} className="story-settings__preview__button" onClick={() => window.open(linkUrl, "_blank")} >{cta}</Button>}
+                {actionTimeout &&
+                <div className="story-settings__preview__actionTimeout">{actionTimeout}</div>}
+                {termTitle &&
+                <div className="story-settings__preview__termtitle">{termTitle}</div>}
+                {termTitle &&
+                <div className="story-settings__preview__termtext">{termText}</div>}
       </div>
       </React.Fragment>
   );
