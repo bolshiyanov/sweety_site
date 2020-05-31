@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uuid } from 'uuidv4';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { trackWindowScroll } from 'react-lazy-load-image-component';
 
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
@@ -23,7 +24,7 @@ const emptySettings = {
   image: '',
 };
 
-const Stories = ({ data }) => {
+const Stories = ({ data, scrollPosition }) => {
   const [settingsOpened, setSettingsOpened] = useState(null);
   const [storyData, setStoryData] = useState(emptySettings);
 
@@ -34,10 +35,6 @@ const Stories = ({ data }) => {
   const onOpenStorySettings = (storyId) => {
     setSettingsOpened(storyId);
   };
-
-  const dispatch = useDispatch();
-  
- 
 
   const { stories } = useSelector((state) => state.config.data);
 
@@ -55,15 +52,15 @@ const Stories = ({ data }) => {
        <div className="stories">
           <div className="stories-picker">
             {data.map((story) => 
-            <Story  className={classnames(['stories-picker-item'])}  
-            onClick={() => onOpenStorySettings(story.guid)} 
-            key={story.guid} {...story} />)}
+            <Story className={classnames(['stories-picker-item'])}  
+              onClick={() => onOpenStorySettings(story.guid)} 
+              key={story.guid} {...story} 
+              scrollPosition={scrollPosition} />)}
           </div>
         </div> 
       <Slider
-        opened={settingsOpened !== null}
+        opened={settingsOpened}
         onClose={closeStoriesSettings}
-       
       >
         <StorySettings {...storyData} />
       </Slider>
@@ -80,4 +77,4 @@ Stories.defaultProps = {
   data: []
 };
 
-export default Stories;
+export default trackWindowScroll(Stories);

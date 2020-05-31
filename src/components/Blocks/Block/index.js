@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import Button from 'components/common/Button';
-import { LazyLoadImage, trackWindowScroll, LazyLoadComponent } from 'react-lazy-load-image-component';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 import './index.scss';
 
@@ -12,7 +12,6 @@ import {
   BLOCK_TEXT,
   BLOCK_PICTURE
 } from 'constants/blockTypes';
-import LazyLoad from 'react-lazyload';
 
 const Block = ({
   image,
@@ -39,10 +38,7 @@ const Block = ({
     </div>);
 
   if (!showBlock) {
-    return (
-      <LazyLoadComponent scrollPosition={scrollPosition}>
-        {video}
-      </LazyLoadComponent>);
+    return video;
   }
 
   const clickHandle = () => {
@@ -146,16 +142,13 @@ const Block = ({
 
   if (isVideo) {
     return (
-      <LazyLoadComponent scrollPosition={scrollPosition}>
+      <React.Fragment>
         {!showBlock && video}
         {block}
-      </LazyLoadComponent>);
+      </React.Fragment>);
   }
   else {
-    return (
-      <LazyLoadComponent scrollPosition={scrollPosition}>
-        {block}
-      </LazyLoadComponent>);
+    return block;
   }
 };
 
@@ -177,4 +170,4 @@ Block.defaultProps = {
   technical: false
 };
 
-export default trackWindowScroll(Block);
+export default Block;

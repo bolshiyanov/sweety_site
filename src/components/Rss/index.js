@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { trackWindowScroll } from 'react-lazy-load-image-component';
 
 import InstagramFeed from 'components/InstagramFeed';
 import YouTubeFeed from 'components/YouTubeFeed';
 
 import './index.scss';
 
-const Rss = () => {
+const Rss = ({ scrollPosition }) => {
   const [data, setData] = useState([]);
 
   const { rss } = useSelector((state) => state.config.data);
@@ -26,15 +27,22 @@ const Rss = () => {
     <React.Fragment>
       <div className="rss">
         {
-          filteredRss.map((item) => (
-            item.icon == 'instagram' ? (<InstagramFeed key={`${item.title}-${item.value}`} account={item.value} isPicker={instagramHasPicker} {...item} />) :
-            item.icon == 'youtube' ? (<YouTubeFeed key={`${item.title}-${item.value}`} account={item.value} {...item} />) :
-            null
-          ))
+          filteredRss.map((item) =>
+            (item.icon == 'instagram' ? (<InstagramFeed 
+              key={`${item.title}-${item.value}`} 
+              account={item.value} 
+              isPicker={instagramHasPicker} 
+              scrollPosition={scrollPosition}
+              {...item} />) :
+            item.icon == 'youtube' ? (<YouTubeFeed 
+              key={`${item.title}-${item.value}`} 
+              account={item.value} 
+              scrollPosition={scrollPosition}
+              {...item} />) :
+            null))
         }
       </div>
-    </React.Fragment>
-  );
+    </React.Fragment>);
 };
 
-export default Rss;
+export default trackWindowScroll(Rss);

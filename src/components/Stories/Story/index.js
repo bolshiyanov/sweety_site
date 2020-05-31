@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
 
 import './index.scss';
 
@@ -8,18 +9,19 @@ const Story = ({
   title,
   image,
   onClick,
-className,
+  className,
+  scrollPosition
 }) => { 
     const story = (
-      <div className={classnames([{ 'story-picture': image }, className ])}
-          onClick={onClick}
-          > 
+      <LazyLoadComponent scrollPosition={scrollPosition} threshold={10}>
+        <div className={classnames([{ 'story-picture': image }, className ])}
+          onClick={onClick}> 
           {image && (
-            <img src={image} alt={title} />
+            <LazyLoadImage src={image} alt={title} scrollPosition={scrollPosition} threshold={10} />
           )} 
           <div className="story-picture-title">{title}</div>
-          
         </div>
+      </LazyLoadComponent>
     );
     return story;
   }

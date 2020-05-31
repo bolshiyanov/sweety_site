@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import '@pwabuilder/pwainstall'
 
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
@@ -112,7 +111,6 @@ const App = () => {
           <Rss />
           <Social />
           <Footer />
-          <Pwa-install className="center"/> 
         </div>
         </div>
       </div>
