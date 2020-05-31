@@ -11,6 +11,11 @@
 			"sizes": "192x192"
 		},
 		{
+			"src": "https://sweety.link/logo192.png",
+			"sizes": "192x192",
+			"purpose": "any maskable"
+		},
+		{
 			"src": "https://sweety.link/logo512.png",
 			"sizes": "512x512"
 		}],
