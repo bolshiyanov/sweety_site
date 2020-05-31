@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 import Button from 'components/common/Button';
+import { LazyLoadImage, trackWindowScroll, LazyLoadComponent } from 'react-lazy-load-image-component';
 
 import './index.scss';
 
@@ -11,6 +12,7 @@ import {
   BLOCK_TEXT,
   BLOCK_PICTURE
 } from 'constants/blockTypes';
+import LazyLoad from 'react-lazyload';
 
 const Block = ({
   image,
@@ -20,7 +22,8 @@ const Block = ({
   onClick,
   className,
   animation,
-  technical
+  technical,
+  scrollPosition
 }) => {
   const isVideo = link && link.indexOf("youtube.com/embed") >= 0;
 
@@ -36,7 +39,10 @@ const Block = ({
     </div>);
 
   if (!showBlock) {
-    return video;
+    return (
+      <LazyLoadComponent scrollPosition={scrollPosition}>
+        {video}
+      </LazyLoadComponent>);
   }
 
   const clickHandle = () => {
@@ -66,7 +72,7 @@ const Block = ({
           onClick={onClick}
         >
           {image && (
-            <img src={image} alt={text} />
+            <LazyLoadImage src={image} alt={text} scrollPosition={scrollPosition} />
           )}
           {text && (
             <div className="block__title">{text}</div>
@@ -119,8 +125,8 @@ const Block = ({
           onClick={onClick}
         >
           {image && (
-            <img src={image} alt={text} />
-          )}
+            <LazyLoadImage src={image} alt={text} scrollPosition={scrollPosition} />
+            )}
           <div className="block__title">{text}</div>
         </div>
       );
@@ -140,13 +146,17 @@ const Block = ({
 
   if (isVideo) {
     return (
-      <React.Fragment>
+      <LazyLoadComponent scrollPosition={scrollPosition}>
         {!showBlock && video}
         {block}
-      </React.Fragment>);
+      </LazyLoadComponent>);
   }
-  else
-    return block;
+  else {
+    return (
+      <LazyLoadComponent scrollPosition={scrollPosition}>
+        {block}
+      </LazyLoadComponent>);
+  }
 };
 
 Block.propTypes = {
@@ -167,4 +177,4 @@ Block.defaultProps = {
   technical: false
 };
 
-export default Block;
+export default trackWindowScroll(Block);

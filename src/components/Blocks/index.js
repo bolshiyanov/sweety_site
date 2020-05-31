@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Block from './Block';
-
 import './index.scss';
 
 const Blocks = ({ data, referrerTitle }) => {

@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import Icon from 'components/common/Icon';
 import Button from 'components/common/Button';
 import Picker from 'components/common/Picker';
+import { LazyLoadImage, trackWindowScroll, LazyLoadComponent } from 'react-lazy-load-image-component';
 
 import API from 'utils/api';
 
 import { SET_INSTAGRAM_FEED } from 'constants/actions';
 import './index.scss';
 
-const InstagramFeed = ({ account, title, isPicker }) => {
+const InstagramFeed = ({ account, title, isPicker, scrollPosition }) => {
   const dispatch = useDispatch();
 
   const { instagramFeeds } = useSelector((state) => state.config);
@@ -50,7 +51,7 @@ const InstagramFeed = ({ account, title, isPicker }) => {
   const openFeedLink = () => { window.open(instagramFeed?.feed?.link, "_blank") };
 
   return (
-  <React.Fragment>
+  <LazyLoadComponent scrollPosition={scrollPosition}>
     {isPicker && (
     <div className="instagram-block">
       <div className='instagram-header-box'>
@@ -69,13 +70,13 @@ const InstagramFeed = ({ account, title, isPicker }) => {
         {
           instagramFeed.items.splice(0, 4).map((image) => (
             <Button key={image.url} className="instagram-feed__button" onClick={() => { window.open(image.url, "_blank"); return null;}}>
-              <img src={image.thumbnailUrl} className="instagram-feed__photo" alt="" />
+              <LazyLoadImage src={image.thumbnailUrl} scrollPosition={scrollPosition} />
             </Button>
           ))
         }
       </div>
     </div>)}
-  </React.Fragment>);
+  </LazyLoadComponent>);
 };
 
 InstagramFeed.propTypes = {
@@ -93,4 +94,4 @@ InstagramFeed.defaultProps = {
   isPicker: false
 };
 
-export default memo(InstagramFeed);
+export default trackWindowScroll(memo(InstagramFeed));

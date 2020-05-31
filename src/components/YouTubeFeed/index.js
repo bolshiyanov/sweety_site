@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import Icon from 'components/common/Icon';
 import Picker from 'components/common/Picker';
+import { trackWindowScroll, LazyLoadComponent } from 'react-lazy-load-image-component';
 
 import API from 'utils/api';
 
 import { SET_YOUTUBE_FEED } from 'constants/actions';
 import './index.scss';
 
-const YouTubeFeed = ({ account, title, onClick }) => {
+const YouTubeFeed = ({ account, title, onClick, scrollPosition }) => {
   const dispatch = useDispatch();
 
   const { youTubeFeeds } = useSelector((state) => state.config);
@@ -48,6 +49,7 @@ const YouTubeFeed = ({ account, title, onClick }) => {
   const openFeedLink = () => { window.open(youTubeFeed?.feed?.link, "_blank") };
 
   return (
+    <LazyLoadComponent scrollPosition={scrollPosition}>
     <div className="youtube-block">
       <div className='youtube-header-box'>
         <div className='logomargin' onClick={openFeedLink}> <Icon type="youtube" /></div> 
@@ -60,6 +62,7 @@ const YouTubeFeed = ({ account, title, onClick }) => {
         itemClassName="youtube-picker__item"
         />
     </div>
+    </LazyLoadComponent>
   );
 };
 
@@ -74,4 +77,4 @@ YouTubeFeed.defaultProps = {
   onClick: null
 };
 
-export default memo(YouTubeFeed);
+export default trackWindowScroll(memo(YouTubeFeed));
