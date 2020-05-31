@@ -47,7 +47,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <html lang={data.lang} amp />
+        <html lang="Ru" amp /> 
         <title>{data.title || "Активная ссылка Sweety link"}</title>
         <meta name="description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
         <link rel="canonical" href={data.url} />
