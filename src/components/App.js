@@ -52,15 +52,15 @@ const App = () => {
         <meta name="description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
         <link rel="canonical" href={data.url} />
         <meta property="og:site_name" content={data.name || "Free Link Creator"} />
-        <link rel="apple-touch-icon" href="https://sweety.link/logo192.png" />
-        <link rel="icon" href="https://sweety.link/logo192.png" />
+        <link rel="apple-touch-icon" href={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/' }logo192.png`} />
+        <link rel="icon" href={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/' }logo192.png`} />
         <link rel="manifest" href={`${data.url}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/' }manifest.json`} />
         <meta property="og:url" content={data.url}/>
         <meta property="og:locale" content={data.lang} />
         <meta property="og:type:profile:username" content={data.name || "Free Link Creator"} />
         <meta property="og:type:article:published_time" content={data.paymentData} />
         <meta property="og:image" content={data.title || "Активная ссылка Sweety link"} />
-        <meta property="og:image:secure_url" content="https://sweety.link/logo512.png" />
+        <meta property="og:image:secure_url" content={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/' }logo512.png`} />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
         <meta property="og:title"  content={data.title || "Активная ссылка Sweety link"} />  
@@ -70,7 +70,7 @@ const App = () => {
         <meta name="twitter:title" content={data.title || "Активная ссылка Sweety link"} /> 
         <meta name="twitter:description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
         <meta name="twitter:creator" content={data.name || "Free Link Creator"} />
-        <meta name="twitter:image:src" content="https://sweety.link/logo512.png" />
+        <meta name="twitter:image:src" content= {`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/' }logo512.png`} />
         <meta name="twitter:domain" content={data.url} />
         <link rel="icon" href="https://sweety.link/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
