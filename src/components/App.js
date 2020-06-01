@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams } from 'react-router-dom';
+import '@pwabuilder/pwainstall';
 
 import Loading from 'components/common/Loading';
 
@@ -111,6 +112,7 @@ const App = () => {
           <Rss />
           <Social />
           <Footer />
+          <pwa-install></pwa-install>
         </div>
         </div>
       </div>
