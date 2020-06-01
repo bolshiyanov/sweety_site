@@ -61,6 +61,7 @@ const Stories = ({ data, scrollPosition }) => {
       <Slider
         opened={settingsOpened}
         onClose={closeStoriesSettings}
+        onSubmit={closeStoriesSettings}
       >
         <StorySettings {...storyData} />
       </Slider>

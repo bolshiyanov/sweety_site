@@ -12,7 +12,7 @@ const Blocks = ({ data, referrerTitle, scrollPosition }) => {
         {referrerTitle && <div className="ad-label">реклама от @{referrerTitle}</div>}
         {
           data.map((block) => 
-          <LazyLoadComponent key={block.guid} scrollPosition={scrollPosition}>
+          <LazyLoadComponent key={block.guid} scrollPosition={scrollPosition} threshold={10}>
             <Block key={block.guid} {...block} scrollPosition={scrollPosition} />
           </LazyLoadComponent>)
         }
