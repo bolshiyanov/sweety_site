@@ -97,7 +97,7 @@ const App = () => {
             avatar={data.avatar}
             profile={profile}
           />
-          {profile !== 'za_ruku_k_yugu' ? null : <pwainstall />}
+          {profile !== 'za_ruku_k_yugu' ? null : <pwa-install />}
           <Notification
             link={data.url}
             message={settings.advanced}
@@ -113,7 +113,6 @@ const App = () => {
           <Rss />
           <Social />
           <Footer />
-          <pwa-install></pwa-install>
         </div>
         </div>
       </div>
