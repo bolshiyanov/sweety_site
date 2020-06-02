@@ -127,7 +127,7 @@ const Landing = () => {
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage3})` }}>
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Добавь мессенджеры,<br />соцсети, YouTube и...<br />все, что угодно!</h1>
-              <p>ЗАРАБАТЫВАЙ ПРОЩЕ...</p>
+              <p>ЗАРАБАТЫВАЙ ПРОЩЕ....</p>
             </div>
           </div>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage4})` }}>
