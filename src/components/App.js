@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams } from 'react-router-dom';
-import '@pwabuilder/pwainstall';
 
 import Loading from 'components/common/Loading';
 
@@ -97,7 +96,6 @@ const App = () => {
             avatar={data.avatar}
             profile={profile}
           />
-          {profile !== 'za_ruku_k_yugu' ? null : <pwa-install />}
           <Notification
             link={data.url}
             message={settings.advanced}
