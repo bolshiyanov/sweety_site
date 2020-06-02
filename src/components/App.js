@@ -21,11 +21,14 @@ import Stories from 'components/Stories';
 import PwaInstall from "components/Pwa";
 
 import API from 'utils/api';
+import { getUrl } from 'utils/url';
 import GoogleAnalytics from 'utils/googleAnalytics';
 
 import { CONFIG_LOAD } from 'constants/actions';
 
 const App = () => {
+  document.querySelector("#manifest-placeholder").setAttribute('href', `${getUrl()}/manifest.json`);
+
   const dispatch = useDispatch();
 
   const { profile } = useParams();
