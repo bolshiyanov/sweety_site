@@ -27,7 +27,8 @@ import GoogleAnalytics from 'utils/googleAnalytics';
 import { CONFIG_LOAD } from 'constants/actions';
 
 const App = () => {
-  document.querySelector("#manifest-placeholder").setAttribute('href', `${getUrl()}/manifest.json`);
+  document.querySelector("#manifest-placeholder").setAttribute('href', 
+    `${window.location.href.split('?')[0]}/manifest.json`);
 
   const dispatch = useDispatch();
 

@@ -8,12 +8,3 @@ export const getSearchString = (search, variable) => {
   }
   return undefined;
 };
-
-export const getUrl = () => {
-  if (location.pathname.indexOf('?') >= 0) {
-    return location.pathname.slice(0, location.pathname.lastIndexOf('/') - 1);
-  }
-  else {
-    return location.pathname;
-  }
-}
