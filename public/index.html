@@ -3,7 +3,22 @@
      <meta charset="utf-8" />
      <meta name="yandex-verification" content="9f3408d6c6f2efb1" />
      <meta name="google-site-verification" content="SknD8MzhV5rTFD-fYkBYeXGFeZAMhnBRs1y_oewGYyk" />
-     <link rel="manifest" id="manifest-placeholder" />
+
+<script>
+  var url = window.location.href.split('?')[0];
+  if (url.slice(-1) === '/') {
+    url = url.substring(0, url.length - 2);
+  }
+  if (url.substr(-window.location.host.length) === window.location.host) {
+    return;
+  }
+
+  const link = document.createElement('link');
+  link.href = `${url}/manifest.json`;
+  link.rel = 'manifest';
+  document.getElementsByTagName('head')[0].appendChild(link);
+</script>
+
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
