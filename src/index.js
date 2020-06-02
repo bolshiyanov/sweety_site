@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import { CookiesProvider } from 'react-cookie';
+import ReactPWAInstallProvider from "react-pwa-install";
 
 import history from 'utils/history';
 import store from 'store';
@@ -16,11 +17,13 @@ import './index.scss';
 ReactDOM.render(
   (
     <CookiesProvider>
-      <Router history={history}>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </Router>
+      <ReactPWAInstallProvider enableLogging>
+        <Router history={history}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </Router>
+      </ReactPWAInstallProvider>
     </CookiesProvider>
   ),
   document.getElementById('root')

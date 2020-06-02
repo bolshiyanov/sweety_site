@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import '@pwabuilder/pwainstall'
 
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +18,7 @@ import Landing from 'components/Landing';
 import Rss from 'components/Rss';
 import Start from 'components/Start';
 import Stories from 'components/Stories';
+import PwaInstall from "components/PwaInstall";
 
 import API from 'utils/api';
 import GoogleAnalytics from 'utils/googleAnalytics';
@@ -55,7 +55,6 @@ const App = () => {
         <meta property="og:site_name" content={data.name || "Free Link Creator"} />
         <link rel="apple-touch-icon" href={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/' }logo192.png`} />
         <link rel="icon" href={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/' }logo192.png`} />
-        <link rel="manifest" href={`${data.url}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/' }manifest.json`} />
         <meta property="og:url" content={data.url}/>
         <meta property="og:locale" content={data.lang} />
         <meta property="og:type:profile:username" content={data.name || "Free Link Creator"} />
@@ -104,6 +103,7 @@ const App = () => {
             buttonTitle={settings.advancedTitle}
             profile={profile}
           />
+          {profile !== "za_ruku_k_yugu" ? null : <PwaInstall />}
           <Stories data={data.stories} profile={profile} />
           <Title />
           <Messengers />
@@ -112,7 +112,6 @@ const App = () => {
           <Rss />
           <Social />
           <Footer />
-          <pwa-install></pwa-install>
         </div>
         </div>
       </div>
