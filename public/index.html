@@ -9,14 +9,12 @@
   if (url.slice(-1) === '/') {
     url = url.substring(0, url.length - 2);
   }
-  if (url.substr(-window.location.host.length) === window.location.host) {
-    return;
+  if (url.substr(-window.location.host.length) !== window.location.host) {
+    const link = document.createElement('link');
+    link.href = `${url}/manifest.json`;
+    link.rel = 'manifest';
+    document.getElementsByTagName('head')[0].appendChild(link);
   }
-
-  const link = document.createElement('link');
-  link.href = `${url}/manifest.json`;
-  link.rel = 'manifest';
-  document.getElementsByTagName('head')[0].appendChild(link);
 </script>
 
   </head>
