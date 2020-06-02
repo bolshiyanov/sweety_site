@@ -117,6 +117,17 @@ const App = () => {
             avatar={data.avatar}
             profile={profile}
           />
+          <div>
+      <p>
+        If your browser is supported and you haven't already installed the app, you should see the install
+        button below:
+      </p>
+      {!supported() && !isInstalled() && (
+        <button type="button" onClick={handleClick}>
+          Install app
+        </button>
+      )}
+    </div>
           <Notification
             link={data.url}
             message={settings.advanced}
@@ -126,6 +137,7 @@ const App = () => {
           />
           <Stories data={data.stories} profile={profile} />
           <Title />
+          
           <Messengers />
           <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
@@ -133,17 +145,7 @@ const App = () => {
           <Social />
           
           <Footer />
-          <div>
-      <p>
-        If your browser is supported and you haven't already installed the app, you should see the install
-        button below:
-      </p>
-      {supported() && !isInstalled() && (
-        <button type="button" onClick={handleClick}>
-          Install app
-        </button>
-      )}
-    </div>
+          
         </div>
         </div>
       </div>

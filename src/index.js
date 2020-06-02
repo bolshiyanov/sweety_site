@@ -15,7 +15,6 @@ import './index.scss';
 
 
 ReactDOM.render(
-    <React.StrictMode> 
       <CookiesProvider>
         <Router history={history}>
          <Provider store={store}>
@@ -24,8 +23,7 @@ ReactDOM.render(
             </ReactPWAInstallProvider>
           </Provider>
         </Router>
-      </CookiesProvider>
-    </React.StrictMode>,
+      </CookiesProvider>,
   document.getElementById('root')
 );
 
