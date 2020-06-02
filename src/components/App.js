@@ -18,7 +18,7 @@ import Landing from 'components/Landing';
 import Rss from 'components/Rss';
 import Start from 'components/Start';
 import Stories from 'components/Stories';
-import PwaInstall from "components/PwaInstall";
+import PwaInstall from "components/Pwa";
 
 import API from 'utils/api';
 import GoogleAnalytics from 'utils/googleAnalytics';
