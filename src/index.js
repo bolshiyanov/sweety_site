@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import { CookiesProvider } from 'react-cookie';
-
+import ReactPWAInstallProvider from "react-pwa-install";
 import history from 'utils/history';
 import store from 'store';
 
@@ -13,16 +13,19 @@ import * as serviceWorker from './serviceWorker';
 
 import './index.scss';
 
+
 ReactDOM.render(
-  (
-    <CookiesProvider>
-      <Router history={history}>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </Router>
-    </CookiesProvider>
-  ),
+    <React.StrictMode> 
+      <CookiesProvider>
+        <Router history={history}>
+         <Provider store={store}>
+           <ReactPWAInstallProvider enableLogging>
+              <App />
+            </ReactPWAInstallProvider>
+          </Provider>
+        </Router>
+      </CookiesProvider>
+    </React.StrictMode>,
   document.getElementById('root')
 );
 
