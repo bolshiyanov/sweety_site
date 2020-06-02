@@ -51,7 +51,7 @@ const Stories = ({ data, profile, scrollPosition }) => {
     setStoryData({ ...settings });
   }, [settingsOpened, stories]);
 
-  if (inviteId && !active) {
+  if (!inviteId && !active) {
     return null;
   }
  
