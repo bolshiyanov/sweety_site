@@ -4,12 +4,9 @@ import classnames from 'classnames';
 import { uuid } from 'uuidv4';
 import { useSelector } from 'react-redux';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
+import { useCookies } from 'react-cookie';
 
-import Button from 'components/common/Button';
-import Icon from 'components/common/Icon';
 import Slider from 'components/common/Slider';
-
-import { EDIT_STORY, REMOVE_STORY, ROTATE_STORY } from 'constants/actions';
 
 import StorySettings from './StorySettings';
 import Story from './Story';
@@ -24,9 +21,10 @@ const emptySettings = {
   image: '',
 };
 
-const Stories = ({ data, scrollPosition }) => {
+const Stories = ({ data, profile, scrollPosition }) => {
   const [settingsOpened, setSettingsOpened] = useState(null);
   const [storyData, setStoryData] = useState(emptySettings);
+  const [cookies] = useCookies();
 
   const closeStoriesSettings = () => {
     setSettingsOpened(null);
@@ -40,6 +38,11 @@ const Stories = ({ data, scrollPosition }) => {
 
   const { stories } = useSelector((state) => state.config.data);
 
+  var inviteId = cookies[profile];
+  if (inviteId === "undefined") {
+    inviteId = null;
+  }
+
   useEffect(() => {
     const currentStory = stories.find((story) => story.guid === settingsOpened);
     const settings = currentStory || { ...emptySettings };
@@ -48,7 +51,7 @@ const Stories = ({ data, scrollPosition }) => {
     setStoryData({ ...settings });
   }, [settingsOpened, stories]);
 
-  if (!active) {
+  if (inviteId && !active) {
     return null;
   }
  

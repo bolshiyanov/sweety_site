@@ -104,7 +104,7 @@ const App = () => {
             buttonTitle={settings.advancedTitle}
             profile={profile}
           />
-          <Stories data={data.stories} />
+          <Stories data={data.stories} profile={profile} />
           <Title />
           <Messengers />
           <Blocks data={data.blocks} />
