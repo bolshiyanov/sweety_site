@@ -10,12 +10,14 @@
     url = url.substring(0, url.length - 2);
   }
   if (url.substr(-window.location.host.length) !== window.location.host) {
+    url = url.slice(url.indexOf(window.location.host) + window.location.host.length + 1);
     const link = document.createElement('link');
-    link.href = `${url}/manifest.json`;
+    link.href = `/${url}/manifest.json`;
     link.rel = 'manifest';
     document.getElementsByTagName('head')[0].appendChild(link);
   }
 </script>
+<link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
 
   </head>
   <body>
