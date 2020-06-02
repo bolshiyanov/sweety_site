@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams } from 'react-router-dom';
+import '@pwabuilder/pwainstall';
 
 import Loading from 'components/common/Loading';
 
@@ -23,28 +24,8 @@ import API from 'utils/api';
 import GoogleAnalytics from 'utils/googleAnalytics';
 
 import { CONFIG_LOAD } from 'constants/actions';
-import { useReactPWAInstall } from "react-pwa-install";
 
 const App = () => {
-  const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
-  
-  const handleClick = () => {
-    pwaInstall({
-      title: "Install Web App",
-      features: (
-        <ul>
-          <li>Cool feature 1</li>
-          <li>Cool feature 2</li>
-          <li>Even cooler feature</li>
-          <li>Works offline</li>
-        </ul>
-      ),
-      description: "This is how the install dialog looks like. Here you can describe your app briefly.",
-    })
-      .then(() => alert("App installed successfully or instructions for install shown"))
-      .catch(() => alert("User opted out from installing"));
-  };
-  
   const dispatch = useDispatch();
 
   const { profile } = useParams();
@@ -64,7 +45,6 @@ const App = () => {
   const { settings = {} } = data;
 
   const backgroundStyles = currentTheme.getBackgroundStyles();
-
   return (
     <React.Fragment>
       <Helmet>
@@ -117,17 +97,7 @@ const App = () => {
             avatar={data.avatar}
             profile={profile}
           />
-          <div>
-      <p>
-        If your browser is supported and you haven't already installed the app, you should see the install
-        button below:
-      </p>
-      {!supported() && !isInstalled() && (
-        <button type="button" onClick={handleClick}>
-          Install app
-        </button>
-      )}
-    </div>
+          {profile !== 'za_ruku_k_yugu' ? null : <pwainstall />}
           <Notification
             link={data.url}
             message={settings.advanced}
@@ -137,15 +107,13 @@ const App = () => {
           />
           <Stories data={data.stories} profile={profile} />
           <Title />
-          
           <Messengers />
           <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
           <Rss />
           <Social />
-          
           <Footer />
-          
+          <pwa-install></pwa-install>
         </div>
         </div>
       </div>
