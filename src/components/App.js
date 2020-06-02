@@ -104,7 +104,7 @@ const App = () => {
             buttonTitle={settings.advancedTitle}
             profile={profile}
           />
-          <Stories data={data.stories} />
+          <Stories data={data.stories} profile={profile} />
           <Title />
           <Messengers />
           <Blocks data={data.blocks} />
@@ -112,7 +112,7 @@ const App = () => {
           <Rss />
           <Social />
           <Footer />
-          <Pwa-install/> 
+          <pwa-install></pwa-install>
         </div>
         </div>
       </div>
