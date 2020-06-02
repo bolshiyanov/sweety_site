@@ -28,8 +28,6 @@ const PwaInstall = () => {
             Сохранить на главный экран
           </button>
         )}
-        {!supported() && <div>Not supported</div>}
-        {isInstalled() && <div>Already Installed</div>}
       </div>
     );
 };
