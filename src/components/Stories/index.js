@@ -36,6 +36,8 @@ const Stories = ({ data, scrollPosition }) => {
     setSettingsOpened(storyId);
   };
 
+  const { active } = useSelector((state) => state.config.account);
+
   const { stories } = useSelector((state) => state.config.data);
 
   useEffect(() => {
@@ -46,6 +48,9 @@ const Stories = ({ data, scrollPosition }) => {
     setStoryData({ ...settings });
   }, [settingsOpened, stories]);
 
+  if (!active) {
+    return null;
+  }
  
   return (
     <React.Fragment>
