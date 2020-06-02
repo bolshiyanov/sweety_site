@@ -54,8 +54,6 @@ const App = () => {
         <meta name="description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
         <link rel="canonical" href={data.url} />
         <meta property="og:site_name" content={data.name || "Free Link Creator"} />
-        <link rel="apple-touch-icon" href={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/' }logo192.png`} />
-        <link rel="icon" href={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/' }logo192.png`} />
         <meta property="og:url" content={data.url}/>
         <meta property="og:locale" content={data.lang} />
         <meta property="og:type:profile:username" content={data.name || "Free Link Creator"} />

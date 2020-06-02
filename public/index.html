@@ -11,13 +11,35 @@
   }
   if (url.substr(-window.location.host.length) !== window.location.host) {
     url = url.slice(url.indexOf(window.location.host) + window.location.host.length + 1);
-    const link = document.createElement('link');
+    var link = document.createElement('link');
     link.href = `/${url}/manifest.json`;
     link.rel = 'manifest';
     document.getElementsByTagName('head')[0].appendChild(link);
-  }
+
+    link = document.createElement('link');
+    link.href = `/content/img/${url}/logo192.png`;
+    link.rel = 'icon';
+    document.getElementsByTagName('head')[0].appendChild(link);
+
+    link = document.createElement('link');
+    link.href = `/content/img/${url}/logo152.png`;
+    link.rel = 'apple-touch-icon';
+    link.sizes = '152x152';
+    document.getElementsByTagName('head')[0].appendChild(link);
+
+    link = document.createElement('link');
+    link.href = `/content/img/${url}/logo180.png`;
+    link.rel = 'apple-touch-icon';
+    link.sizes = '180x180';
+    document.getElementsByTagName('head')[0].appendChild(link);
+
+    link = document.createElement('link');
+    link.href = `/content/img/${url}/logo167.png`;
+    link.rel = 'apple-touch-icon';
+    link.sizes = '167x167';
+    document.getElementsByTagName('head')[0].appendChild(link);
+}
 </script>
-<link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
 
   </head>
   <body>
