@@ -89,14 +89,15 @@ const App = () => {
             buttonTitle={settings.advancedTitle}
             profile={profile}
           />
-          {profile !== "za_ruku_k_yugu" ? null : <PwaInstall profile={profile} />}
-          {profile !== "za_ruku_k_yugu" ? null : <PwaInstallIOs profile={profile} />}
+          
           <Stories data={data.stories} profile={profile} />
           <Title />
           <Messengers />
           <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
           <Rss />
+          <PwaInstall profile={profile} />
+          <PwaInstallIOs profile={profile} />
           <Social />
           <Footer />
         </div>
