@@ -7,7 +7,7 @@ const PwaInstall = ({ profile }) => {
     const handleClick = () => {
       pwaInstall({
         title: "Сохраните на главный экран",
-        logo: `/${profile}/logo192.png`,
+        logo: `https://sweety.link/content/img/${profile}/logo192.png`,
         features: (
           <ul>
             <li>Последние новости</li>
