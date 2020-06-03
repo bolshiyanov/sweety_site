@@ -1,24 +1,21 @@
 import React from 'react';
 import { useReactPWAInstall } from "react-pwa-install";
 
-const PwaInstall = () => {
+const PwaInstall = ({ profile }) => {
     const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
 
     const handleClick = () => {
       pwaInstall({
         title: "Сохраните на главный экран",
-        logo: "./logo512.png",
+        logo: `/${profile}/logo192.png`,
         features: (
           <ul>
             <li>Последние новости</li>
             <li>Лучшие актуальные предложения</li>
-            <li>Работает и offline!</li>
           </ul>
         ),
-        description: "Сохраните приложение в один клик! Будем всегда на связи.",
-      })
-        .then(() => alert("Приложение было установлено успешно"))
-        .catch(() => alert("Не удалось установить приложение"));
+        description: "Будем всегда на связи.",
+      });
     };
   
     return (

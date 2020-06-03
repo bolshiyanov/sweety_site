@@ -18,7 +18,8 @@ import Landing from 'components/Landing';
 import Rss from 'components/Rss';
 import Start from 'components/Start';
 import Stories from 'components/Stories';
-import PwaInstall from "components/Pwa";
+import PwaInstall from "components/PwaInstall";
+import PwaInstallIOs from "components/PwaInstallIOs";
 
 import API from 'utils/api';
 import { getUrl } from 'utils/url';
@@ -71,20 +72,6 @@ const App = () => {
         <meta name="twitter:creator" content={data.name || "Free Link Creator"} />
         <meta name="twitter:image:src" content= {`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/' }logo512.png`} />
         <meta name="twitter:domain" content={data.url} />
-        <link rel="icon" href="https://sweety.link/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <meta name="theme-color" content="#fff" /> 
-        <meta name="author" content="Roman Bolshiyanov bolshiyanov@gmail.com" />
-        <link rel="author" href="https://instagram.com/free_link_creator" />
-        <meta name="date" content="May 01 2020 10:10 GMT" />
-        <meta name="revisit-after" content="1 days" />
-        <meta name="robots" content="all" />
-        <meta property="og:type" content="website" />
-        <meta property="og:video" content="https://youtu.be/zsy0pbMBBRI" />
-        <meta name="theme-color" content="#ffffff" />
-        <meta name="msapplication-navbutton-color" content="#ffffff" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff" />     
       </Helmet>
       <div className="app" style={backgroundStyles}>
         { GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker /> }
@@ -102,7 +89,8 @@ const App = () => {
             buttonTitle={settings.advancedTitle}
             profile={profile}
           />
-          {profile !== "za_ruku_k_yugu" ? null : <PwaInstall />}
+          {profile !== "za_ruku_k_yugu" ? null : <PwaInstall profile={profile} />}
+          {profile !== "za_ruku_k_yugu" ? null : <PwaInstallIOs profile={profile} />}
           <Stories data={data.stories} profile={profile} />
           <Title />
           <Messengers />

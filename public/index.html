@@ -3,6 +3,8 @@
      <meta charset="utf-8" />
      <meta name="yandex-verification" content="9f3408d6c6f2efb1" />
      <meta name="google-site-verification" content="SknD8MzhV5rTFD-fYkBYeXGFeZAMhnBRs1y_oewGYyk" />
+     <meta name="apple-mobile-web-app-capable" content="yes" />
+     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
 <script>
   var url = window.location.href.split('?')[0];
@@ -11,7 +13,7 @@
   }
   if (url.substr(-window.location.host.length) !== window.location.host) {
     url = url.slice(url.indexOf(window.location.host) + window.location.host.length + 1);
-    var link = document.createElement('link');
+    link = document.createElement('link');
     link.href = `/${url}/manifest.json`;
     link.rel = 'manifest';
     document.getElementsByTagName('head')[0].appendChild(link);
@@ -19,27 +21,49 @@
     link = document.createElement('link');
     link.href = `/content/img/${url}/logo192.png`;
     link.rel = 'icon';
+    link.type = 'image/png';
     document.getElementsByTagName('head')[0].appendChild(link);
 
     link = document.createElement('link');
     link.href = `/content/img/${url}/logo152.png`;
     link.rel = 'apple-touch-icon';
     link.sizes = '152x152';
+    link.type = 'image/png';
     document.getElementsByTagName('head')[0].appendChild(link);
 
     link = document.createElement('link');
     link.href = `/content/img/${url}/logo180.png`;
     link.rel = 'apple-touch-icon';
     link.sizes = '180x180';
+    link.type = 'image/png';
     document.getElementsByTagName('head')[0].appendChild(link);
 
     link = document.createElement('link');
     link.href = `/content/img/${url}/logo167.png`;
     link.rel = 'apple-touch-icon';
     link.sizes = '167x167';
+    link.type = 'image/png';
     document.getElementsByTagName('head')[0].appendChild(link);
+
+    meta = document.createElement('meta');
+    meta.content = url;
+    document.getElementsByTagName('head')[0].appendChild(meta);
 }
 </script>
+
+<link rel="icon" href="https://sweety.link/favicon.ico" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#000000" />
+<meta name="theme-color" content="#fff" /> 
+<meta name="author" content="Roman Bolshiyanov bolshiyanov@gmail.com" />
+<link rel="author" href="https://instagram.com/free_link_creator" />
+<meta name="date" content="May 01 2020 10:10 GMT" />
+<meta name="revisit-after" content="1 days" />
+<meta name="robots" content="all" />
+<meta property="og:type" content="website" />
+<meta property="og:video" content="https://youtu.be/zsy0pbMBBRI" />
+<meta name="theme-color" content="#ffffff" />
+<meta name="msapplication-navbutton-color" content="#ffffff" />
 
   </head>
   <body>
