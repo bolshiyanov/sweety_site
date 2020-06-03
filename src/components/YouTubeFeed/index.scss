@@ -7,7 +7,9 @@
   .horizontal-picker {
     display: block;
     overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
+    max-height: 142px;
     
     .youtube-picker__item {
       display: inline-block;

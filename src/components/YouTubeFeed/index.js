@@ -30,12 +30,16 @@ const YouTubeFeed = ({ account, title, onClick, scrollPosition }) => {
   if (!youTubeFeed)
     return null;
 
-  const getPickerPreviewStyles = (image) => ({
-    backgroundImage: `URL(${image})`,
-    backgroundPosition: 'center center',
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat'
-  });
+    const getPickerPreviewStyles = (image) => ({
+      display: 'inline-block', 
+      position: 'relative',
+      width: '250px',
+      height: '142px',
+      backgroundImage: `URL(${image})`,
+      backgroundPosition: 'center center',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+    });
     
   var pickerItems = youTubeFeed?.items?.map((item) => ({
     id: item.code,
