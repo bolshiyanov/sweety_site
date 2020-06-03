@@ -36,7 +36,9 @@ const InstagramFeed = ({ account, title, isPicker, scrollPosition }) => {
     backgroundImage: `URL(${image})`,
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat'
+    backgroundRepeat: 'no-repeat',
+    width: '170px',
+    height: '170px'
   });
     
   var pickerItems = instagramFeed?.items?.map((item) => ({
