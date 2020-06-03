@@ -60,6 +60,7 @@ img {
   .horizontal-picker {
     display: block;
     overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
     
     .instagram-picker__item {
