@@ -51,7 +51,10 @@ const InstagramFeed = ({ account, title, isPicker, scrollPosition }) => {
         />
       </LazyLoadComponent>)
   }));
-
+  const boxforitem = () => ({
+    width: '170px',
+    height: '170px'
+  });
   const openFeedLink = () => { window.open(instagramFeed?.feed?.link, "_blank") };
 
   return (
@@ -66,6 +69,7 @@ const InstagramFeed = ({ account, title, isPicker, scrollPosition }) => {
         items={pickerItems}
         className="horizontal-picker"
         itemClassName="instagram-picker__item"
+        style={boxforitem}
       />
     </div>)}
     {!isPicker && instagramFeed?.items && (
