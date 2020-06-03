@@ -14,7 +14,7 @@ const PwaInstallIOs = ({profile}) => {
         <div className="pwa-install-popup-ios-content__right">Установите приложение на главный экран: откройте в браузере меню по кнопке
             <span><img className="small" src="./ic_iphone_share.png"/></span>
             <br/>
-            затем выберите 'Add to HomeScreen'
+            затем выберите 'На экран "Домой"'
         </div>
       </div>
     </PwaInstallPopupIOS>);
