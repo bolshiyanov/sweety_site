@@ -36,8 +36,8 @@ const Notification = ({ profile }) => {
       </Button>
       
         <React.Fragment>
-        {profile !== "za_ruku_k_yugu" ? null : <PwaInstall profile={profile} />}
-        {profile !== "za_ruku_k_yugu" ? null : <PwaInstallIOs profile={profile} />}
+        <PwaInstall profile={profile} />
+        <PwaInstallIOs profile={profile} />
         </React.Fragment>
     </div>
   );
