@@ -3,7 +3,7 @@ import { getSearchString } from 'utils/url';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong!';
 
-const host = 'https://admapi.itsinsta.site';
+const host = 'https://api.sweety.link';
 const adminSite = "https://dash.sweety.link";
 const cookieDomain = "sweety.link";
 let profile = null;
