@@ -1,29 +1,32 @@
 import React from 'react';
 import { useReactPWAInstall } from "react-pwa-install";
+import Button from 'components/common/Button';
+import './index.scss';
 
 const PwaInstall = ({ profile }) => {
     const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
 
     const handleClick = () => {
       pwaInstall({
-        title: "Сохраните на главный экран",
+        title: "Установите себе мое приложение",
         logo: `https://sweety.link/content/img/${profile}/logo192.png`,
         features: (
           <ul>
-            <li>Последние новости</li>
-            <li>Лучшие актуальные предложения</li>
+            <li>Ты будешь в курсе моих событий</li>
+            <li>Я не затеряюсь в ленте твоих соцсетей</li>
+            <li>Ты получишь мои лучшие предложения</li>
           </ul>
         ),
-        description: "Будем всегда на связи.",
+        description: "ТЕПЕРЬ МЫ БУДЕМ НА СВЯЗИ ВСЕГДА!",
       });
     };
   
     return (
-      <div>
+      <div className="pwainstall">
         {supported() && !isInstalled() && (
-          <button type="button" onClick={handleClick}>
-            Сохранить на главный экран
-          </button>
+          <Button className="button pulse" type="Pwa_Install" onClick={handleClick}>
+            Установи мое приложение на свой телефон. Жми смелей!
+          </Button>
         )}
       </div>
     );

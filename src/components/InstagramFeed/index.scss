@@ -60,10 +60,12 @@ img {
   .horizontal-picker {
     display: block;
     overflow-x: auto;
+    overflow-y: hidden;
     white-space: nowrap;
+    max-height: 185px;
     
     .instagram-picker__item {
-      display: inline-block;
+      display: inline-block; 
 
       position: relative;
       width: 170px;

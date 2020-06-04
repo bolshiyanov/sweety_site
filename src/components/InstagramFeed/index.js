@@ -33,12 +33,18 @@ const InstagramFeed = ({ account, title, isPicker, scrollPosition }) => {
     return null;
 
   const getPickerPreviewStyles = (image) => ({
+    display: 'inline-block', 
+    position: 'relative',
+    width: '170px',
+    height: '170px',
     backgroundImage: `URL(${image})`,
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat'
+    backgroundRepeat: 'no-repeat',
   });
-    
+   
+  
+   
   var pickerItems = instagramFeed?.items?.map((item) => ({
     id: item.code,
     component: (
@@ -49,7 +55,7 @@ const InstagramFeed = ({ account, title, isPicker, scrollPosition }) => {
         />
       </LazyLoadComponent>)
   }));
-
+ 
   const openFeedLink = () => { window.open(instagramFeed?.feed?.link, "_blank") };
 
   return (
