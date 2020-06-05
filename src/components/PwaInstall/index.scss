@@ -1,7 +1,6 @@
 .pwainstall {
-    display: inline-block;
-    flex-flow: row wrap;
+    display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     margin: 20px 12px;
   }

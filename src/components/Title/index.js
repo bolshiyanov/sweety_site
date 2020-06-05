@@ -16,7 +16,7 @@ const Title = () => {
   return (
     <React.Fragment>
       {Boolean(data.title) && (
-        <h1 className="title">{data.title}</h1>
+        <h1 className="title">{title}</h1>
       )}
       {Boolean(data.description) && (
         <div className="description">{data.description}</div>

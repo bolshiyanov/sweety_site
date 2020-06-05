@@ -20,6 +20,7 @@ import Start from 'components/Start';
 import Stories from 'components/Stories';
 import PwaInstall from "components/PwaInstall";
 import PwaInstallIOs from "components/PwaInstallIOs";
+import SocialSharingButtons from "components/SocialSharingButtons";
 
 import API from 'utils/api';
 import { getUrl } from 'utils/url';
@@ -95,6 +96,7 @@ const App = () => {
           <Messengers />
           <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
+          <SocialSharingButtons />
           <Rss />
           <PwaInstall profile={profile} />
           <PwaInstallIOs profile={profile} />

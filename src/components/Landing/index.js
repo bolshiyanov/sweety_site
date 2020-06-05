@@ -1,15 +1,15 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import Swiper from 'react-id-swiper';
 import classnames from 'classnames';
-
-
+import Headerlanding from 'components/Headerlanding';
 import { Helmet } from 'react-helmet';
+
 
 import Button from 'components/common/Button';
 import Slider from 'components/common/Slider';
 import Loading from 'components/common/Loading';
 
-import Headerlanding from 'components/Headerlanding';
+import Header from 'components/Header';
 import Start from 'components/Landing/Start';
 
 import referrerAvatar from 'images/referrer_avatar.jpg';
@@ -63,6 +63,7 @@ const Landing = () => {
       }
     }
   }, [swiper]);
+
 
   return (
     <React.Fragment>

@@ -1,0 +1,55 @@
+.SocialSharingButtons {
+  display: block;
+  max-width: 100%;
+}
+
+.SocialSharingButtons_box {
+  margin: 12px;
+  max-width: calc(100% - 24px);
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.SocialSharingButtons_box_avatar {
+            width: 100px;
+            flex: initial;
+        }
+
+.avatar {
+  height: 76px;
+  width: 76px;
+}
+
+.SocialSharingButtons_box_items {
+  display: block;
+  max-width: calc(100% - 90px);
+  margin-top: 6px;
+}
+
+.SocialSharingButtons_title {
+  max-width: 100%;
+  text-align: left;
+  font-size: 14px;
+  margin-bottom: 6px;
+
+}
+
+
+.SocialSharingButtons_container {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  
+}
+
+.SocialSharingButtons__some-network {
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    box-sizing: content-box;
+    
+ }
+  

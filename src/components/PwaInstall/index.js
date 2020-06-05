@@ -23,13 +23,15 @@ const PwaInstall = ({ profile }) => {
   
     return (
       <div className="pwainstall">
+        <div className="pwainstall-chaild">
         {supported() && !isInstalled() && (
           <Button className="button pulse" type="Pwa_Install" onClick={handleClick}>
             Установи мое приложение на свой телефон. Жми смелей!
           </Button>
         )}
+        </div>
       </div>
     );
 };
-
+ 
 export default PwaInstall;
