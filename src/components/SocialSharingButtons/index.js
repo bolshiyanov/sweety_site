@@ -116,7 +116,7 @@ import './index.scss';
 
         <div className="SocialSharingButtons__some-network">
           <TelegramShareButton
-            url={url}
+            url={url} 
             title={text} 
             
             className="SocialSharingButtons__some-network__share-button"
