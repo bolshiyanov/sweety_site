@@ -300,23 +300,9 @@ import './index.scss';
             <InstapaperIcon size={45} round />
           </InstapaperShareButton>
         </div>
-
-
-
-
           </div> 
         </div>
         </Button>
-      
-        
-
-
-
-      
-
-        
-       
-       
   </div>   
   </React.Fragment>
     );

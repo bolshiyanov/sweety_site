@@ -115,7 +115,6 @@ const App = () => {
     </React.Fragment>
   );
 };
-
 const Router = () => (
   <Switch>
     <Route path="/start" component={Start} />
