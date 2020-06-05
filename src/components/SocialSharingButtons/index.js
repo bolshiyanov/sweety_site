@@ -107,7 +107,7 @@ import './index.scss';
             url={url}
             title={title}
             separator="&mdash;Попалось приложение для смартфона, мне кажется тебе будет интересно. 
-            Его можно поставить на домашний экран и потом посмотреть... Посмотри по этой ссылке&mdash;"
+            Можно поставить как приложение... Ссылка&mdash;"
             className="SocialSharingButtons__some-network__share-button"
           >
             <ViberIcon size={45} round />
