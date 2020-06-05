@@ -103,8 +103,8 @@ const App = () => {
           <Messengers />
           <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
-          <SocialSharingButtons />
           <Rss />
+          <SocialSharingButtons />
           <PwaInstall profile={profile} />
           <PwaInstallIOs profile={profile} />
           <Social />
