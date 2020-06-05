@@ -48,29 +48,51 @@ const Start = () => {
 
     setStarting(true);
     setCounter(30);
-    API.register({ instagram, youtube, whatsapp, referer: getRef() }).then((response) => {
-      if (response?.errors) {
-        if (response.errors.Instagram) {
-          setInstagramInvalid("Instagram не найден");
-        }
-        if (response.errors.Youtube) {
-          setYoutubeInvalid("Канал или видео не найдены");
-        }
-        if (response.errors.WhatsApp) {
-          setWhatsappInvalid("Некорректный номер телефона");
-        }
+    API.getInstagramFeed(instagram).then((instaProfile) => {
+      if (!instaProfile?.feed?.title) {
+        setInstagramInvalid("Instagram не найден");
       }
-      else if (response?.invitationId) {
-        event("signup", "instagram", getRef());
-        setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1), 
-          response.invitationId, { path: '/' });
-        window.location.href = getAdminSiteByInvitation(response.invitationId);
+      else {
+        API.register({ 
+          instagram, 
+          youtube, 
+          whatsapp, 
+          referer: getRef(),
+          instagramProfile: {
+            username: instaProfile?.feed?.title,
+            biography: instaProfile?.feed?.biography,
+            fullName: instaProfile?.feed?.fullName,
+            profileImageUrl: instaProfile?.feed?.image,
+            postCount: instaProfile?.feed?.postCount,
+            url: instaProfile?.feed?.link,
+            linkUrl: instaProfile?.feed?.externalUrl,
+            posts: instaProfile?.items
+          } 
+        }).then((response) => {
+          if (response?.errors) {
+            if (response.errors.Instagram) {
+              setInstagramInvalid("Instagram не найден");
+            }
+            if (response.errors.Youtube) {
+              setYoutubeInvalid("Канал или видео не найдены");
+            }
+            if (response.errors.WhatsApp) {
+              setWhatsappInvalid("Некорректный номер телефона");
+            }
+          }
+          else if (response?.invitationId) {
+            event("signup", "instagram", getRef());
+            setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1), 
+              response.invitationId, { path: '/' });
+            window.location.href = getAdminSiteByInvitation(response.invitationId);
+          }
+          else if (response?.siteUrl) {
+            window.location.href = response.siteUrl;
+          }
+          setCounter(null);
+          setStarting(false);
+        });
       }
-      else if (response?.siteUrl) {
-        window.location.href = response.siteUrl;
-      }
-      setCounter(null);
-      setStarting(false);
     });
   };
 

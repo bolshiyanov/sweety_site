@@ -16,12 +16,30 @@ const Start = () => {
     avatar: referrerAvatar
   }
 
-  API.register({ instagram }).then((response) => {
-    if (response?.errors) {
+  API.getInstagramFeed(instagram).then((instaProfile) => {
+    if (!instaProfile?.feed?.title) {
       window.location.href = "/";
+    } else {
+      API.register({ 
+          instagram,
+          instagramProfile: {
+            username: instaProfile?.feed?.title,
+            biography: instaProfile?.feed?.biography,
+            fullName: instaProfile?.feed?.fullName,
+            profileImageUrl: instaProfile?.feed?.image,
+            postCount: instaProfile?.feed?.postCount,
+            url: instaProfile?.feed?.link,
+            linkUrl: instaProfile?.feed?.externalUrl,
+            posts: instaProfile?.items
+          }
+        }).then((response) => {
+        if (response?.errors) {
+          window.location.href = "/";
+        }
+        event("signup", "start");
+        window.location.href = getAdminSiteByInvitation(response.invitationId);
+      });
     }
-    event("signup", "start");
-    window.location.href = getAdminSiteByInvitation(response.invitationId);
   });
 
   return (

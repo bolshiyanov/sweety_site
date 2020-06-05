@@ -42,8 +42,15 @@ const App = () => {
   const { data = {} } = useSelector((state) => state.config);
   const { currentTheme } = useSelector((state) => state.config);
 
-  if (!data)
+  const ua = navigator.userAgent || navigator.vendor || navigator.opera;
+  if (ua.indexOf("Instagram") > -1 && !(ua.indexOf("iPad") > -1 || ua.indexOf("iPhone") > -1 || ua.indexOf("iPod") > -1)) {
+    window.location.href = `https://api.sweety.link/redirect/dummy/${profile}`;
+    return null;
+  }
+
+  if (!data) {
     return <Loading />;
+  }
 
   const { settings = {} } = data;
 

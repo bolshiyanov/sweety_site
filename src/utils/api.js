@@ -70,12 +70,14 @@ const API = {
   getData: () => requests.get(`/api/profiles/pages/public/${profile}`),
   register: (data) => requests.post('/api/users/register', data),
   getInstagramFeed: (account) => {
-    const url = account.indexOf("http") === -1 ? `https://instagram.com/${account}/` : account;
+    const url = 
+      account.indexOf("@") === 0 ? `https://instagram.com/${account.substring(1)}/` :
+      account.indexOf("http") === -1 ? `https://instagram.com/${account}/` : account;
     return superagent.get(url)
     .catch(handleError)
     .then((response) => {
       if (!response?.text) {
-        return [];
+        return {};
       }
 
       const json = JSON.parse(response.text.match(
@@ -86,24 +88,27 @@ const API = {
         .ProfilePage[0]
         .graphql
         .user;
-      const edges = user 
-        .edge_owner_to_timeline_media
-        .edges
-        .splice(0, 8);
+      const media = user.edge_owner_to_timeline_media;
+      const edges = media.edges.splice(0, 8);
 
       const photos = edges.map(({ node }) => ({
         code: node.shortcode,
         url: `https://instagram.com/p/${node.shortcode}/`,
         thumbnailUrl: node.thumbnail_src,
         displayUrl: node.display_url,
-        caption: node.edge_media_to_caption.edges[0]?.node?.text
+        caption: node.edge_media_to_caption.edges[0]?.node?.text,
       }));
 
       return {
         feed: {
           title: user?.username,
           link: url,
-          image: user?.profile_pic_url
+          image: user?.profile_pic_url_hd,
+
+          biography: user?.biography,
+          fullName: user?.full_name,
+          postCount: media?.count,
+          externalUrl: user?.external_url,
         },
         items: photos
       };
