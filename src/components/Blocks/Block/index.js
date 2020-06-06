@@ -47,7 +47,12 @@ const Block = ({
     }
     else
     {
-      window.open(link, "_blank");
+      if (window.matchMedia('(display-mode: standalone)').matches &&
+        (link.indexOf('tel:') == 0 || link.indexOf('mailto:') == 0 || link.indexOf('sms:') == 0)) {
+        window.location.href = link;
+      } else {
+        window.open(link, "_blank");
+      }
     }
   };
 
