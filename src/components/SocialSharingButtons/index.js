@@ -68,10 +68,10 @@ import './index.scss';
       <div className="SocialSharingButtons">
 
         <Button className="SocialSharingButtons_box ">
-
+        {avatar && 
           <div className="SocialSharingButtons_box_avatar" image={avatar}>
               <Avatar image={avatar} />
-          </div>
+          </div>}
         
         <div className="SocialSharingButtons_box_items" >
           <div className="SocialSharingButtons_title">Поделитесь моим приложением</div>
