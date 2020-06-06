@@ -18,8 +18,7 @@ const Messengers = () => {
   const filteredMessengers = data.filter((messenger) => messenger.value !== '');
 
   const showContact = (link) => {
-    if (window.matchMedia('(display-mode: standalone)').matches &&
-      (link.startsWith('tel:') || link.startsWith('mailto:') || link.startsWith('sms:'))) {
+    if (link.startsWith('tel:') || link.startsWith('mailto:') || link.startsWith('sms:')) {
       window.location.href = link;
     }
     else {
