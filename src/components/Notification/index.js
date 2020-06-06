@@ -16,10 +16,10 @@ const Notification = ({ profile }) => {
   const { supported, isInstalled } = useReactPWAInstall();
   const [cookies, setCookie] = useCookies();
   const appClosed = cookies[`${profile}_appclosed`];
-  const [showNotification, setShowNotification] = useState(supported() && !isInstalled() && !appClosed);
+  const [showNotification, setShowNotification] = useState(supported() && !isInstalled());
 
   const closeNotification = () => {
-    alert(cookies[`${profile}_appclosed`]);
+    alert(appClosed);
     setCookie(`${profile}_appclosed`, true, { path: '/' });
     setShowNotification(false);
   };
