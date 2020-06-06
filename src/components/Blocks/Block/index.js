@@ -47,15 +47,10 @@ const Block = ({
     }
     else
     {
-      if (window.matchMedia('(display-mode: standalone)').matches) {
-        alert("pwa");
-        if (link.indexOf('tel:') == 0 || link.indexOf('mailto:') == 0 || link.indexOf('sms:') == 0) {
-          window.location.href = link;
-        }
-        else {
-          window.open(link, "_blank");
-        }
-      } else {
+      if (link.indexOf('tel:') == 0 || link.indexOf('mailto:') == 0 || link.indexOf('sms:') == 0) {
+        window.location.href = link;
+      }
+      else {
         window.open(link, "_blank");
       }
     }
