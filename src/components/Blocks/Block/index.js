@@ -47,7 +47,7 @@ const Block = ({
     }
     else
     {
-      if (link.indexOf('tel:') === 0 || link.indexOf('mailto:') === 0 || link.indexOf('sms:') === 0) {
+      if (link.startsWith('tel:') || link.startsWith('mailto:') || link.startsWith('sms:')) {
         alert(link);
         window.location.href = link;
       }
