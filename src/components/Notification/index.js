@@ -19,6 +19,7 @@ const Notification = ({ profile }) => {
   const [showNotification, setShowNotification] = useState(supported() && !isInstalled() && !appClosed);
 
   const closeNotification = () => {
+    alert(cookies[`${profile}_appclosed`]);
     setCookie(`${profile}_appclosed`, true, { path: '/' });
     setShowNotification(false);
   };
