@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { useReactPWAInstall } from "react-pwa-install";
 
-import history from 'utils/history';
+import { getCookieDomain } from 'utils/api';
 
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
-
 
 import PwaInstall from "components/PwaInstall";
 import PwaInstallIOs from "components/PwaInstallIOs";
@@ -15,14 +15,15 @@ import PwaInstallIOs from "components/PwaInstallIOs";
 import './index.scss';
 
 const Notification = ({ profile }) => {
-  const [showNotification, setShowNotification] = useState(true);
-  const [cookies] = useCookies();
+  const { supported, isInstalled } = useReactPWAInstall();
+  const [cookies, setCookie] = useCookies();
+  const appClosed = cookies[`${profile}_appclosed`];
+  const [showNotification, setShowNotification] = useState(supported() && !isInstalled() && !appClosed);
 
- 
-
-  const inviteId = cookies[profile];
-
-  
+  const closeNotification = () => {
+    setCookie(`${profile}_appclosed`, true, { path: '/', domain: getCookieDomain() });
+    setShowNotification(false);
+  };
 
   return (
     <div className={classnames(['notification', { hidden: !showNotification }])}>
@@ -30,15 +31,14 @@ const Notification = ({ profile }) => {
         noStyled
         isInline
         className="notification__close"
-        onClick={() => setShowNotification(false)}
+        onClick={() => closeNotification()}
       >
         <Icon type="timesCircle" />
       </Button>
-      
-        <React.Fragment>
+      <React.Fragment>
         <PwaInstall profile={profile} />
         <PwaInstallIOs profile={profile} />
-        </React.Fragment>
+      </React.Fragment>
     </div>
   );
 };
