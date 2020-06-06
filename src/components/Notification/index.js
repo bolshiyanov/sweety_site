@@ -17,10 +17,10 @@ const Notification = ({ profile }) => {
   const [cookies, setCookie, removeCookie] = useCookies();
   const appClosedCookie = cookies[`${profile}_appclosed`];
   const appClosed = !!appClosedCookie && appClosedCookie === "1";
-  const [showNotification, setShowNotification] = useState(false);
+  const [showNotification, setShowNotification] = useState(true);
 
   useEffect(() => {
-    setShowNotification(supported() && !isInstalled() && !appClosed);
+    setShowNotification(supported() && !isInstalled());
   }, []);
 
   const closeNotification = () => {
