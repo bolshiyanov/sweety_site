@@ -17,6 +17,16 @@ const Messengers = () => {
 
   const filteredMessengers = data.filter((messenger) => messenger.value !== '');
 
+  const showContact = (link) => {
+    if (window.matchMedia('(display-mode: standalone)').matches &&
+      (link.startsWith('tel:') || link.startsWith('mailto:') || link.startsWith('sms:'))) {
+      window.location.href = link;
+    }
+    else {
+      window.open(link, "_blank");
+    }
+  };
+
   return (
     <React.Fragment>
       <div className="messengers">
@@ -25,7 +35,7 @@ const Messengers = () => {
             <Button
               key={messenger.title}
               className="messenger"
-              onClick={() => window.open(messenger.value, "_blank")}
+              onClick={() => showContact(messenger.value)}
             >
               <Icon type={messenger.icon} />
             </Button>

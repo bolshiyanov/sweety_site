@@ -47,13 +47,7 @@ const Block = ({
     }
     else
     {
-      if (link.startsWith('tel:') || link.startsWith('mailto:') || link.startsWith('sms:')) {
-        alert(link);
-        window.location.href = link;
-      }
-      else {
-        window.open(link, "_blank");
-      }
+      window.open(link, "_blank");
     }
   };
 

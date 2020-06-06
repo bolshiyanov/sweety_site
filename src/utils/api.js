@@ -84,6 +84,10 @@ const API = {
         new RegExp('<script type="text/javascript">window\._sharedData = (.*);</script>')
       )[1]);
 
+      if (!json.entry_data.ProfilePage) {
+        return {};
+      }
+
       const user = json.entry_data
         .ProfilePage[0]
         .graphql
