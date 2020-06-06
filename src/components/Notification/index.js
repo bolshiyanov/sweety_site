@@ -16,10 +16,14 @@ const Notification = ({ profile }) => {
   const { supported, isInstalled } = useReactPWAInstall();
   const [cookies, setCookie] = useCookies();
   const appClosed = cookies[`${profile}_appclosed`];
-  const [showNotification, setShowNotification] = useState(supported() && !isInstalled());
+  const [showNotification, setShowNotification] = useState(true);
 
   const closeNotification = () => {
-    alert(appClosed);
+    alert({
+      supported: supported(),
+      isInstalled: isInstalled(),
+      appClosed
+    });
     setCookie(`${profile}_appclosed`, true, { path: '/' });
     setShowNotification(false);
   };
@@ -34,10 +38,8 @@ const Notification = ({ profile }) => {
       >
         <Icon type="timesCircle" />
       </Button>
-      <React.Fragment>
-        <PwaInstall profile={profile} />
-        <PwaInstallIOs profile={profile} />
-      </React.Fragment>
+      <PwaInstall profile={profile} />
+      <PwaInstallIOs profile={profile} />
     </div>
   );
 };
