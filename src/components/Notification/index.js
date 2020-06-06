@@ -14,7 +14,7 @@ import './index.scss';
 
 const Notification = ({ profile }) => {
   const { supported, isInstalled } = useReactPWAInstall();
-  const [cookies, setCookie] = useCookies();
+  const [cookies, setCookie, removeCookie] = useCookies();
   const appClosed = cookies[`${profile}_appclosed`];
   const [showNotification, setShowNotification] = useState(true);
 
@@ -25,6 +25,7 @@ const Notification = ({ profile }) => {
       appClosed
     }));
     setCookie(`${profile}_appclosed`, true, { path: '/' });
+    removeCookie(`${profile}_appclosed`, { path: '/' });
     setShowNotification(false);
   };
 
