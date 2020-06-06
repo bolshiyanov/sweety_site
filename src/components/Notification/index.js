@@ -21,7 +21,7 @@ const Notification = ({ profile }) => {
 
   useEffect(() => {
     setShowNotification(supported() && !isInstalled() && !appClosed);
-  });
+  }, []);
 
   const closeNotification = () => {
     setCookie(`${profile}_appclosed`, "1", { path: '/' });
