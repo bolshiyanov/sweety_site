@@ -4,8 +4,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { useReactPWAInstall } from "react-pwa-install";
 
-import { getCookieDomain } from 'utils/api';
-
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 
@@ -21,7 +19,7 @@ const Notification = ({ profile }) => {
   const [showNotification, setShowNotification] = useState(supported() && !isInstalled() && !appClosed);
 
   const closeNotification = () => {
-    setCookie(`${profile}_appclosed`, true, { path: '/', domain: getCookieDomain() });
+    setCookie(`${profile}_appclosed`, true, { path: '/' });
     setShowNotification(false);
   };
 
