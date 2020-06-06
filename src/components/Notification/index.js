@@ -15,17 +15,12 @@ import './index.scss';
 const Notification = ({ profile }) => {
   const { supported, isInstalled } = useReactPWAInstall();
   const [cookies, setCookie, removeCookie] = useCookies();
-  const appClosed = cookies[`${profile}_appclosed`];
-  const [showNotification, setShowNotification] = useState(true);
+  const appClosedCookie = cookies[`${profile}_appclosed`];
+  const appClosed = !!appClosedCookie && appClosedCookie === "1";
+  const [showNotification, setShowNotification] = useState(supported() && !isInstalled() && !appClosed);
 
   const closeNotification = () => {
-    alert(JSON.stringify({
-      supported: supported(),
-      isInstalled: isInstalled(),
-      appClosed
-    }));
-    setCookie(`${profile}_appclosed`, true, { path: '/' });
-    removeCookie(`${profile}_appclosed`, { path: '/' });
+    setCookie(`${profile}_appclosed`, "1", { path: '/' });
     setShowNotification(false);
   };
 
