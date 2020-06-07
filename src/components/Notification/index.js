@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -14,7 +14,7 @@ import './index.scss';
 
 const Notification = ({ profile }) => {
   const { supported, isInstalled } = useReactPWAInstall();
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const [cookies, setCookie] = useCookies();
   const appClosedCookie = cookies[`${profile}_appclosed`];
   const appClosed = !!appClosedCookie && appClosedCookie === "1";
   const [showNotification, setShowNotification] = useState(true);
@@ -44,6 +44,7 @@ const Notification = ({ profile }) => {
       <PwaInstallIOs profile={profile} />
     </div>}
 </React.Fragment>);
+};
 
 Notification.propTypes = {
   message: PropTypes.string,
