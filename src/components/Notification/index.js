@@ -18,30 +18,19 @@ const Notification = ({ profile }) => {
   const appClosedCookie = cookies[`${profile}_appclosed`];
   const appClosed = !!appClosedCookie && appClosedCookie === "1";
   const [showNotification, setShowNotification] = useState(true);
-  const [showNotification2, setShowNotification2] = useState(true);
-
-  useEffect(() => {
-    setShowNotification2(supported() && !isInstalled());
-  }, []);
 
   const closeNotification = () => {
-    alert(JSON.stringify({
-      supported: supported(),
-      isInstalled: isInstalled(),
-      showNotification2,
-      cookie: cookies[`${profile}_appclosed`]
-    }));
     var date = new Date();
     date.setDate(date.getDate() + 14);
     setCookie(`${profile}_appclosed`, "1", { 
       path: '/',
       expires: date
     });
-    removeCookie(`${profile}_appclosed`, { path: '/' });
     setShowNotification(false);
   };
 
-  return (
+  return (<React.Fragment>
+    {supported() && !isInstalled() && !appClosed &&
     <div className={classnames(['notification', { hidden: !showNotification }])}>
       <Button
         noStyled
@@ -53,9 +42,8 @@ const Notification = ({ profile }) => {
       </Button>
       <PwaInstall profile={profile} />
       <PwaInstallIOs profile={profile} />
-    </div>
-  );
-};
+    </div>}
+</React.Fragment>);
 
 Notification.propTypes = {
   message: PropTypes.string,
