@@ -1,5 +1,5 @@
 import React from 'react';
-import { useReactPWAInstall } from "react-pwa-install";
+import { useReactPWAInstall } from "./component";
 import Button from 'components/common/Button';
 import './index.scss';
 
