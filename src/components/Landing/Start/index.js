@@ -23,7 +23,7 @@ const Start = () => {
 
   const handleChangeInstagram = useCallback((value) => {
     setInstagram(value);
-  }, [setInstagram]);
+  }, [setInstagram]);  
 
   const handleChangeYoutube = useCallback((value) => {
     setYoutube(value);
@@ -151,7 +151,7 @@ const Start = () => {
       >
         {!starting ? 'НАЧАТЬ' : 'Собираем проект...'} {counter}
       </Button>
-      {lastId && <div className="start__text">
+      {!lastId && <div className="start__text">
         <a href="#" onClick={handleContinue}>Продолжить последнее</a>
       </div>}
     </div>

@@ -19,7 +19,7 @@
     margin-top: 6px;
 
     &__starting {
-      background-color: rgba(30, 144, 255, .1);
+      background-color: rgba(30, 144, 255, .1);  
       color: #000;
     }
   }
@@ -31,6 +31,12 @@
 
   &__text {
     margin-top: 12px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 0px 12px 4px;
+    border-radius: 5px;
+    font-weight: 600;
+    a {
+      text-decoration: none;
+    }
   }
 }
