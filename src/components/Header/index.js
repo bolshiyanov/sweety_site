@@ -18,6 +18,7 @@ const Header = ({ avatar, name, className, profile }) => {
   const [recoverSending, setRecoverSending] = useState(false);
   const [lastDate, setLastDate] = useState(null);
   const [directUrl, setDirectUrl] = useState(null);
+  const { active } = useSelector((state) => state.config.account);
 
   var inviteId = cookies[profile];
   if (inviteId === "undefined") {
@@ -56,6 +57,9 @@ const Header = ({ avatar, name, className, profile }) => {
     });
   };
 
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
+    window.navigator.isStandalone || document.referrer.includes('android-app://');
+
   return (
     <React.Fragment>
       <header className={className}>
@@ -63,10 +67,11 @@ const Header = ({ avatar, name, className, profile }) => {
         <span className="user-name">{name}</span>
         <span className="flex-delimiter" />
         
+        {!active && !isStandalone &&
         <Button onClick={handleClick} isInline className={classnames["pulse2", "tooltip"]}>
           <Icon type="edit" />
           {inviteId &&<span class="tooltip__text">Только вы можете редактировать эту страницу</span>}
-        </Button>
+        </Button>}
       </header>
       <Slider
         opened={editOpened}
