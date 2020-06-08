@@ -7,6 +7,12 @@ header {
   
   .avatar {
     margin-right: 8px;
+    width: 50px;
+    height: 50px;
+    border-radius: 10px;
+  }
+  .user-name {
+    text-transform: uppercase ;
   }
 }
 

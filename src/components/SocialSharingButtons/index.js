@@ -74,7 +74,7 @@ import './index.scss';
           </div>}
         
         <div className="SocialSharingButtons_box_items" >
-          <div className="SocialSharingButtons_title">Поделитесь моим приложением</div>
+          <div className="SocialSharingButtons_title">Поделись моим приложением</div>
           <div className="SocialSharingButtons_container">
 
 
