@@ -12,7 +12,7 @@ import Loading from 'components/common/Loading';
 import Header from 'components/Header';
 import Start from 'components/Landing/Start';
 
-import referrerAvatar from 'images/referrer_avatar.jpg';
+import referrerAvatar from 'images/sweetylogo.png';
 import backgroundImage1 from 'images/main-background1.jpg';
 import backgroundImage2 from 'images/main-background2.jpg';
 import backgroundImage3 from 'images/main-background3.jpg';

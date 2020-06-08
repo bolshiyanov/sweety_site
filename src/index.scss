@@ -73,6 +73,7 @@ div {
     color: #fff;
     background: transparent;
     position: absolute;
+    margin-top: -15px;
     top: 0;
     left: 0;
     z-index: 3;
@@ -92,7 +93,7 @@ div {
     &__container1 {
       position: absolute;
       z-index: 2;
-      height: 93%;
+      height: 90%;
       bottom: 0;
       left: 0;
       width: 100%;
