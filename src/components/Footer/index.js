@@ -10,12 +10,10 @@ const Footer = () => {
   const fontStyles = currentTheme.getFontColorStyles();
   return (
     <footer>
-      {!active && <React.Fragment>
-        <a href={url} className="textfooter">Создай страницу как у меня бесплатно</a>
-        <br />
-        <br />
-        <a href={url} className="textlogofooter">SWEETY_2020</a>
-      </React.Fragment>}
+      {!active && <a href={url} className="textfooter">Создай страницу как у меня бесплатно</a>}
+      <br />
+      <br />
+      {!active && <a href={url} className="textlogofooter">SWEETY_2020</a>}
     </footer>
   );
 };
