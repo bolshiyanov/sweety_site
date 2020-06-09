@@ -1,12 +1,12 @@
 .slider-container {
   display: block;
-  width: 95%;
+  width: 100%;
   max-width: 600px;
   height: 100vh;
   position: fixed;
   padding-top: 43vh;
   top: 0;
-  left: 49%;
+  left: 50%;
   transition: .2s;
   transform: translate(-50%, 100%);
   overflow-y: scroll;
@@ -57,7 +57,7 @@
   .slider {
     position: relative;
     background-color: #fff;
-    z-index: 2;
+    z-index: 11;
     width: 100%;
     border-radius: 24px;
     box-shadow: -2px -1px 10px rgba(0, 0, 0, 0.3);
@@ -85,7 +85,7 @@
         background-color: red;
         border-radius: 20px;
         color: #fff;
-        z-index: 2;
+        z-index: 11;
         
         svg {
           font-size: inherit;
@@ -98,7 +98,7 @@
         font-size: 30px;
         color: green;
         cursor: pointer;
-        z-index: 2;
+        z-index: 12;
         
         svg {
           font-size: inherit;

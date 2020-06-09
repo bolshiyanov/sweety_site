@@ -135,12 +135,14 @@
   display: block;
   max-width: 100%;
   margin-top: 24px;
+  z-index: 13;
   
 
   .preview-slider-box {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+    z-index: 14;
       
     .picters-item {
       display: inline-block;
@@ -150,6 +152,7 @@
       margin: 5px;
       overflow: hidden;
       box-sizing: content-box;
+      z-index: 15;
     }
   }
 }
