@@ -16,7 +16,7 @@ export default function InstallDialog(props) {
           )}
           {!!props.features && (
             <Box>
-              <Typography variant="subtitle1">Фишки:</Typography>
+              <Typography variant="subtitle1"></Typography>
               <Typography variant="body2" component="div">
                 {props.features}
               </Typography>

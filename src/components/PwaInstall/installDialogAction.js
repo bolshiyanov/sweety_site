@@ -22,11 +22,11 @@ export default function InstallDialogAction(props) {
               <ul>
                 <li>
                   <span style={{ display: "flex", alignItems: "center" }}>
-                    Перейдите в Safary, нажмите на кнопку поделиться:
+                    Перейди в Safary, нажми на кнопку поделиться:
                     <IOSShareIcon />
                   </span>
                 </li>
-                <li>затем найдите и нажмите на кнопку 'Добавить на главный экран'</li>
+                <li>Затем найдите и нажмите на кнопку [+] 'Добавить на главный экран'</li>
               </ul>
             </Box>
             <Box width="100%" textAlign="right">
@@ -41,11 +41,11 @@ export default function InstallDialogAction(props) {
               <ul>
                 <li>
                   <span style={{ display: "flex", alignItems: "center" }}>
-                    Нажмите на эту иконку в адресной строке:
+                    Нажми на эту иконку в адресной строке:
                     <FireFoxA2HSIcon />
                   </span>
                 </li>
-                <li>затем нажмите '+Добавить на главный экран'</li>
+                <li>Затем нажми '+Добавить на главный экран'</li>
               </ul>
             </Box>
             <Box width="100%" textAlign="right">
@@ -60,13 +60,13 @@ export default function InstallDialogAction(props) {
               <ul>
                 <li>
                   <span style={{ display: "flex", alignItems: "center" }}>
-                    Нажмите на кнопку меню:
+                    Нажми на кнопку меню:
                     <OperaMenuIcon />
                   </span>
                 </li>
                 <li>
                   <span style={{ display: "flex", alignItems: "center" }}>
-                    затем нажмите &nbsp;'
+                    Затем нажми &nbsp;'
                     <OperaA2HSIcon />
                     Главный экран'
                   </span>
@@ -80,7 +80,7 @@ export default function InstallDialogAction(props) {
         )}
         {props.platform === platforms.OTHER && (
           <Box width="100%" display="flex" flexDirection="column">
-            <Box>К сожеланию, установка не поддерживается в вашем браузере. Открйте это приложение в браузере Google Chrome</Box>
+            <Box>К сожеланию, установка не поддерживается в вашем браузере. Открой это приложение в браузере Google Chrome</Box>
             <Box width="100%" textAlign="right">
               <Button onClick={props.onClose}>Ok</Button>
             </Box>
