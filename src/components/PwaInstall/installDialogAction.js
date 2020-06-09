@@ -22,7 +22,7 @@ export default function InstallDialogAction(props) {
               <ul>
                 <li>
                   <span style={{ display: "flex", alignItems: "center" }}>
-                    Нажмите на кнопку поделиться:
+                    Перейдите в Safary, нажмите на кнопку поделиться:
                     <IOSShareIcon />
                   </span>
                 </li>
@@ -80,7 +80,7 @@ export default function InstallDialogAction(props) {
         )}
         {props.platform === platforms.OTHER && (
           <Box width="100%" display="flex" flexDirection="column">
-            <Box>К сожеланию, установка не поддерживается в вашем браузере.</Box>
+            <Box>К сожеланию, установка не поддерживается в вашем браузере. Открйте это приложение в браузере Google Chrome</Box>
             <Box width="100%" textAlign="right">
               <Button onClick={props.onClose}>Ok</Button>
             </Box>
