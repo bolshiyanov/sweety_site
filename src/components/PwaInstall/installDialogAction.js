@@ -22,11 +22,11 @@ export default function InstallDialogAction(props) {
               <ul>
                 <li>
                   <span style={{ display: "flex", alignItems: "center" }}>
-                    Перейди в Safary, нажми на кнопку поделиться:
+                    Перейди в Safari, нажми на кнопку поделиться:
                     <IOSShareIcon />
                   </span>
                 </li>
-                <li>Затем найдите и нажмите на кнопку [+] 'Добавить на главный экран'</li>
+                <li>Затем найди и нажми на кнопку [+] 'Добавить на главный экран'</li>
               </ul>
             </Box>
             <Box width="100%" textAlign="right">
