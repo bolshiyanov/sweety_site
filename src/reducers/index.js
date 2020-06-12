@@ -84,7 +84,6 @@ const reducer = handleActions({
       ...state.instagramFeeds
     };
     store[title] = JSON.stringify(data);
-    console.log(store);
     return { 
       ...state,
       instagramFeeds: store
