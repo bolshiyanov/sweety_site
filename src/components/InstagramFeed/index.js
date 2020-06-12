@@ -29,7 +29,7 @@ const InstagramFeed = ({ account, title, isPicker, scrollPosition }) => {
     }
   }, []);
 
-  if (!instagramFeed)
+  if (!instagramFeed || (instagramFeed?.items?.length ?? 0) === 0)
     return null;
 
   const getPickerPreviewStyles = (image) => ({
@@ -42,7 +42,6 @@ const InstagramFeed = ({ account, title, isPicker, scrollPosition }) => {
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
   });
-   
   
   console.log(title + ": " + JSON.stringify(instagramFeed?.items));
   var pickerItems = instagramFeed?.items?.map((item) => ({
