@@ -95,13 +95,13 @@ const API = {
       const media = user.edge_owner_to_timeline_media;
       let edges = media.edges.splice(0, 8);
 
-      const photos = JSON.parse(JSON.stringify(edges.map(({ node }) => ({
+      const photos = edges.map(({ node }) => ({
         code: node.shortcode,
         url: `https://instagram.com/p/${node.shortcode}/`,
         thumbnailUrl: node.thumbnail_src,
         displayUrl: node.display_url,
         caption: node.edge_media_to_caption.edges[0]?.node?.text,
-      }))));
+      }));
 
       return {
         feed: {
