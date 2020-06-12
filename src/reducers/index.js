@@ -17,6 +17,7 @@ const initialState = {
   error: null,
   data: null,
   themes: [defaultTheme],
+  instagramFeeds: {},
   currentTheme: defaultTheme,
   backgrounds: [],
   buttonColors: [],
@@ -83,6 +84,7 @@ const reducer = handleActions({
       ...state.instagramFeeds
     };
     store[title] = data;
+    console.log(store);
     return { 
       ...state,
       instagramFeeds: store
