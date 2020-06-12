@@ -93,15 +93,19 @@ const API = {
         .graphql
         .user;
       const media = user.edge_owner_to_timeline_media;
-      const edges = media.edges.splice(0, 8);
+      let edges = media.edges.splice(0, 8);
 
-      //if (edges.length === 0 && media.count > 0)
-      {
-        const edgesContent = content.substring(content.indexOf('"edge_owner_to_timeline_media"') +
-          '"edge_owner_to_timeline_media"'.length + 1,
-          content.indexOf(',"edge_saved_media"'));
-        console.log(edgesContent);
-        console.log(JSON.parse(edgesContent));
+      if (edges.length === 0) {
+        try {
+          const mediaContent = content.substring(content.indexOf('"edge_owner_to_timeline_media"') +
+            '"edge_owner_to_timeline_media"'.length + 1,
+            content.indexOf(',"edge_saved_media"'));
+          const mediaJson = JSON.parse(mediaContent);
+          edges = mediaJson.edges.splice(0, 8);
+        }
+        catch (err) {
+          console.log(err);
+        }
       }
 
       const photos = edges.map(({ node }) => ({
