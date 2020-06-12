@@ -80,10 +80,11 @@ const API = {
         return {};
       }
 
-      const json = JSON.parse(response.text.match(
+      const content = response.text.match(
         new RegExp('<script type="text/javascript">window\._sharedData = (.*);</script>')
-      )[1]);
-console.log(json);
+      )[1];
+      console.log(content);
+      const json = JSON.parse(content);
       if (!json.entry_data.ProfilePage) {
         return {};
       }
