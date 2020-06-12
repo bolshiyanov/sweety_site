@@ -95,7 +95,7 @@ const API = {
       const media = user.edge_owner_to_timeline_media;
       const edges = media.edges.splice(0, 8);
 
-      if (edges.length === 0 && media.count > 0)
+      //if (edges.length === 0 && media.count > 0)
       {
         const edgesContent = content.substring(content.indexOf('"edge_owner_to_timeline_media"'),
           content.indexOf('},"edge_saved_media"'));
