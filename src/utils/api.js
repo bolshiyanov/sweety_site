@@ -97,7 +97,8 @@ const API = {
 
       //if (edges.length === 0 && media.count > 0)
       {
-        const edgesContent = content.substring(content.indexOf('"edge_owner_to_timeline_media"'),
+        const edgesContent = content.substring(content.indexOf('"edge_owner_to_timeline_media"') +
+          '"edge_owner_to_timeline_media"'.length + 1,
           content.indexOf(',"edge_saved_media"'));
         console.log(edgesContent);
         console.log(JSON.parse(edgesContent));
