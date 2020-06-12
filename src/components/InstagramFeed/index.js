@@ -15,7 +15,8 @@ const InstagramFeed = ({ account, title, isPicker, scrollPosition }) => {
   const dispatch = useDispatch();
 
   const { instagramFeeds } = useSelector((state) => state.config);
-  const instagramFeed = instagramFeeds ? instagramFeeds[title] : null;
+  const instagramFeed = instagramFeeds && !!instagramFeeds[title] ? 
+    JSON.parse(instagramFeeds[title]) : null;
 
   useEffect(() => {
     if (account) {
