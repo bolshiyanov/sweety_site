@@ -43,7 +43,6 @@ const InstagramFeed = ({ account, title, isPicker, scrollPosition }) => {
     backgroundRepeat: 'no-repeat',
   });
   
-  console.log(title + ": " + JSON.stringify(instagramFeed?.items));
   var pickerItems = instagramFeed?.items?.map((item) => ({
     id: item.code,
     component: (

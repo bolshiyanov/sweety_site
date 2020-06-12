@@ -103,7 +103,7 @@ const API = {
         caption: node.edge_media_to_caption.edges[0]?.node?.text,
       }));
 
-      return {
+      return JSON.parse(JSON.stringify({
         feed: {
           title: user?.username,
           link: url,
@@ -115,7 +115,7 @@ const API = {
           externalUrl: user?.external_url,
         },
         items: photos
-      };
+      }));
     });
   },
 
