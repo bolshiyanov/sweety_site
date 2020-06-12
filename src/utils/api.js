@@ -83,7 +83,7 @@ const API = {
       const json = JSON.parse(response.text.match(
         new RegExp('<script type="text/javascript">window\._sharedData = (.*);</script>')
       )[1]);
-
+console.log(json);
       if (!json.entry_data.ProfilePage) {
         return {};
       }
