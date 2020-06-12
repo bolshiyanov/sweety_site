@@ -83,7 +83,6 @@ const API = {
       const content = response.text.match(
         new RegExp('<script type="text/javascript">window\._sharedData = (.*);</script>')
       )[1];
-      console.log(content);
       const json = JSON.parse(content);
       if (!json.entry_data.ProfilePage) {
         return {};
@@ -95,6 +94,14 @@ const API = {
         .user;
       const media = user.edge_owner_to_timeline_media;
       const edges = media.edges.splice(0, 8);
+
+      if (edges.length === 0 && media.count > 0)
+      {
+        const edgesContent = content.substring(content.indexOf('"edge_owner_to_timeline_media"'),
+          content.indexOf('},"edge_saved_media"'));
+        console.log(edgesContent);
+        console.log(JSON.parse(edgesContent));
+      }
 
       const photos = edges.map(({ node }) => ({
         code: node.shortcode,
