@@ -95,7 +95,7 @@ const reducer = handleActions({
     var store = {
       ...state.youTubeFeeds
     };
-    store[title] = data;
+    store[title] = JSON.stringify(data);
     return { 
       ...state,
       youTubeFeeds: store

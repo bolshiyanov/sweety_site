@@ -14,7 +14,8 @@ const YouTubeFeed = ({ account, title, onClick, scrollPosition }) => {
   const dispatch = useDispatch();
 
   const { youTubeFeeds } = useSelector((state) => state.config);
-  const youTubeFeed = youTubeFeeds ? youTubeFeeds[title] : null;
+  const youTubeFeed = youTubeFeeds && !!youTubeFeeds[title] ? 
+    JSON.parse(youTubeFeeds[title]) : null;
 
   useEffect(() => {
     if (account) {
