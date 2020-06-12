@@ -20,8 +20,7 @@ const InstagramFeed = ({ account, title, isPicker, scrollPosition }) => {
 
   useEffect(() => {
     if (account) {
-      API.getInstagramFeed(account.indexOf('instagram.com') > -1 ? account :
-          `https://www.instagram.com/${account}/`)
+      API.getInstagramFeed(account)
         .then((data) => {
           if ((data?.items?.length ?? 0) > 0) {
             dispatch({ type: SET_INSTAGRAM_FEED, title, data }); 

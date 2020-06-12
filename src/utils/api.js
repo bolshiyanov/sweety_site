@@ -72,7 +72,8 @@ const API = {
   getInstagramFeed: (account) => {
     const url = 
       account.indexOf("@") === 0 ? `https://instagram.com/${account.substring(1)}/` :
-      account.indexOf("http") === -1 ? `https://instagram.com/${account}/` : account;
+      account.indexOf("http") !== 0 || account.indexOf('instagram.com') === -1 ? 
+      `https://instagram.com/${account}/` : account;
     return superagent.get(url)
     .catch(handleError)
     .then((response) => {
