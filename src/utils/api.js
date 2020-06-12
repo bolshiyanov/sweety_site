@@ -95,9 +95,11 @@ const API = {
       const media = user.edge_owner_to_timeline_media;
       let edges = media.edges.splice(0, 8);
 
+      console.log(edges.length);
       if (edges.length === 0) {
         try {
-          const mediaContent = content.substring(content.indexOf('"edge_owner_to_timeline_media"') +
+          const mediaContent = content.substring(
+            content.indexOf('"edge_owner_to_timeline_media"') +
             '"edge_owner_to_timeline_media"'.length + 1,
             content.indexOf(',"edge_saved_media"'));
           const mediaJson = JSON.parse(mediaContent);
@@ -115,6 +117,7 @@ const API = {
         displayUrl: node.display_url,
         caption: node.edge_media_to_caption.edges[0]?.node?.text,
       }));
+      console.log(photos.length);
 
       return {
         feed: {
