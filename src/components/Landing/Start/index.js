@@ -51,7 +51,10 @@ const Start = () => {
     API.getInstagramFeed(instagram).then((instaProfile) => {
       if (!instaProfile?.feed?.title) {
         setInstagramInvalid("Instagram не найден");
-      }
+
+        setCounter(null);
+        setStarting(false);
+    }
       else {
         API.register({ 
           instagram, 
