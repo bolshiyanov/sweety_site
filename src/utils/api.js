@@ -45,8 +45,14 @@ const responseBody = (res) => {
 const handleError = (e) => {
   console.error(SOMETHING_WENT_WRONG, e);
 
-  var errors = !e.response?.text ? null : JSON.parse(e.response.text)?.errors;
-  return !errors ? null : { errors };
+  try {
+    var errors = !e.response?.text ? null : JSON.parse(e.response.text)?.errors;
+    return !errors ? null : { errors };
+  }
+  catch (err) {
+    console.log(err);
+    return null;
+  }
 };
 
 const requests = {
@@ -84,39 +90,46 @@ const API = {
       const content = response.text.match(
         new RegExp('<script type="text/javascript">window\._sharedData = (.*);</script>')
       )[1];
-      const json = JSON.parse(content);
-      if (!json.entry_data.ProfilePage) {
+      try
+      {
+        const json = JSON.parse(content);
+        if (!json.entry_data.ProfilePage) {
+          return {};
+        }
+
+        const user = json.entry_data
+          .ProfilePage[0]
+          .graphql
+          .user;
+        const media = user.edge_owner_to_timeline_media;
+        let edges = media.edges.splice(0, 8);
+
+        const photos = edges.map(({ node }) => ({
+          code: node.shortcode,
+          url: `https://instagram.com/p/${node.shortcode}/`,
+          thumbnailUrl: node.thumbnail_src,
+          displayUrl: node.display_url,
+          caption: node.edge_media_to_caption.edges[0]?.node?.text,
+        }));
+
+        return JSON.parse(JSON.stringify({
+          feed: {
+            title: user?.username,
+            link: url,
+            image: user?.profile_pic_url_hd,
+
+            biography: user?.biography,
+            fullName: user?.full_name,
+            postCount: media?.count,
+            externalUrl: user?.external_url,
+          },
+          items: photos
+        }));
+      }
+      catch (err) {
+        console.log(err);
         return {};
       }
-
-      const user = json.entry_data
-        .ProfilePage[0]
-        .graphql
-        .user;
-      const media = user.edge_owner_to_timeline_media;
-      let edges = media.edges.splice(0, 8);
-
-      const photos = edges.map(({ node }) => ({
-        code: node.shortcode,
-        url: `https://instagram.com/p/${node.shortcode}/`,
-        thumbnailUrl: node.thumbnail_src,
-        displayUrl: node.display_url,
-        caption: node.edge_media_to_caption.edges[0]?.node?.text,
-      }));
-
-      return JSON.parse(JSON.stringify({
-        feed: {
-          title: user?.username,
-          link: url,
-          image: user?.profile_pic_url_hd,
-
-          biography: user?.biography,
-          fullName: user?.full_name,
-          postCount: media?.count,
-          externalUrl: user?.external_url,
-        },
-        items: photos
-      }));
     });
   },
 

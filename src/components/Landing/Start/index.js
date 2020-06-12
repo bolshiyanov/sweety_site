@@ -50,6 +50,7 @@ const Start = () => {
     setCounter(30);
     API.getInstagramFeed(instagram).then((instaProfile) => {
       if (!instaProfile?.feed?.title) {
+        console.log('not found');
         setInstagramInvalid("Instagram не найден");
 
         setCounter(null);
