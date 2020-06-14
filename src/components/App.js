@@ -57,7 +57,7 @@ const App = () => {
   const styles = {
     banner: {
       fontFamily: 'Source Sans Pro',
-      height: 100,
+      height: 110,
       background: 'rgba(52, 64, 81, 0.88) url(/cookie.png) 20px 50% no-repeat',
       backgroundSize: '30px 30px',
       backgroundColor: '',
