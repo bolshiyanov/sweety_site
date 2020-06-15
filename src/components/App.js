@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams } from 'react-router-dom';
+import CookieBanner from 'react-cookie-banner';
 
 import Loading from 'components/common/Loading';
 
@@ -53,6 +54,43 @@ const App = () => {
   }
 
   const { settings = {} } = data;
+  const styles = {
+    banner: {
+      fontFamily: 'Source Sans Pro',
+      height: 110,
+      background: 'rgba(52, 64, 81, 0.88) url(/cookie.png) 20px 50% no-repeat',
+      backgroundSize: '30px 30px',
+      backgroundColor: '',
+      fontSize: '15px',
+      fontWeight: 600
+    },
+    button: {
+      border: '1px solid white',
+      borderRadius: 4,
+      height: 32,
+      lineHeight: '32px',
+      background: 'transparent',
+      color: 'white',
+      fontSize: '12px',
+      fontWeight: 600,
+      opacity: 1,
+      right: 20,
+      marginTop: -18,
+
+    },
+    message: {
+      display: 'block',
+      padding: '9px 67px',
+      lineHeight: 1.3,
+      textAlign: 'left',
+      marginRight: 40,
+      color: 'white'
+    },
+    link: {
+      textDecoration: 'none',
+      fontWeight: 'bold'
+    }
+  };
 
   const backgroundStyles = currentTheme.getBackgroundStyles();
   return (
@@ -109,6 +147,13 @@ const App = () => {
           <PwaInstallIOs profile={profile} />
           <Social />
           <Footer />
+          <div  className="cookie-box" >
+          <CookieBanner styles={styles} 
+          message= 'Мы используем Cookies для Goole analitics. Мы не собираем персональные данные' 
+          buttonMessage='Закрыть'
+          link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
+           />
+        </div>
         </div>
         </div>
       </div>

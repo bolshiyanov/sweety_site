@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Headerlanding from 'components/Headerlanding';
 import { Helmet } from 'react-helmet';
 
+import CookieBanner from 'react-cookie-banner';
 
 import Button from 'components/common/Button';
 import Slider from 'components/common/Slider';
@@ -64,6 +65,43 @@ const Landing = () => {
     }
   }, [swiper]);
 
+  const styles = {
+    banner: {
+      fontFamily: 'Source Sans Pro',
+      height: 110,
+      background: 'rgba(52, 64, 81, 0.95) url(/cookie.png) 20px 50% no-repeat',
+      backgroundSize: '30px 30px',
+      backgroundColor: '',
+      fontSize: '15px',
+      fontWeight: 600
+    },
+    button: {
+      border: '1px solid white',
+      borderRadius: 4,
+      height: 32,
+      lineHeight: '32px',
+      background: 'transparent',
+      color: 'white',
+      fontSize: '12px',
+      fontWeight: 600,
+      opacity: 1,
+      right: 20,
+      marginTop: -18,
+
+    },
+    message: {
+      display: 'block',
+      padding: '9px 67px',
+      lineHeight: 1.3,
+      textAlign: 'left',
+      marginRight: 40,
+      color: 'white'
+    },
+    link: {
+      textDecoration: 'none',
+      fontWeight: 'bold'
+    }
+  };
 
   return (
     <React.Fragment>
@@ -155,6 +193,14 @@ const Landing = () => {
               <div className={classnames({ 'main-page__pages__selected': currentPage === 2 })} />
               <div className={classnames({ 'main-page__pages__selected': currentPage === 3 })} />
             </div>
+            
+            <div  className="cookie-box" >
+          <CookieBanner styles={styles} 
+          message= 'Мы используем Cookies для Goole analitics. Мы не собираем персональные данные' 
+          buttonMessage='Закрыть'
+          link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
+           /> 
+        </div>
             <Start />
             </div>
         )}
