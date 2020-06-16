@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import PwaInstallPopupIOS from 'react-pwa-install-ios';
-import Icon from 'components/common/Icon';
+
 
 import './index.scss';
 
@@ -14,7 +14,6 @@ const PwaInstallIOs = ({profile}) => {
         </div>
   <div className="pwa-install-popup-ios-content__right">Установите себе мое приложение:<br/> 
   Открой эту страницу в браузере Safari,<br/> Затем нажми поделиться [&uarr;],<br/>
-            <br/>
             Затем жми [+] - 'На экран "Домой"'
         </div>
       </div>
