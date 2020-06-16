@@ -35,8 +35,6 @@ const extractName = () => {
 };
 
 export function register(config) {
-  const name = extractName();
-
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
@@ -52,7 +50,7 @@ export function register(config) {
 
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
-        checkValidServiceWorker(swUrl, config, name);
+        checkValidServiceWorker(swUrl, config);
 
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
@@ -64,15 +62,15 @@ export function register(config) {
         });
       } else {
         // Is not localhost. Just register service worker
-        registerValidSW(swUrl, config, name);
+        registerValidSW(swUrl, config);
       }
     });
   }
 }
 
-function registerValidSW(swUrl, config, name) {
+function registerValidSW(swUrl, config) {
   navigator.serviceWorker
-    .register(swUrl, !!name ? {scope: `./${name}` } : {})
+    .register(swUrl)
     .then(registration => {
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
@@ -114,7 +112,7 @@ function registerValidSW(swUrl, config, name) {
     });
 }
 
-function checkValidServiceWorker(swUrl, config, name) {
+function checkValidServiceWorker(swUrl, config) {
   // Check if the service worker can be found. If it can't reload the page.
   fetch(swUrl, {
     headers: { 'Service-Worker': 'script' },
@@ -134,7 +132,7 @@ function checkValidServiceWorker(swUrl, config, name) {
         });
       } else {
         // Service worker found. Proceed as normal.
-        registerValidSW(swUrl, config, name);
+        registerValidSW(swUrl, config);
       }
     })
     .catch(() => {
