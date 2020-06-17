@@ -64,7 +64,7 @@
 
   &__text {
     .block__title {
-      z-index: 2;
+      z-index: 0;
       position: relative;
       text-align: center;
       font-size: 24px;
@@ -99,7 +99,7 @@
         position: absolute;
         left: 0;
         top: 0;
-        z-index: 2;
+        z-index: 0;
       }
     }
   }

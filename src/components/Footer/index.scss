@@ -52,3 +52,19 @@ white-space: pre-line;
   overflow-wrap: anywhere;
   white-space: pre-line;
 }
+
+.footer-brends-box-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom:  25px;
+  margin: 20px 20% 0;
+}
+
+.footer-brends-box-items-icon-icon {
+    font-size: 58px;
+  }
+  
+.brends-items {
+  margin-bottom: 1px;
+} 
