@@ -61,7 +61,7 @@ const App = () => {
       background: 'rgba(52, 64, 81, 0.88) url(/cookie.png) 20px 50% no-repeat',
       backgroundSize: '30px 30px',
       backgroundColor: '',
-      fontSize: '15px',
+      fontSize: '14px',
       fontWeight: 600,
       zIndex: 30
     },
@@ -82,7 +82,7 @@ const App = () => {
     message: {
       display: 'block',
       padding: '9px 67px',
-      lineHeight: 1.3,
+      lineHeight: 1.2,
       textAlign: 'left',
       marginRight: 40,
       color: 'white'

@@ -2,6 +2,9 @@ import React from "react";
 import { DialogActions, Typography, Button, Box } from "@material-ui/core";
 import { platforms } from "./platforms";
 import { IOSShareIcon, FireFoxA2HSIcon, OperaMenuIcon, OperaA2HSIcon } from "./icons";
+import Icon from 'components/common/Icon';
+import { IonIcon } from '@ionic/react';
+import { shareOutline } from 'ionicons/icons';
 
 export default function InstallDialogAction(props) {
   return (
@@ -20,13 +23,9 @@ export default function InstallDialogAction(props) {
             <Box>
               <Typography variant="subtitle1">Для установки этого приложения:</Typography>
               <ul>
-                <li>
-                  <span style={{ display: "flex", alignItems: "center" }}>
-                    Перейди в Safari, нажми на кнопку поделиться:
-                    <IOSShareIcon />
-                  </span>
-                </li>
-                <li>Затем найди и нажми на кнопку [+] 'Добавить на главный экран'</li>
+                <li>Перейди в Safari Открой Safari <Icon className="icon-16" type="compass" /></li> 
+                <li>Затем нажми <IonIcon slot="start" icon={shareOutline } /></li>
+                <li>Затем жми <Icon className="icon-16" type="plusSquare" /> - На экран "Домой"</li>
               </ul>
             </Box>
             <Box width="100%" textAlign="right">
