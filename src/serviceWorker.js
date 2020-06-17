@@ -24,7 +24,7 @@ const isLocalhost = Boolean(
 const extractName = () => {
   var url = window.location.href.split('?')[0];
   if (url.slice(-1) === '/') {
-    url = url.substring(0, url.length - 2);
+    url = url.substring(0, url.length - 1);
   }
   if (url.substr(-window.location.host.length) !== window.location.host) {
     return url.slice(url.indexOf(window.location.host) + window.location.host.length + 1);
