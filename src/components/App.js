@@ -62,7 +62,8 @@ const App = () => {
       backgroundSize: '30px 30px',
       backgroundColor: '',
       fontSize: '15px',
-      fontWeight: 600
+      fontWeight: 600,
+      zIndex: 30
     },
     button: {
       border: '1px solid white',
