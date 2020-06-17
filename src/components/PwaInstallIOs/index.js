@@ -7,7 +7,7 @@ import './index.scss';
 
 const PwaInstallIOs = ({profile}) => {
   return (
-    <PwaInstallPopupIOS delay={10}>
+    <PwaInstallPopupIOS delay={60}>
       <div className="pwa-install-popup-ios-content">
         <div className="pwa-install-popup-ios-content__left">
             <img class="appIcon" src={`https://sweety.link/content/img/${profile}/logo152.png`}/>
