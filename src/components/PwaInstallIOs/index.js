@@ -8,7 +8,7 @@ import { shareOutline } from 'ionicons/icons';
 
 import './index.scss';
 
-const isSafari = () => (navigator.userAgent || navigator.vendor || navigator.opera).indexOf('safari/') > -2;
+const isSafari = () => (navigator.userAgent || navigator.vendor || navigator.opera).indexOf('safari/') > -1;
 
 const PwaInstallIOs = ({ profile }) => {
   return (
