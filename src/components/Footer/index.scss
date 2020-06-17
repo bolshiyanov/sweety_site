@@ -53,12 +53,20 @@ white-space: pre-line;
   white-space: pre-line;
 }
 
-.footer-brends-box-items {
+.footer-brends-box-active {
   display: flex;
   align-items: center;
   justify-content: space-around;
   margin-bottom:  25px;
-  margin: 20px 20% 0;
+  margin: -120px 20% 125px;
+}
+
+.footer-brends-box-no-active {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom:  25px;
+  margin: 1px 20% 125px;
 }
 
 .footer-brends-box-items-icon-icon {
@@ -66,5 +74,5 @@ white-space: pre-line;
   }
   
 .brends-items {
-  margin-bottom: 1px;
+  margin-bottom: 100px;
 } 

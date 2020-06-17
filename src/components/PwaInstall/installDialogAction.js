@@ -23,7 +23,7 @@ export default function InstallDialogAction(props) {
             <Box>
               <Typography variant="subtitle1">Для установки этого приложения:</Typography>
               <ul>
-                <li>Перейди в Safari Открой Safari <Icon className="icon-16" type="compass" /></li> 
+                <li>Открой в Safari <Icon className="icon-16" type="compass" /></li> 
                 <li>Затем нажми <IonIcon slot="start" icon={shareOutline } /></li>
                 <li>Затем жми <Icon className="icon-16" type="plusSquare" /> - На экран "Домой"</li>
               </ul>
