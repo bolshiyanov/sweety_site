@@ -128,13 +128,13 @@ const App = () => {
             avatar={data.avatar}
             profile={profile}
           />
-          <Notification
+          {/* <Notification
             link={data.url}
             message={settings.advanced}
             url={settings.advancedLink}
             buttonTitle={settings.advancedTitle}
             profile={profile}
-          />
+          /> */}
           
           <Stories data={data.stories} profile={profile} />
           <Title />

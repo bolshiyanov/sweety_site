@@ -85,20 +85,26 @@ const Block = ({
         style.backgroundImage = `URL(${image})`;
 
       block = (
-        <div
-          className={classnames([
-            'block',
-            'block__text',
-            { 'block__text__with-image': image },
-            { 'block__text__with-button': link },
-            { 'block__text__with-image__with-button': image && link },
-            className,
-            { hidden: !showBlock }
-          ])}
-          style={style}
-          onClick={onClick}
-        >
-          <div className="block__title">{text}</div>
+        <div className="box-block-text">
+          <div
+            className={classnames([
+              'block',
+              'block__text',
+              { 'block__text__with-image': image },
+              { 'block__text__with-button': link },
+              { 'block__text__with-image__with-button': image && link },
+              
+              className
+            ])}
+            style={style}
+            onClick={onClick}
+          >
+            {text && image && (
+              <div className="block-text-with-text"/>
+            )}
+
+            <div className="block__title">{text}</div>
+          </div>
         </div>
       );
 
@@ -121,9 +127,11 @@ const Block = ({
           onClick={onClick}
         >
           {image && (
-            <LazyLoadImage src={image} alt={text} scrollPosition={scrollPosition} />
+            <p className="block__title"><LazyLoadImage src={image} alt={text} scrollPosition={scrollPosition} />{text}</p>
             )}
-          <div className="block__title">{text}</div>
+           {!image && (
+            <div className="block-preview-without-image-with-button">{text}</div>
+          )}  
         </div>
       );
     }
