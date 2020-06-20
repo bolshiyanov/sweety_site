@@ -8,7 +8,7 @@ import { shareOutline } from 'ionicons/icons';
 
 import './index.scss';
 
-const isSafari = () => (navigator.userAgent || navigator.vendor || navigator.opera).indexOf('safari/') > -1;
+// const isSafari = () => (navigator.userAgent || navigator.vendor || navigator.opera).indexOf('safari/') > -2;
 
 const PwaInstallIOs = ({ profile }) => {
   return (
@@ -18,18 +18,11 @@ const PwaInstallIOs = ({ profile }) => {
           <img class="appIcon" src={`https://sweety.link/content/img/${profile}/logo152.png`} />
         </div>
         
-        {isSafari ? 
-        (<div className="pwa-install-popup-ios-content__right">Установите себе мое приложение:<br />
+        <div className="pwa-install-popup-ios-content__right">Установите себе мое приложение:<br />
         1) Открой Safari <Icon className="icon-16" type="compass" />,<br />
         2) Затем жми <IonIcon slot="start" icon={shareOutline} />;<br />
         3) Затем жми <Icon className="icon-16" type="plusSquare" /> - На экран "Домой"
-        </div>) 
-        :
-         (<div className="pwa-install-popup-ios-content__right">Установите себе мое приложение:<br />
-         1) Затем жми <IonIcon slot="start" icon={shareOutline} />;<br />
-         2) Затем жми <Icon className="icon-16" type="plusSquare" /> - На экран "Домой"
-     </div>)}
-        
+        </div>
       </div>
     </PwaInstallPopupIOS>);
 };

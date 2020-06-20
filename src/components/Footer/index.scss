@@ -20,7 +20,7 @@ footer {
   font-size: 8px;
   color: black;
   margin-bottom: 32px;
-  padding: 0 0 138px 0;
+  
 }
 
 .footerbox {
@@ -53,26 +53,32 @@ white-space: pre-line;
   white-space: pre-line;
 }
 
-.footer-brends-box-active {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom:  25px;
-  margin: -100px 20% 150px;
-}
 
-.footer-brends-box-no-active {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  margin-bottom:  25px;
-  margin: 10px 20% 150px;
-}
+
 
 .footer-brends-box-items-icon-icon {
-    font-size: 58px;
-  }
-  
-.brends-items {
-  margin-bottom: 100px;
+  font-size: 38px;
 } 
+  
+// .brends-items {
+//   margin-bottom: 100px;
+// } 
+
+
+
+.footer-brends-box-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 10px 30%;
+}
+
+.footer-brends-box-items-active {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: -120px 30%;
+  padding-bottom: 50px ;
+}
+
+

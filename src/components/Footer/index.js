@@ -15,21 +15,14 @@ const Footer = () => {
       {active ? <br /> : <a href={url} className="textfooter">Создай приложение как у меня бесплатно</a>}
       <br/><br/>
       {active ? <br /> : <a href={url} className="textlogofooter">SWEETY_2020</a>}
-      { active &&(  
-      <div className="footer-brends-box-active">
-        <div className="brends-items"><IonIcon className="footer-brends-box-items-icon-icon" icon={logoPwa} /></div>
-        <div className="brends-items"><IonIcon size="large" icon={logoApple} /></div>
-        <div className="brends-items"><IonIcon size="large" icon={logoAndroid} /></div>
-        <div className="brends-items"><IonIcon size="large" icon={logoWindows} /></div>
-      </div>
-      )}
+      
       { ! active &&(  
-      <div className="footer-brends-box-no-active">
-        <div className="brends-items"><IonIcon className="footer-brends-box-items-icon-icon" icon={logoPwa} /></div>
-        <div className="brends-items"><IonIcon size="large" icon={logoApple} /></div>
-        <div className="brends-items"><IonIcon size="large" icon={logoAndroid} /></div>
-        <div className="brends-items"><IonIcon size="large" icon={logoWindows} /></div>
-      </div>
+      <div className="footer-brends-box-items">
+      <div className="brends-items"><IonIcon className="footer-brends-box-items-icon-icon" icon={logoPwa} /></div>
+      <div className="brends-items"><IonIcon size="small" icon={logoApple} /></div>
+      <div className="brends-items"><IonIcon size="small" icon={logoAndroid} /></div>
+      <div className="brends-items"><IonIcon size="amall" icon={logoWindows} /></div>
+    </div>
       )}
     </footer>
   );

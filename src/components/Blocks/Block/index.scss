@@ -13,7 +13,7 @@
     margin-bottom: 36px;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
+    justify-content: center; 
     align-items: center;
 
     .block__title {
@@ -39,32 +39,41 @@
   &__preview {
     display: flex;
     flex-flow: row nowrap;
-    padding: 0;
+    padding: 0 0 4px;
+    border-bottom: 1px solid;
+    
     
     img {
       width: auto;
-      max-height: 100px;
-      margin-right: 24px;
+      max-height: 60px;
+      margin-right: 12px;
       border-radius: 6px;
+      
     }
     
     .block__title {
       text-align: left;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: bold;
     }
     
     &__with-button {
       padding: 0;
+      border-bottom: none;
       .block__title {
         font-size: 16px;
+      }
+      img {
+        max-height: 100px;
       }
     }
   }
 
+  
+
   &__text {
     .block__title {
-      z-index: 0;
+      z-index: 2;
       position: relative;
       text-align: center;
       font-size: 24px;
@@ -99,24 +108,8 @@
         position: absolute;
         left: 0;
         top: 0;
-        z-index: 0;
+        z-index: 1;
       }
-    }
-  }
-
-  &__video {
-    width: 100%;
-    padding-top: 56.25%;
-    position: relative;
-    margin: 30px 0;
-    overflow: hidden;
-
-    iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100% !important;
-      height: 100% !important;
     }
   }
 }
