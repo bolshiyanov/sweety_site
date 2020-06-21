@@ -12,7 +12,7 @@ import classnames from 'classnames';
 
 import './index.scss';
 
-const Header = ({ avatar, name, className, profile }) => {
+const Header = ({ avatar, title, name, className, profile, url }) => {
   const [cookies] = useCookies();
   const [editOpened, setEditOpened] = useState(false);
   const [recoverSent, setRecoverSent] = useState(false);
@@ -61,6 +61,14 @@ const Header = ({ avatar, name, className, profile }) => {
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
     window.navigator.isStandalone || document.referrer.includes('android-app://');
 
+    const onShare = () => {
+      navigator.share({
+          title: {title}, // Заголовок
+          text: 'Установи мое приложение по этой ссылке', // Текст
+          url: {url}, // ссылка
+        });
+      };
+
   return (
     <React.Fragment>
       <header className={className}>
@@ -68,11 +76,14 @@ const Header = ({ avatar, name, className, profile }) => {
         <span className="user-name">{name}</span>
         <span className="flex-delimiter" />
         
-        {!active && !isStandalone &&
+        {/* {!active && !isStandalone &&
         <Button onClick={handleClick} isInline className={classnames["pulse2", "tooltip"]}>
           <Icon type="edit" />
           {inviteId &&<span class="tooltip__text">Только вы можете редактировать эту страницу</span>}
-        </Button>}
+        </Button>} */}
+
+        {navigator.share && <Button onClick={onShare} isInline className={classnames["pulse2", "tooltip"]}>
+          <Icon type="shareSquare" /></Button>}
       </header>
       <Slider
         opened={editOpened}
