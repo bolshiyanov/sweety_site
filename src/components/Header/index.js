@@ -82,7 +82,7 @@ const Header = ({ avatar, title, name, className, profile, url }) => {
           {inviteId &&<span class="tooltip__text">Только вы можете редактировать эту страницу</span>}
         </Button>} */}
 
-        {navigator.share && <Button onClick={onShare} isInline className={classnames["pulse2", "tooltip"]}>
+        {!navigator.share && <Button onClick={onShare} isInline className={classnames["pulse2", "tooltip"]}>
           <Icon type="shareSquare" /></Button>}
       </header>
       <Slider

@@ -1,9 +1,9 @@
 header {
   display: flex;
   flex-flow: row nowrap;
-  padding: 8px 24px;
+  padding: 4px 0 8px 24px;
   align-items: center;
-  margin-left: -6px;
+  max-width: calc(100% - (12px * 2));
   
   .avatar {
     margin-left: -2px;
