@@ -24,8 +24,6 @@
       display: block;
       overflow-x: scroll;
       white-space: nowrap;
-      height: 110px;
-      overflow: hidden;
       
         
       .stories-picker-item {
@@ -57,7 +55,7 @@
       }
 
       &::-webkit-scrollbar {
-        height: 4px;
+        height: 0px;
         background-color: #F5F5F5;
       }
        
@@ -70,7 +68,7 @@
       &::-webkit-scrollbar-thumb {
         border-radius: 10px;
         background: linear-gradient(left, #fff, #e4e4e4);
-        border: 1px solid #aaa;
+        border: 0px solid #aaa;
       }
       
       &::-webkit-scrollbar-thumb:hover {
