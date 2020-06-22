@@ -1,18 +1,19 @@
 header {
   display: flex;
   flex-flow: row nowrap;
-  padding: 16px 24px;
+  padding: 8px 24px;
   align-items: center;
   margin-left: -6px;
   
   .avatar {
     margin-left: -2px;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     border-radius: 10px;
   }
   .user-name {
     text-transform: uppercase ;
+    text-align: center;
   }
 }
 

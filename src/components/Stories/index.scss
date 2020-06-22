@@ -24,12 +24,14 @@
       display: block;
       overflow-x: scroll;
       white-space: nowrap;
+      height: 110px;
+      overflow: hidden;
       
         
       .stories-picker-item {
         display: inline-block;
         position: relative;
-        width: 102px;
+        width: 60px;
         height: auto;
         margin: 5px;
         overflow: hidden;

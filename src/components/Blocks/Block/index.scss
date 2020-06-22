@@ -4,7 +4,7 @@
   margin: 6px 0;
   overflow: hidden;
   font-size: 16px;
-  padding: 12px 36px;
+  padding: 0 36px;
   overflow-wrap: anywhere;
   white-space: pre-line;
 
@@ -90,25 +90,25 @@
   
 
   &__text {
+    
     .block__title {
       z-index: 2;
       position: relative;
       text-align: center;
       font-size: 24px;
       font-weight: bold;
-      min-height: 100px;
 
     }
 
     &__with-button {
-      padding: 0;
+      padding: 0 12px;
     }
 
     &__with-image {
       background-position: center center;
       background-size: cover;
       position: relative;
-      min-height: 100px;
+      min-height: 150px;
       
 
         
@@ -144,16 +144,15 @@
 }
 .block-preview-without-image-with-button {
   text-align: left;
-      font-size: 16px;
-      font-weight: bold;
-      padding: 12px 0;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 0;
 }
 
-.box-block-text { 
-  margin-left: -10px;
-  margin-right: -10px;
-  min-height: 100px;
-  width: calc(100% + 20px);
+.box-block-text {
+  margin-left: -11px;
+  margin-right: -11px;
+  width: calc(100% + 22px);
 }
 
 .block-text-with-text {
@@ -161,7 +160,7 @@
   height: calc(100% + 36px);
   background-position: center center;
   background-size: cover;
-  background-color: rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, .5);
   position: absolute;
   left: 0;
   top: 0;

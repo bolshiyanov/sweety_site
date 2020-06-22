@@ -23,6 +23,9 @@
 .story-picture-title {
   text-align: center;
   font-size: 12px;
-  min-height: 28px;
-}  
+  min-height: 20px;
+  word-wrap: none;
+  overflow: hidden;
+  padding: 0 6px;
+}
   
