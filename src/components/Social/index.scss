@@ -3,10 +3,10 @@
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
-  margin-top: 12px;
+  margin-top: 12px 0;
   
   &__item {
-    margin: 12px 24px;
+    margin: 12px 8px;
     flex-shrink: 1;
     width: 60px;
   }
