@@ -31,7 +31,7 @@ const Block = ({
   const video = (!isVideo ? null :
     <div className={classnames([
         'block',
-        'block__video',
+        'video',
         { hidden: showBlock }
       ])}>
       <iframe src={link} title="siteFrame" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" rel="0" allowFullScreen></iframe>
