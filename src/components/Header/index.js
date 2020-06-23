@@ -12,7 +12,7 @@ import classnames from 'classnames';
 
 import './index.scss';
 
-const Header = ({ avatar, title, name, className, profile, url }) => {
+const Header = ({ avatar, name, className, profile }) => {
   const [cookies] = useCookies();
   const [editOpened, setEditOpened] = useState(false);
   const [recoverSent, setRecoverSent] = useState(false);
@@ -60,6 +60,8 @@ const Header = ({ avatar, title, name, className, profile, url }) => {
 
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
     window.navigator.isStandalone || document.referrer.includes('android-app://');
+
+    const { url, title } = useSelector((state) => state.config.account);
 
     const onShare = () => {
       navigator.share({
