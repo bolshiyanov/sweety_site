@@ -38,10 +38,10 @@ const Landing = () => {
   }, [setStartOpened]);
 
   const referrer = {
-    title: "Free links creator",
+    title: "Создай свое приложение",
     avatar: referrerAvatar
   }
-  
+
   useEffect(() => {
     if (swiper) {
       swiper.on('slideChange', () => {
@@ -105,8 +105,8 @@ const Landing = () => {
 
   return (
     <React.Fragment>
-    <Helmet>
-    <html lang="ru" amp />
+      <Helmet>
+        <html lang="ru" amp />
         <title>Активная ссылка Sweety link</title>
         <meta name="description" content="Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее" />
         <link rel="canonical" href="https://sweety.link" />
@@ -122,11 +122,11 @@ const Landing = () => {
         <meta property="og:image:secure_url" content="https://sweety.link/logo512.png" />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
-        <meta property="og:title"  content="Активная ссылка Sweety link" />  
+        <meta property="og:title" content="Активная ссылка Sweety link" />
         <meta property="og:description" content="Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="https://sweety.link" />
-        <meta name="twitter:title" content="Активная ссылка Sweety link" /> 
+        <meta name="twitter:title" content="Активная ссылка Sweety link" />
         <meta name="twitter:description" content="Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее" />
         <meta name="twitter:creator" content="Free Link Creator" />
         <meta name="twitter:image:src" content="https://sweety.link/logo512.png/logo512.png" />
@@ -134,7 +134,7 @@ const Landing = () => {
         <link rel="icon" href="https://sweety.link/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
-        <meta name="theme-color" content="#fff" /> 
+        <meta name="theme-color" content="#fff" />
         <meta name="author" content="Roman Bolshiyanov bolshiyanov@gmail.com" />
         <link rel="author" href="https://instagram.com/free_link_creator" />
         <meta name="date" content="May 01 2020 10:10 GMT" />
@@ -144,7 +144,7 @@ const Landing = () => {
         <meta property="og:video" content="https://youtu.be/zsy0pbMBBRI" />
         <meta name="theme-color" content="#ffffff" />
         <meta name="msapplication-navbutton-color" content="#ffffff" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff" /> 
+        <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff" />
       </Helmet>
       <div className="main-page">
         <Headerlanding className="main-page__header" avatar={referrer.avatar} name={referrer.title} noConfig />
@@ -153,14 +153,14 @@ const Landing = () => {
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Активная ссылка<br />в профиле твоих<br />Соцсетей!</h1>
               <p>ТВОЕ PWA ПРИЛОЖЕНИЕ...</p>
-              
+
             </div>
           </div>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage2})` }}>
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Бесплатно,<br />без регистрации,<br />восхитительно!</h1>
-              
-              <p><a href="https://dash.sweety.link/"  target="_blank">БЫСТРЫЙ СТАРТ ЗДЕСЬ...</a></p>
+
+              <p><a href="https://dash.sweety.link/" target="_blank">БЫСТРЫЙ СТАРТ ЗДЕСЬ...</a></p>
             </div>
           </div>
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage3})` }}>
@@ -172,20 +172,18 @@ const Landing = () => {
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage4})` }}>
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">Как микроблогеры использует Sweety</h1>
-              <p><a href="https://dash.sweety.link/"  target="_blank">БЫСТРЫЙ СТАРТ ЗДЕСЬ</a></p>
+              <p><a href="https://dash.sweety.link/" target="_blank">БЫСТРЫЙ СТАРТ ЗДЕСЬ</a></p>
               <div className="main-page__page1__container2">
-                <div className="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/zsy0pbMBBRI?controls=0" 
-                frameborder="0" rel="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+
               </div>
             </div>
           </div>
-          
+
           <div className="main-page__page">
-            <Loading /> 
+            <Loading />
           </div>
         </Swiper>
-        {!startOpened && currentPage < 4 && (
+        
           <div className="main-page__footer">
             <div className="main-page__pages">
               <div className={classnames({ 'main-page__pages__selected': currentPage === 0 })} />
@@ -193,19 +191,20 @@ const Landing = () => {
               <div className={classnames({ 'main-page__pages__selected': currentPage === 2 })} />
               <div className={classnames({ 'main-page__pages__selected': currentPage === 3 })} />
             </div>
-            
-            <div  className="cookie-box" >
-          <CookieBanner styles={styles} 
-          message= 'Мы используем Cookies для Goole analitics. Мы не собираем персональные данные' 
-          buttonMessage='Закрыть'
-          link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
-           /> 
-        </div>
-            {/* <Start /> */}
+            <div className="cookie-box" >
+              <CookieBanner styles={styles}
+                message='Мы используем Cookies для Goole analitics. Мы не собираем персональные данные'
+                buttonMessage='Закрыть'
+                link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
+              />
             </div>
-        )}
+            {!startOpened && currentPage > 2 && (
+            <Start />
+            )}
+          </div>
+        
       </div>
-      
+
     </React.Fragment>
   );
 };

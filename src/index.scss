@@ -72,10 +72,18 @@ div {
     color: #fff;
     background: transparent;
     position: absolute;
-    margin-top: -15px;
     top: 0;
     left: 0;
     z-index: 3;
+
+    .avatar {
+      width: 85px;
+      height: 40px;
+    }
+
+    .user-name {
+      text-align: left;
+    }
   }
   
   &__page1 {
