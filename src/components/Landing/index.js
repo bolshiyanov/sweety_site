@@ -201,7 +201,7 @@ const Landing = () => {
           link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
            /> 
         </div>
-            <Start />
+            {/* <Start /> */}
             </div>
         )}
       </div>
