@@ -108,10 +108,10 @@ div {
     
     &__header {
       color: #fff;
-      font-size: 30px;
+      font-size: 20px;
       text-align: left;
       margin-bottom: 12px;
-      padding: 0 18px;
+      padding: 12px 14px 0;
       line-height: 1.0em;
       font-weight: normal;
     }
@@ -131,7 +131,8 @@ div {
 
       p {
         color: #fff;
-        margin-left: 16px; 
+        margin-left: 14px;
+        font-size: 12px;
       } 
       
     &__container2 {
@@ -248,5 +249,13 @@ div {
   position: fixed;
   bottom: 10px;
   left: 0;
+  
+}
+
+.textlogolanding {
+  font-size: 8px;
+  margin-bottom: 12px;
+  color: white;
+  text-align: center;
   
 }
