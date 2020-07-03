@@ -55,7 +55,7 @@ const Landing = () => {
       swiper.on('touchEnd', () => {
         setTimeout(() => {
           if (swiper.isEnd) {
-            swiper.slideTo(0);
+            startClick();
           }
         }, 100);
       });
@@ -80,10 +80,10 @@ const Landing = () => {
           response.invitationId, { path: '/' });
         setCookie('lastId', response.invitationId, { path: '/', domain: getCookieDomain() });
 
-        window.open(getAdminSite(response.invitationId));
+        window.location.href = getAdminSite(response.invitationId);
       }
       else if (response?.siteUrl) {
-        window.open(getAdminSite());
+        window.location.href = getAdminSite();
       }
     });
   };
