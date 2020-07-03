@@ -3,7 +3,7 @@ import Loading from 'components/common/Loading';
 import Header from 'components/Header';
 import { getSearchString } from 'utils/url';
 
-import API, { getAdminSiteByInvitation } from 'utils/api';
+import API, { getAdminSite } from 'utils/api';
 import { event } from 'utils/googleAnalytics';
 
 import referrerAvatar from 'images/referrer_avatar.jpg';
@@ -37,7 +37,7 @@ const Start = () => {
           window.location.href = "/";
         }
         event("signup", "start");
-        window.location.href = getAdminSiteByInvitation(response.invitationId);
+        window.location.href = getAdminSite(response.invitationId);
       });
     }
   });

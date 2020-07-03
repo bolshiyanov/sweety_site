@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import classnames from 'classnames';
 
-import API, { getAdminSiteByInvitation, getRef, getInstagram } from 'utils/api';
+import API, { getAdminSite, getRef, getInstagram, getCookieDomain } from 'utils/api';
 import { event } from 'utils/googleAnalytics';
 
 import Input from 'components/common/Input';
@@ -88,7 +88,8 @@ const Start = () => {
             event("signup", "instagram", getRef());
             setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1), 
               response.invitationId, { path: '/' });
-            window.location.href = getAdminSiteByInvitation(response.invitationId);
+            setCookie('lastId', response.invitationId, { path: '/', domain: getCookieDomain() });
+            window.location.href = getAdminSite(response.invitationId);
           }
           else if (response?.siteUrl) {
             window.location.href = response.siteUrl;
@@ -122,7 +123,7 @@ const Start = () => {
   const handleContinue = e => {
     e.preventDefault();
 
-    window.location.href = getAdminSiteByInvitation(lastId);
+    window.location.href = getAdminSite(lastId);
   };
 
   useEffect(() => {
@@ -155,8 +156,8 @@ const Start = () => {
       >
         {!starting ? 'ВЗЯТЬ ИМЯ ИЗ INSTAGRAM' : 'Собираем проект...'} {counter}
       </Button>
-      {!lastId && <div className="start__text">
-        <a href="#" onClick={handleContinue}>Продолжить последнее</a>
+      {lastId && <div className="start__text">
+        <a onClick={handleContinue}>Продолжить последнее</a>
       </div>}
     </div>
   );

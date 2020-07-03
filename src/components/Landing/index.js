@@ -1,17 +1,20 @@
 import React, { useState, useCallback, useEffect } from 'react';
+import { useCookies } from 'react-cookie';
 import Swiper from 'react-id-swiper';
 import classnames from 'classnames';
-import Headerlanding from 'components/Headerlanding';
 import { Helmet } from 'react-helmet';
-
 import CookieBanner from 'react-cookie-banner';
 
+import Headerlanding from 'components/Headerlanding';
 import Button from 'components/common/Button';
 import Slider from 'components/common/Slider';
 import Loading from 'components/common/Loading';
 
 import Header from 'components/Header';
 import Start from 'components/Landing/Start';
+
+import API, { getAdminSite, getRef, getCookieDomain } from 'utils/api';
+import { event } from 'utils/googleAnalytics';
 
 import referrerAvatar from 'images/sweetylogo.png';
 import backgroundImage1 from 'images/main-background1.jpg';
@@ -25,6 +28,8 @@ import backgroundImage7 from 'images/main-background7_1.jpg';
 import 'swiper/swiper.scss';
 
 const Landing = () => {
+  const [_, setCookie] = useCookies();
+
   const [startOpened, setStartOpened] = useState(false);
   const [swiper, setSwiper] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
@@ -32,8 +37,6 @@ const Landing = () => {
   const closeStart = useCallback(() => {
     setStartOpened(false);
   }, [setStartOpened]);
-
-  const startDashUrl= 'https://dash.sweety.link'
 
   const openStart = useCallback(() => {
     setStartOpened(true);
@@ -67,6 +70,24 @@ const Landing = () => {
     }
   }, [swiper]);
 
+  const startClick = () => {
+    API.register({ 
+      referer: getRef()
+    }).then((response) => {
+      if (response?.invitationId) {
+        event("signup", "instagram", getRef());
+        setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1), 
+          response.invitationId, { path: '/' });
+        setCookie('lastId', response.invitationId, { path: '/', domain: getCookieDomain() });
+
+        window.open(getAdminSite(response.invitationId));
+      }
+      else if (response?.siteUrl) {
+        window.open(getAdminSite());
+      }
+    });
+  };
+
   const styles = {
     banner: {
       fontFamily: 'Source Sans Pro',
@@ -89,7 +110,6 @@ const Landing = () => {
       opacity: 1,
       right: 20,
       marginTop: -18,
-
     },
     message: {
       display: 'block',
@@ -240,7 +260,7 @@ const Landing = () => {
             <Start />
           )}
            {!startOpened && currentPage < 6 && (
-          <Button name="start" className="story-settings__preview__button" onClick={() => window.open(startDashUrl)} >Попробовать бесплатно</Button>
+          <Button name="start" className="story-settings__preview__button" onClick={startClick} >Попробовать бесплатно</Button>
           )}
           
           <div className="textlogolanding">&reg;IMEC&nbsp;2015-2020</div>

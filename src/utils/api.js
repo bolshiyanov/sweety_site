@@ -24,16 +24,17 @@ export const getInstagram = () => {
   return getSearchString(window.location.search, 'instagram');
 };
 
-export const getAdminSite = () => {
-  return adminSite;
+export const getAdminSite = (invId) => {
+  if (invId) {
+    return adminSite + "?invitationId=" + invId;
+  }
+  else {
+    return adminSite;
+  }
 };
 
 export const getCookieDomain = () => {
   return cookieDomain;
-};
-
-export const getAdminSiteByInvitation = (invId) => {
-  return adminSite + "?invitationId=" + invId;
 };
 
 const responseBody = (res) => {
