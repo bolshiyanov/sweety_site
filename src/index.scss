@@ -19,9 +19,9 @@ div {
 }
 
 .app {
-  width: 100vw;
+  width: 100vw; 
   min-height: 100vh;
-}
+} 
 
 .app-background {
   top: 0;
@@ -37,7 +37,7 @@ div {
 }
 
   .app-container {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 0 0 30px 0;
     position: relative;
@@ -59,7 +59,7 @@ div {
 }
 
 .main-page {
-  background-color: #000;
+  background-color: #8A2286;
   top: 0;
   bottom: 0;
   position: absolute;
@@ -67,6 +67,7 @@ div {
   max-width: 600px;
   left: 50%;
   transform: translate(-50%, 0);
+  text-align: center;
   
   &__header {
     color: #fff;
@@ -75,6 +76,7 @@ div {
     top: 0;
     left: 0;
     z-index: 3;
+    text-align: center;
 
     .avatar {
       width: 85px;
@@ -90,29 +92,59 @@ div {
     height: 100%;
     width: 100%;
     position: relative;
-
     background: {
-      size: cover;
-      repeat: no-repeat;
-      position: center bottom;
+    size: cover;
+    repeat: no-repeat;
+    position: center bottom;
     }
     
+    &__container-anime {
+      position: absolute;
+      z-index: 2;
+      height: auto;
+      top: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    &__container-anime-center {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-flow: row;
+      z-index: 2;
+      max-width: 100%;
+      margin-top: 30%;
+    }
+
+    &__container-anime-dilimeter {
+      z-index: 2;
+      width: 50%;
+    }
+    
+    &__container-anime-box-image {
+      z-index: 2;
+      text-align: center;
+
+      }
+    
+
     &__container1 {
       position: absolute;
       z-index: 2;
-      height: 90%;
+      height: 95%;
       bottom: 0;
       left: 0;
       width: 100%;
     }
-    
+
     &__header {
       color: #fff;
-      font-size: 20px;
-      text-align: left;
+      font-size: 24px;
+      text-align: center;
       margin-bottom: 12px;
       padding: 12px 14px 0;
-      line-height: 1.0em;
+      line-height: 1.1em;
       font-weight: normal;
     }
     
@@ -131,8 +163,7 @@ div {
 
       p {
         color: #fff;
-        margin-left: 14px;
-        font-size: 12px;
+        font-size: 18px;
       } 
       
     &__container2 {
@@ -259,3 +290,4 @@ div {
   text-align: center;
   
 }
+

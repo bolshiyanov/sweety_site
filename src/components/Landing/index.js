@@ -4,6 +4,7 @@ import Swiper from 'react-id-swiper';
 import classnames from 'classnames';
 import { Helmet } from 'react-helmet';
 import CookieBanner from 'react-cookie-banner';
+import { Animated } from "react-animated-css";
 
 import Headerlanding from 'components/Headerlanding';
 import Button from 'components/common/Button';
@@ -13,11 +14,17 @@ import Loading from 'components/common/Loading';
 import Header from 'components/Header';
 import Start from 'components/Landing/Start';
 
+import Slide1 from 'components/Landing/Animation/Slide1.js';
+import Slide2 from 'components/Landing/Animation/Slide2.js';
+import Slide3 from 'components/Landing/Animation/Slide3.js';
+import Slide4 from 'components/Landing/Animation/Slide4.js';
+import Slide5 from 'components/Landing/Animation/Slide5.js';
+import Slide6 from 'components/Landing/Animation/Slide6.js';
+
 import API, { getAdminSite, getRef, getCookieDomain } from 'utils/api';
 import { event } from 'utils/googleAnalytics';
 
 import referrerAvatar from 'images/sweetylogo.png';
-import backgroundImage1 from 'images/main-background1.jpg';
 import backgroundImage2 from 'images/main-background2.jpg';
 import backgroundImage3 from 'images/main-background3.jpg';
 import backgroundImage4 from 'images/main-background4.jpg';
@@ -26,6 +33,7 @@ import backgroundImage6 from 'images/main-background6_1.jpg';
 import backgroundImage7 from 'images/main-background7_1.jpg';
 
 import 'swiper/swiper.scss';
+import { truncate } from 'lodash';
 
 const Landing = () => {
   const [_, setCookie] = useCookies();
@@ -43,7 +51,7 @@ const Landing = () => {
   }, [setStartOpened]);
 
   const referrer = {
-    title: "Новая эра приложений",
+    title: "Будь ближе к подписчикам",
     avatar: referrerAvatar
   }
 
@@ -71,12 +79,12 @@ const Landing = () => {
   }, [swiper]);
 
   const startClick = () => {
-    API.register({ 
+    API.register({
       referer: getRef()
     }).then((response) => {
       if (response?.invitationId) {
         event("signup", "instagram", getRef());
-        setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1), 
+        setCookie(response.siteUrl.substring(response.siteUrl.indexOf('/') + 1),
           response.invitationId, { path: '/' });
         setCookie('lastId', response.invitationId, { path: '/', domain: getCookieDomain() });
 
@@ -169,12 +177,24 @@ const Landing = () => {
         <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff" />
       </Helmet>
       <div className="main-page">
-        <Headerlanding className="main-page__header" avatar={referrer.avatar} name={referrer.title} noConfig />
+        {/* <Headerlanding className="main-page__header" avatar={referrer.avatar} name={referrer.title} noConfig /> */}
         <Swiper getSwiper={setSwiper}>
-          <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage1})` }}>
+          <div onClick={handleClick} className="main-page__page1" >
+
+            <div className="main-page__page1__container-anime"><Slide1 /></div> 
+            <div className="main-page__page1__container-anime-center">
+              <div className="main-page__page1__container-anime-dilimeter"></div>
+              <div className="main-page__page1__container-anime-box-image"><Slide3 /></div>
+              <div className="main-page__page1__container-anime-dilimeter"></div>
+            </div>
+            <p>ЭТО ТВОЕ ПРИЛОЖЕНИЕ</p>
+            <div className="main-page__page1__container-anime"><Slide2 /></div>
+            <div className="main-page__page1__container-anime"><Slide5 /></div>
+            <div className="main-page__page1__container-anime"><Slide6 /></div>
+
+
             <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">6 ВЕСКИХ ПРИЧИН СДЕЛАТЬ СВОЕ ПРИЛОЖЕНИЕ ЗА 4999 руб! </h1>
-              <p>SWEETY VS ТАПЛИНКИ*</p>
+              <h1 className="main-page__page1__header"><Slide4 /></h1>
             </div>
           </div>
 
@@ -203,7 +223,7 @@ const Landing = () => {
 
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage5})` }}>
             <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">ПРОЗРАЧНО- Sweety можно купить и получить на флешке*. После установки работает 
+              <h1 className="main-page__page1__header">ПРОЗРАЧНО- Sweety можно купить и получить на флешке*. После установки работает
               без интернета!</h1>
               <p>За таплинки нужно платить постоянно! И сколько будет в итоге оплачено за "чужую" ссылочку?</p>
               <div className="main-page__page1__container2">
@@ -224,7 +244,7 @@ const Landing = () => {
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">БЕСПЛАТНАЯ РЕКЛАМА- В приложениях можно отправлять PUSH уведомления прямо в телефон!</h1>
               <p>Реклама с посадкой на таплинки может быть только платной!</p>
-              <br/>
+              <br />
               <p>*Таплинки: под таплинками понимается любой сервис быстрых ссылок для социальных сетей</p>
               <p>*Получить на флэшке:  В любое время после окончания настроек приложения вы можете, заказать исходный код вашего приложения. </p>
               <p>*Работает без интернета: Если пользователь открывал ваше приложение хотя бы один раз, оно сохраняется в кэше телефона.</p>
@@ -259,10 +279,10 @@ const Landing = () => {
           {!startOpened && currentPage > 5 && (
             <Start />
           )}
-           {!startOpened && currentPage < 6 && (
-          <Button name="start" className="story-settings__preview__button" onClick={startClick} >Попробовать бесплатно</Button>
-          )}
-          
+          {/* {!startOpened && currentPage < 6 && (
+            <Button name="start" className="story-settings__preview__button" onClick={startClick} >Попробовать бесплатно</Button>
+          )} */}
+
           <div className="textlogolanding">&reg;IMEC&nbsp;2015-2020</div>
         </div>
 

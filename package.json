@@ -23,6 +23,7 @@
     "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
+    "react-animated-css": "^1.2.1",
     "react-cookie": "^4.0.3",
     "react-cookie-banner": "^4.1.0",
     "react-dom": "^16.12.0",
