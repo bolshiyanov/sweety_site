@@ -233,7 +233,7 @@ const Landing = () => {
 
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage6})` }}>
             <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">СЕРЬЕЗНЫЙ БИЗНЕС ИМЕЕТ СВОЕ ПРИЛОЖЕНИЕ!</h1>
+              <h1 className="main-page__page1__header">СЕРЬЕЗНЫЙ БИЗНЕС ИМЕЕТ СВОЕ ПРИЛОЖЕНИЕ!!!</h1>
               <p>Таплинки-  это полу сайт и только!</p>
               <div className="main-page__page1__container2">
               </div>
