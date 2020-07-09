@@ -21,7 +21,7 @@ const AvatarTheme1 = () => {
     navigator.share({
       title: { name }, // Заголовок
       text: 'Установи мое приложение по этой ссылке', // Текст
-      url: { url }, // ссылка
+      url: window.location.href, // ссылка
     });
   };
 
