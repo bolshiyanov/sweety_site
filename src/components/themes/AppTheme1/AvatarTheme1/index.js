@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import addedAvatar from 'images/imageTheme1.png';
+import addedAvatar from 'images/ImageTheme1.png';
 import './index.scss';
 
 const AvatarTheme1 = () => {
