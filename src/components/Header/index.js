@@ -61,7 +61,8 @@ const Header = ({ avatar, name, className, profile }) => {
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches ||
     window.navigator.isStandalone || document.referrer.includes('android-app://');
 
-    const { url, title } = useSelector((state) => state.config.account);
+    const { title } = useSelector((state) => state.config.account);
+    const { url } = useSelector((state) => state.config.data);
 
     const onShare = () => {
       navigator.share({

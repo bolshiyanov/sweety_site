@@ -80,25 +80,11 @@ const HeaderTheme1 = ({ noConfig, avatar: propsAvatar, name: propsName, classNam
       />
     )
   }));
-  const { url, title } = useSelector((state) => state.config.account);
-  
-  const onShare = () => {
-    navigator.share({
-        title: {title}, // Заголовок
-        text: 'Установи мое приложение по этой ссылке', // Текст
-        url: {url}, // ссылка
-      });
-    };
-;
-  
+
   return (
     <React.Fragment>
-      <header className={className}>
           <React.Fragment>
-            {navigator.share && <Button onClick={onShare} isInline className={classnames["pulse2", "tooltip"]}>
-          <Icon type="shareSquare" /></Button>}
           </React.Fragment>
-      </header>
     </React.Fragment>
   );
 };

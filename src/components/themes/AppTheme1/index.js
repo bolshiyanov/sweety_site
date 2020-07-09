@@ -1,8 +1,6 @@
 import React from 'react';
 
 import { useSelector } from 'react-redux';
-import CookieBanner from 'react-cookie-banner';
-import HeaderTheme1 from 'components/themes/AppTheme1/HeaderTheme1';
 import StoriesTheme1 from 'components/themes/AppTheme1/StoriesTheme1';
 
 import { getInvite } from 'utils/api';
@@ -36,7 +34,6 @@ const AppTheme1 = () => {
     return (
         <div className="app-theme1" style={backgroundStyles}>
             <div className="app-container-theme1">
-                <HeaderTheme1 />
                 <AvatarTheme1 image={avatar} />
                 <StoriesTheme1 data={data.stories} />
                 <PwaInstallIOs />
