@@ -26,20 +26,22 @@ const Rss = ({ scrollPosition }) => {
   return (
     <React.Fragment>
       <div className="rss">
+        {filteredRss.length == 0 && <InstagramFeed account={"kimkardashian"} />}
+
         {
           filteredRss.map((item) =>
-            (item.icon == 'instagram' ? (<InstagramFeed 
-              key={`${item.title}-${item.value}`} 
-              account={item.value} 
-              isPicker={instagramHasPicker} 
+            (item.icon == 'instagram' ? (<InstagramFeed
+              key={`${item.title}-${item.value}`}
+              account={item.value}
+              isPicker={instagramHasPicker}
               scrollPosition={scrollPosition}
               {...item} />) :
-            item.icon == 'youtube' ? (<YouTubeFeed 
-              key={`${item.title}-${item.value}`} 
-              account={item.value} 
-              scrollPosition={scrollPosition}
-              {...item} />) :
-            null))
+              item.icon == 'youtube' ? (<YouTubeFeed
+                key={`${item.title}-${item.value}`}
+                account={item.value}
+                scrollPosition={scrollPosition}
+                {...item} />) :
+                null))
         }
       </div>
     </React.Fragment>);

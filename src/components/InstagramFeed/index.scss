@@ -9,9 +9,9 @@ img {
   }
 
 .instagram-feed {
+  margin-left: 4px;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -8px 16px;
   max-width: calc(100% - (4px * 2));
   justify-content: center;
 

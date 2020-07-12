@@ -23,6 +23,8 @@ import PwaInstall from "components/PwaInstall";
 import PwaInstallIOs from "components/PwaInstallIOs";
 import SocialSharingButtons from "components/SocialSharingButtons";
 import AppTheme1 from "components/themes/AppTheme1";
+import AppTheme2 from "components/themes/AppTheme2";
+
 
 import API from 'utils/api';
 import { getUrl } from 'utils/url';
@@ -53,8 +55,8 @@ const App = () => {
   if (!data) {
     return <Loading />;
   }
-  
-  const nameTheme = currentTheme.name ;
+
+  const nameTheme = currentTheme.name;
 
   const { settings = {} } = data;
   const styles = {
@@ -97,7 +99,7 @@ const App = () => {
 
   const backgroundStyles = currentTheme.getBackgroundStyles();
 
-  
+
   return (
     <React.Fragment>
       <Helmet>
@@ -128,40 +130,42 @@ const App = () => {
       {nameTheme === "theme1" && (
         <AppTheme1 />
       )}
-       
-      {nameTheme !== "theme1" && (
-      <div className="app" style={backgroundStyles}>
-        {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
-        <div className="app-background" >
-          <div className="app-container">
-            <Header
-              name={data.name}
-              avatar={data.avatar}
-              profile={profile}
-            />
-            <Stories data={data.stories} profile={profile} />
-            <Title />
-            <Messengers />
-            <Blocks data={data.blocks} />
-            {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
-            <Rss />
-            <SocialSharingButtons />
-            <PwaInstall profile={profile} />
-            <PwaInstallIOs profile={profile} />
-            <Social />
-            <Footer />
-            <div className="cookie-box" >
-              <CookieBanner styles={styles}
-                message='Мы используем Cookies для Goole analitics. Мы не собираем персональные данные'
-                buttonMessage='Закрыть'
-                link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
+      {nameTheme === "theme2" && (
+        <AppTheme2 />
+      )}
+      {nameTheme !== "theme1" && nameTheme !== "theme2" && (
+        <div className="app" style={backgroundStyles}>
+          {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
+          <div className="app-background" >
+            <div className="app-container">
+              <Header
+                name={data.name}
+                avatar={data.avatar}
+                profile={profile}
               />
+              <Stories data={data.stories} profile={profile} />
+              <Title />
+              <Messengers />
+              <Blocks data={data.blocks} />
+              {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
+              <Rss />
+              <SocialSharingButtons />
+              <PwaInstall profile={profile} />
+              <PwaInstallIOs profile={profile} />
+              <Social />
+              <Footer />
+              <div className="cookie-box" >
+                <CookieBanner styles={styles}
+                  message='Мы используем Cookies для Goole analitics. Мы не собираем персональные данные'
+                  buttonMessage='Закрыть'
+                  link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
+                />
+              </div>
             </div>
           </div>
         </div>
-      </div>
       )}
-      
+
     </React.Fragment>
   );
 };

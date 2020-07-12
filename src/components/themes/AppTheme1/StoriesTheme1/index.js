@@ -27,6 +27,8 @@ const emptySettings = {
 const StoriesTheme1 = ({ data }) => {
     const [settingsOpened, setSettingsOpened] = useState(null);
     const [storyData, setStoryData] = useState(emptySettings);
+    const { currentTheme } = useSelector((state) => state.config);
+    const theme = currentTheme.name;
 
     const closeStoriesSettings = () => {
         setSettingsOpened(null);
@@ -68,20 +70,56 @@ const StoriesTheme1 = ({ data }) => {
     return (
         <React.Fragment>
             <div className="stories-theme1">
+                {data.length === 0 && (
+                    <div className="stories-theme1__box">
+                        <div className="stories-theme1__box__didlimiter"></div>
+                        <ButtonTheme1 className="story-picture-title-theme1"
+                            key="add-button"
+                            onClick={onOpenStorySettings}
+                        >
+                            Обо мне
+                        </ButtonTheme1>
+                        <ButtonTheme1 className="story-picture-title-theme1"
+                            key="add-button"
+                            onClick={onOpenStorySettings}
+                        >
+                            История
+                        </ButtonTheme1>
+                        <ButtonTheme1 className="story-picture-title-theme1"
+                            key="add-button"
+                            onClick={onOpenStorySettings}
+                        >
+                            Услуги
+                        </ButtonTheme1>
+                        <ButtonTheme1 className="story-picture-title-theme1"
+                            key="add-button"
+                            onClick={onOpenStorySettings}
+                        >
+                            Выгода
+                        </ButtonTheme1>
+                        <ButtonTheme1 className="story-picture-title-theme1"
+                            key="add-button"
+                            onClick={onOpenStorySettings}
+                        >
+                            Отзывы
+                        </ButtonTheme1>
+                        <div className="stories-theme1__box__didlimiter"></div>
+                    </div>
+                )}
                 <div className="stories-theme1__box">
-                    {data.map((story) =>
+                    {(theme === "theme1" ? data.slice(0, 5) : data).map((story) =>
                         <StoryTheme1 className='stories-theme1__box__item'
                             onClick={() => onOpenStorySettings(story.guid)}
                             key={story.guid} {...story} />)}
                 </div>
             </div>
             <Slider
-        opened={settingsOpened}
-        onClose={closeStoriesSettings}
-        onSubmit={closeStoriesSettings}
-      >
-        <StorySettings {...storyData} />
-      </Slider>
+                opened={settingsOpened}
+                onClose={closeStoriesSettings}
+                onSubmit={closeStoriesSettings}
+            >
+                <StorySettings {...storyData} />
+            </Slider>
 
         </React.Fragment>
     );

@@ -36,10 +36,10 @@ const AvatarTheme1 = () => {
 
       </div>
       <div className="avatar-theme1"
-        style={{ backgroundImage: `URL(${data.avatar || addedAvatar})` }} />
+        style={{ backgroundImage: `URL(${avatar || addedAvatar})` }} />
     </React.Fragment>
   );
 };
 
 
-export default AvatarTheme1;
+export default AvatarTheme1;  
