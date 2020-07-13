@@ -8,7 +8,7 @@ import { EDIT_MESSENGERS_DATA } from 'constants/actions';
 
 import './index.scss';
 
-const Messengers = () => {
+const MessengersTheme2 = () => {
     const [settingsOpened, setSettingsOpened] = useState(false);
     const [data, setData] = useState([]);
 
@@ -133,4 +133,4 @@ const Messengers = () => {
     );
 };
 
-export default Messengers;
+export default MessengersTheme2;
