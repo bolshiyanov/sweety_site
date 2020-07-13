@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import addedAvatar from 'images/ImageTheme1.png';
+
 
 import './index.scss';
 
 const Avatar = ({ image }) => {
   if (!image)
-    return null;
-
-  return (
-    <div className="avatar" style={{ backgroundImage: `URL(${image})` }} />
+    return  (
+    <div className="avatar" style={{ backgroundImage: `URL(${image || addedAvatar})` }} />
   );
 };
 
@@ -20,4 +20,4 @@ Avatar.defaultProps = {
   image: null
 };
 
-export default Avatar;
+export default Avatar; 

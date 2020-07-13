@@ -68,7 +68,7 @@ const Header = ({ avatar, name, className, profile }) => {
       navigator.share({
           title: {title}, // Заголовок
           text: 'Установи мое приложение по этой ссылке', // Текст
-          url: {url}, // ссылка
+          url: window.location.href, // ссылка
         });
       };
 
@@ -76,7 +76,7 @@ const Header = ({ avatar, name, className, profile }) => {
     <React.Fragment>
       <header className={className}>
         <Avatar image={avatar} />
-        <span className="user-name">{name}</span>
+        <div className="user-name" >{name|| "Твой бренд будет здесь"} </div>
         <span className="flex-delimiter" />
         
         {/* {!active && !isStandalone &&

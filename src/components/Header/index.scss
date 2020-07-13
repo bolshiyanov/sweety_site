@@ -1,7 +1,7 @@
 header {
   display: flex;
   flex-flow: row nowrap;
-  padding: 4px 0 8px 24px;
+  padding: 4px 0 8px 12px;
   align-items: center;
   max-width: calc(100% - (12px * 2));
   
@@ -13,7 +13,10 @@ header {
   }
   .user-name {
     text-transform: uppercase ;
-    text-align: center;
+    text-align: left;
+    word-break: break-all;
+    max-width: calc(100%-100px);
+
   }
 }
 

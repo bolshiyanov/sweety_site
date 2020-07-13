@@ -27,7 +27,7 @@ const AvatarTheme1 = () => {
 
   return (
     <React.Fragment>
-      <div className="user-name-theme1"  >{name || "Theme 1"}
+      <div className="user-name-theme1"  >{name || "ТВОЙ БРЕНД ЗДЕСЬ"}
         {detectMobile() ? " : Official App" : " : Official Website"}
         {navigator.share &&
           <Button onClick={onShare} isInline className="tooltip-theme1">
