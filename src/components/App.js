@@ -8,7 +8,6 @@ import CookieBanner from 'react-cookie-banner';
 import Loading from 'components/common/Loading';
 
 import Header from 'components/Header';
-import Notification from 'components/Notification';
 import Messengers from 'components/Messengers';
 import Blocks from 'components/Blocks';
 import Social from 'components/Social';
@@ -24,6 +23,7 @@ import PwaInstallIOs from "components/PwaInstallIOs";
 import SocialSharingButtons from "components/SocialSharingButtons";
 import AppTheme1 from "components/themes/AppTheme1";
 import AppTheme2 from "components/themes/AppTheme2";
+import AppTheme3 from "components/themes/AppTheme3";
 
 
 import API from 'utils/api';
@@ -55,7 +55,7 @@ const App = () => {
   if (!data) {
     return <Loading />;
   }
-
+ 
   const nameTheme = currentTheme.name;
 
   const { settings = {} } = data;
@@ -133,7 +133,11 @@ const App = () => {
       {nameTheme === "theme2" && (
         <AppTheme2 />
       )}
-      {nameTheme !== "theme1" && nameTheme !== "theme2" && (
+      {nameTheme === "theme3" && (
+        <AppTheme3 />
+      )}
+      {nameTheme !== "theme1" && nameTheme !== "theme2" &&
+      nameTheme !== "theme3" && (
         <div className="app" style={backgroundStyles}>
           {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
           <div className="app-background" >

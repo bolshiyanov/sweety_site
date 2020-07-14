@@ -121,14 +121,6 @@ const StoriesTheme2 = ({ data }) => {
       <Slider
         opened={settingsOpened !== null}
         onClose={closeStoriesSettings}
-        title="Настройка меню"
-        subtitle={
-          <React.Fragment>
-            <p>Размести свое основное бизнес предложение в самой кликабельной области страницы.
-          Сделай описание своих товаров или услуг и настрой кнопку. {(active ? 'Оплачено по тарифу "Бизнес"' : 'Доступно на тарифе "Бизнес"')}</p>
-            {active ? null : <a href={paymentData?.link} target="_blank">Купить за 4999 руб. навсегда</a>}
-          </React.Fragment>}
-        onRemove={settingsOpened && removeSettings}
         onSubmit={submitSettings}
       >
         <StorySettings {...storyData} onRotate={onRotate} onChange={(settings) => setStoryData({ ...storyData, ...settings })} />

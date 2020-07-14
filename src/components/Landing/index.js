@@ -276,7 +276,7 @@ const Landing = () => {
               link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
             />
           </div>
-          {!startOpened && currentPage > 5 && (
+          {!startOpened && currentPage > 0 && (
             <Start />
           )}
           {/* {!startOpened && currentPage < 6 && (

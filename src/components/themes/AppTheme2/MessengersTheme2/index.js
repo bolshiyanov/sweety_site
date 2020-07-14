@@ -9,38 +9,24 @@ import { EDIT_MESSENGERS_DATA } from 'constants/actions';
 import './index.scss';
 
 const MessengersTheme2 = () => {
-    const [settingsOpened, setSettingsOpened] = useState(false);
     const [data, setData] = useState([]);
 
-    const openMessengerSettings = () => {
-        setSettingsOpened(true);
-    };
-
-    const closeMessengerSettings = () => {
-        setSettingsOpened(false);
-    };
-
-    const handleChangeItem = (item, value) => {
-        setData(data.map((messenger) => (messenger.title === item ? { ...messenger, value } : messenger)));
-    };
-
-    const dispatch = useDispatch();
-    const applyMessengersSettings = () => {
-        dispatch({ type: EDIT_MESSENGERS_DATA, data });
-        closeMessengerSettings();
-    };
-
     const { messengers } = useSelector((state) => state.config.data);
-    const { active, paymentData } = useSelector((state) => state.config.account);
+
     useEffect(() => {
         setData(messengers);
     }, [messengers]);
 
     const filteredMessengers = data.filter((messenger) => messenger.value !== '');
 
-    const showAddButton = filteredMessengers.length === 0;
-    //|| (filteredMessengers.length === 1 && filteredMessengers[0].title === 'Instagram');
-
+    const showContact = (link) => {
+        if (link.startsWith('tel:') || link.startsWith('mailto:') || link.startsWith('sms:')) {
+            window.location.href = link;
+        }
+        else {
+            window.open(link, "_blank");
+        }
+    };
     return (
         <React.Fragment>
             <div className="messengers-theme2">
@@ -49,80 +35,80 @@ const MessengersTheme2 = () => {
                         <Button
                             key={messenger.title}
                             className="messenger-theme2"
-                            onClick={openMessengerSettings}
+                            onClick={() => showContact(messenger.value)}
                         >
                             <Icon type={messenger.icon} />
                         </Button>
                     ))
                 }
-                {showAddButton && (
+                {!data.length > 0 && (
                     <Button
                         key="whatsapp"
                         className="messenger-theme2"
-                        onClick={openMessengerSettings}
+                        onClick={() => { }}
                     >
                         <Icon type="whatsapp" />
                     </Button>
                 )}
-                {showAddButton && (
+                {!data.length > 0 && (
                     <Button
                         key="facebook"
                         className="messenger-theme2"
-                        onClick={openMessengerSettings}
+                        onClick={() => { }}
                     >
                         <Icon type="facebook" />
                     </Button>
                 )}
-                {showAddButton && (
+                {!data.length > 0 && (
                     <Button
                         key="telegram"
                         className="messenger-theme2"
-                        onClick={openMessengerSettings}
+                        onClick={() => { }}
                     >
                         <Icon type="telegram" />
                     </Button>
                 )}
-                {showAddButton && (
+                {!data.length > 0 && (
                     <Button
                         key="instagram"
                         className="messenger-theme2"
-                        onClick={openMessengerSettings}
+                        onClick={() => { }}
                     >
                         <Icon type="instagram" />
                     </Button>
                 )}
-                {showAddButton && (
+                {!data.length > 0 && (
                     <Button
                         key="viber"
                         className="messenger-theme2"
-                        onClick={openMessengerSettings}
+                        onClick={() => { }}
                     >
                         <Icon type="viber" />
                     </Button>
                 )}
-                {showAddButton && (
+                {!data.length > 0 && (
                     <Button
                         key="envelope"
                         className="messenger-theme2"
-                        onClick={openMessengerSettings}
+                        onClick={() => { }}
                     >
                         <Icon type="envelope" />
                     </Button>
                 )}
-                {showAddButton && (
+                {!data.length > 0 && (
                     <Button
                         key="skype"
                         className="messenger-theme2"
-                        onClick={openMessengerSettings}
+                        onClick={() => { }}
                     >
                         <Icon type="skype" />
                     </Button>
                 )}
-                {showAddButton && (
+                {!data.length > 0 && (
                     <Button
                         key="phone"
                         className="messenger-theme2"
-                        onClick={openMessengerSettings}
+                        onClick={() => { }}
                     >
                         <Icon type="phone" />
                     </Button>

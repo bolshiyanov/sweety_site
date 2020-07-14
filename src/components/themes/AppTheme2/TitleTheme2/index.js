@@ -1,11 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-import Slider from 'components/common/Slider';
 import Button from 'components/common/Button';
-import Icon from 'components/common/Icon';
-
-import { UPDATE_CONFIG_DATA } from 'constants/actions';
 import './index.scss';
 
 const TitleTheme2 = () => {
@@ -20,7 +15,7 @@ const TitleTheme2 = () => {
 
   return (
     <React.Fragment>
-      <Button className="title-theme2-button">
+      <Button className="title-theme2-button" onClick={() => {}}>
           <h1 className="title-theme2" >{title || 'Модный дизайнер'}</h1>
           <div className="description-theme2" >{description || 
           'Вечный, но современный, классический и провокационный- приветствую вас на моем официальном сайте. Откройте для себя подборку основных дизайнов, с помощью которых ваша внешность выйдет на новый уровень.'}</div>
