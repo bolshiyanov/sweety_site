@@ -5,6 +5,10 @@
   align-items: center;
   justify-content: space-between;
 
+  &__empty {
+    position: relative;
+  }
+
   .button-in-block {
     margin: 12px 0;
     width: 100%;
@@ -77,3 +81,37 @@
 		box-shadow: 0 0 0 0 rgba(29, 144, 255, 0);
 	}
 }
+
+
+
+.blocks-empty-block-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.blocks-empty-block-text {
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 12px;
+
+}
+
+  .blocks-empty-block-bigimage {
+    width: calc(100% + 20px);
+    margin-left: -10px;
+    margin-right: -10px;
+    height: 150px;
+    margin-bottom: 12px;
+
+    background: {
+      size: cover;
+      repeat: no-repeat;
+      position: center center;
+    }
+  }
+
+  .blocks-empty-button {
+    width: 100%;
+    margin-bottom: 12px;
+  }

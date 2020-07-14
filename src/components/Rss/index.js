@@ -10,6 +10,9 @@ import './index.scss';
 const Rss = ({ scrollPosition }) => {
   const [data, setData] = useState([]);
 
+  const { currentTheme } = useSelector((state) => state.config);
+  const nameTheme = currentTheme.name;
+
   const { rss } = useSelector((state) => state.config.data);
   const { instagramFeeds, youTubeFeeds } = useSelector((state) => state.config);
 
@@ -26,7 +29,8 @@ const Rss = ({ scrollPosition }) => {
   return (
     <React.Fragment>
       <div className="rss">
-        {filteredRss.length == 0 && <InstagramFeed account={"kimkardashian"} />}
+        {filteredRss.length === 0 && nameTheme === "theme2" && (<InstagramFeed account={"purpurnoe_nebo"} />)}
+        {filteredRss.length === 0 && nameTheme === "theme3" && (<InstagramFeed account={"diamond_nail_studio_"} />)}
 
         {
           filteredRss.map((item) =>

@@ -21,9 +21,9 @@ const TitleTheme2 = () => {
   return (
     <React.Fragment>
       <Button className="title-theme2-button">
-          <h1 className="title-theme2" >{title || 'Тема 2'}</h1>
+          <h1 className="title-theme2" >{title || 'Модный дизайнер'}</h1>
           <div className="description-theme2" >{description || 
-          'Добавь описание для своего приложения. Расскажи о том, какую выгоду получает посетитель. Мотивируй его на установку твоего приложения'}</div>
+          'Вечный, но современный, классический и провокационный- приветствую вас на моем официальном сайте. Откройте для себя подборку основных дизайнов, с помощью которых ваша внешность выйдет на новый уровень.'}</div>
       </Button>
       
     </React.Fragment> 
