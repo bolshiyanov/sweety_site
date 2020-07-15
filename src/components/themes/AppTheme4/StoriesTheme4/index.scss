@@ -1,0 +1,112 @@
+.stories-theme4-box {
+    position: relative;
+    z-index: 3;
+  }
+  
+  .stories-theme4 {
+      width: 100%;
+      max-width: 600px;
+  
+     
+  
+      &__box-story {
+          margin-left: 15px;
+          margin-right: 15px;
+      }
+  
+      &__footer-text {
+          text-align: center;
+          font-size: 8px;
+      }
+  
+      &__box {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          justify-content: space-around;
+  
+          &__didlimiter {
+              width: 15px;
+              height: 30px;
+          }
+      
+  
+        &__button {
+            flex-shrink: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-flow: row nowrap;
+            
+            span {
+              font-size: 28px;
+              font-weight: 500;
+            }
+        
+            .icon {
+              font-size: 36px;
+              margin-right: 24px; 
+            }
+          
+        }
+  
+        &__item {
+          width: 50px;
+          height: 50px;
+        } 
+  
+       
+  
+      }
+  
+      
+    
+        &::-webkit-scrollbar {
+          height: 0px;
+          background-color: #F5F5F5;
+        }
+         
+        &::-webkit-scrollbar-track {
+          border-radius: 10px;
+          background: rgba(0,0,0,0.1);
+          border: 1px solid #ccc;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          background: linear-gradient(left, #fff, #e4e4e4);
+          border: 0px solid #aaa;
+        }
+        
+        &::-webkit-scrollbar-thumb:hover {
+          background: #fff;
+        }
+        
+        &::-webkit-scrollbar-thumb:active {
+          background: linear-gradient(left, #22ADD4, #1E98BA);
+        }
+      }
+    
+    
+    
+    .story-input-descriptions {
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      margin-bottom: 22px;
+      color: #888;
+      font-size: 10px;
+    }
+      
+    .story-settings-preview-title{
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: center;
+      margin-bottom: 30px;
+      color: #888;
+      font-size: 24px; 
+    }
+
+    
+  
+  

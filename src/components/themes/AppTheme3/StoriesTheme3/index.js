@@ -126,13 +126,11 @@ const StoriesTheme3 = ({ data }) => {
         </React.Fragment>
     );
 };
-
 StoriesTheme3.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({}))
-};
-
-StoriesTheme3.defaultProps = {
+  };
+  
+  StoriesTheme3.defaultProps = {
     data: []
-};
-
+  };
 export default StoriesTheme3;

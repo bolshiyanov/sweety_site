@@ -1,0 +1,55 @@
+
+
+      .title-theme4-box {
+        position: absolute;
+        z-index: 2;
+        height: 65%;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+      }
+    
+    .title-theme4 {
+        text-align: center;
+        font-size: 32px;
+        font-weight: 200;
+        line-height: 1;
+        cursor: pointer;
+        margin-bottom: 4px;
+        padding: 4px;
+        margin-top: 0px;
+        overflow: hidden;
+        font-family: 'Oswald', sans-serif;
+      }
+      .description-theme4 {
+        margin-left: 12px;
+        margin-right: 12px;
+        margin-bottom: 6px;
+        line-height: 1.1;
+        text-align: center;
+        font-size: 12px;
+        padding: 4px;
+        font-family: 'Kelly Slab', cursive;
+        white-space: pre-line;
+        overflow: hidden;
+      }
+      
+      .title-settings {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 24px;
+        
+        &>* {
+          flex-grow: 1;
+          width: 100%;
+          box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+        } 
+      }
+
+      
+      
+      
+      @import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&family=Oswald:wght@700&display=swap');

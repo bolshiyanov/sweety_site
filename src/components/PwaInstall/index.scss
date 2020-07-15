@@ -1,6 +1,26 @@
 .pwainstall {
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: center;
-    margin: 20px 12px;
+    margin: 4px ;
+    position: absolute;
+    bottom: 5px;
+    padding: 10px;
   }
+  
+  .footer-brends-box-items {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 30%;
+  }
+  .footer-brends-box-items-icon-icon {
+    font-size: 38px;
+  } 
+    
+ .brends-items {
+   margin: 0 4px;
+  } 
+  
+  

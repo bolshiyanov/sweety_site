@@ -24,6 +24,7 @@ import SocialSharingButtons from "components/SocialSharingButtons";
 import AppTheme1 from "components/themes/AppTheme1";
 import AppTheme2 from "components/themes/AppTheme2";
 import AppTheme3 from "components/themes/AppTheme3";
+import AppTheme4 from "components/themes/AppTheme4";
 
 
 import API from 'utils/api';
@@ -136,8 +137,11 @@ const App = () => {
       {nameTheme === "theme3" && (
         <AppTheme3 />
       )}
+      {nameTheme === "theme4" && (
+        <AppTheme4 />
+      )}
       {nameTheme !== "theme1" && nameTheme !== "theme2" &&
-      nameTheme !== "theme3" && (
+      nameTheme !== "theme3" && nameTheme !== "theme4" && (
         <div className="app" style={backgroundStyles}>
           {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
           <div className="app-background" >
