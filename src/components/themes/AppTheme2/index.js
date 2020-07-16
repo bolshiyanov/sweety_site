@@ -43,7 +43,6 @@ const AppTheme2 = () => {
     <React.Fragment>
 
       <div className="app-theme2" style={backgroundStyles}>
-        <div className="app-background" >
           <div className="app-container-theme2">
           <Header
                 name={data.name}
@@ -56,12 +55,11 @@ const AppTheme2 = () => {
             <BlocksTheme2 data={data.blocks} />
             <Rss />
             <SocialSharingButtons />
-            <PwaInstallIOs profile={profile} />
+            <PwaInstall  />
+            <PwaInstallIOs  />
             <Social />
             <Footer />
           </div>
-        </div>
-        <PwaInstall profile={profile} />
       </div>
     </React.Fragment>
 

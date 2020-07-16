@@ -15,10 +15,11 @@ import './index.scss';
 
 
 const AppTheme4 = () => {
+
     const { data = {} } = useSelector((state) => state.config);
     const { currentTheme } = useSelector((state) => state.config);
     const { config } = useSelector((state) => state.config);
-    const { profile } = useParams();
+    
 
     const { settings = {} } = data;
     const { constructor } = config;
@@ -33,7 +34,6 @@ const AppTheme4 = () => {
 
     return (
         <React.Fragment>
-
             <div className="app-theme4" style={backgroundStyles}>
                 <div className="app-background-theme4" >
                     <div className="app-container-theme4">
@@ -43,10 +43,10 @@ const AppTheme4 = () => {
                             <TitleTheme4 />
                             <StoriesTheme4 data={data.stories} />
                         </div>
-                        <PwaInstallIOs profile={profile}/>
+                        <PwaInstallIOs />
                     </div>
                 </div>
-                <PwaInstall profile={profile} />
+                <PwaInstall />
             </div>
         </React.Fragment>
 
