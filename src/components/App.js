@@ -62,6 +62,8 @@ const App = () => {
   const { settings = {} } = data;
   const styles = {
     banner: {
+      postion: 'fixed',
+      bottom: '35px',
       fontFamily: 'Source Sans Pro',
       height: 110,
       background: 'rgba(52, 64, 81, 0.88) url(/cookie.png) 20px 50% no-repeat',
@@ -157,7 +159,6 @@ const App = () => {
               {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
               <Rss />
               <SocialSharingButtons />
-              <PwaInstall profile={profile} />
               <PwaInstallIOs profile={profile} />
               <Social />
               <Footer />
@@ -169,6 +170,7 @@ const App = () => {
                 />
               </div>
             </div>
+            <PwaInstall profile={profile} />
           </div>
 
         )}

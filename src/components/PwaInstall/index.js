@@ -24,7 +24,7 @@ const PwaInstall = ({ profile }) => {
 
   return (
     <div className="pwainstall">
-      {!supported() && !isInstalled() && (
+      {!isInstalled() && (
         <div className="footer-brends-box-items">
           <div className="brends-items" onClick={handleClick}><IonIcon className="footer-brends-box-items-icon-icon" icon={logoPwa} /></div>
           <div className="brends-items" onClick={handleClick}><IonIcon size="small" icon={logoApple} /></div>
