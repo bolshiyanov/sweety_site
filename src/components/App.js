@@ -56,7 +56,7 @@ const App = () => {
   if (!data) {
     return <Loading />;
   }
- 
+
   const nameTheme = currentTheme.name;
 
   const { settings = {} } = data;
@@ -141,10 +141,9 @@ const App = () => {
         <AppTheme4 />
       )}
       {nameTheme !== "theme1" && nameTheme !== "theme2" &&
-      nameTheme !== "theme3" && nameTheme !== "theme4" && (
-        <div className="app" style={backgroundStyles}>
-          {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
-          <div className="app-background" >
+        nameTheme !== "theme3" && nameTheme !== "theme4" && (
+          <div className="app" style={backgroundStyles}>
+            {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
             <div className="app-container">
               <Header
                 name={data.name}
@@ -171,8 +170,8 @@ const App = () => {
               </div>
             </div>
           </div>
-        </div>
-      )}
+
+        )}
 
     </React.Fragment>
   );
