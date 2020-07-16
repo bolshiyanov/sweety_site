@@ -25,6 +25,7 @@ const AppTheme3 = () => {
   const { data = {} } = useSelector((state) => state.config);
   const { currentTheme } = useSelector((state) => state.config);
   const { config } = useSelector((state) => state.config);
+  const { profile } = useParams();
 
   const { settings = {} } = data;
   const { constructor } = config;
@@ -50,13 +51,13 @@ const AppTheme3 = () => {
             <BlocksTheme3 data={data.blocks} />
             <MessengersTheme3 />
             <Rss />
-            <PwaInstallIOs />
+            <PwaInstallIOs profile={profile}/>
             <SocialSharingButtons />
-            <PwaInstall />
             <Social />
             <Footer />
           </div>
         </div>
+        <PwaInstall profile={profile} />
       </div>
     </React.Fragment>
 

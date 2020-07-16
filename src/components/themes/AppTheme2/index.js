@@ -56,12 +56,12 @@ const AppTheme2 = () => {
             <BlocksTheme2 data={data.blocks} />
             <Rss />
             <SocialSharingButtons />
-            <PwaInstall profile={profile} />
             <PwaInstallIOs profile={profile} />
             <Social />
             <Footer />
           </div>
         </div>
+        <PwaInstall profile={profile} />
       </div>
     </React.Fragment>
 

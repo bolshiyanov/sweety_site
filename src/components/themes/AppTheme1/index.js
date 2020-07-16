@@ -16,6 +16,7 @@ const AppTheme1 = () => {
     const { currentTheme } = useSelector((state) => state.config);
     const { config } = useSelector((state) => state.config);
     const { active } = useSelector((state) => state.config.account);
+    const { profile } = useParams();
 
     const { settings = {} } = data;
     const { avatar } = config;
@@ -36,9 +37,9 @@ const AppTheme1 = () => {
             <div className="app-container-theme1">
                 <AvatarTheme1 image={avatar} />
                 <StoriesTheme1 data={data.stories} />
-                <PwaInstallIOs />
-                <PwaInstall />
+                <PwaInstallIOs profile={profile} />
             </div>
+            <PwaInstall profile={profile} />
         </div>
     );
 };

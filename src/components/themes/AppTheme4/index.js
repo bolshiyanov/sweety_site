@@ -18,6 +18,7 @@ const AppTheme4 = () => {
     const { data = {} } = useSelector((state) => state.config);
     const { currentTheme } = useSelector((state) => state.config);
     const { config } = useSelector((state) => state.config);
+    const { profile } = useParams();
 
     const { settings = {} } = data;
     const { constructor } = config;
@@ -40,12 +41,12 @@ const AppTheme4 = () => {
                         <MessengersTheme4 />
                         <div className="title-theme4-box" >
                             <TitleTheme4 />
-                            <PwaInstall />
                             <StoriesTheme4 data={data.stories} />
                         </div>
-                        <PwaInstallIOs />
+                        <PwaInstallIOs profile={profile}/>
                     </div>
                 </div>
+                <PwaInstall profile={profile} />
             </div>
         </React.Fragment>
 
