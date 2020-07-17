@@ -23,17 +23,18 @@ const PwaInstall = ({ profile }) => {
   };
 
   return (
-    <div className="pwainstall">
+    <React.Fragment>
       {!isInstalled() && (
-        <div className="footer-brends-box-items">
-          <div className="brends-items" onClick={handleClick}><IonIcon className="footer-brends-box-items-icon-icon" icon={logoPwa} /></div>
-          <div className="brends-items" onClick={handleClick}><IonIcon size="small" icon={logoApple} /></div>
-          <div className="brends-items" onClick={handleClick}><IonIcon size="small" icon={logoAndroid} /></div>
-          <div className="brends-items" onClick={handleClick}><IonIcon size="amall" icon={logoWindows} /></div>
+        <div className="pwainstall">
+          <div className="footer-brends-box-items" onClick={handleClick}>
+            <div className="brends-items" onClick={handleClick}><IonIcon className="footer-brends-box-items-icon-icon" icon={logoPwa} /></div>
+            <div className="brends-items" onClick={handleClick}><IonIcon size="small" icon={logoApple} /></div>
+            <div className="brends-items" onClick={handleClick}><IonIcon size="small" icon={logoAndroid} /></div>
+            <div className="brends-items" onClick={handleClick}><IonIcon size="amall" icon={logoWindows} /></div>
+          </div>
         </div>
       )}
-    </div>
-
+    </React.Fragment>
   );
 };
 

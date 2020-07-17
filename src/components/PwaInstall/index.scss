@@ -3,13 +3,15 @@
     width: 100%;
     align-items: center;
     justify-content: center;
-    position: fixed;
+    position: absolute;
     bottom: 0;
+    z-index: 10;
     background-color: #fff;
     color: black !important;
   }
   
   .footer-brends-box-items {
+    max-width: 600px;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -20,7 +22,7 @@
   } 
     
  .brends-items {
-   margin: 0 4px; 
+   margin: 0 4px;  
   } 
   
   
