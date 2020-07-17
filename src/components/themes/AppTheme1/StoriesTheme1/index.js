@@ -15,6 +15,7 @@ import StoryTheme1 from 'components/themes/AppTheme1/StoryTheme1';
 
 import './index.scss';
 
+
 const emptySettings = {
     guid: null,
     type: 'preview-text',
