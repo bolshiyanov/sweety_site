@@ -201,7 +201,7 @@ const Landing = () => {
           <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage2})` }}>
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header">НА ВИДУ- приложение можно увидеть на экране телефона в любое время!</h1>
-              <p>Ссылку на таплинки можно найти только в соцсетях!!!! <br />Но как вспомниить аккаунт?</p>
+              <p>Ссылку на таплинки можно найти только в соцсетях!! <br />Но как вспомниить аккаунт?</p>
             </div>
           </div>
 
