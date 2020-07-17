@@ -1,6 +1,9 @@
 .app-theme1 {
   width: 100vw;
   height: 100vh;
+  position: fixed;
+  overflow: hidden;
+  bottom: 0;
 }
 
 .app-container-theme1 {
