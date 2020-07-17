@@ -126,4 +126,4 @@ const StoriesTheme1 = ({ data }) => {
     );
 };
 
-export default StoriesTheme1;
+export default StoriesTheme1; 

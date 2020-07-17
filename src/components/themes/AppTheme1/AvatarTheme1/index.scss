@@ -1,30 +1,38 @@
+.avatar-theme1-flexbox {
+  position: absolute;
+  top: 40px; 
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.user-name-theme1 {
+  width: 100%;
+  max-width: 600px;
+  text-transform: uppercase ;
+  word-break: break-all;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+}
+
 .avatar-theme1 {
-  top: 40px;
-  position: fixed;
+  position: fixed; 
   width: 100%;
   max-width: 600px;
   height: 100%;
+  z-index: 0;
+  
 
     background: {
       size: cover;
       repeat: no-repeat;
-      position: bottom center;
+      position: top center;
     }
   }
 
-  .user-name-theme1 {
-  top: 50px;
-  position: fixed;
-  z-index: 2;
-  //left: 0;
-  width: 100%;
-  max-width: 600px;
-  text-transform: uppercase ;
-  padding: 0 24px; 
-  word-break: break-all;
-  text-align: center;
-  font-family: 'Oswald', sans-serif;
-  }
+ 
 
   @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
-  

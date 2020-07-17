@@ -1,7 +1,6 @@
 .avatar-theme4-flexbox {
-  position: fixed;
+  position: absolute;
   width: 100%;
-  max-width: 600px;
   top: 30px;
   display: flex;
   flex-flow: row;
@@ -11,24 +10,28 @@
 
 }
 
+.user-name-theme4 {
+  max-width: 600px;
+  text-transform: uppercase ;
+  padding: 0 24px; 
+  word-break: break-all;
+  text-align: center;
+  font-family: 'Kelly Slab', cursive;
+} 
+
+
 .avatar-theme4 {
     max-width: 100%;
     height: 100vh;
+
     background: {
       size: cover;
       repeat: no-repeat;
-      position: button left;
+      position: bottom left;
     }
     
   }
 
   
-  .user-name-theme4 {
-    text-transform: uppercase ;
-    padding: 0 24px; 
-    word-break: break-all;
-    text-align: center;
-    font-family: 'Kelly Slab', cursive;
-  }
-
+  
   @import url('https://fonts.googleapis.com/css2?family=Kelly+Slab&display=swap')

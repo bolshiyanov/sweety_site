@@ -27,16 +27,17 @@ const AvatarTheme1 = () => {
 
   return (
     <React.Fragment>
-      <div className="user-name-theme1"  >{name || "ТВОЙ БРЕНД БУДЕТ ЗДЕСЬ"}
-        {detectMobile() ? " : Official App" : " : Official Website"}
-        {navigator.share &&
-          <Button onClick={onShare} isInline className="tooltip-theme1">
-            <IonIcon slot="start" icon={shareOutline} /></Button>}
+      <div className="avatar-theme1" style={{ backgroundImage: `URL(${avatar || addedAvatar})` }} />
 
-
+      <div className="avatar-theme1-flexbox">
+        <div className="user-name-theme1"  >{name || "ТВОЙ БРЕНД БУДЕТ ЗДЕСЬ"}
+          {detectMobile() ? " : Official App" : " : Official Website"}
+          {navigator.share &&
+            <Button onClick={onShare} isInline className="tooltip-theme1">
+              <IonIcon slot="start" icon={shareOutline} /></Button>}
+        </div>
       </div>
-      <div className="avatar-theme1"
-        style={{ backgroundImage: `URL(${avatar || addedAvatar})` }} />
+
     </React.Fragment>
   );
 };

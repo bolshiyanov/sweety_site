@@ -38,7 +38,8 @@ const AppTheme1 = () => {
                 <StoriesTheme1 data={data.stories} />
                 <PwaInstallIOs />
             </div>
-            <PwaInstall />
+            
+            <PwaInstall /> 
         </div>
     );
 };

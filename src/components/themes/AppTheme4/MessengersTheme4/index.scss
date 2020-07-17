@@ -1,7 +1,6 @@
 .messengers-theme4-box {
-    position: fixed;
+    position: absolute;
     width: 100%;
-    max-width: 600px;
     top: 55px;
     display: flex;
     flex-flow: row;
@@ -10,6 +9,7 @@
   }
 
 .messengers-theme4 {
+    max-width: 600px;
     margin: 10px 6px 0px;
     display: flex;
     flex-flow: row wrap;
