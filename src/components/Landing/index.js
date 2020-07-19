@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 import CookieBanner from 'react-cookie-banner';
 import { Animated } from "react-animated-css";
 
-import Headerlanding from 'components/Headerlanding';
+import Headerlanding from 'components/Headerlanding'; 
 import Button from 'components/common/Button';
 import Slider from 'components/common/Slider';
 import Loading from 'components/common/Loading';
