@@ -140,12 +140,12 @@ const Start = () => {
   }, [counter]);
 
   return (
-    <div className="start">
-      <Input
+    <div className="start"> 
+      {/* <Input
         className="start__field"
         value={instagram}
         onChange={handleChangeInstagram}
-        placeholder="Ваш Instagram*"
+        placeholder="Instagram* (не обязательно)"
         required
       />
       {instagramInvalid && <label htmlFor="" className="start__error">{instagramInvalid}</label>}
@@ -155,7 +155,7 @@ const Start = () => {
         noStyled
       >
         {!starting ? 'ВЗЯТЬ ИМЯ ИЗ INSTAGRAM' : 'Собираем проект...'} {counter}
-      </Button>
+      </Button> */}
       {lastId && <div className="start__text">
         <a onClick={handleContinue}>Продолжить последнее</a>
       </div>}
