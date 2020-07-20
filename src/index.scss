@@ -11,7 +11,7 @@ code {
 }
 
 div {
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .flex-delimiter {
@@ -49,8 +49,28 @@ div {
   }
 }
 
+.main-page-logoBox {
+  margin-top: -10px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+
+  &__logo {
+    width: 120px;
+    height: 120px;
+
+    background: {
+      size: cover;
+      repeat: no-repeat;
+      position: center bottom;
+      }
+  }
+}
+
 .main-page {
-  background-color: #8A2286;
+  background-color: blue;
   top: 0;
   bottom: 0;
   position: absolute;
@@ -64,19 +84,13 @@ div {
     color: #fff;
     background: transparent;
     position: absolute;
-    top: 0;
+    top: 40;
     left: 0;
     z-index: 3;
     text-align: center;
-
-    .avatar {
-      width: 85px;
-      height: 40px;
-    }
-
-    .user-name {
-      text-align: left;
-    }
+    width: 85px;
+    height: 40px;
+    
   }
   
   &__page1 {
@@ -97,6 +111,50 @@ div {
       left: 0;
       width: 100%;
       text-align: center;
+
+      &__text1-flexBox {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+
+        &__text1 {
+          width: 240px;
+          text-align: center;
+          color: white;
+          font-size: 22px;
+          font-weight: 600px;
+          line-height: 1.1;
+          font-family: 'Rubik Mono One', sans-serif;
+
+        }
+
+        &__text2 {
+          padding-top: 50px;
+          width: 240px;
+          text-align: center;
+          color: white;
+          font-size: 22px;
+          font-weight: 600px;
+          line-height: 1.1;
+          font-family: 'Rubik Mono One', sans-serif;
+          margin-bottom: 12px;
+          
+        }
+
+        &__text3 {
+          width: 240px;
+          padding-top: 4px;
+          text-align: center;
+          color: white;
+          font-size: 10px;
+          font-family: 'Manrope', sans-serif;
+          line-height: 0.9;
+          margin-bottom: 4px;
+          border-top: 1px solid white;
+
+        }
+      }
     }
 
     &__container-anime-center {
@@ -290,3 +348,5 @@ div {
   left: 0;
   width: 100%;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700&family=Rubik+Mono+One&display=swap');
