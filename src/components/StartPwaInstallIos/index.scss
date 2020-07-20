@@ -1,0 +1,265 @@
+.app-StartPwaInstallIos {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    overflow-x: hidden;
+    left: 0;
+    background-color: white;
+    z-index: 20;
+  }
+
+.app-container-StartPwaInstallIos {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 18px 18px 110px 18px;
+      position: relative;
+    }
+
+    .startPwaInstallIos-heder {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-flow: row;
+        width: 100%;
+        height: 100px;
+        margin-bottom: 18px;
+    }
+
+    .startPwaInstallIos-heder-avatar-box {
+        width: 100px;
+        min-width: 100px;
+        height: 100%;
+        border-radius: 20px;
+        margin-right: 18px;
+        border: 1px solid rgb(90, 90, 90);
+    }
+
+    .startPwaInstallIos-heder-right-box {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-flow: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        position: relative;
+    }
+    .startPwaInstallIos-heder-title {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.1;
+        margin-top: -4px;
+    }
+
+    .startPwaInstallIos-heder-subtitle {
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 1;
+        color: rgb(90, 90, 90);
+        padding: 4px 0;
+        margin-bottom: 4px;
+        
+    }
+
+    .startPwaInstallIos-heder-buttons-flexBox {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-flow: row;
+        justify-content: space-between;
+        width: 100%;
+
+    }
+
+    .startPwaInstallIos-heder-button-install {
+        margin-top: 12px;
+        
+    }
+
+    .startPwaInstallIos-heder-button-share {
+        margin-top: 7px;
+        margin-right: -4px;
+        color: #1E90FF;
+    }
+
+    .startPwaInstallIos-secondBox {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        flex-flow: row;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid rgb(90, 90, 90);
+    }
+
+    .startPwaInstallIos-ratingBox {
+        
+        display: flex;
+        flex-wrap: nowrap;
+        flex-flow: column;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .startPwaInstallIos-rating {
+        color: rgb(90, 90, 90);
+        font-size: 22px;
+        font-weight: 600;
+
+             &__descriptions {
+                 font-size: 10px;
+                 color: rgb(90, 90, 90);
+             }
+    }
+
+    .startPwaInstallIos-previewTitle {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+
+    .startPwaInstallIos-itemsBox {
+        margin-left: -14px;
+        margin-right: -14px;
+        margin-bottom: 12px;
+        width: calc(100% + 28px);
+        display: block;
+        position: relative;
+        overflow-x: scroll;
+        white-space: nowrap;
+
+        &__items {
+            display: inline-block;
+            overflow: hidden;
+            box-sizing: content-box;
+            align-items: center;
+            justify-content: center;
+            width: 200px;
+            height: 380px;
+            margin: 0 6px;
+            border-radius: 20px;
+            border: 1px solid rgb(90, 90, 90);
+
+            &__title {
+                background-image: linear-gradient(rgb(255,255,255), rgba(255,255,255,0));
+                width: 100%;
+                height: 150px;
+                padding: 18px 8px;
+                color: rgb(134, 15, 134);
+                font-size: 18px;
+                font-weight: 800;
+                text-align: left;
+                line-height: 1;
+                white-space: pre-wrap;
+                margin-top: -380px;
+            }
+        }
+    }
+
+    .startPwaInstallIos-iconsBox {
+        width: 100%;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgb(90, 90, 90);
+        color: rgb(90, 90, 90);
+        font-size: 12px;
+        text-align: left;
+        padding: 0;
+
+        &__phones {
+            margin-left: -3px;
+
+        }
+
+        &__sutitle {
+        font-size: 11px;
+        font-weight: 400;
+        line-height: 1;
+        color: rgb(90, 90, 90);
+        padding: 4px 0;
+        margin-bottom: 12px;
+        text-align: left;
+        }
+    }
+     
+    .startPwaInstallIos-descriotionsline {
+        width: 100%;
+        height: 12px;
+        border-bottom: 1px solid rgb(90, 90, 90);
+        margin-bottom: 12px;
+    }
+
+    .startPwaInstallIos-descriotionsTitle {
+        height: 100px;
+        overflow-y: scroll;
+        font-size: 20px;
+        font-weight: 600;
+        padding-bottom: 12px;;
+        border-bottom: 12px solid white(90, 90, 90);
+    }
+
+    .startPwaInstallIos-descriotionsTitleWhatsNew {
+        height: 100px;
+        overflow-y: scroll;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        border-bottom: 1px solid rgb(90, 90, 90);
+
+    }
+
+    .startPwaInstallIos-descriotions {
+        margin-top: 4px;
+        font-size: 14px;
+        font-weight: 400;
+            
+        
+    }
+
+    .startPwaInstallIos-infoTitle {
+        width: 100%;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 12px;
+    }
+
+        .startPwaInstallIos-infoFlexItems {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        border-bottom: 1px solid rgb(90, 90, 90);
+
+        &__item-left {
+            max-width: 40%;
+            font-size: 14px;
+            color: rgb(90, 90, 90);
+            text-align: left;
+            margin: 12px 0;
+        }
+
+        &__item-right{
+            font-size: 14px;
+            color: rgb(0, 0, 0);
+            text-align: right;
+            max-width: 60%;
+            margin: 12px 0;
+        }
+
+
+    }
+
+.startPwaInstallIos-heder-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+  
+    background: {
+      size: cover;
+      repeat: no-repeat;
+      position: center center;
+    }
+}

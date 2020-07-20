@@ -1,28 +1,38 @@
-.pwainstall {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: 0;
-    z-index: 10;
-    background-color: #fff;
-    color: black !important;
-  }
-  
-  .footer-brends-box-items {
-    max-width: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin: 0 30%;
-  }
-  .footer-brends-box-items-icon-icon {
-    font-size: 38px;
-  } 
+.publish-box-pwainstall {
+  bottom: 0px;
+  position: fixed;
+  background-color: #fff;
+  z-index: 4;
+  color: rgb(30, 144, 255);
+  font-size: 8px;
+  padding-bottom: 4px;
+}
+
+.publish-pwainstall  {
+ 
     
- .brends-items {
-   margin: 0 4px;  
-  }   
-  
+    &__button {
+      background-color: rgb(30, 144, 255) !important;
+      color: #fff !important;
+      font-size: small;
+      flex-grow: 1;
+      padding: 4px 10px;
+      border-radius: 10px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+  }
+
+  .pwainstall-notification {
+    background-color: #fff;
+    width: 100%;
+    font-size: 10px;
+    text-align: center;
+    color: red;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 6; 
+    
+  }
   

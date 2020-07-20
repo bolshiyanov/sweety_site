@@ -1,41 +1,42 @@
 import React from 'react';
 import { useReactPWAInstall } from "./component";
+import Button from 'components/common/Button';
 import { IonIcon } from '@ionic/react';
 import { logoPwa, logoApple, logoAndroid, logoWindows } from 'ionicons/icons';
 import './index.scss';
 
 const PwaInstall = ({ profile }) => {
   const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
+  
+  const detectMobile = () => {
+    const toMatch = [/Android/i, /webOS/i, /iPhone/i, /iPad/i, /iPod/i,
+      /BlackBerry/i, /Windows Phone/i]; return toMatch.some((toMatchItem) => { return navigator.userAgent.match(toMatchItem); });
+  }
 
   const handleClick = () => {
     pwaInstall({
-      title: "Установите себе мое приложение",
+      title:  detectMobile() ? "Приложение с моей аватаркой появится на экране твоего телефона сразу после установки" :
+      "Приложение с моей аватаркой ты сможешь найти на вкладке ПУСК > ПРИЛОЖЕНИЯ > НОВОЕ, сразу после установки"  ,
       logo: `https://sweety.link/content/img/${profile}/logo192.png`,
       features: (
-        <ul>
-          <li>Ты будешь в курсе моих событий</li>
-          <li>Я не затеряюсь в ленте твоих соцсетей</li>
-          <li>Ты получишь мои лучшие предложения</li>
-        </ul>
+        <div className="MuiTypography-root MuiTypography-body2"> <p>Теперь вы получите наши лучшие предложения
+        </p></div>
       ),
-      description: "ТЕПЕРЬ МЫ БУДЕМ НА СВЯЗИ ВСЕГДА!",
+      description: "Установка будет произвдена через ваш БРАУЗЕР. Кредитная карта не понадобится, регистрация не нужна, рассылки технически не возможны",
     });
   };
-
   return (
     <React.Fragment>
-      {!isInstalled() && (
-        <div className="pwainstall">
-          <div className="footer-brends-box-items" onClick={handleClick}>
-            <div className="brends-items" onClick={handleClick}><IonIcon className="footer-brends-box-items-icon-icon" icon={logoPwa} /></div>
-            <div className="brends-items" onClick={handleClick}><IonIcon size="small" icon={logoApple} /></div>
-            <div className="brends-items" onClick={handleClick}><IonIcon size="small" icon={logoAndroid} /></div>
-            <div className="brends-items" onClick={handleClick}><IonIcon size="amall" icon={logoWindows} /></div>
-          </div>
+        <div className="publish-pwainstall">
+          <Button className="publish-pwainstall__button" type="Pwa_Install"
+            onClick={handleClick}>
+            Установить
+          </Button>
         </div>
-      )}
+
     </React.Fragment>
   );
 };
 
-export default PwaInstall;
+export default PwaInstall; 
+

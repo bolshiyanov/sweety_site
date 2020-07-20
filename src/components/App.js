@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams } from 'react-router-dom';
 import CookieBanner from 'react-cookie-banner';
+import StartPwaInstallIos from 'components/StartPwaInstallIos';
+import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 
 import Loading from 'components/common/Loading';
 
@@ -35,7 +37,7 @@ import { CONFIG_LOAD } from 'constants/actions';
 
 const App = () => {
   const dispatch = useDispatch();
-
+  const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
   const { profile } = useParams();
 
   useEffect(() => {
@@ -102,6 +104,8 @@ const App = () => {
 
   const backgroundStyles = currentTheme.getBackgroundStyles();
 
+  if (supported() && !isInstalled())
+  return  <StartPwaInstallIos />;
 
   return (
     <React.Fragment>
