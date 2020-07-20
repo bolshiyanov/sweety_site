@@ -17,8 +17,8 @@ const Slide4 = () => {
 
 
             <Animated
-                animationIn="fadeIn"
-                animationInDelay={7000}
+                animationIn="bounceIn"
+                animationInDelay={6000}
                 animationInDuration={1000}
 
                 animationOut="zoomOutDown"

@@ -19,7 +19,7 @@ import Slide3 from 'components/Landing/Animation/Slide3.js';
 import Slide4 from 'components/Landing/Animation/Slide4.js';
 import Slide5 from 'components/Landing/Animation/Slide5.js';
 import Slide6 from 'components/Landing/Animation/Slide6.js';
-// import Slide7 from 'components/Landing/Animation/Slide7.js';
+import Slide7 from 'components/Landing/Animation/Slide7.js';
 
 import API, { getAdminSite, getRef, getCookieDomain } from 'utils/api';
 import { event } from 'utils/googleAnalytics';
@@ -198,9 +198,9 @@ const Landing = () => {
               <h1 className="main-page__page1__header"><Slide4 /></h1>
             </div>
 
-            {/* <div className="main-page__page1__container1">
+            <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header"><Slide7 /></h1>
-            </div> */}
+            </div>
           </div>
           <div className="main-page__page">
             <Loading />
@@ -217,7 +217,7 @@ const Landing = () => {
             />
           </div>
 
-          <Start />
+          <Start /> 
 
           <div className="textlogolanding">&reg;IMEC&nbsp;2015-2020</div>
         </div>
