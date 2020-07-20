@@ -55,8 +55,6 @@ const AppTheme2 = () => {
             <BlocksTheme2 data={data.blocks} />
             <Rss />
             <SocialSharingButtons />
-            <PwaInstall  />
-            <PwaInstallIOs  />
             <Social />
             <Footer />
           </div>

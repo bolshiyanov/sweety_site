@@ -43,10 +43,8 @@ const AppTheme4 = () => {
                             <TitleTheme4 />
                             <StoriesTheme4 data={data.stories} />
                         </div>
-                        <PwaInstallIOs />
                     </div>
                 </div>
-                <PwaInstall />
             </div>
         </React.Fragment>
 

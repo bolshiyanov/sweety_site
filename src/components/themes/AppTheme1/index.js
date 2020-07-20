@@ -29,14 +29,11 @@ const AppTheme1 = () => {
         return null;
     }
 
-
-
     return (
         <div className="app-theme1" style={backgroundStyles}> 
             <div className="app-container-theme1">
                 <AvatarTheme1 image={avatar} />
                 <StoriesTheme1 data={data.stories} />
-                <PwaInstallIOs />
             </div>
             
             <PwaInstall /> 

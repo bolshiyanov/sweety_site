@@ -105,7 +105,7 @@ const App = () => {
   const backgroundStyles = currentTheme.getBackgroundStyles();
 
   if (supported() && !isInstalled())
-  return  <StartPwaInstallIos />;
+  return  <StartPwaInstallIos profile={profile}/>;
 
   return (
     <React.Fragment>
@@ -163,7 +163,6 @@ const App = () => {
               {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
               <Rss />
               <SocialSharingButtons />
-              <PwaInstallIOs profile={profile} />
               <Social />
               <Footer />
               <div className="cookie-box" >
@@ -174,7 +173,6 @@ const App = () => {
                 />
               </div>
             </div>
-            <PwaInstall profile={profile} />
           </div>
 
         )}

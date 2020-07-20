@@ -19,13 +19,13 @@ import './index.scss';
 
 
 
-const StartPwaInstallIos = () => {
-    const { title, description, name, url, avatar } = useSelector((state) => state.config.data);
-
+const StartPwaInstallIos = ({ profile }) => {
+    const { title, description, name, avatar } = useSelector((state) => state.config.data);
+   
     const onShare = () => {
         navigator.share({
-            title: 'Sweety constructor', // Заголовок
-            text: 'Перешли себе! эту секретную ссылку от конструктора твоего приложения', // Текст
+            title: {title}, // Заголовок
+            text: 'Установи это приложени по ссылки', // Текст
             url: window.location.href, // ссылка
         });
     };
@@ -43,9 +43,9 @@ const StartPwaInstallIos = () => {
 
                         <div className="startPwaInstallIos-heder-right-box" >
                             <div className="startPwaInstallIos-heder-title">{title || "Твой бренд из настроек"}</div>
-                            <div className="startPwaInstallIos-heder-subtitle">Официальное приложение </div>
+    <div className="startPwaInstallIos-heder-subtitle">Официальное приложение </div>
                             <div className="startPwaInstallIos-heder-buttons-flexBox">
-                                <div className="startPwaInstallIos-heder-button-install"><PwaInstall /></div>
+                                <div className="startPwaInstallIos-heder-button-install"><PwaInstall profile={profile}/></div>
                                 {navigator.share && <div className="startPwaInstallIos-heder-button-share" onClick={onShare}><IonIcon size="large" icon={shareOutline} /></div>}
                             </div>
                         </div>
@@ -141,7 +141,7 @@ const StartPwaInstallIos = () => {
                 </div>
                 <div className="startPwaInstallIos-infoFlexItems">
                     <div className="startPwaInstallIos-infoFlexItems__item-left">Категория</div>
-                    <div className="startPwaInstallIos-infoFlexItems__item-right">малый бизнес</div>
+                    <div className="startPwaInstallIos-infoFlexItems__item-right">Малый бизнес</div>
                 </div>
                 <div className="startPwaInstallIos-infoFlexItems">
                     <div className="startPwaInstallIos-infoFlexItems__item-left">Языки</div>
