@@ -27,9 +27,9 @@ const Slide4 = () => {
             >
                 <div className="main-page__page1__container-anime__text1-flexBox">
                     <div className="main-page__page1__container-anime__text1-flexBox__text2">
-                        Подними LTV* на 300%
+                        Зарабатывай 200K+ на приложениях 
                         <div className="main-page__page1__container-anime__text1-flexBox__text3">
-                        LTV* - это общий доход, который получает бизнес за весь срок работы с клиентом
+                        Приложения для бизнеса по доступной цене- это новый тренд. Создавай легко. Будь первым, мы научим!!!
                   </div>
                   </div>
                 </div>
