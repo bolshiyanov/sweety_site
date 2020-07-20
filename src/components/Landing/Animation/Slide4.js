@@ -16,18 +16,25 @@ const Slide4 = () => {
         <React.Fragment>
 
 
-<Animated    
-            animationIn="fadeIn"
-            animationInDelay={7000}
-            animationInDuration={1000}
+            <Animated
+                animationIn="fadeIn"
+                animationInDelay={7000}
+                animationInDuration={1000}
 
-            animationOut="zoomOutDown"
-            animationInDuration={1200} 
+                animationOut="zoomOutDown"
+                animationInDuration={1200}
             // isVisible={isVisible}
             >
-              САМЫЙ ПРОДВИНУТЫЙ КОНСТРУКТОР ПРИЛОЖЕНИЙ ТЕПЕРЬ НА ТВОЕМ ТЕЛЕФОНЕ
+                <div className="main-page__page1__container-anime__text1-flexBox">
+                    <div className="main-page__page1__container-anime__text1-flexBox__text2">
+                        Подними LTV* на 300%
+                        <div className="main-page__page1__container-anime__text1-flexBox__text3">
+                        LTV* - это общий доход, который получает бизнес за весь срок работы с клиентом
+                  </div>
+                  </div>
+                </div>
             </Animated>
-    
+
 
         </React.Fragment>
     );
