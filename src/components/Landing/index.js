@@ -6,7 +6,6 @@ import { Helmet } from 'react-helmet';
 import CookieBanner from 'react-cookie-banner';
 import { Animated } from "react-animated-css";
 
-import Headerlanding from 'components/Headerlanding'; 
 import Button from 'components/common/Button';
 import Slider from 'components/common/Slider';
 import Loading from 'components/common/Loading';
@@ -20,17 +19,18 @@ import Slide3 from 'components/Landing/Animation/Slide3.js';
 import Slide4 from 'components/Landing/Animation/Slide4.js';
 import Slide5 from 'components/Landing/Animation/Slide5.js';
 import Slide6 from 'components/Landing/Animation/Slide6.js';
+// import Slide7 from 'components/Landing/Animation/Slide7.js';
 
 import API, { getAdminSite, getRef, getCookieDomain } from 'utils/api';
 import { event } from 'utils/googleAnalytics';
 
-import referrerAvatar from 'images/sweetylogo.png';
+import logoSweety from 'images/sweetylogo.png';
 import backgroundImage2 from 'images/main-background2.jpg';
 import backgroundImage3 from 'images/main-background3.jpg';
 import backgroundImage4 from 'images/main-background4.jpg';
 import backgroundImage5 from 'images/main-background5.jpg';
 import backgroundImage6 from 'images/main-background6_1.jpg';
-import backgroundImage7 from 'images/main-background7_1.jpg';
+// import backgroundImage7 from 'images/main-background7_1.jpg';
 
 import 'swiper/swiper.scss';
 import { truncate } from 'lodash';
@@ -50,10 +50,7 @@ const Landing = () => {
     setStartOpened(true);
   }, [setStartOpened]);
 
-  const referrer = {
-    title: "Будь ближе к подписчикам",
-    avatar: referrerAvatar
-  }
+
 
   useEffect(() => {
     if (swiper) {
@@ -177,17 +174,21 @@ const Landing = () => {
         <meta name="apple-mobile-web-app-status-bar-style" content="#ffffff" />
       </Helmet>
       <div className="main-page">
-        {/* <Headerlanding className="main-page__header" avatar={referrer.avatar} name={referrer.title} noConfig /> */}
+        <div className="main-page-logoBox">
+          <div className="main-page-logoBox__logo" style={{ backgroundImage: `URL(${logoSweety})` }} />
+        </div>
         <Swiper getSwiper={setSwiper}>
           <div onClick={handleClick} className="main-page__page1" >
 
-            <div className="main-page__page1__container-anime"><Slide1 /></div> 
+            <div className="main-page__page1__container-anime"><Slide1 /></div>
             <div className="main-page__page1__container-anime-center">
               <div className="main-page__page1__container-anime-dilimeter"></div>
               <div className="main-page__page1__container-anime-box-image"><Slide3 /></div>
               <div className="main-page__page1__container-anime-dilimeter"></div>
             </div>
-            <p>ЭТО ТВОЕ ПРИЛОЖЕНИЕ</p>
+            <div className="main-page__page1__container-anime__text1-flexBox">
+              <div className="main-page__page1__container-anime__text1-flexBox__text1"><br />СОЗДАЙ СВОЕ ПРИЛОЖЕНИЕ ЗА 10 МИНУТ</div>
+            </div>
             <div className="main-page__page1__container-anime"><Slide2 /></div>
             <div className="main-page__page1__container-anime"><Slide5 /></div>
             <div className="main-page__page1__container-anime"><Slide6 /></div>
@@ -196,79 +197,18 @@ const Landing = () => {
             <div className="main-page__page1__container1">
               <h1 className="main-page__page1__header"><Slide4 /></h1>
             </div>
-          </div>
 
-          <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage2})` }}>
-            <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">НА ВИДУ- приложение можно увидеть на экране телефона в любое время!</h1>
-              <p>Ссылку на таплинки можно найти только в соцсетях!! <br />Но как вспомниить аккаунт?</p>
-            </div>
+            {/* <div className="main-page__page1__container1">
+              <h1 className="main-page__page1__header"><Slide7 /></h1>
+            </div> */}
           </div>
-
-          <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage3})` }}>
-            <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">ДЛЯ "БЛОНДИНОК"- создавай приложение без дизайнеров и программистов!</h1>
-              <p>В таплинках конструирование тоже очень простое!</p>
-            </div>
-          </div>
-
-          <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage4})` }}>
-            <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">АВТОМАТИЗАЦИЯ- Sweety сам подкачивает обновления из YouTube и Instagram</h1>
-              <p>В таплинках есть админка. Но где найти ссылку и логин, который всегда теряется?</p>
-              <div className="main-page__page1__container2">
-              </div>
-            </div>
-          </div>
-
-          <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage5})` }}>
-            <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">ПРОЗРАЧНО- Sweety можно купить и получить на флешке*. После установки работает
-              без интернета!</h1>
-              <p>За таплинки нужно платить постоянно! И сколько будет в итоге оплачено за "чужую" ссылочку?</p>
-              <div className="main-page__page1__container2">
-              </div>
-            </div>
-          </div>
-
-          <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage6})` }}>
-            <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">СЕРЬЕЗНЫЙ БИЗНЕС ИМЕЕТ СВОЕ ПРИЛОЖЕНИЕ!!!</h1>
-              <p>Таплинки-  это полу сайт и только!</p>
-              <div className="main-page__page1__container2">
-              </div>
-            </div>
-          </div>
-
-          <div onClick={handleClick} className="main-page__page1" style={{ backgroundImage: `URL(${backgroundImage7})` }}>
-            <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header">БЕСПЛАТНАЯ РЕКЛАМА- В приложениях можно отправлять PUSH уведомления прямо в телефон!</h1>
-              <p>Реклама с посадкой на таплинки может быть только платной!</p>
-              <br />
-              <p>*Таплинки: под таплинками понимается любой сервис быстрых ссылок для социальных сетей</p>
-              <p>*Получить на флэшке:  В любое время после окончания настроек приложения вы можете, заказать исходный код вашего приложения. </p>
-              <p>*Работает без интернета: Если пользователь открывал ваше приложение хотя бы один раз, оно сохраняется в кэше телефона.</p>
-              <div className="main-page__page1__container2">
-              </div>
-            </div>
-          </div>
-
           <div className="main-page__page">
             <Loading />
           </div>
         </Swiper>
 
         <div className="main-page__footer">
-          <div className="main-page__pages">
-            <div className={classnames({ 'main-page__pages__selected': currentPage === 0 })} />
-            <div className={classnames({ 'main-page__pages__selected': currentPage === 1 })} />
-            <div className={classnames({ 'main-page__pages__selected': currentPage === 2 })} />
-            <div className={classnames({ 'main-page__pages__selected': currentPage === 3 })} />
-            <div className={classnames({ 'main-page__pages__selected': currentPage === 4 })} />
-            <div className={classnames({ 'main-page__pages__selected': currentPage === 5 })} />
-            <div className={classnames({ 'main-page__pages__selected': currentPage === 6 })} />
 
-          </div>
           <div className="cookie-box" >
             <CookieBanner styles={styles}
               message='Мы используем Cookies для Goole analitics. Мы не собираем персональные данные'
@@ -276,12 +216,8 @@ const Landing = () => {
               link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
             />
           </div>
-          {!startOpened && currentPage > 0 && (
-            <Start />
-          )}
-          {/* {!startOpened && currentPage < 6 && (
-            <Button name="start" className="story-settings__preview__button" onClick={startClick} >Попробовать бесплатно</Button>
-          )} */}
+
+          <Start />
 
           <div className="textlogolanding">&reg;IMEC&nbsp;2015-2020</div>
         </div>
