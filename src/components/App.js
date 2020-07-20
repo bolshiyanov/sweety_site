@@ -41,7 +41,7 @@ const App = () => {
   useEffect(() => {
     API.updateProfile(profile);
 
-    dispatch({ type: CONFIG_LOAD });
+    dispatch({ type: CONFIG_LOAD }); 
   }, []); // eslint-disable-line
 
   const { data = {} } = useSelector((state) => state.config);
