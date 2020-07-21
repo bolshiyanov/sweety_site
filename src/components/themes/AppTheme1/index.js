@@ -34,9 +34,7 @@ const AppTheme1 = () => {
             <div className="app-container-theme1">
                 <AvatarTheme1 image={avatar} />
                 <StoriesTheme1 data={data.stories} />
-            </div>
-            
-            <PwaInstall /> 
+            </div> 
         </div>
     );
 };
