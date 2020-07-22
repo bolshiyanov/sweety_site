@@ -1,16 +1,15 @@
 .messengers-theme3-box {
     position: relative;
+    max-width: 600px;
   }
   
   .messengers-theme3 {
-      margin-left: 6px 0px;
-      margin-right: 6px 0px;
-      margin-top: 12px;
-      display: block;
-      overflow-x: scroll;
-      white-space: nowrap;
-      max-width: 100%;
-      border-bottom: 1px solid grey;
+    margin: 10px 6px 0px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+  
   
       &::-webkit-scrollbar {
         height: 0px;
@@ -38,8 +37,6 @@
       }
       
       .messenger-theme3 {
-      display: inline-block;
-      position: relative;
       margin: 0 6px 6px;
       width: 60px;
       height: 60px;

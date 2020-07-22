@@ -9,6 +9,9 @@ import './index.scss';
 
 const AvatarTheme4 = () => {
   const [data, setData] = useState({ name: '', avatar: '' });
+  const { currentTheme } = useSelector((state) => state.config);
+  
+  const backgroundStyles = currentTheme.getBackgroundStyles();
 
   const detectMobile = () => {
     const toMatch = [/Android/i, /webOS/i, /iPhone/i, /iPad/i, /iPod/i,
@@ -27,8 +30,8 @@ const AvatarTheme4 = () => {
 
   return (
     <React.Fragment>
-      <div className="avatar-theme4-flexbox"  >
-        <div className="user-name-theme4"  >{name || "ПЯТОЕ КОЛЕСО"}
+      <div className="avatar-theme4-flexbox"  style={backgroundStyles}>
+        <div className="user-name-theme4"  >{name || "Тема 4"}
           {detectMobile() ? " : Official App" : " : Official Website"}
           {navigator.share &&
             <Button onClick={onShare} isInline className="tooltip-theme1">

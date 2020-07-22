@@ -1,10 +1,11 @@
 .avatar-theme1-flexbox {
-  position: absolute;
   width: 100%;
   display: flex;
   flex-flow: row;
   justify-content: center;
   align-items: center;
+  border-radius: 0;
+  border: 0;
   z-index: 1;
 }
 
@@ -18,19 +19,20 @@
 }
 
 .avatar-theme1 {
-  position: fixed; 
-  width: 100%;
-  max-width: 600px;
-  height: 100%;
-  z-index: 0;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 50%;
+  padding-bottom: 50%;
+  z-index: 1;
   
 
   background: {
     size: contain;
-     repeat: no-repeat;
-     position: bottom center;
-   }
+    repeat: no-repeat;
+    position: bottom center;
   }
+}
 
  
 

@@ -30,6 +30,7 @@ const StoriesTheme1 = ({ data }) => {
     const [storyData, setStoryData] = useState(emptySettings);
     const { currentTheme } = useSelector((state) => state.config);
     const theme = currentTheme.name;
+    const backgroundStyles = currentTheme.getBackgroundStyles();
 
     const closeStoriesSettings = () => {
         setSettingsOpened(null);
@@ -70,7 +71,7 @@ const StoriesTheme1 = ({ data }) => {
     stories.sort((a, b) => b.order - a.order);
     return (
         <React.Fragment>
-            <div className="stories-theme1">
+            <div className="stories-theme1" style={backgroundStyles}>
                 {data.length === 0 && (
                     <div className="stories-theme1__box">
                         <div className="stories-theme1__box__didlimiter"></div>

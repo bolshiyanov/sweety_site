@@ -1,16 +1,28 @@
 .app-theme1 {
   width: 100vw;
   height: 100vh;
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  bottom: 0;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .app-container-theme1 {
-      max-width: 600px;
-      width: 100%;
-      margin: 0 auto;
-      position: relative;
-      
-    }
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 0 120px 0;
+    position: relative;
+    
+  }
+
+  .app-background-theme1 {
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    display: block;
+    justify-content: center;
+    overflow-y: auto;
+    display: block;
+    
+  }

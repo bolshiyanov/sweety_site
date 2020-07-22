@@ -42,7 +42,7 @@ const AppTheme3 = () => {
     <React.Fragment>
 
       <div className="app-theme3" style={backgroundStyles}>
-        <div className="app-background-theme3" >
+        
           <div className="app-container-theme3">
             <HeaderTheme3 />
             <StoriesTheme3 data={data.stories} /> 
@@ -56,7 +56,7 @@ const AppTheme3 = () => {
             <Footer />
           </div>
         </div>
-      </div>
+      
     </React.Fragment>
 
   );

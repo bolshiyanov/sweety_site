@@ -39,10 +39,9 @@ const AppTheme4 = () => {
                     <div className="app-container-theme4">
                         <AvatarTheme4 />
                         <MessengersTheme4 />
-                        <div className="title-theme4-box" >
                             <TitleTheme4 />
                             <StoriesTheme4 data={data.stories} />
-                        </div>
+                        
                     </div>
                 </div>
             </div>

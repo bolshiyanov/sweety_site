@@ -4,14 +4,14 @@ import classnames from 'classnames';
 import { uuid } from 'uuidv4';
 import { useSelector, useDispatch } from 'react-redux';
 
-import ButtonTheme1 from 'components/themes/AppTheme1/ButtonTheme1';
+import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import Slider from 'components/common/Slider';
 
 import { EDIT_STORY, REMOVE_STORY, ROTATE_STORY } from 'constants/actions';
 
 import StorySettings from 'components/Stories/StorySettings';
-import StoryTheme3 from 'components/themes/AppTheme3/StoryTheme3';
+import StoryTheme4 from 'components/themes/AppTheme4/StoryTheme4';
 
 import './index.scss';
 
@@ -68,29 +68,29 @@ const StoriesTheme4 = ({ data }) => {
     return (
         <React.Fragment>
             <div className="stories-theme4-box">
-           
+
                 <div className="stories-theme4">
                     {data.length === 0 && (
                         <div className="stories-theme4__box">
                             <div className="stories-theme4__box__didlimiter"></div>
-                            <div className="story-picture-title-theme4"
+                            <Button onClick={() => {}} className="story-picture-title-theme4"
                                 key="add-button"
                                 onClick={onOpenStorySettings}
                             >
                                 О нас
-                        </div>
-                            <div className="story-picture-title-theme4"
+                        </Button>
+                            <Button onClick={() => {}}className="story-picture-title-theme4"
                                 key="add-button"
                                 onClick={onOpenStorySettings}
                             >
                                 Услуги
-                        </div>
-                            <div className="story-picture-title-theme4"
+                        </Button>
+                            <Button onClick={() => {}}className="story-picture-title-theme4"
                                 key="add-button"
                                 onClick={onOpenStorySettings}
                             >
                                 Адрес
-                        </div>
+                        </Button>
                             <div className="stories-theme4__box__didlimiter"></div>
                         </div>
                     )}
@@ -99,7 +99,7 @@ const StoriesTheme4 = ({ data }) => {
                         <div className="stories-theme4__box-story">
                             <div className="stories-theme4__box">
                                 {data.map((story) =>
-                                    <StoryTheme3 className='stories-theme4__box__item'
+                                    <StoryTheme4 className='stories-theme4__box__item'
                                         onClick={() => onOpenStorySettings(story.guid)}
                                         key={story.guid} {...story} />)}
                             </div>
@@ -111,7 +111,7 @@ const StoriesTheme4 = ({ data }) => {
             <Slider
                 opened={settingsOpened !== null}
                 onClose={closeStoriesSettings}
-               
+
                 onSubmit={submitSettings}
             >
                 <StorySettings {...storyData} onRotate={onRotate} onChange={(settings) => setStoryData({ ...storyData, ...settings })} />
@@ -123,10 +123,10 @@ const StoriesTheme4 = ({ data }) => {
 
 StoriesTheme4.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({}))
-  };
-  
-  StoriesTheme4.defaultProps = {
+};
+
+StoriesTheme4.defaultProps = {
     data: []
-  };
+};
 
 export default StoriesTheme4;
