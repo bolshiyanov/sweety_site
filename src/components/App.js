@@ -166,7 +166,7 @@ const App = () => {
               <SocialSharingButtons />
               <Social />
               <Footer />
-              {!demo && <div className="cookie-box" >
+              {!isDemo && <div className="cookie-box" >
                 <CookieBanner styles={styles}
                   message='Мы используем Cookies для Goole analitics. Мы не собираем персональные данные'
                   buttonMessage='Закрыть'
