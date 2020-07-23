@@ -133,6 +133,7 @@
 
         &__items {
             display: inline-block;
+            padding: 0;
             overflow: hidden;
             width: 200px;
             height: 380px;
@@ -143,7 +144,7 @@
     background: {
       size: cover;
       repeat: no-repeat;
-      position: center center;
+      position: top center;
     }
 
 
