@@ -104,8 +104,8 @@ const App = () => {
 
   const backgroundStyles = currentTheme.getBackgroundStyles();
 
-  var isPwa = getSearchString(window.location.search, 'pwa') === undefined;
-  if (isPwa && supported() && !isInstalled())
+  var isDemo = getSearchString(window.location.search, 'demo') === "preview";
+  if (!isDemo && supported() && !isInstalled())
     return  <StartPwaInstallIos profile={profile}/>;
 
   return (
@@ -166,13 +166,13 @@ const App = () => {
               <SocialSharingButtons />
               <Social />
               <Footer />
-              <div className="cookie-box" >
+              {!demo && <div className="cookie-box" >
                 <CookieBanner styles={styles}
                   message='Мы используем Cookies для Goole analitics. Мы не собираем персональные данные'
                   buttonMessage='Закрыть'
                   link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
                 />
-              </div>
+              </div>}
             </div>
           </div>
 
