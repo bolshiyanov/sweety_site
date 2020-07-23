@@ -130,6 +130,7 @@
         position: relative;
         overflow-x: scroll;
         white-space: nowrap;
+        max-height: 382px;
 
         &__items {
             display: inline-block;
