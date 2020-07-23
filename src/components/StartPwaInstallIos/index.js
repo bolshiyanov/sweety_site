@@ -75,6 +75,7 @@ const StartPwaInstallIos = ({ profile }) => {
 
                     <div className="startPwaInstallIos-previewTitle">Предпросмотр</div>
                     <div className="startPwaInstallIos-itemsBox">
+                        
                         <div className="startPwaInstallIos-itemsBox-items" style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
                             
                             <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>

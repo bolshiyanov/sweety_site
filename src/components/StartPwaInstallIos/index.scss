@@ -128,17 +128,18 @@
         margin-top: 15px;
         width: calc(100% + 28px);
         display: block;
-        position: relative;
         overflow-x: scroll;
         white-space: nowrap;
     }
 
     .startPwaInstallIos-itemsBox-items {
             display: inline-block;
+            top: 0;
             padding: 0;
             overflow: hidden;
             width: 200px;
             height: 380px;
+            max-height: 380px;
             margin-right:  6px;
             margin-left: 6px;
             margin-top: 4px;
