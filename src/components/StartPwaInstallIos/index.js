@@ -9,9 +9,6 @@ import { phonePortraitSharp, logoPwa, logoApple, logoAndroid, logoWindows } from
 
 import logo512 from 'images/referrer_avatar.jpg';
 import backgroundImage0 from 'images/background.jpg';
-import backgroundImage2 from 'images/main-background2.jpg';
-import backgroundImage3 from 'images/main-background3.jpg';
-import backgroundImage4 from 'images/main-background4.jpg';
 
 import PwaInstall from "components/PwaInstall";
 
@@ -79,24 +76,14 @@ const StartPwaInstallIos = ({ profile }) => {
                     <div className="startPwaInstallIos-previewTitle">Предпросмотр</div>
                     <div className="startPwaInstallIos-itemsBox">
                         <div className="startPwaInstallIos-itemsBox__items">
+                            <div className="startPwaInstallIos-heder-avatar" style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }} />
+                            <div className="startPwaInstallIos-itemsBox__items__title">Приложение</div>
+                        </div>
+
+                        <div className="startPwaInstallIos-itemsBox__items">
                             <div className="startPwaInstallIos-heder-avatar" style={{ backgroundImage: `URL(${backgroundImage0})` }} />
                             <div className="startPwaInstallIos-itemsBox__items__title" >Следите за нашей соц активностью</div>
                         </div>
-
-
-                        <div className="startPwaInstallIos-itemsBox__items">
-                            <div className="startPwaInstallIos-heder-avatar" style={{ backgroundImage: `URL(${backgroundImage2})` }} />
-                            <div className="startPwaInstallIos-itemsBox__items__title">Получайте лучшие предложения</div>
-                        </div>
-                        <div className="startPwaInstallIos-itemsBox__items">
-                            <div className="startPwaInstallIos-heder-avatar" style={{ backgroundImage: `URL(${backgroundImage3})` }} />
-                            <div className="startPwaInstallIos-itemsBox__items__title">Вся наши контакты в вашем телефоне</div>
-                        </div>
-                        <div className="startPwaInstallIos-itemsBox__items">
-                            <div className="startPwaInstallIos-heder-avatar" style={{ backgroundImage: `URL(${backgroundImage4})` }} />
-                            <div className="startPwaInstallIos-itemsBox__items__title">На связи с вами 24/7</div>
-                        </div>
-
                     </div>
 
                     <div className="startPwaInstallIos-iconsBox">
