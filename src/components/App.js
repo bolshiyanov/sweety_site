@@ -30,7 +30,7 @@ import AppTheme4 from "components/themes/AppTheme4";
 
 
 import API from 'utils/api';
-import { getUrl } from 'utils/url';
+import { getSearchString } from 'utils/url';
 import GoogleAnalytics from 'utils/googleAnalytics';
 
 import { CONFIG_LOAD } from 'constants/actions';
@@ -104,8 +104,9 @@ const App = () => {
 
   const backgroundStyles = currentTheme.getBackgroundStyles();
 
-  if (supported() && !isInstalled())
-  return  <StartPwaInstallIos profile={profile}/>;
+  var isPwa = getSearchString(window.location.search, 'pwa') === undefined;
+  if (isPwa && supported() && !isInstalled())
+    return  <StartPwaInstallIos profile={profile}/>;
 
   return (
     <React.Fragment>
