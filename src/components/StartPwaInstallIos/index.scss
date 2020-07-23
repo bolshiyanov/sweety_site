@@ -130,7 +130,6 @@
         position: relative;
         overflow-x: scroll;
         white-space: nowrap;
-        max-height: 382px;
 
         &__items {
             display: inline-block;
@@ -143,6 +142,13 @@
             margin: 0 6px;
             border-radius: 20px;
             border: 1px solid rgb(90, 90, 90);
+            
+    background: {
+      size: cover;
+      repeat: no-repeat;
+      position: center center;
+    }
+
 
             &__title {
                 background-image: linear-gradient(rgb(255,255,255), rgba(255,255,255,0));
@@ -155,7 +161,6 @@
                 text-align: left;
                 line-height: 1;
                 white-space: pre-wrap;
-                margin-top: -380px;
             }
         }
     }
