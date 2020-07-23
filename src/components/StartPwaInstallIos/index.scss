@@ -125,6 +125,7 @@
         margin-left: -14px;
         margin-right: -14px;
         margin-bottom: 12px;
+        margin-top: 15px;
         width: calc(100% + 28px);
         display: block;
         position: relative;
@@ -137,7 +138,10 @@
             overflow: hidden;
             width: 200px;
             height: 380px;
-            margin: 0 6px;
+            margin-right:  6px;
+            margin-left: 6px;
+            margin-top: 4px;
+            margin-bottom: 4px;
             border-radius: 20px;
             border: 1px solid rgb(90, 90, 90);
             
