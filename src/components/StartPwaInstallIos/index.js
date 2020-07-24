@@ -22,7 +22,7 @@ const StartPwaInstallIos = ({ profile }) => {
     const onShare = () => {
         navigator.share({
             title: {title}, // Заголовок
-            text: 'Установи это приложени по ссылки', // Текст
+            text: 'Установи это приложение по ссылке', // Текст
             url: window.location.href, // ссылка
         });
     };
@@ -76,6 +76,10 @@ const StartPwaInstallIos = ({ profile }) => {
                     <div className="startPwaInstallIos-previewTitle">Предпросмотр</div>
                     <div className="startPwaInstallIos-itemsBox">
                         
+                        <div className="startPwaInstallIos-itemsBox-items" style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
+                            
+                            <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>
+                        </div>
                         <div className="startPwaInstallIos-itemsBox-items" style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
                             
                             <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>
