@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import QRCode from "react-qr-code";
-
+import Icon from 'components/common/Icon';
 
 import { IonIcon } from '@ionic/react';
 import { shareOutline, star, starHalf } from 'ionicons/icons';
@@ -44,7 +44,7 @@ const StartPwaInstallIos = ({ profile }) => {
                             <div className="startPwaInstallIos-heder-subtitle">Официальное приложение </div>
                             <div className="startPwaInstallIos-heder-buttons-flexBox">
                                 <div className="startPwaInstallIos-heder-button-install"><PwaInstall profile={profile} /></div>
-                                {navigator.share && <div className="startPwaInstallIos-heder-button-share" onClick={onShare}><IonIcon size="large" icon={shareOutline} /></div>}
+                                {navigator.share && <div className="startPwaInstallIos-heder-button-share" onClick={onShare}><Icon type="shareSquare" /></div>}
                             </div>
                         </div>
                     </div>
