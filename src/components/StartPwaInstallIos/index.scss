@@ -152,7 +152,12 @@
       repeat: no-repeat;
       position: top center;
     }
+    svg {
+        margin-top: -50px;
+    }
 }
+
+
 
 .startPwaInstallIos-itemsBox-items-title {
                 background-image: linear-gradient(rgb(255,255,255), rgba(255,255,255,0));

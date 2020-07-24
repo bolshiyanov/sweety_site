@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import QRCode from "react-qr-code";
 
 
 import { IonIcon } from '@ionic/react';
@@ -18,10 +19,10 @@ import './index.scss';
 
 const StartPwaInstallIos = ({ profile }) => {
     const { title, description, name, avatar } = useSelector((state) => state.config.data);
-   
+
     const onShare = () => {
         navigator.share({
-            title: {title}, // Заголовок
+            title: { title }, // Заголовок
             text: 'Установи это приложение по ссылке', // Текст
             url: window.location.href, // ссылка
         });
@@ -40,9 +41,9 @@ const StartPwaInstallIos = ({ profile }) => {
 
                         <div className="startPwaInstallIos-heder-right-box" >
                             <div className="startPwaInstallIos-heder-title">{title || "Твой бренд из настроек"}</div>
-    <div className="startPwaInstallIos-heder-subtitle">Официальное приложение </div>
+                            <div className="startPwaInstallIos-heder-subtitle">Официальное приложение </div>
                             <div className="startPwaInstallIos-heder-buttons-flexBox">
-                                <div className="startPwaInstallIos-heder-button-install"><PwaInstall profile={profile}/></div>
+                                <div className="startPwaInstallIos-heder-button-install"><PwaInstall profile={profile} /></div>
                                 {navigator.share && <div className="startPwaInstallIos-heder-button-share" onClick={onShare}><IonIcon size="large" icon={shareOutline} /></div>}
                             </div>
                         </div>
@@ -75,21 +76,23 @@ const StartPwaInstallIos = ({ profile }) => {
 
                     <div className="startPwaInstallIos-previewTitle">Предпросмотр</div>
                     <div className="startPwaInstallIos-itemsBox">
-                        
-                        <div className="startPwaInstallIos-itemsBox-items" style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
-                            
-                            <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>
-                        </div>
-                        <div className="startPwaInstallIos-itemsBox-items" style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
-                            
-                            <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>
-                        </div>
 
-                        {/* <div className="startPwaInstallIos-itemsBox-items" style={{ backgroundImage: `URL(${backgroundImage0})` }} >
-                            
-                            <div className="startPwaInstallIos-itemsBox-items-title" >Следите за нашей соц активностью</div>
+                        <div className="startPwaInstallIos-itemsBox-items" style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
+
+                            <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>
+                        </div>
+                        {/* <div className="startPwaInstallIos-itemsBox-items" style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
+
+                            <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>
                         </div> */}
+                        <div className="startPwaInstallIos-itemsBox-items" >
+                        <div className="startPwaInstallIos-itemsBox-items-title">QR код приложения</div>
+                       
+                            <QRCode size="200"  value={`https://sweety.link/${profile}`} />
+                            </div>
+
                     </div>
+
 
                     <div className="startPwaInstallIos-iconsBox">
                         <div className="startPwaInstallIos-iconsBox__phones"><ion-icon size="small" icon={phonePortraitSharp}></ion-icon>Phones with&nbsp;
@@ -102,7 +105,7 @@ const StartPwaInstallIos = ({ profile }) => {
 
                     <div className="startPwaInstallIos-descriotionsTitle">Описание
                     <div className="startPwaInstallIos-descriotions">
-                    {title} &nbsp; {description}
+                            {title} &nbsp; {description}
                         </div>
                     </div>
                     <div className="startPwaInstallIos-descriotionsline" />
@@ -118,36 +121,36 @@ const StartPwaInstallIos = ({ profile }) => {
                     <div className="startPwaInstallIos-descriotionsline" />
 
 
-               
-               
 
 
-                <div className="startPwaInstallIos-infoTitle">Информация</div>
-                <div className="startPwaInstallIos-infoFlexItems">
-                    <div className="startPwaInstallIos-infoFlexItems__item-left"> Авторские права</div>
-                    <div className="startPwaInstallIos-infoFlexItems__item-right"> {name}</div>
+
+
+                    <div className="startPwaInstallIos-infoTitle">Информация</div>
+                    <div className="startPwaInstallIos-infoFlexItems">
+                        <div className="startPwaInstallIos-infoFlexItems__item-left"> Авторские права</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-right"> {name}</div>
+                    </div>
+                    <div className="startPwaInstallIos-infoFlexItems">
+                        <div className="startPwaInstallIos-infoFlexItems__item-left">Размер  </div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-right">1,8 МБ </div>
+                    </div>
+                    <div className="startPwaInstallIos-infoFlexItems">
+                        <div className="startPwaInstallIos-infoFlexItems__item-left">Категория</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-right">Малый бизнес</div>
+                    </div>
+                    <div className="startPwaInstallIos-infoFlexItems">
+                        <div className="startPwaInstallIos-infoFlexItems__item-left">Языки</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-right">Русский</div>
+                    </div>
+                    <div className="startPwaInstallIos-infoFlexItems">
+                        <div className="startPwaInstallIos-infoFlexItems__item-left">Возраст</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-right">18+</div>
+                    </div>
+                    <div className="startPwaInstallIos-infoFlexItems">
+                        <div className="startPwaInstallIos-infoFlexItems__item-left">Разработчик приложения</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-right"> ООО "Профессиональная бизнес сеть Имек"</div>
+                    </div>
                 </div>
-                <div className="startPwaInstallIos-infoFlexItems">
-                    <div className="startPwaInstallIos-infoFlexItems__item-left">Размер  </div>
-                    <div className="startPwaInstallIos-infoFlexItems__item-right">1,8 МБ </div>
-                </div>
-                <div className="startPwaInstallIos-infoFlexItems">
-                    <div className="startPwaInstallIos-infoFlexItems__item-left">Категория</div>
-                    <div className="startPwaInstallIos-infoFlexItems__item-right">Малый бизнес</div>
-                </div>
-                <div className="startPwaInstallIos-infoFlexItems">
-                    <div className="startPwaInstallIos-infoFlexItems__item-left">Языки</div>
-                    <div className="startPwaInstallIos-infoFlexItems__item-right">Русский</div>
-                </div>
-                <div className="startPwaInstallIos-infoFlexItems">
-                    <div className="startPwaInstallIos-infoFlexItems__item-left">Возраст</div>
-                    <div className="startPwaInstallIos-infoFlexItems__item-right">18+</div>
-                </div>
-                <div className="startPwaInstallIos-infoFlexItems">
-                    <div className="startPwaInstallIos-infoFlexItems__item-left">Разработчик приложения</div>
-                    <div className="startPwaInstallIos-infoFlexItems__item-right"> ООО "Профессиональная бизнес сеть Имек"</div>
-                </div>
-            </div>
             </div>
 
         </React.Fragment >
