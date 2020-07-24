@@ -81,10 +81,10 @@ const StartPwaInstallIos = ({ profile }) => {
                             <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>
                         </div>
 
-                        <div className="startPwaInstallIos-itemsBox-items" style={{ backgroundImage: `URL(https://sweety.link/static/media/background.5095646c.jpg)` }} >
+                        {/* <div className="startPwaInstallIos-itemsBox-items" style={{ backgroundImage: `URL(https://sweety.link/static/media/background.5095646c.jpg)` }} >
                             
                             <div className="startPwaInstallIos-itemsBox-items-title" >Следите за нашей соц активностью</div>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="startPwaInstallIos-iconsBox">
@@ -92,7 +92,7 @@ const StartPwaInstallIos = ({ profile }) => {
                                 <ion-icon size="small" icon={logoApple}></ion-icon>&nbsp;
                                 <ion-icon size="small" icon={logoAndroid}></ion-icon>&nbsp;
                                 <ion-icon size="small" icon={logoWindows}></ion-icon>&nbsp;
-                                
+
                                 </div>
                         <div className="startPwaInstallIos-iconsBox__sutitle">Поддерживается</div>
                     </div>
