@@ -80,9 +80,13 @@ const StartPwaInstallIos = ({ profile }) => {
 
                         <div className="startPwaInstallIos-itemsBox-items"
                             style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
-
                             <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>
                         </div>
+                        <div className="startPwaInstallIos-itemsBox-items"
+                            style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
+                            <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>
+                        </div>
+
 
                         <div className="startPwaInstallIos-itemsBox-items" >
                             <div className="startPwaInstallIos-itemsBox-items-title">QR код приложения</div>
