@@ -98,7 +98,7 @@ const StartPwaInstallIos = ({ profile }) => {
 
                     <div className="startPwaInstallIos-descriotionsTitle">Описание
                     <div className="startPwaInstallIos-descriotions">
-                            {description}
+                    {title} &nbsp; {description}
                         </div>
                     </div>
                     <div className="startPwaInstallIos-descriotionsline" />
@@ -106,7 +106,7 @@ const StartPwaInstallIos = ({ profile }) => {
 
                     <div className="startPwaInstallIos-descriotionsTitle">Дополнительно
                     <div className="startPwaInstallIos-descriotions">
-                            <p> &mdash;Установите наше приложение, чтобы вы могли в любой момент найти нас в своем телефоне.
+                            <p> &mdash;&nbsp;Установите наше приложение, чтобы вы могли в любой момент найти нас в своем телефоне.
                             </p>
 
                         </div>
@@ -121,7 +121,7 @@ const StartPwaInstallIos = ({ profile }) => {
                 <div className="startPwaInstallIos-infoTitle">Информация</div>
                 <div className="startPwaInstallIos-infoFlexItems">
                     <div className="startPwaInstallIos-infoFlexItems__item-left"> Авторские права</div>
-                    <div className="startPwaInstallIos-infoFlexItems__item-right"> {title}</div>
+                    <div className="startPwaInstallIos-infoFlexItems__item-right"> {name}</div>
                 </div>
                 <div className="startPwaInstallIos-infoFlexItems">
                     <div className="startPwaInstallIos-infoFlexItems__item-left">Размер  </div>
