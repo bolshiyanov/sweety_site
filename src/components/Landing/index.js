@@ -187,7 +187,7 @@ const Landing = () => {
               <div className="main-page__page1__container-anime-dilimeter"></div>
             </div>
             <div className="main-page__page1__container-anime__text1-flexBox">
-              <div className="main-page__page1__container-anime__text1-flexBox__text1"><br />СОЗДАЙ СВОЕ ПРИЛОЖЕНИЕ ЗА 10 МИНУТ</div>
+              <div className="main-page__page1__container-anime__text1-flexBox__text1"><br />СОЗДАЙ СВОЕ ПРИЛОЖЕНИЕ ЗА 10 МИНУТ!!</div>
             </div>
             <div className="main-page__page1__container-anime"><Slide2 /></div>
             <div className="main-page__page1__container-anime"><Slide5 /></div>
