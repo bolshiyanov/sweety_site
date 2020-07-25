@@ -44,7 +44,7 @@ const StartPwaInstallIos = ({ profile }) => {
                             <div className="startPwaInstallIos-heder-subtitle">Официальное приложение </div>
                             <div className="startPwaInstallIos-heder-buttons-flexBox">
                                 <div className="startPwaInstallIos-heder-button-install"><PwaInstall profile={profile} /></div>
-                                {!navigator.share && 
+                                {navigator.share && 
                                 <div className="startPwaInstallIos-heder-button-share" onClick={onShare}><Icon type="shareSquare" /></div>}
                             </div>
                         </div>
