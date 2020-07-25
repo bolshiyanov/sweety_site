@@ -44,7 +44,8 @@ const StartPwaInstallIos = ({ profile }) => {
                             <div className="startPwaInstallIos-heder-subtitle">Официальное приложение </div>
                             <div className="startPwaInstallIos-heder-buttons-flexBox">
                                 <div className="startPwaInstallIos-heder-button-install"><PwaInstall profile={profile} /></div>
-                                {navigator.share && <div className="startPwaInstallIos-heder-button-share" onClick={onShare}><Icon type="shareSquare" /></div>}
+                                {!navigator.share && 
+                                <div className="startPwaInstallIos-heder-button-share" onClick={onShare}><Icon type="shareSquare" /></div>}
                             </div>
                         </div>
                     </div>
@@ -78,10 +79,6 @@ const StartPwaInstallIos = ({ profile }) => {
                     
                     <div className="startPwaInstallIos-itemsBox">
 
-                        <div className="startPwaInstallIos-itemsBox-items"
-                            style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
-                            <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>
-                        </div>
                         <div className="startPwaInstallIos-itemsBox-items"
                             style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
                             <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>

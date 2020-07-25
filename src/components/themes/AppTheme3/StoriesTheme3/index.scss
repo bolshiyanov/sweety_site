@@ -1,11 +1,14 @@
 .stories-theme3-box {
-    position: relative;;
+    position: relative;
+    
   }
   
   .stories-theme3 {
       width: 100%;
       max-width: 600px;
       border-bottom: 1px solid gray;
+      border: 0;
+      box-shadow: 0;
   
       &__buttom-theme3 {
         position: absolute;
@@ -21,6 +24,7 @@
         transform: scale(1);
         animation: pulse 2s infinite;
         cursor: pointer;
+        
     
         .icon {
           font-size: 25px;
