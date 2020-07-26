@@ -71,7 +71,7 @@ const StoriesTheme1 = ({ data }) => {
     stories.sort((a, b) => b.order - a.order);
     return (
         <React.Fragment>
-            <div className="stories-theme1" style={backgroundStyles}>
+            <div className="stories-theme1" >
                 {data.length === 0 && (
                     <div className="stories-theme1__box">
                         <div className="stories-theme1__box__didlimiter"></div>
@@ -79,31 +79,31 @@ const StoriesTheme1 = ({ data }) => {
                             key="add-button"
                             onClick={onOpenStorySettings}
                         >
-                            Обо мне
+                            Меню1
                         </ButtonTheme1>
                         <ButtonTheme1 className="story-picture-title-theme1"
                             key="add-button"
                             onClick={onOpenStorySettings}
                         >
-                            История
+                            Меню2
                         </ButtonTheme1>
                         <ButtonTheme1 className="story-picture-title-theme1"
                             key="add-button"
                             onClick={onOpenStorySettings}
                         >
-                            Услуги
+                            Меню3
                         </ButtonTheme1>
                         <ButtonTheme1 className="story-picture-title-theme1"
                             key="add-button"
                             onClick={onOpenStorySettings}
                         >
-                            Выгода
+                            Меню4
                         </ButtonTheme1>
                         <ButtonTheme1 className="story-picture-title-theme1"
                             key="add-button"
                             onClick={onOpenStorySettings}
                         >
-                            Отзывы
+                            Меню5
                         </ButtonTheme1>
                         <div className="stories-theme1__box__didlimiter"></div>
                     </div>

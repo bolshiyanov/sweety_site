@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { IonIcon } from '@ionic/react';
 import { shareOutline } from 'ionicons/icons';
-import addedAvatar from 'images/ImageTheme1.png';
+import addedAvatar from 'images/addedAvatar2.png';
 
 import Button from 'components/common/Button';
 import './index.scss';
@@ -29,7 +29,7 @@ const AvatarTheme1 = () => {
     <React.Fragment>
       
       <Button onClick = {() => {}} className="avatar-theme1-flexbox">
-        <div className="user-name-theme1"  >{name || "ТВОЙ БРЕНД БУДЕТ ЗДЕСЬ"}
+        <div className="user-name-theme1"  >{name || "Название бренда"}
           {detectMobile() ? " : Official App" : " : Official Website"}
           {navigator.share &&
             <Button onClick={onShare} isInline className="tooltip-theme1">
