@@ -1,13 +1,13 @@
 import React from 'react';
 
-
+import { Helmet } from 'react-helmet';
 import { useSelector } from 'react-redux';
 import CookieBanner from 'react-cookie-banner';
 import HeaderTheme3 from 'components/themes/AppTheme3/HeaderTheme3';
 import StoriesTheme3 from 'components/themes/AppTheme3/StoriesTheme3';
 import AvatarTheme3 from 'components/themes/AppTheme3/AvatarTheme3';
 import TitleTheme3 from 'components/themes/AppTheme3/TitleTheme3';
-import BlocksTheme3 from 'components/themes/AppTheme3/BlocksTheme3';
+import Blocks from 'components/Blocks';
 import MessengersTheme3 from 'components/themes/AppTheme3/MessengersTheme3';
 import Rss from 'components/Rss';
 import Social from 'components/Social';
@@ -38,8 +38,31 @@ const AppTheme3 = () => {
     return null;
   }
 
-  return (
-    <React.Fragment>
+  return ( <React.Fragment>
+    <Helmet>
+      <html lang="Ru" amp />
+      <title>{data.title || "Активная ссылка Sweety link"}</title>
+      <meta name="description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
+      <link rel="canonical" href={data.url} />
+      <meta property="og:site_name" content={data.name || "Free Link Creator"} />
+      <meta property="og:url" content={data.url} />
+      <meta property="og:locale" content={data.lang} />
+      <meta property="og:type:profile:username" content={data.name || "Free Link Creator"} />
+      <meta property="og:type:article:published_time" content={data.paymentData} />
+      <meta property="og:image" content={data.title || "Активная ссылка Sweety link"} />
+      <meta property="og:image:secure_url" content={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/'}logo512.png`} />
+      <meta property="og:image:width" content="512" />
+      <meta property="og:image:height" content="512" />
+      <meta property="og:title" content={data.title || "Активная ссылка Sweety link"} />
+      <meta property="og:description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content={data.url} />
+      <meta name="twitter:title" content={data.title || "Активная ссылка Sweety link"} />
+      <meta name="twitter:description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
+      <meta name="twitter:creator" content={data.name || "Free Link Creator"} />
+      <meta name="twitter:image:src" content={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/'}logo512.png`} />
+      <meta name="twitter:domain" content={data.url} />
+    </Helmet>
 
       <div className="app-theme3" style={backgroundStyles}>
         
@@ -48,7 +71,7 @@ const AppTheme3 = () => {
             <StoriesTheme3 data={data.stories} /> 
             <AvatarTheme3 />
             <TitleTheme3 />
-            <BlocksTheme3 data={data.blocks} />
+            <Blocks data={data.blocks} />
             <MessengersTheme3 />
             <Rss />
             <SocialSharingButtons />

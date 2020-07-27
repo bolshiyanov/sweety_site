@@ -13,7 +13,7 @@ const HeaderTheme3 = () => {
   
   return (
     <React.Fragment>
-      <Button className="user-name-theme3" onClick = {() => {}}>{ name || "Твой бренд"} </Button> 
+      <Button className="user-name-theme3" onClick = {() => {}}>{ name || "Название бренда"} </Button> 
     
     </React.Fragment>
   );

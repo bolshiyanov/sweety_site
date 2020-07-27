@@ -27,7 +27,10 @@ const emptySettings = {
 const StoriesTheme3 = ({ data }) => {
     const [settingsOpened, setSettingsOpened] = useState(null);
     const [storyData, setStoryData] = useState(emptySettings);
-
+    
+    const { currentTheme } = useSelector((state) => state.config);
+    const theme = currentTheme.name;
+    
     const closeStoriesSettings = () => {
         setSettingsOpened(null);
     };
@@ -77,25 +80,25 @@ const StoriesTheme3 = ({ data }) => {
                                 key="add-button"
                                 onClick={onOpenStorySettings}
                             >
-                                Обо мне
+                                Меню1
                         </div>
                             <div className="story-picture-title-theme3"
                                 key="add-button"
                                 onClick={onOpenStorySettings}
                             >
-                                Услуги
+                                Меню2
                         </div>
                             <div className="story-picture-title-theme3"
                                 key="add-button"
                                 onClick={onOpenStorySettings}
                             >
-                                Выгода
+                                Меню3
                         </div>
                             <div className="story-picture-title-theme3"
                                 key="add-button"
                                 onClick={onOpenStorySettings}
                             >
-                                Отзывы
+                                Меню4
                         </div>
                             <div className="stories-theme3__box__didlimiter"></div>
                         </div>
@@ -104,7 +107,7 @@ const StoriesTheme3 = ({ data }) => {
                     {data.length > 0 && (
                         <div className="stories-theme3__box-story">
                             <div className="stories-theme3__box">
-                                {data.map((story) =>
+                            {(theme === "theme3" ? data.slice(0, 4) : data).map((story) =>
                                     <StoryTheme3 className='stories-theme3__box__item'
                                         onClick={() => onOpenStorySettings(story.guid)}
                                         key={story.guid} {...story} />)}

@@ -20,9 +20,9 @@ const TitleTheme3 = () => {
   return (
     <React.Fragment>
       <Button className="title-theme3-button" onClick={() => {}}>
-          <h1 className="title-theme3" >{title || 'Ваш заголовок'}</h1>
+          <h1 className="title-theme3" >{title || 'Заголовок приложения'}</h1>
           <div className="description-theme3" >{description || 
-          'Ваше описние здесь'}</div>
+          'Описание приложения'}</div>
       </Button>
       
     </React.Fragment> 
