@@ -10,7 +10,7 @@ import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import MessengersTheme2 from 'components/themes/AppTheme2/MessengersTheme2';
 import TitleTheme2 from 'components/themes/AppTheme2/TitleTheme2';
 
-import BlocksTheme2 from 'components/themes/AppTheme2/BlocksTheme2';
+import Blocks from 'components/Blocks';
 import Rss from 'components/Rss';
 import SocialSharingButtons from "components/SocialSharingButtons";
 import Social from 'components/Social';
@@ -52,7 +52,7 @@ const AppTheme2 = () => {
             <StoriesTheme2 data={data.stories} />
             <MessengersTheme2 />
             <TitleTheme2 />
-            <BlocksTheme2 data={data.blocks} />
+            <Blocks data={data.blocks} />
             <Rss />
             <SocialSharingButtons />
             <Social />

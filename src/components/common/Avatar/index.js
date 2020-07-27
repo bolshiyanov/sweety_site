@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import addedAvatar from 'images/ImageTheme3_1.png';
+import addedAvatar from 'images/addedAvatar2.png';
 
 
 import './index.scss';

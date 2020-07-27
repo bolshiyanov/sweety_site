@@ -29,9 +29,6 @@ const Rss = ({ scrollPosition }) => {
   return (
     <React.Fragment>
       <div className="rss">
-        {filteredRss.length === 0 && nameTheme === "theme2" && (<InstagramFeed account={"purpurnoe_nebo"} />)}
-        {filteredRss.length === 0 && nameTheme === "theme3" && (<InstagramFeed account={"diamond_nail_studio_"} />)}
-
         {
           filteredRss.map((item) =>
             (item.icon == 'instagram' ? (<InstagramFeed

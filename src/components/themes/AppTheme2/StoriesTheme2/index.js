@@ -8,11 +8,7 @@ import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import Slider from 'components/common/Slider';
 
-import image2_1 from 'images/ImageTheme2_1.jpg';
-import image2_2 from 'images/ImageTheme2_2.jpg';
-import image2_3 from 'images/ImageTheme2_3.jpg';
-import image2_4 from 'images/ImageTheme2_4.jpg';
-import image2_5 from 'images/ImageTheme2_5.jpg';
+import addedAvatar from 'images/addedAvatar2.png';
 
 import { EDIT_STORY, REMOVE_STORY, ROTATE_STORY } from 'constants/actions';
 
@@ -80,32 +76,32 @@ const StoriesTheme2 = ({ data }) => {
             <div className="stories-theme2-picker__empty">
               <div className="stories-theme2-picker-item">
                 <div className="stories-theme2-picker-item-flexbox">
-                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${image2_1})` }} />
-                  <Button className="stories-theme2-picker-item-flexbox__title">Какой у тебя опыт или стаж</Button>
+                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${addedAvatar})` }} />
+                  <Button onClick = {() =>{}} className="stories-theme2-picker-item-flexbox__title">Меню1</Button>
                 </div>
               </div>
               <div className="stories-theme2-picker-item">
                 <div className="stories-theme2-picker-item-flexbox">
-                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${image2_2})` }} />
-                  <Button className="stories-theme2-picker-item-flexbox__title">Расскажи о своих продуктах</Button>
+                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${addedAvatar})` }} />
+                  <Button onClick = {() =>{}} className="stories-theme2-picker-item-flexbox__title">Меню2</Button>
                 </div>
               </div>
               <div className="stories-theme2-picker-item">
                 <div className="stories-theme2-picker-item-flexbox">
-                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${image2_3})` }} />
-                  <Button className="stories-theme2-picker-item-flexbox__title">Расскажи о себе</Button>
+                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${addedAvatar})` }} />
+                  <Button onClick = {() =>{}} className="stories-theme2-picker-item-flexbox__title">Меню3</Button>
                 </div>
               </div>
               <div className="stories-theme2-picker-item">
                 <div className="stories-theme2-picker-item-flexbox">
-                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${image2_4})` }} />
-                  <Button className="stories-theme2-picker-item-flexbox__title">Размести отзывы</Button>
+                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${addedAvatar})` }} />
+                  <Button onClick = {() =>{}} className="stories-theme2-picker-item-flexbox__title">Меню4</Button>
                 </div>
               </div>
               <div className="stories-theme2-picker-item">
                 <div className="stories-theme2-picker-item-flexbox">
-                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${image2_5})` }} />
-                  <Button className="stories-theme2-picker-item-flexbox__title">Твое исключительное преимущество</Button>
+                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${addedAvatar})` }} />
+                  <Button onClick = {() =>{}} className="stories-theme2-picker-item-flexbox__title">Меню5</Button>
                 </div>
               </div>
 
