@@ -27,7 +27,7 @@ import AppTheme1 from "components/themes/AppTheme1";
 import AppTheme2 from "components/themes/AppTheme2";
 import AppTheme3 from "components/themes/AppTheme3";
 import AppTheme4 from "components/themes/AppTheme4";
-
+import AppTheme5 from "components/themes/AppTheme5";
 
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
@@ -147,8 +147,12 @@ const App = () => {
       {nameTheme === "theme4" && (
         <AppTheme4 />
       )}
+      {nameTheme === "theme5" && (
+        <AppTheme5 />
+      )}
       {nameTheme !== "theme1" && nameTheme !== "theme2" &&
-        nameTheme !== "theme3" && nameTheme !== "theme4" && (
+        nameTheme !== "theme3" && nameTheme !== "theme4" && 
+        nameTheme !== "theme5" && (
           <div className="app" style={backgroundStyles}>
             {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
             <div className="app-container">

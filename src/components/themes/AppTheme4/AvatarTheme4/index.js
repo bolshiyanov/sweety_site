@@ -29,7 +29,7 @@ const AvatarTheme4 = () => {
 
   return (
     <React.Fragment>
-      <div className="avatar-theme4-flexbox"  style={backgroundStyles}>
+      <div className="avatar-theme4-flexbox" >
         <div className="user-name-theme4"  >{name || "Название бренда"}
           {detectMobile() ? " : Official App  "  : " : Official Website  "}
           {navigator.share &&
