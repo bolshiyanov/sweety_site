@@ -28,6 +28,10 @@ const StoriesTheme4 = ({ data }) => {
     const [settingsOpened, setSettingsOpened] = useState(null);
     const [storyData, setStoryData] = useState(emptySettings);
 
+    const { currentTheme } = useSelector((state) => state.config);
+    const theme = currentTheme.name;
+
+
     const closeStoriesSettings = () => {
         setSettingsOpened(null);
     };
@@ -73,23 +77,23 @@ const StoriesTheme4 = ({ data }) => {
                     {data.length === 0 && (
                         <div className="stories-theme4__box">
                             <div className="stories-theme4__box__didlimiter"></div>
-                            <Button onClick={() => {}} className="story-picture-title-theme4"
+                            <Button onClick={() => {}} 
                                 key="add-button"
                                 onClick={onOpenStorySettings}
                             >
-                                О нас
+                                Меню1
                         </Button>
-                            <Button onClick={() => {}}className="story-picture-title-theme4"
+                            <Button onClick={() => {}}
                                 key="add-button"
                                 onClick={onOpenStorySettings}
                             >
-                                Услуги
+                                Меню2
                         </Button>
-                            <Button onClick={() => {}}className="story-picture-title-theme4"
+                            <Button onClick={() => {}}
                                 key="add-button"
                                 onClick={onOpenStorySettings}
                             >
-                                Адрес
+                                Меню3
                         </Button>
                             <div className="stories-theme4__box__didlimiter"></div>
                         </div>
@@ -98,7 +102,7 @@ const StoriesTheme4 = ({ data }) => {
                     {data.length > 0 && (
                         <div className="stories-theme4__box-story">
                             <div className="stories-theme4__box">
-                                {data.map((story) =>
+                            {(theme === "theme4" ? data.slice(0, 3) : data).map((story) =>
                                     <StoryTheme4 className='stories-theme4__box__item'
                                         onClick={() => onOpenStorySettings(story.guid)}
                                         key={story.guid} {...story} />)}

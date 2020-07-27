@@ -1,19 +1,21 @@
 .story-picture-title-theme4 {
-    padding: 6px;
+  padding: 6px;
+  max-width: 600px;
+
+
+}
+
+.story-picture-title-theme4 {
+    text-align: center;
+    font-size: 13px;
+    word-wrap: none;
+    overflow: hidden;
+    font-family: 'Gabriela', serif;
+    padding: 1px;
+    max-width: 100px;
+    white-space: nowrap;
+  };
+
+ 
   
-  
-  }
-  
-  .story-picture-title-theme4 {
-      text-align: center;
-      font-size: 13px;
-      word-wrap: none;
-      overflow: hidden;
-      font-family: 'Gabriela', serif;
-      padding: 6px;
-      margin: 0 -6px;
-    };
-  
-   
-    
-    @import url('https://fonts.googleapis.com/css2?family=Gabriela&family=Literata:wght@700&display=swap')
+  @import url('https://fonts.googleapis.com/css2?family=Gabriela&family=Literata:wght@700&display=swap')

@@ -14,9 +14,9 @@ const TitleTheme4 = () => {
 
     return (
         <React.Fragment>
-            <h1 className="title-theme4" >{data.title || 'АВТОСЕРВИС НА ТАГАНКЕ'}</h1>
+            <h1 className="title-theme4" >{data.title || 'Заголовок приложения'}</h1>
             <div className="description-theme4">{data.description ||
-                'Оперативный ремонт ходовой, автоэлектрики, диагностика двигателя и любые другие поломки. Все марки авто.'}</div>
+                'Описание приложения'}</div>
 
         </React.Fragment>
     );

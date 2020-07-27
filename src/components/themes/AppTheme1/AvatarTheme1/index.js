@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { IonIcon } from '@ionic/react';
-import { shareOutline } from 'ionicons/icons';
+import Icon from 'components/common/Icon';
 import addedAvatar from 'images/addedAvatar2.png';
 
 import Button from 'components/common/Button';
@@ -30,10 +29,10 @@ const AvatarTheme1 = () => {
       
       <Button onClick = {() => {}} className="avatar-theme1-flexbox">
         <div className="user-name-theme1"  >{name || "Название бренда"}
-          {detectMobile() ? " : Official App" : " : Official Website"}
+          {detectMobile() ? " : Official App  " : " : Official Website  "}
           {navigator.share &&
             <Button onClick={onShare} isInline className="tooltip-theme1">
-              <IonIcon slot="start" icon={shareOutline} /></Button>}
+              <Icon type="shareSquare" /></Button>}
         </div>
       </Button>
 

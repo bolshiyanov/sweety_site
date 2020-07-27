@@ -17,7 +17,6 @@ import PwaInstallIOs from "components/PwaInstallIOs";
 import PwaInstall from "components/PwaInstall";
 import SocialSharingButtons from "components/SocialSharingButtons";
 
-
 import './index.scss';
 
 
