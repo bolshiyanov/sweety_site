@@ -28,6 +28,8 @@ import AppTheme2 from "components/themes/AppTheme2";
 import AppTheme3 from "components/themes/AppTheme3";
 import AppTheme4 from "components/themes/AppTheme4";
 import AppTheme5 from "components/themes/AppTheme5";
+import AppTheme6 from "components/themes/AppTheme6";
+import AppTheme7 from "components/themes/AppTheme7";
 
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
@@ -43,7 +45,7 @@ const App = () => {
   useEffect(() => {
     API.updateProfile(profile);
 
-    dispatch({ type: CONFIG_LOAD }); 
+    dispatch({ type: CONFIG_LOAD });
   }, []); // eslint-disable-line
 
   const { data = {} } = useSelector((state) => state.config);
@@ -106,7 +108,7 @@ const App = () => {
 
   var isDemo = getSearchString(window.location.search, 'demo') === "preview";
   if (!isDemo && supported() && !isInstalled())
-    return  <StartPwaInstallIos profile={profile}/>;
+    return <StartPwaInstallIos profile={profile} />;
 
   return (
     <React.Fragment>
@@ -150,9 +152,13 @@ const App = () => {
       {nameTheme === "theme5" && (
         <AppTheme5 />
       )}
-      {nameTheme !== "theme1" && nameTheme !== "theme2" &&
-        nameTheme !== "theme3" && nameTheme !== "theme4" && 
-        nameTheme !== "theme5" && (
+      {nameTheme === "theme6" && (
+        <AppTheme6 />
+      )}
+      {
+        nameTheme !== "theme1" && nameTheme !== "theme2" &&
+        nameTheme !== "theme3" && nameTheme !== "theme4" &&
+        nameTheme !== "theme5" && nameTheme !== "theme6" &&(
           <div className="app" style={backgroundStyles}>
             {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
             <div className="app-container">

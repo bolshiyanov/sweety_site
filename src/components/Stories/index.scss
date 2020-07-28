@@ -1,6 +1,8 @@
 .stories {
     display: block;
     max-width: 100%;
+    margin-top: 12px;
+
     
     
     &__button {
@@ -38,6 +40,30 @@
         justify-content: center;
         
       } 
+
+      .stories-theme6-picker-item {
+        display: inline-block;
+        position: relative;
+        width: 54px;
+        height: auto;
+        margin: 5px;
+        overflow: hidden;
+        box-sizing: content-box;
+        align-items: center;
+        justify-content: center;
+      } 
+
+      .stories-theme6-picker-buttom-first {
+     
+        width: 54px;
+        height: 54px;
+        margin-left: 12px ;
+        background-color: #1d90ff;
+        border-radius: 50%;
+        z-index: 2;
+        box-shadow: 0 0 0 0 #1d90ff;
+        
+      }
   
       .stories-picker-buttom {
         position: -webkit-sticky;
