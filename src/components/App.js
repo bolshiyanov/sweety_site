@@ -155,10 +155,14 @@ const App = () => {
       {nameTheme === "theme6" && (
         <AppTheme6 />
       )}
+       {nameTheme === "theme8" && (
+        <AppTheme7 />
+      )}
       {
         nameTheme !== "theme1" && nameTheme !== "theme2" &&
         nameTheme !== "theme3" && nameTheme !== "theme4" &&
-        nameTheme !== "theme5" && nameTheme !== "theme6" &&(
+        nameTheme !== "theme5" && nameTheme !== "theme6" && 
+        nameTheme !== "theme7" &&(
           <div className="app" style={backgroundStyles}>
             {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
             <div className="app-container">
