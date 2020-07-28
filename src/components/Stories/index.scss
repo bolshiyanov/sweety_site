@@ -2,7 +2,7 @@
     display: block;
     max-width: 100%;
     margin-top: 12px;
-
+    
     
     
     &__button {
@@ -26,6 +26,7 @@
       display: block;
       overflow-x: scroll;
       white-space: nowrap;
+      max-width: 600px;
       
         
       .stories-picker-item {
@@ -52,18 +53,6 @@
         align-items: center;
         justify-content: center;
       } 
-
-      .stories-theme6-picker-buttom-first {
-     
-        width: 54px;
-        height: 54px;
-        margin-left: 12px ;
-        background-color: #1d90ff;
-        border-radius: 50%;
-        z-index: 2;
-        box-shadow: 0 0 0 0 #1d90ff;
-        
-      }
   
       .stories-picker-buttom {
         position: -webkit-sticky;
