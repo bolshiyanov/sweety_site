@@ -107,7 +107,7 @@ const StoriesTheme3 = ({ data }) => {
                     {data.length > 0 && (
                         <div className="stories-theme3__box-story">
                             <div className="stories-theme3__box">
-                            {(theme === "theme3" ? data.slice(0, 4) : data).map((story) =>
+                            {(theme === "theme3" || theme === "theme5" ? data.slice(0, 4) : data).map((story) =>
                                     <StoryTheme3 className='stories-theme3__box__item'
                                         onClick={() => onOpenStorySettings(story.guid)}
                                         key={story.guid} {...story} />)}
