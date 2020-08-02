@@ -317,6 +317,7 @@ import {
   faMicrophoneSlash,
   faMouse,
   faPaperclip,
+  faPen,
   faPhone,
   faPhoneSlash,
   faPhotoVideo,
@@ -353,7 +354,11 @@ import {
   faVolumeMute,
   faVolumeOff,
   faVolumeUp,
-  faWallet
+  faWallet,
+  faArrowCircleRight,
+  faUniversity,
+  faPlusCircle,
+  faMinusCircle
 } from '@fortawesome/free-solid-svg-icons';
 import {
   fa500px,
@@ -1301,7 +1306,7 @@ const icons = {
   paperclip: faPaperclip,
   patreon: faPatreon,
   pauseCircle: faPauseCircle,
-  paypal: faPaypal,
+  pen:faPen,
   pennyArcade: faPennyArcade,
   periscope: faPeriscope,
   phabricator: faPhabricator,
@@ -1436,6 +1441,7 @@ const icons = {
   twitterSquare: faTwitterSquare,
   typo3: faTypo3,
   uber: faUber,
+  university: faUniversity,
   unity: faUnity,
   untappd: faUntappd,
   ups: faUps,
@@ -1496,7 +1502,10 @@ const icons = {
   yoast: faYoast,
   youtube: faYoutube,
   youtubeSquare: faYoutubeSquare,
-  linkedin: faLinkedin
+  linkedin: faLinkedin,
+  arrowCircleRight: faArrowCircleRight,
+  plusCircle: faPlusCircle,
+  MinusCircle: faMinusCircle
 };
 
 const selfIcons = {
@@ -1512,6 +1521,8 @@ const Icon = ({ type, className }) => {
       />
     );
   }
+
+  
 
   if (selfIcons[type])
     return selfIcons[type];

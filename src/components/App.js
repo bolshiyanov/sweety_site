@@ -11,6 +11,7 @@ import Loading from 'components/common/Loading';
 
 import Header from 'components/Header';
 import Messengers from 'components/Messengers';
+import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
 import Social from 'components/Social';
 import Footer from 'components/Footer';
@@ -174,6 +175,7 @@ const App = () => {
               <Stories data={data.stories} profile={profile} />
               <Title />
               <Messengers />
+              <CatalogItems data={data.catalogItems} profile={profile}/>
               <Blocks data={data.blocks} />
               {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
               <Rss />
