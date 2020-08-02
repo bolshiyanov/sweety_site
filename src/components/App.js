@@ -9,6 +9,7 @@ import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 
 import Loading from 'components/common/Loading';
 
+import Order from 'components/Order';
 import Header from 'components/Header';
 import Messengers from 'components/Messengers';
 import CatalogItems from 'components/CatalogItems';
@@ -156,17 +157,18 @@ const App = () => {
       {nameTheme === "theme6" && (
         <AppTheme6 />
       )}
-       {nameTheme === "theme8" && (
+      {nameTheme === "theme8" && (
         <AppTheme7 />
       )}
       {
         nameTheme !== "theme1" && nameTheme !== "theme2" &&
         nameTheme !== "theme3" && nameTheme !== "theme4" &&
-        nameTheme !== "theme5" && nameTheme !== "theme6" && 
-        nameTheme !== "theme7" &&(
+        nameTheme !== "theme5" && nameTheme !== "theme6" &&
+        nameTheme !== "theme7" && (
           <div className="app" style={backgroundStyles}>
             {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
             <div className="app-container">
+              <Order />
               <Header
                 name={data.name}
                 avatar={data.avatar}
@@ -175,7 +177,7 @@ const App = () => {
               <Stories data={data.stories} profile={profile} />
               <Title />
               <Messengers />
-              <CatalogItems data={data.catalogItems} profile={profile}/>
+              <CatalogItems data={data.catalogItems} profile={profile} />
               <Blocks data={data.blocks} />
               {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
               <Rss />

@@ -13,10 +13,10 @@ const CatalogItems = ({ data, referrerTitle, scrollPosition }) => {
         {
           data.map((catalogItem) => 
           <LazyLoadComponent key={catalogItem.guid} scrollPosition={scrollPosition} threshold={10}>
-            <CatalogItem key={catalogItem.guid} {...catalogItem} scrollPosition={scrollPosition} />
+            <CatalogItem key={catalogItem.guid} {...catalogItem} scrollPosition={scrollPosition} onClick={() => {}}/>
           </LazyLoadComponent>)
         }
-      
+       
     </React.Fragment>
   );
 };
