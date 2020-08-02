@@ -27,9 +27,9 @@ const Slide4 = () => {
             >
                 <div className="main-page__page1__container-anime__text1-flexBox">
                     <div className="main-page__page1__container-anime__text1-flexBox__text2">
-                        Зарабатывай 200K+ на приложениях 
+                        Создай мобильное приложение
                         <div className="main-page__page1__container-anime__text1-flexBox__text3">
-                        Приложения для бизнеса по доступной цене- это новый тренд. Создавай легко. Будь первым, мы научим!!!
+                        Конструктор мобильных приложений для бизнеса. Создай за 10 минут сам!!!
                   </div>
                   </div>
                 </div>
