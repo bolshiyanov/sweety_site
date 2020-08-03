@@ -27,7 +27,7 @@ const CatalogItem = ({
   className,
   technical
 }) => {
-  const space = (" "); 
+  const space = (" ");
 
   switch (type) {
 
@@ -48,20 +48,45 @@ const CatalogItem = ({
           {image && (price || number) && (
             <img src={image} alt={text} />
           )}
-          <div className="catalogItem-preorder-flex-column">
-            <div className="catalogItem-price-empty"></div>
-            <div className="catalogItem__title">{text}</div>
-            <div className="catalogItem-price-empty"></div>
-          </div>
-          {(price || number) && (
+          {(!price && !number) && text && (
+            <div className="catalogItem-preorder-flex-column">
+              <div className="catalogItem-left-title-without-button">{text}</div>
+            </div>
+          )}
+          {(text && !textEn) && (price || number) && (
+            <div className="catalogItem-preorder-flex-column">
+
+              <div className="catalogItem__title">{text}</div>
+            </div>
+          )}
+          {(text && textEn) && (price || number) && (
+            <div className="catalogItem-preorder-flex-column">
+              <div className="catalogItem-price-empty"></div>
+              <div className="catalogItem__title">{text}</div>
+              <div className="catalogItem-text-en">{textEn}</div>
+            </div>
+          )}
+          
+          {(price || number) && price && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
                 <Button isInline noStyled onClick={() => { }} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
-                <div className="catalogItem-quantity">{number}</div>
+                <div className="catalogItem-quantity">0</div>
                 <Button isInline noStyled onClick={() => { }} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
               </div>
-          <div className="catalogItem-price-currency">{price}{space}{currency}</div>
+              <div className="catalogItem-price-currency">{price}{space}{currency}</div>
+            </div>
+          )}
+          {(price || number) && !price && (
+            <div className="catalogItem-preorder-flex-column">
+              <div className="catalogItem-price-empty"></div>
+              <div className="catalogItem-preorder-flex-row">
+                <Button isInline noStyled onClick={() => { }} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
+                <div className="catalogItem-quantity">0</div>
+                <Button isInline noStyled onClick={() => { }} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
+              </div>
+              <div className="catalogItem-price-empty"></div>
             </div>
           )}
 
@@ -72,8 +97,8 @@ const CatalogItem = ({
       if ((price || number) && outOfStock)
         return (
           <div >
-            {/* <div className="catalogItem-number-item"><Icon type="lock" /></div> */}
-            <Button className="button-in-catalogItem-left-right " isPulse={animation} technical={technical}>
+            <div className="catalogItem-number-item"><Icon type="lock" /></div>
+            <Button className="button-in-catalogItem-left " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
           </div>
@@ -81,8 +106,8 @@ const CatalogItem = ({
       if (price || number)
         return (
           <div >
-            {/* <div className="catalogItem-number-item">{number}</div> */}
-            <Button className="button-in-catalogItem-left-right " isPulse={animation} technical={technical}>
+            <div className="catalogItem-number-item">{number}</div>
+            <Button className="button-in-catalogItem-left " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
           </div>
@@ -112,24 +137,34 @@ const CatalogItem = ({
           onClick={onClick}
         >
           <div className="catalogItem__title">{text}
-          {(price || number) && (
-            <div className="catalogItem-preorder-flex-column-center">
-              <div className="catalogItem-preorder-flex-row">
-                <Button isInline noStyled onClick={() => { }} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
-                <div className="catalogItem-quantity">{number}</div>
-                <Button isInline noStyled onClick={() => { }} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
+            {(price || number) && price && (
+              <div className="catalogItem-preorder-flex-column-center">
+                <div className="catalogItem-preorder-flex-row">
+                  <Button isInline noStyled onClick={() => { }} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
+                  <div className="catalogItem-quantity">0</div>
+                  <Button isInline noStyled onClick={() => { }} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
+                </div>
+                <div className="catalogItem-price-currency">{price}{space}{currency}</div>
               </div>
-              <div className="catalogItem-price-currency">{price}{space}{currency}</div>
-            </div>
-          )}
+            )}
+            {(price || number) && !price && (
+              <div className="catalogItem-preorder-flex-column-center">
+                <div className="catalogItem-preorder-flex-row">
+                  <Button isInline noStyled onClick={() => { }} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
+                  <div className="catalogItem-quantity">0</div>
+                  <Button isInline noStyled onClick={() => { }} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
+                </div>
+                <div className="catalogItem-price-empty"></div>
+              </div>
+            )}
           </div>
         </div>
       );
       if ((price || number) && outOfStock)
         return (
           <div >
-            {/* <div className="catalogItem-number-item"><Icon type="lock" /></div> */}
-            <Button className="button-in-catalogItem-left-right " isPulse={animation} technical={technical}>
+            <div className="catalogItem-number-item"><Icon type="lock" /></div>
+            <Button className="button-in-catalogItem-center " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
           </div>
@@ -138,8 +173,8 @@ const CatalogItem = ({
       if (price || number)
         return (
           <div >
-            {/* <div className="catalogItem-number-item">{number}</div> */}
-            <Button className="button-in-catalogItem-left-right " isPulse={animation} technical={technical}>
+            <div className="catalogItem-number-item">{number}</div>
+            <Button className="button-in-catalogItem-center " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
           </div>
@@ -164,20 +199,45 @@ const CatalogItem = ({
           {image && (price || number) && (
             <img src={image} alt={text} />
           )}
-          <div className="catalogItem-preorder-flex-column">
-            <div className="catalogItem-price-empty"></div>
-            <div className="catalogItem__title">{text}</div>
-            <div className="catalogItem-price-empty"></div>
-          </div>
-          {(price || number) && (
+          {(!price && !number) && text && (
+            <div className="catalogItem-right-title-without-button">{text}</div>
+          )}
+          {(text && textEn) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem-price-empty"></div>
+
+              <div className="catalogItem__title">{text}</div>
+              <div className="catalogItem-text-en">{textEn}</div>
+            </div>
+          )}
+          {(text && !textEn) && (price || number) && (
+            <div className="catalogItem-preorder-flex-column">
+
+              <div className="catalogItem__title">{text}</div>
+            </div>
+          )}
+
+          {(price || number) && price && (
+            <div className="catalogItem-preorder-flex-column">
+
               <div className="catalogItem-preorder-flex-row">
-                <Button isInline noStyled onClick={() => { }} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
-                <div className="catalogItem-quantity">{number}</div>
+                <div className="catalogItem-price-currency-right">{price}{space}{currency}</div>
+                <Button isInline noStyled onClick={() => { }} >
+                  { number ?
+                    <Icon type="plusCircle" className="catalogItem-add-button" />
+                    : <Icon type="check" className="catalogItem-check-button" />
+                  }
+                </Button>
+              </div>
+
+            </div>
+          )}
+          {(price || number) && !price && (
+            <div className="catalogItem-preorder-flex-column">
+
+              <div className="catalogItem-preorder-flex-row">
                 <Button isInline noStyled onClick={() => { }} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
               </div>
-              <div className="catalogItem-price-currency">{price}{space}{currency}</div>
+
             </div>
           )}
 
@@ -188,8 +248,8 @@ const CatalogItem = ({
       if ((price || number) && outOfStock)
         return (
           <div >
-            {/* <div className="catalogItem-number-item"><Icon type="lock" /></div> */}
-            <Button className="button-in-catalogItem-left-right " isPulse={animation} technical={technical}>
+            <div className="catalogItem-number-item"><Icon type="lock" /></div>
+            <Button className="button-in-catalogItem-right " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
           </div>
@@ -197,8 +257,8 @@ const CatalogItem = ({
       if (price || number)
         return (
           <div >
-            {/* <div className="catalogItem-number-item">{number}</div> */}
-            <Button className="button-in-catalogItem-left-right " isPulse={animation} technical={technical}>
+            <div className="catalogItem-number-item">{number}</div>
+            <Button className="button-in-catalogItem-right " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
           </div>
