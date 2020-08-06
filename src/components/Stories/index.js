@@ -51,9 +51,9 @@ const Stories = ({ data, profile, scrollPosition }) => {
     setStoryData({ ...settings });
   }, [settingsOpened, stories]);
 
-  if (!inviteId && !active) {
-    return null;
-  }
+  // if (!inviteId && !active) {
+  //   return null;
+  // }
  
   return (
     <React.Fragment>
