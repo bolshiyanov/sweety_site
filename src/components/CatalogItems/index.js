@@ -58,7 +58,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
     <React.Fragment>
 
       {
-        data.filter(e => !storyGuid || e.storyGuid === storyGuid).map((catalogItem) =>
+        data.filter(e => !storyGuid || !e.storyGuid || e.storyGuid === storyGuid).map((catalogItem) =>
           <LazyLoadComponent key={catalogItem.guid} scrollPosition={scrollPosition} threshold={10}>
             <CatalogItem
               key={catalogItem.guid}
