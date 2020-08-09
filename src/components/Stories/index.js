@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uuid } from 'uuidv4';
-import { useSelector } from 'react-redux';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { useCookies } from 'react-cookie';
 
@@ -10,6 +10,8 @@ import Slider from 'components/common/Slider';
 
 import StorySettings from './StorySettings';
 import Story from './Story';
+
+import { CATALOG_FILTER } from 'constants/actions';
 
 import './index.scss';
   
@@ -30,13 +32,21 @@ const Stories = ({ data, profile, scrollPosition }) => {
     setSettingsOpened(null);
   };
 
-  const onOpenStorySettings = (storyId) => {
-    setSettingsOpened(storyId);
-  };
-
   const { active } = useSelector((state) => state.config.account);
 
   const { stories } = useSelector((state) => state.config.data);
+  const { catalogItems } = useSelector((state) => state.config.data);
+  const { storyGuid } = useSelector((state) => state.config);
+
+  const dispatch = useDispatch();
+
+  const handleStoryClick = (storyId) => {
+    if (catalogItems.filter(e => e.storyGuid === storyId).length > 0) {
+      dispatch({ type: CATALOG_FILTER, storyGuid: storyGuid !== storyId ? storyId : null });
+    } else {
+      setSettingsOpened(storyId);
+    }
+  }
 
   var inviteId = cookies[profile];
   if (inviteId === "undefined") {
@@ -61,8 +71,9 @@ const Stories = ({ data, profile, scrollPosition }) => {
           <div className="stories-picker">
             {data.map((story) => 
             <Story className={classnames(['stories-picker-item'])}  
-              onClick={() => onOpenStorySettings(story.guid)} 
+              onClick={() => handleStoryClick(story.guid)} 
               key={story.guid} {...story} 
+              selected={storyGuid === story.guid}
               scrollPosition={scrollPosition} />)}
           </div>
         </div> 

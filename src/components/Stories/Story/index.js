@@ -4,12 +4,14 @@ import classnames from 'classnames';
 import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
 
 import './index.scss';
+import { select } from 'redux-saga/effects';
 
 const Story = ({
   title,
   image,
   onClick,
   className,
+  selected,
   scrollPosition
 }) => { 
     const story = (

@@ -9,7 +9,8 @@ import {
   SET_DATA,
   UPDATE_CONFIG_DATA,
   SET_INSTAGRAM_FEED,
-  SET_YOUTUBE_FEED
+  SET_YOUTUBE_FEED,
+  CATALOG_FILTER
 } from 'constants/actions';
 
 const defaultTheme = new Theme({ name: 'Default' });
@@ -22,7 +23,8 @@ const initialState = {
   backgrounds: [],
   buttonColors: [],
   config: {},
-  account: {}
+  account: {},
+  storyGuid : null
 };
 
 const reducer = handleActions({
@@ -99,6 +101,13 @@ const reducer = handleActions({
       ...state,
       youTubeFeeds: store
     };
+  },
+
+  [CATALOG_FILTER] : (state, { storyGuid } ) => {
+    return {
+      ...state,
+      storyGuid
+    }
   }
 
 }, initialState);

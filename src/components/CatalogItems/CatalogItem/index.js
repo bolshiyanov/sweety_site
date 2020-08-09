@@ -106,7 +106,7 @@ const CatalogItem = ({
       if (price || number)
         return (
           <div >
-            <div className="catalogItem-number-item">{number}</div>
+            {number && <div className="catalogItem-number-item">{number}</div>}
             <Button className="button-in-catalogItem-left " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
@@ -173,7 +173,7 @@ const CatalogItem = ({
       if (price || number)
         return (
           <div >
-            <div className="catalogItem-number-item">{number}</div>
+            {number && <div className="catalogItem-number-item">{number}</div>}
             <Button className="button-in-catalogItem-center " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
@@ -257,7 +257,7 @@ const CatalogItem = ({
       if (price || number)
         return (
           <div >
-            <div className="catalogItem-number-item">{number}</div>
+            {number && <div className="catalogItem-number-item">{number}</div>}
             <Button className="button-in-catalogItem-right " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>

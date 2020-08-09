@@ -36,6 +36,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
   const { active } = useSelector((state) => state.config.account);
 
   const { catalogItems } = useSelector((state) => state.config.data);
+  const { storyGuid } = useSelector((state) => state.config);
 
   var inviteId = cookies[profile];
   if (inviteId === "undefined") {
@@ -57,7 +58,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
     <React.Fragment>
 
       {
-        data.map((catalogItem) =>
+        data.filter(e => !storyGuid || e.storyGuid === storyGuid).map((catalogItem) =>
           <LazyLoadComponent key={catalogItem.guid} scrollPosition={scrollPosition} threshold={10}>
             <CatalogItem
               key={catalogItem.guid}
