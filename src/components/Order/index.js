@@ -38,6 +38,7 @@ const Order = () => {
                 const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
                 return <div key={orderItem.guid}>{catalogItem?.text}: {catalogItem?.price}x{orderItem.count} = {orderItem.sum} {orderItem.currency}</div>
             })}
+            Итого: {sum} {currency}
         </Slider>}
     </React.Fragment>
 };
