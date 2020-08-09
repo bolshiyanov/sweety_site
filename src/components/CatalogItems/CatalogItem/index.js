@@ -247,10 +247,7 @@ const CatalogItem = ({
                 {count === 0 && <React.Fragment>
                   <div className="catalogItem-price-currency-right">{price}&nbsp;{currency}</div>
                   <Button isInline noStyled onClick={handlePlus} >
-                    { number ?
-                      <Icon type="plusCircle" className="catalogItem-add-button" />
-                      : <Icon type="check" className="catalogItem-check-button" />
-                    }
+                    <Icon type="plusCircle" className="catalogItem-add-button" />
                   </Button>
                 </React.Fragment>}
               </div>
