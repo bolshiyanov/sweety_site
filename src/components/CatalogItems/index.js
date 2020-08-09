@@ -50,6 +50,18 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
       setCatalogItemData({ ...settings });
   }, [settingsOpened, catalogItems]);
 
+  const hour = new Date().getHours();
+  console.log(data);
+  const checkCatalogItem = (e) => {
+    return (!storyGuid || !e.storyGuid || e.storyGuid === storyGuid) 
+      && !e.outOfStock
+      && ((!e.timeFrom && !e.timeTo) ||
+        (e.timeFrom && e.timeTo && e.timeFrom <= hour && e.timeTo >= hour) ||
+        (e.timeFrom && e.timeTo && e.timeFrom > e.timeTo && (e.timeFrom <= hour || e.timeTo <= hour)) ||
+        (e.timeFrom && !e.timeTo && e.timeFrom <= hour) ||
+        (!e.timeFrom && e.timeTo && e.timeTo >= hour));
+  }
+
   // if (!inviteId && !active) { 
   //   return null;
   // }
@@ -57,7 +69,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
     <React.Fragment>
 
       {
-        data.filter(e => !storyGuid || !e.storyGuid || e.storyGuid === storyGuid).map((catalogItem) =>
+        data.filter(checkCatalogItem).map((catalogItem) =>
           <LazyLoadComponent key={catalogItem.guid} scrollPosition={scrollPosition} threshold={10}>
             <CatalogItem
               key={catalogItem.guid}
