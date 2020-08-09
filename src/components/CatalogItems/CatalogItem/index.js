@@ -96,7 +96,7 @@ const CatalogItem = ({
             </div>
           )}
           
-          {(price || number) && price && (
+          {(price || number) && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
@@ -104,18 +104,8 @@ const CatalogItem = ({
                 <div className="catalogItem-quantity">{count}</div>
                 <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
               </div>
-              <div className="catalogItem-price-currency">{price}&nbsp;{currency}</div>
-            </div>
-          )}
-          {(price || number) && !price && (
-            <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem-price-empty"></div>
-              <div className="catalogItem-preorder-flex-row">
-                <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
-                <div className="catalogItem-quantity">{count}</div>
-                <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
-              </div>
-              <div className="catalogItem-price-empty"></div>
+              {price && <div className="catalogItem-price-currency">{count === 0 ? price : sum}&nbsp;{currency}</div>}
+              {!price && <div className="catalogItem-price-empty"></div>}
             </div>
           )}
 
@@ -166,24 +156,15 @@ const CatalogItem = ({
           onClick={onClick}
         >
           <div className="catalogItem__title">{text}
-            {(price || number) && price && (
+            {(price || number) && (
               <div className="catalogItem-preorder-flex-column-center">
                 <div className="catalogItem-preorder-flex-row">
                   <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
                   <div className="catalogItem-quantity">{count}</div>
                   <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
                 </div>
-                <div className="catalogItem-price-currency">{price}&nbsp;{currency}</div>
-              </div>
-            )}
-            {(price || number) && !price && (
-              <div className="catalogItem-preorder-flex-column-center">
-                <div className="catalogItem-preorder-flex-row">
-                  <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
-                  <div className="catalogItem-quantity">{count}</div>
-                  <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
-                </div>
-                <div className="catalogItem-price-empty"></div>
+                {price && <div className="catalogItem-price-currency">{count == 0 ? price : sum}&nbsp;{currency}</div>}
+                {!price && <div className="catalogItem-price-empty"></div>}
               </div>
             )}
           </div>
