@@ -237,19 +237,13 @@ const CatalogItem = ({
             <div className="catalogItem-preorder-flex-column">
 
               <div className="catalogItem-preorder-flex-row">
-                {count > 0 && <React.Fragment>
-                  <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
-                  <div className="catalogItem-quantity">{count}</div>x&nbsp;
-                  <div className="catalogItem-price-currency-right">{price}&nbsp;{currency}</div>
-                  <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
-                </React.Fragment>}
-
-                {count === 0 && <React.Fragment>
-                  <div className="catalogItem-price-currency-right">{price}&nbsp;{currency}</div>
-                  <Button isInline noStyled onClick={handlePlus} >
+                <div className="catalogItem-price-currency-right">{price}&nbsp;{currency}</div>
+                <Button isInline noStyled onClick={(e) => { if (count === 0) { handlePlus(e) } else { handleMinus(e) } }} >
+                  { count === 0 ?
                     <Icon type="plusCircle" className="catalogItem-add-button" />
-                  </Button>
-                </React.Fragment>}
+                    : <Icon type="check" className="catalogItem-check-button" />
+                  }
+                </Button>
               </div>
 
             </div>
