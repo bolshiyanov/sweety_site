@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Slider from 'components/common/Slider';
 import './index.scss';
 
 const Order = () => {
+    const [orderOpened, setOrderOpened] = useState(false);
     const { order } = useSelector((state) => state.config);
+    const { catalogItems } = useSelector((state) => state.config.data);
+
     const orderItems = [];
     for (var propName in order) {
         orderItems.push({ 
-            guid: order[propName].guid, 
+            guid: propName, 
             count: order[propName].count, 
             sum: order[propName].sum,
             currency: order[propName].currency
@@ -22,20 +25,21 @@ const Order = () => {
     if (sum === 0)
         return null;
 
-    return (
-        <React.Fragment>
-            <div className="order" onClick={() => { }}>
-                Ваш заказ на сумму: {sum > 0 ? sum.toFixed(2) : null} {currency}
-        </div>
-        </React.Fragment>
-    );
-    // <Slider
-    //     opened={settingsOpened}
-    //     onClose={closeStoriesSettings}
-    //     onSubmit={closeStoriesSettings}
-    //   >
-    //     <StorySettings {...storyData} />
-    //   </Slider>
+    return <React.Fragment>
+        {!orderOpened && <div className="order" onClick={() => setOrderOpened(true)}>
+            Ваш заказ на сумму: {sum > 0 ? sum.toFixed(2) : null} {currency}
+        </div>}
+        {orderOpened && <Slider
+            opened={orderOpened}
+            onClose={() => setOrderOpened(false)}
+            onSubmit={() => setOrderOpened(false)}
+            >
+            {orderItems.map(orderItem => {
+                const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
+                return <div key={orderItem.guid}>{catalogItem?.text}: {catalogItem?.price}x{orderItem.count} = {orderItem.sum} {orderItem.currency}</div>
+            })}
+        </Slider>}
+    </React.Fragment>
 };
 
 export default Order;
