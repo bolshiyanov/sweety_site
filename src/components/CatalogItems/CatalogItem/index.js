@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
@@ -10,10 +11,14 @@ import './index.scss';
 import {
   CATALOG_LEFT,
   CATALOG_CENTER,
-  CATALOG_RIGHT
+  CATALOG_RIGHT,
 } from 'constants/catalogTypes';
 
+import { CATALOG_ORDER } from 'constants/actions';
+import { parse } from 'superagent';
+
 const CatalogItem = ({
+  guid,
   animation,
   image,
   text,
@@ -27,7 +32,20 @@ const CatalogItem = ({
   className,
   technical
 }) => {
-  const space = (" ");
+  const dispatch = useDispatch();
+  const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
+
+  const handlePlus = (e) => {
+    e.stopPropagation();
+    dispatch({ type: CATALOG_ORDER, guid, count: count + 1, 
+      sum: sum + parseFloat(price), currency });
+  }
+
+  const handleMinus = (e) => {
+    e.stopPropagation();
+    dispatch({ type: CATALOG_ORDER, guid, count: count - 1, 
+      sum: sum - parseFloat(price), currency });
+  }
 
   switch (type) {
 
@@ -71,20 +89,20 @@ const CatalogItem = ({
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
-                <Button isInline noStyled onClick={() => { }} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
+                <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
                 <div className="catalogItem-quantity">0</div>
-                <Button isInline noStyled onClick={() => { }} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
+                <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
               </div>
-              <div className="catalogItem-price-currency">{price}{space}{currency}</div>
+              <div className="catalogItem-price-currency">{price}&nbsp;{currency}</div>
             </div>
           )}
           {(price || number) && !price && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
-                <Button isInline noStyled onClick={() => { }} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
+                <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
                 <div className="catalogItem-quantity">0</div>
-                <Button isInline noStyled onClick={() => { }} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
+                <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
               </div>
               <div className="catalogItem-price-empty"></div>
             </div>
@@ -140,19 +158,19 @@ const CatalogItem = ({
             {(price || number) && price && (
               <div className="catalogItem-preorder-flex-column-center">
                 <div className="catalogItem-preorder-flex-row">
-                  <Button isInline noStyled onClick={() => { }} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
+                  <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
                   <div className="catalogItem-quantity">0</div>
-                  <Button isInline noStyled onClick={() => { }} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
+                  <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
                 </div>
-                <div className="catalogItem-price-currency">{price}{space}{currency}</div>
+                <div className="catalogItem-price-currency">{price}&nbsp;{currency}</div>
               </div>
             )}
             {(price || number) && !price && (
               <div className="catalogItem-preorder-flex-column-center">
                 <div className="catalogItem-preorder-flex-row">
-                  <Button isInline noStyled onClick={() => { }} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
+                  <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
                   <div className="catalogItem-quantity">0</div>
-                  <Button isInline noStyled onClick={() => { }} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
+                  <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
                 </div>
                 <div className="catalogItem-price-empty"></div>
               </div>
@@ -181,7 +199,6 @@ const CatalogItem = ({
         );
       return catalogItem;
     }
-
 
     case CATALOG_RIGHT: {
       const catalogItem = (
@@ -220,13 +237,22 @@ const CatalogItem = ({
             <div className="catalogItem-preorder-flex-column">
 
               <div className="catalogItem-preorder-flex-row">
-                <div className="catalogItem-price-currency-right">{price}{space}{currency}</div>
-                <Button isInline noStyled onClick={() => { }} >
-                  { number ?
-                    <Icon type="plusCircle" className="catalogItem-add-button" />
-                    : <Icon type="check" className="catalogItem-check-button" />
-                  }
-                </Button>
+                {count > 0 && <React.Fragment>
+                  <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
+                  <div className="catalogItem-quantity">{count}</div>x&nbsp;
+                  <div className="catalogItem-price-currency-right">{price}&nbsp;{currency}</div>
+                  <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
+                </React.Fragment>}
+
+                {count === 0 && <React.Fragment>
+                  <div className="catalogItem-price-currency-right">{price}&nbsp;{currency}</div>
+                  <Button isInline noStyled onClick={handlePlus} >
+                    { number ?
+                      <Icon type="plusCircle" className="catalogItem-add-button" />
+                      : <Icon type="check" className="catalogItem-check-button" />
+                    }
+                  </Button>
+                </React.Fragment>}
               </div>
 
             </div>
@@ -235,7 +261,7 @@ const CatalogItem = ({
             <div className="catalogItem-preorder-flex-column">
 
               <div className="catalogItem-preorder-flex-row">
-                <Button isInline noStyled onClick={() => { }} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
+                <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
               </div>
 
             </div>
@@ -273,6 +299,7 @@ const CatalogItem = ({
 };
 
 CatalogItem.propTypes = {
+  guid: PropTypes.string,
   animation: PropTypes.bool,
   image: PropTypes.string,
   text: PropTypes.string,

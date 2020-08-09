@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { trackWindowScroll, LazyLoadComponent } from 'react-lazy-load-image-component';

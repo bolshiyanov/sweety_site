@@ -10,7 +10,8 @@ import {
   UPDATE_CONFIG_DATA,
   SET_INSTAGRAM_FEED,
   SET_YOUTUBE_FEED,
-  CATALOG_FILTER
+  CATALOG_FILTER,
+  CATALOG_ORDER
 } from 'constants/actions';
 
 const defaultTheme = new Theme({ name: 'Default' });
@@ -24,7 +25,8 @@ const initialState = {
   buttonColors: [],
   config: {},
   account: {},
-  storyGuid : null
+  storyGuid : null,
+  order: {}
 };
 
 const reducer = handleActions({
@@ -107,6 +109,16 @@ const reducer = handleActions({
     return {
       ...state,
       storyGuid
+    }
+  },
+
+  [CATALOG_ORDER] : (state, { guid, count, sum, currency }) => {
+    return {
+      ...state,
+      order: {
+        ...state.order,
+        [guid]: { count, sum, currency } 
+      }
     }
   }
 
