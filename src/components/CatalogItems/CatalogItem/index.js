@@ -90,7 +90,7 @@ const CatalogItem = ({
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
                 <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
-                <div className="catalogItem-quantity">0</div>
+                <div className="catalogItem-quantity">{count}</div>
                 <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
               </div>
               <div className="catalogItem-price-currency">{price}&nbsp;{currency}</div>
@@ -101,7 +101,7 @@ const CatalogItem = ({
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
                 <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
-                <div className="catalogItem-quantity">0</div>
+                <div className="catalogItem-quantity">{count}</div>
                 <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
               </div>
               <div className="catalogItem-price-empty"></div>
@@ -159,7 +159,7 @@ const CatalogItem = ({
               <div className="catalogItem-preorder-flex-column-center">
                 <div className="catalogItem-preorder-flex-row">
                   <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
-                  <div className="catalogItem-quantity">0</div>
+                  <div className="catalogItem-quantity">{count}</div>
                   <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
                 </div>
                 <div className="catalogItem-price-currency">{price}&nbsp;{currency}</div>
@@ -169,7 +169,7 @@ const CatalogItem = ({
               <div className="catalogItem-preorder-flex-column-center">
                 <div className="catalogItem-preorder-flex-row">
                   <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
-                  <div className="catalogItem-quantity">0</div>
+                  <div className="catalogItem-quantity">{count}</div>
                   <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
                 </div>
                 <div className="catalogItem-price-empty"></div>
