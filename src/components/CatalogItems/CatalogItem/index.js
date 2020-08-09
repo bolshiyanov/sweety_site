@@ -43,8 +43,19 @@ const CatalogItem = ({
 
   const handleMinus = (e) => {
     e.stopPropagation();
+    if (count === 0) {
+      return;
+    }
     dispatch({ type: CATALOG_ORDER, guid, count: count - 1, 
       sum: sum - parseFloat(price), currency });
+  }
+
+  const handleChecked = (e) => {
+    if (count === 0) {
+      handlePlus(e);
+    } else {
+      handleMinus(e);
+    }
   }
 
   switch (type) {
@@ -238,7 +249,7 @@ const CatalogItem = ({
 
               <div className="catalogItem-preorder-flex-row">
                 <div className="catalogItem-price-currency-right">{price}&nbsp;{currency}</div>
-                <Button isInline noStyled onClick={(e) => { if (count === 0) { handlePlus(e) } else { handleMinus(e) } }} >
+                <Button isInline noStyled onClick={handleChecked} >
                   { count === 0 ?
                     <Icon type="plusCircle" className="catalogItem-add-button" />
                     : <Icon type="check" className="catalogItem-check-button" />
