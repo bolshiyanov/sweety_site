@@ -13,35 +13,52 @@ const Story = ({
   className,
   selected,
   scrollPosition
-}) => { 
-    const story = (
-      <LazyLoadComponent scrollPosition={scrollPosition} threshold={10}>
-        <div className={classnames([{ 'story-picture': image }, className ])}
-          onClick={onClick}> 
+}) => {
+  const story = (
+
+
+    <LazyLoadComponent scrollPosition={scrollPosition} threshold={10}>
+      {!selected && (
+        <div className={classnames([{ 'story-picture': image }, className])}
+          onClick={onClick}>
+
           {image && (
             <LazyLoadImage src={image} alt={title} scrollPosition={scrollPosition} threshold={10} />
-          )} 
+          )}
           <div className="story-picture-title">{title}</div>
         </div>
-      </LazyLoadComponent>
-    );
-    return story;
-  }
+      )}
 
-    
-  
+      {selected && (
+        <div className={classnames([{ 'story-picture-selected': image }, className])}
+          onClick={onClick}>
+
+          {image && (
+            <LazyLoadImage src={image} alt={title} scrollPosition={scrollPosition} threshold={10} />
+          )}
+          <div className="story-picture-title">{title}</div>
+        </div>
+      )}
+
+    </LazyLoadComponent>
+  );
+  return story;
+}
+
+
+
 
 
 Story.propTypes = {
-    title: PropTypes.string,
-    image: PropTypes.string,
-   
+  title: PropTypes.string,
+  image: PropTypes.string,
+
 };
 
 Story.defaultProps = {
-    title: '',
-    image: undefined,
-    
+  title: '',
+  image: undefined,
+
 };
 
 export default Story;

@@ -116,19 +116,9 @@ const CatalogItem = ({
 
       );
 
-      if ((price || number) && outOfStock)
-        return (
-          <div >
-            <div className="catalogItem-number-item"><Icon type="lock" /></div>
-            <Button className="button-in-catalogItem-left " isPulse={animation} technical={technical}>
-              {catalogItem}
-            </Button>
-          </div>
-        );
       if (price || number)
         return (
           <div >
-            {number && <div className="catalogItem-number-item">{number}</div>}
             <Button className="button-in-catalogItem-left " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
@@ -173,20 +163,11 @@ const CatalogItem = ({
           </div>
         </div>
       );
-      if ((price || number) && outOfStock)
-        return (
-          <div >
-            <div className="catalogItem-number-item"><Icon type="lock" /></div>
-            <Button className="button-in-catalogItem-center " isPulse={animation} technical={technical}>
-              {catalogItem}
-            </Button>
-          </div>
-        );
+      
 
       if (price || number)
         return (
           <div >
-            {number && <div className="catalogItem-number-item">{number}</div>}
             <Button className="button-in-catalogItem-center " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
@@ -257,19 +238,9 @@ const CatalogItem = ({
 
       );
 
-      if ((price || number) && outOfStock)
-        return (
-          <div >
-            <div className="catalogItem-number-item"><Icon type="lock" /></div>
-            <Button className="button-in-catalogItem-right " isPulse={animation} technical={technical}>
-              {catalogItem}
-            </Button>
-          </div>
-        );
       if (price || number)
         return (
           <div >
-            {number && <div className="catalogItem-number-item">{number}</div>}
             <Button className="button-in-catalogItem-right " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
