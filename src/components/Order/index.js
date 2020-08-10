@@ -10,12 +10,14 @@ const Order = () => {
 
     const orderItems = [];
     for (var propName in order) {
-        orderItems.push({ 
-            guid: propName, 
-            count: order[propName].count, 
-            sum: order[propName].sum,
-            currency: order[propName].currency
-        });
+        if (order[propName].count !== 0) {
+            orderItems.push({ 
+                guid: propName, 
+                count: order[propName].count, 
+                sum: order[propName].sum,
+                currency: order[propName].currency
+            });
+        }
     }
 
     const sum = orderItems.length === 0 ? 0 :

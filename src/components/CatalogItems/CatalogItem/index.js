@@ -58,6 +58,9 @@ const CatalogItem = ({
     }
   }
 
+  const sumValue = count !== 0 ? sum.toFixed(2) :
+    parseFloat(price).toFixed(2);
+
   switch (type) {
 
     case CATALOG_LEFT:
@@ -104,7 +107,7 @@ const CatalogItem = ({
                 <div className="catalogItem-quantity">{count}</div>
                 <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
               </div>
-              {price && <div className="catalogItem-price-currency">{count === 0 ? price : sum}&nbsp;{currency}</div>}
+              {price && <div className="catalogItem-price-currency">{sumValue}&nbsp;{currency}</div>}
               {!price && <div className="catalogItem-price-empty"></div>}
             </div>
           )}
@@ -163,7 +166,7 @@ const CatalogItem = ({
                   <div className="catalogItem-quantity">{count}</div>
                   <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
                 </div>
-                {price && <div className="catalogItem-price-currency">{count == 0 ? price : sum}&nbsp;{currency}</div>}
+                {price && <div className="catalogItem-price-currency">{sumValue}&nbsp;{currency}</div>}
                 {!price && <div className="catalogItem-price-empty"></div>}
               </div>
             )}
