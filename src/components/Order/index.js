@@ -27,7 +27,7 @@ const Order = () => {
 
     return <React.Fragment>
         {!orderOpened && <div className="order" onClick={() => setOrderOpened(true)}>
-            Ваш заказ на сумму: {sum > 0 ? sum.toFixed(2) : null} {currency}
+            Ваш заказ на сумму: {sum.toFixed(2)} {currency}
         </div>}
         {orderOpened && <Slider
             opened={orderOpened}
@@ -38,7 +38,7 @@ const Order = () => {
                 const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
                 return <div key={orderItem.guid}>{catalogItem?.text}: {catalogItem?.price}x{orderItem.count} = {orderItem.sum} {orderItem.currency}</div>
             })}
-            Итого: {sum} {currency}
+            Итого: {sum.toFixed(2)} {currency}
         </Slider>}
     </React.Fragment>
 };
