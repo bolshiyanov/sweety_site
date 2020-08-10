@@ -35,7 +35,7 @@ const CatalogItemSettings = (props) => {
                     <div className="catalogItem-slider__description">{descriptionEn}</div>
                 )}
                 {number && (
-                    <div className="catalogItem-slider__number">Позиция по каталогу:{space}{number}</div>
+                    <div className="catalogItem-slider__number">Артикул:{space}{number}</div>
                 )}
             </div>
         </React.Fragment >

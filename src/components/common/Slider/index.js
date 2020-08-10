@@ -12,7 +12,9 @@ const Slider = ({
   onClose,
   onSubmit,
   onRemove,
+  onSend,
   title,
+  subtitle,
   children
 }) => (
   <div className={classnames(['slider-container', { opened }])}>
@@ -25,6 +27,7 @@ const Slider = ({
           </Button>
         )}
         <div className="slider__header__title">{title}</div>
+        <div className="slider__header__subtitle">{subtitle}</div>
         {onSubmit && (
           <Button className="slider__header__submit" onClick={onSubmit} isInline noStyled>
             <Icon type="checkCircle" noStyled />
@@ -33,6 +36,12 @@ const Slider = ({
       </div>
       <div className="slider__body">
         {children}
+        {onSubmit && (
+        <div className="slider-header-submitbody-submit">
+          <Button className="slider-header-submit" onClick={onSubmit} isInline noStyled>
+          <Icon type="telegram" noStyled />&nbsp;ОТПРАВИТЬ</Button>
+        </div>
+        )}
       </div>
     </div>
   </div>

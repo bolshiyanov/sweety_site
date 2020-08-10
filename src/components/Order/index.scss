@@ -11,4 +11,18 @@
     font-weight: 600;
     padding: 12px 12px;
     z-index: 4;
+
+    &__description {
+        font-size: 14px;
+        font-weight: 400;
+        padding-top: 6px;
+        border-bottom: 1px solid black;
+    }
+
+    &__total {
+        font-size: 18px;
+        font-weight: 600;
+        color: red;
+
+    }
 }
