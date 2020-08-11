@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'components/common/Slider';
 import Input from 'components/common/Input';
 import './index.scss';
+
+import { CATALOG_ORDER_CLEAR } from 'constants/actions';
 
 const Order = () => {
     const [orderOpened, setOrderOpened] = useState(false);
     const { order, number } = useSelector((state) => state.config);
     const { catalogItems } = useSelector((state) => state.config.data);
+    const dispatch = useDispatch();
 
     const numberTelephone = "";
 
@@ -30,6 +33,14 @@ const Order = () => {
     if (sum === 0)
         return null;
 
+    const handleClear = () => {
+        dispatch({ type: CATALOG_ORDER_CLEAR });
+    }
+
+    const handleSubmit = () => {
+        setOrderOpened(false);
+    }
+
     return <React.Fragment>
         {!orderOpened && 
         <div className="order"
@@ -41,10 +52,9 @@ const Order = () => {
             opened={orderOpened}
             title="Ваш предварительный заказ"
             subtitle= "Пожалуйста отредактируйте количество интересующих позиций, укажите контактную информацию и отправьте ваш заказ. Мы ответим вам в самое ближайшее время"
-            onRemove={() => setOrderOpened(false)}
+            onRemove={handleClear}
             onClose={() => setOrderOpened(false)}
             onSubmit={() => setOrderOpened(false)}
-            onSend={() => setOrderOpened(false)}
 
             >
             {orderItems.map(orderItem => {

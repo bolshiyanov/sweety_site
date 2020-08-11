@@ -11,7 +11,8 @@ import {
   SET_INSTAGRAM_FEED,
   SET_YOUTUBE_FEED,
   CATALOG_FILTER,
-  CATALOG_ORDER
+  CATALOG_ORDER,
+  CATALOG_ORDER_CLEAR
 } from 'constants/actions';
 
 const defaultTheme = new Theme({ name: 'Default' });
@@ -119,6 +120,13 @@ const reducer = handleActions({
         ...state.order,
         [guid]: { count, sum, currency } 
       }
+    }
+  },
+
+  [CATALOG_ORDER_CLEAR] : (state) => {
+    return {
+      ...state,
+      order: {}
     }
   }
 
