@@ -7,9 +7,21 @@
     font-size: 13px;
     overflow: hidden;
     font-family: 'Open Sans Condensed', sans-serif;
-    padding: 12px 12px;
+    padding: 12px 12px 0;
     white-space: nowrap;
     max-width: 80px;
+}
+
+.story-picture-title-theme3-selected {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  overflow: hidden;
+  font-family: 'Open Sans Condensed', sans-serif;
+  padding: 12px 12px 0;
+  white-space: nowrap;
+  max-width: 100px;
+  border-bottom: 3px solid;
 }
  
   
