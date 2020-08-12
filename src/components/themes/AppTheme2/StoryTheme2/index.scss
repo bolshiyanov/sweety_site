@@ -9,6 +9,17 @@
     justify-content: center;
     align-items: center;
 
+    &__box-selected {
+      height: 300px;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+      border-radius: 15px;
+      background: {
+          size: cover;
+          repeat: no-repeat;
+          position: top center; 
+        }
+      } 
+
     
   
     &__box {
@@ -20,7 +31,7 @@
             size: cover;
             repeat: no-repeat;
             position: top center; 
-          };
+          }
         } 
       }
 
@@ -43,6 +54,30 @@
   position: absolute;
   bottom: 0;
   
+}
+
+
+
+
+
+.story-theme2-picture-title-selected {
+text-align: left;
+width: 200px;
+height: 80px;
+border-bottom-left-radius: 15px;
+border-bottom-right-radius: 15px;
+border: 5px solid ;
+border-top-right-radius: 0;
+border-top-left-radius: 0;
+font-size: 22px;
+font-family: 'Russo One', sans-serif;
+line-height: 1;
+white-space: pre-line;
+padding: 10px;
+position: absolute;
+bottom: 0;
+
+
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
