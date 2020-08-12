@@ -9,5 +9,20 @@
     white-space: nowrap;
   }
   
+  .story-picture-title-theme1-selected {
+    text-align: center;
+    font-size: 13px;
+    word-wrap: none;
+    overflow: hidden;
+    font-family: 'Oswald';
+    padding-top: 15px;
+    margin: -1px -6px;
+    white-space: nowrap;
+    border: 4px solid;
+    width: 63px;
+    height: 63px;
+    border-radius: 50%;
+  }
+  
   @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
     

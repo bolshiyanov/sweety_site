@@ -55,7 +55,7 @@ const Order = () => {
             onRemove={handleClear}
             onClose={() => setOrderOpened(false)}
             onSubmit={() => setOrderOpened(false)}
-
+            
             >
             {orderItems.map(orderItem => {
                 const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
