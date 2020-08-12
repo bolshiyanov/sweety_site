@@ -7,7 +7,7 @@ import './index.scss';
 
 
 
-const StoryTheme1 = ({
+const StoryTheme1 = ({ 
   title,
   onClick,
   selected,
@@ -36,9 +36,6 @@ const StoryTheme1 = ({
     );
     return story;
 }
-
-
-
 StoryTheme1.propTypes = {
   title: PropTypes.string,
 };

@@ -1,59 +1,58 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uuid } from 'uuidv4';
-import { useSelector, useDispatch } from 'react-redux';
+import { trackWindowScroll } from 'react-lazy-load-image-component';
+import { useCookies } from 'react-cookie';
 
-import Button from 'components/common/Button';
-import Icon from 'components/common/Icon';
 import Slider from 'components/common/Slider';
-
-import { EDIT_STORY, REMOVE_STORY, ROTATE_STORY } from 'constants/actions';
+import Button from 'components/common/Button';
+import { CATALOG_FILTER } from 'constants/actions';
 
 import StorySettings from 'components/Stories/StorySettings';
-import StoryTheme4 from 'components/themes/AppTheme4/StoryTheme4';
+import Story from 'components/themes/AppTheme4/StoryTheme4';
 
 import './index.scss';
 
 const emptySettings = {
     guid: null,
     type: 'preview-text',
-    order: null,
     linkUrl: '',
     description: '',
     image: '',
 };
 
-const StoriesTheme4 = ({ data }) => {
+const StoriesTheme4 = ({ data, profile, scrollPosition }) => {
     const [settingsOpened, setSettingsOpened] = useState(null);
     const [storyData, setStoryData] = useState(emptySettings);
-
-    const { currentTheme } = useSelector((state) => state.config);
-    const theme = currentTheme.name;
-
+    const [cookies] = useCookies();
 
     const closeStoriesSettings = () => {
         setSettingsOpened(null);
     };
 
-    const onOpenStorySettings = (storyId) => {
-        setSettingsOpened(storyId);
-    };
-
-    const dispatch = useDispatch();
-    const submitSettings = () => {
-        if (storyData.description || storyData.image)
-            dispatch({ type: EDIT_STORY, payload: storyData });
-        closeStoriesSettings();
-    };
-
-    const removeSettings = () => {
-        dispatch({ type: REMOVE_STORY, guid: storyData.guid });
-        closeStoriesSettings();
-    };
+    const { active } = useSelector((state) => state.config.account);
 
     const { stories } = useSelector((state) => state.config.data);
-    const { active, paymentData } = useSelector((state) => state.config.account);
+    const { catalogItems } = useSelector((state) => state.config.data);
+    const { storyGuid } = useSelector((state) => state.config);
+    const { currentTheme } = useSelector((state) => state.config);
+    const theme = currentTheme.name;
+    const dispatch = useDispatch();
+
+    const handleStoryClick = (storyId) => {
+        if (catalogItems.filter(e => e.storyGuid === storyId).length > 0) {
+            dispatch({ type: CATALOG_FILTER, storyGuid: storyGuid !== storyId ? storyId : null });
+        } else {
+            setSettingsOpened(storyId);
+        }
+    }
+
+    var inviteId = cookies[profile];
+    if (inviteId === "undefined") {
+        inviteId = null;
+    }
 
     useEffect(() => {
         const currentStory = stories.find((story) => story.guid === settingsOpened);
@@ -63,12 +62,9 @@ const StoriesTheme4 = ({ data }) => {
         setStoryData({ ...settings });
     }, [settingsOpened, stories]);
 
-    const onRotate = (guid, order) => {
-        dispatch({ type: ROTATE_STORY, guid, order });
-    };
-
-
-    stories.sort((a, b) => b.order - a.order);
+    // if (!inviteId && !active) {
+    //   return null;
+    // }
     return (
         <React.Fragment>
             <div className="stories-theme4-box">
@@ -79,19 +75,16 @@ const StoriesTheme4 = ({ data }) => {
                             <div className="stories-theme4__box__didlimiter"></div>
                             <Button onClick={() => {}} 
                                 key="add-button"
-                                onClick={onOpenStorySettings}
                             >
                                 Меню1
                         </Button>
                             <Button onClick={() => {}}
                                 key="add-button"
-                                onClick={onOpenStorySettings}
                             >
                                 Меню2
                         </Button>
                             <Button onClick={() => {}}
                                 key="add-button"
-                                onClick={onOpenStorySettings}
                             >
                                 Меню3
                         </Button>
@@ -103,9 +96,11 @@ const StoriesTheme4 = ({ data }) => {
                         <div className="stories-theme4__box-story">
                             <div className="stories-theme4__box">
                             {(theme === "theme4" ? data.slice(0, 3) : data).map((story) =>
-                                    <StoryTheme4 className='stories-theme4__box__item'
-                                        onClick={() => onOpenStorySettings(story.guid)}
-                                        key={story.guid} {...story} />)}
+                                    <Story className='stories-theme4__box__item'
+                                    onClick={() => handleStoryClick(story.guid)}
+                                    key={story.guid} {...story}
+                                    selected={storyGuid === story.guid}
+                                    scrollPosition={scrollPosition} />)}
                             </div>
                         </div>
                     )}
@@ -113,12 +108,11 @@ const StoriesTheme4 = ({ data }) => {
             </div>
 
             <Slider
-                opened={settingsOpened !== null}
+                opened={settingsOpened}
                 onClose={closeStoriesSettings}
-
-                onSubmit={submitSettings}
+                onSubmit={closeStoriesSettings}
             >
-                <StorySettings {...storyData} onRotate={onRotate} onChange={(settings) => setStoryData({ ...storyData, ...settings })} />
+                <StorySettings {...storyData} />
             </Slider>
 
         </React.Fragment>
@@ -133,4 +127,4 @@ StoriesTheme4.defaultProps = {
     data: []
 };
 
-export default StoriesTheme4;
+export default trackWindowScroll(StoriesTheme4);

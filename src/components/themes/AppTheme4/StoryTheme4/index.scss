@@ -1,8 +1,7 @@
-.story-picture-title-theme4 {
-  padding: 6px;
-  max-width: 600px;
 
 
+.story-box-theme4-selected {
+  border: 2px solid;
 }
 
 .story-picture-title-theme4 {
@@ -14,7 +13,20 @@
     padding: 1px;
     max-width: 100px;
     white-space: nowrap;
-  };
+  }
+
+  .story-picture-title-theme4-selected {
+    text-align: center;
+    font-size: 14px;
+    word-wrap: none;
+    overflow: hidden;
+    font-family: 'Gabriela', serif;
+    padding: 1px;
+    max-width: 100px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
 
  
   

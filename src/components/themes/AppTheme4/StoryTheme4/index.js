@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
+import { select } from 'redux-saga/effects';
 import Button from 'components/common/Button';
 import './index.scss';
 
@@ -9,13 +9,25 @@ import './index.scss';
 const StoryTheme4 = ({
   title,
   onClick,
+  selected,
 }) => {
   const story = (
-    <Button className="story-box-theme4"
-      onClick={onClick}
-    >
-      <div className="story-picture-title-theme4">{title}</div>
-    </Button >
+    <React.Fragment>
+      {!selected && (
+        <Button className="story-box-theme4"
+          onClick={onClick}
+        >
+          <div className="story-picture-title-theme4">{title}</div>
+        </Button >
+      )}
+      {selected && (
+        <Button className="story-box-theme4-selected"
+          onClick={onClick}
+        >
+          <div className="story-picture-title-theme4-selected">{title}</div>
+        </Button >
+      )}
+    </React.Fragment>
   );
   return story;
 }
@@ -24,6 +36,6 @@ StoryTheme4.propTypes = {
 };
 StoryTheme4.defaultProps = {
   title: '',
-}; 
+};
 
-export default StoryTheme4;
+export default StoryTheme4; 
