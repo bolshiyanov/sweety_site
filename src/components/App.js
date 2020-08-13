@@ -164,7 +164,7 @@ const App = () => {
         nameTheme !== "theme1" && nameTheme !== "theme2" &&
         nameTheme !== "theme3" && nameTheme !== "theme4" &&
         nameTheme !== "theme5" && nameTheme !== "theme6" &&
-        nameTheme !== "theme7" && (
+        nameTheme !== "theme8" && (
           <div className="app" style={backgroundStyles}>
             {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
             <div className="app-container">
