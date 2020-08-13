@@ -134,8 +134,9 @@ const Landing = () => {
     <React.Fragment>
       <Helmet>
         <html lang="ru" amp />
-        <title>Активная ссылка Sweety link</title>
-        <meta name="description" content="Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее" />
+        <title>Конструктор мобильных приложений Sweety</title>
+        <meta name="description" content="Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ "
+    />
         <link rel="canonical" href="https://sweety.link" />
         <meta property="og:site_name" content="Free Link Creator" />
         <link rel="apple-touch-icon" href="https://sweety.link/logo192.png" />
@@ -143,19 +144,21 @@ const Landing = () => {
         <link rel="manifest" href="https://sweety.link/manifest.json" />
         <meta property="og:url" content="https://sweety.link/" />
         <meta property="og:locale" content="https://sweety.link/" />
-        <meta property="og:type:profile:username" content="Free Link Creator" />
+        <meta property="og:type:profile:username" content="Конструктор мобильных приложений Sweety" />
         <meta property="og:type:article:published_time" content="May 01 2020 10:12 GMT" />
         <meta property="og:image" content="Free Link Creator" />
         <meta property="og:image:secure_url" content="https://sweety.link/logo512.png" />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
-        <meta property="og:title" content="Активная ссылка Sweety link" />
-        <meta property="og:description" content="Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее" />
+        <meta property="og:title" content="Конструктор мобильных приложений Sweety" />
+        <meta property="og:description" content="Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ "
+    />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="https://sweety.link" />
-        <meta name="twitter:title" content="Активная ссылка Sweety link" />
-        <meta name="twitter:description" content="Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее" />
-        <meta name="twitter:creator" content="Free Link Creator" />
+        <meta name="twitter:title" content="Конструктор мобильных приложений Sweety" />
+        <meta name="twitter:description" content="Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ "
+    />
+        <meta name="twitter:creator" content="Конструктор мобильных приложений Sweety" />
         <meta name="twitter:image:src" content="https://sweety.link/logo512.png/logo512.png" />
         <meta name="twitter:domain" content="https://sweety.link/logo512.png" />
         <link rel="icon" href="https://sweety.link/favicon.ico" />
@@ -163,7 +166,7 @@ const Landing = () => {
         <meta name="theme-color" content="#000000" />
         <meta name="theme-color" content="#fff" />
         <meta name="author" content="Roman Bolshiyanov bolshiyanov@gmail.com" />
-        <link rel="author" href="https://instagram.com/free_link_creator" />
+        <link rel="author" href="https://instagram.com/sweety_app_creator" />
         <meta name="date" content="May 01 2020 10:10 GMT" />
         <meta name="revisit-after" content="1 days" />
         <meta name="robots" content="all" />

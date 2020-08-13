@@ -116,25 +116,28 @@ const App = () => {
     <React.Fragment>
       <Helmet>
         <html lang="Ru" amp />
-        <title>{data.title || "Активная ссылка Sweety link"}</title>
-        <meta name="description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
+        <title>{data.title || "Конструктор мобильных приложений Sweety"}</title>
+        <meta name="description" content={data.description || "Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ "
+   } />
         <link rel="canonical" href={data.url} />
-        <meta property="og:site_name" content={data.name || "Free Link Creator"} />
+        <meta property="og:site_name" content={data.name || "Конструктор мобильных приложений Sweety"} />
         <meta property="og:url" content={data.url} />
         <meta property="og:locale" content={data.lang} />
-        <meta property="og:type:profile:username" content={data.name || "Free Link Creator"} />
+        <meta property="og:type:profile:username" content={data.name || "Конструктор мобильных приложений Sweety"} />
         <meta property="og:type:article:published_time" content={data.paymentData} />
-        <meta property="og:image" content={data.title || "Активная ссылка Sweety link"} />
+        <meta property="og:image" content={data.title || "Конструктор мобильных приложений Sweety"} />
         <meta property="og:image:secure_url" content={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/'}logo512.png`} />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
-        <meta property="og:title" content={data.title || "Активная ссылка Sweety link"} />
-        <meta property="og:description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
+        <meta property="og:title" content={data.title || "Конструктор мобильных приложений Sweety"} />
+        <meta property="og:description" content={data.description || "Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ "
+   } />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={data.url} />
-        <meta name="twitter:title" content={data.title || "Активная ссылка Sweety link"} />
-        <meta name="twitter:description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
-        <meta name="twitter:creator" content={data.name || "Free Link Creator"} />
+        <meta name="twitter:title" content={data.title || "Конструктор мобильных приложений Sweety"} />
+        <meta name="twitter:description" content={data.description || "Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ "
+   } />
+        <meta name="twitter:creator" content={data.name || "Конструктор мобильных приложений Sweety"} />
         <meta name="twitter:image:src" content={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/'}logo512.png`} />
         <meta name="twitter:domain" content={data.url} />
       </Helmet>
