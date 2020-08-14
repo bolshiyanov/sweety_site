@@ -135,7 +135,7 @@ const Landing = () => {
       <Helmet>
         <html lang="ru" amp />
         <title>Конструктор мобильных приложений Sweety</title>
-        <meta name="description" content="Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ "
+        <meta name="description" content="Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%."
     />
         <link rel="canonical" href="https://sweety.link" />
         <meta property="og:site_name" content="Free Link Creator" />
@@ -151,12 +151,12 @@ const Landing = () => {
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
         <meta property="og:title" content="Конструктор мобильных приложений Sweety" />
-        <meta property="og:description" content="Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ "
+        <meta property="og:description" content="Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%."
     />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="https://sweety.link" />
         <meta name="twitter:title" content="Конструктор мобильных приложений Sweety" />
-        <meta name="twitter:description" content="Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ "
+        <meta name="twitter:description" content="Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%."
     />
         <meta name="twitter:creator" content="Конструктор мобильных приложений Sweety" />
         <meta name="twitter:image:src" content="https://sweety.link/logo512.png/logo512.png" />
