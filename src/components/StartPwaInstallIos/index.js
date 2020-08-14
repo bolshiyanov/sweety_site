@@ -27,7 +27,7 @@ const StartPwaInstallIos = ({ profile }) => {
             url: window.location.href, // ссылка
         });
     };
-
+    const demoUrl = `${window.location.href}${"?demo=preview"} `;
 
     return (
         <React.Fragment>
@@ -41,7 +41,7 @@ const StartPwaInstallIos = ({ profile }) => {
 
                         <div className="startPwaInstallIos-heder-right-box" >
                             <div className="startPwaInstallIos-heder-title">{title || "Твой бренд из настроек"}</div>
-                            <div className="startPwaInstallIos-heder-subtitle">Официальное приложение </div>
+                            <div className="startPwaInstallIos-heder-subtitle"><a href={demoUrl}>Открыть без установки приложения</a></div>
                             <div className="startPwaInstallIos-heder-buttons-flexBox">
                                 <div className="startPwaInstallIos-heder-button-install"><PwaInstall profile={profile} /></div>
                                 {navigator.share && 
