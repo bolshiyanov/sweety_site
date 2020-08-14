@@ -5,6 +5,7 @@ import classnames from 'classnames';
 
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
+import Input from 'components/common/Input';
 
 import './index.scss';
 
@@ -37,8 +38,10 @@ const CatalogItem = ({
 
   const handlePlus = (e) => {
     e.stopPropagation();
-    dispatch({ type: CATALOG_ORDER, guid, count: count + 1, 
-      sum: sum + parseFloat(price), currency });
+    dispatch({
+      type: CATALOG_ORDER, guid, count: count + 1,
+      sum: sum + parseFloat(price), currency
+    });
   }
 
   const handleMinus = (e) => {
@@ -46,8 +49,10 @@ const CatalogItem = ({
     if (count === 0) {
       return;
     }
-    dispatch({ type: CATALOG_ORDER, guid, count: count - 1, 
-      sum: sum - parseFloat(price), currency });
+    dispatch({
+      type: CATALOG_ORDER, guid, count: count - 1,
+      sum: sum - parseFloat(price), currency
+    });
   }
 
   const handleChecked = (e) => {
@@ -98,7 +103,7 @@ const CatalogItem = ({
               <div className="catalogItem-text-en">{textEn}</div>
             </div>
           )}
-          
+
           {(price || number) && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
@@ -152,9 +157,13 @@ const CatalogItem = ({
             {(price || number) && (
               <div className="catalogItem-preorder-flex-column-center">
                 <div className="catalogItem-preorder-flex-row">
-                  <Button isInline noStyled onClick={handleMinus} ><Icon type="MinusCircle" className="catalogItem-add-button" /> </Button>
-                  <div className="catalogItem-quantity">{count}</div>
-                  <Button isInline noStyled onClick={handlePlus} ><Icon type="plusCircle" className="catalogItem-add-button" /> </Button>
+                  <Input
+                    className="catalogItem-input"
+                    value={count}
+                    name="fieldInputCount"
+                    type="number"
+                    onChange={(value) => ('count', value)}
+                  />
                 </div>
                 {price && <div className="catalogItem-price-currency">{sumValue}&nbsp;{currency}</div>}
                 {!price && <div className="catalogItem-price-empty"></div>}
@@ -163,7 +172,7 @@ const CatalogItem = ({
           </div>
         </div>
       );
-      
+
 
       if (price || number)
         return (
@@ -215,7 +224,7 @@ const CatalogItem = ({
               <div className="catalogItem-preorder-flex-row">
                 <div className="catalogItem-price-currency-right">{price}&nbsp;{currency}</div>
                 <Button isInline noStyled onClick={handleChecked} >
-                  { count === 0 ?
+                  {count === 0 ?
                     <Icon type="plusCircle" className="catalogItem-add-button" />
                     : <Icon type="check" className="catalogItem-check-button" />
                   }
