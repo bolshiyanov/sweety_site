@@ -60,6 +60,8 @@ const Order = () => {
             currency: currency,
             mobile: phone,
             comment: null
+        }).then((response) => {
+            // response?.email
         });
     }
 
