@@ -57,7 +57,9 @@ const Order = () => {
                 };
             }),
             total: parseFloat(sum.toFixed(2)),
-            currency: currency
+            currency: currency,
+            mobile: phone,
+            comment: null
         });
     }
 
