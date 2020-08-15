@@ -5,6 +5,7 @@ import Input from 'components/common/Input';
 import './index.scss';
 
 import { CATALOG_ORDER_CLEAR } from 'constants/actions';
+import API from 'utils/api';
 
 const Order = () => {
     const [orderOpened, setOrderOpened] = useState(false);
@@ -42,6 +43,22 @@ const Order = () => {
 
     const handleSubmit = () => {
         setOrderOpened(false);
+
+        API.sendOrder({
+            items: orderItems.map(orderItem => {
+                const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
+                return {
+                    number: catalogItem?.number,
+                    text: catalogItem?.text,
+                    price: catalogItem?.price ? parseFloat(catalogItem?.price) : null,
+                    count: orderItem.count,
+                    sum: parseFloat(orderItem.sum.toFixed(2)),
+                    currency: orderItem.currency
+                };
+            }),
+            total: parseFloat(sum.toFixed(2)),
+            currency: currency
+        });
     }
 
     return <React.Fragment>
@@ -58,7 +75,7 @@ const Order = () => {
             submitTitle="ОТПРАВИТЬ"
             onRemove={handleClear}
             onClose={() => setOrderOpened(false)}
-            onSubmit={!hasEmail ? null : (() => setOrderOpened(false))}
+            onSubmit={!hasEmail ? null : handleSubmit}
             
             >
             {orderItems.map(orderItem => {

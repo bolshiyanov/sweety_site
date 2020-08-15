@@ -73,9 +73,13 @@ const requests = {
 };
 
 const API = {
-  updateProfile: (value) => setProfile(value),
+  updateProfile: (value) => {
+    console.log(value);
+    setProfile(value);
+  },
   getData: () => requests.get(`/api/profiles/pages/public/${profile}`),
   register: (data) => requests.post('/api/users/register', data),
+  sendOrder: (data) => requests.post(`/api/profiles/${profile}/preorders`, data),
   getInstagramFeed: (account) => {
     const url = 
       account.indexOf("@") === 0 ? `https://instagram.com/${account.substring(1)}/` :
