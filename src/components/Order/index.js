@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'components/common/Slider';
 import Input from 'components/common/Input';
+import Textarea from 'components/common/Textarea';
 import './index.scss';
 
 import { CATALOG_ORDER_CLEAR } from 'constants/actions';
@@ -10,6 +11,7 @@ import API from 'utils/api';
 const Order = () => {
     const [orderOpened, setOrderOpened] = useState(false);
     const [phone, setPhone] = useState("");
+    const [comment, setComment] = useState("");
     const { order } = useSelector((state) => state.config);
     const { catalogItems } = useSelector((state) => state.config.data);
     const dispatch = useDispatch();
@@ -59,7 +61,7 @@ const Order = () => {
             total: parseFloat(sum.toFixed(2)),
             currency: currency,
             mobile: phone,
-            comment: null
+            comment
         }).then((response) => {
             // response?.email
         });
@@ -99,6 +101,13 @@ const Order = () => {
                     type="text"
                     placeholder="Напишите свой телефон"
                     onChange={(value) => setPhone(value)}
+                />
+                <Textarea
+                    className="story-settings__settings__input"
+                    value={comment}
+                    type="text"
+                    placeholder="Комментарий к заказу"
+                    onChange={(value) => setComment(value)}
                 />
                 <div className="story-input-descriptions">Информация не будет передана третьим лицам</div>
             </React.Fragment>}
