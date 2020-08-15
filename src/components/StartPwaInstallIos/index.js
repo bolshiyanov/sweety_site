@@ -146,10 +146,6 @@ const StartPwaInstallIos = ({ profile }) => {
                         <div className="startPwaInstallIos-infoFlexItems__item-right">18+</div>
                     </div>
                     <div className="startPwaInstallIos-infoFlexItems">
-                        <div className="startPwaInstallIos-infoFlexItems__item-left">Cсылка на приложение</div>
-                                <div className="startPwaInstallIos-infoFlexItems__item-right">{window.location.href}</div>
-                    </div>
-                    <div className="startPwaInstallIos-infoFlexItems">
                         <div className="startPwaInstallIos-infoFlexItems__item-left">Разработчик приложения</div>
                         <div className="startPwaInstallIos-infoFlexItems__item-right"> ООО "Профессиональная бизнес сеть Имек"</div>
                     </div>

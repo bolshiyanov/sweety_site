@@ -40,7 +40,7 @@ const Slider = ({
         {onSubmit && (
         <div className="slider-header-submitbody-submit">
           <Button className="slider-header-submit" onClick={onSubmit} isInline noStyled>
-            &nbsp;{submitTitle}
+          &nbsp;{submitTitle}
           </Button>
         </div>
         )}

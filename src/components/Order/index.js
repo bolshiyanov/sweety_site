@@ -110,7 +110,9 @@ const Order = () => {
                     onChange={(value) => setComment(value)}
                 />
                 <div className="story-input-descriptions">Информация не будет передана третьим лицам</div>
+               
             </React.Fragment>}
+            
         </Slider>}
     </React.Fragment>
 };
