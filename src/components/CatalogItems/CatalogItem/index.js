@@ -57,7 +57,7 @@ const CatalogItem = ({
 
   const handleSetCount = (value) => {
     dispatch({
-      type: CATALOG_ORDER, guid, count: value,
+      type: CATALOG_ORDER, guid, count: parseInt(value),
       sum: value * parseFloat(price), currency
     });
   }
@@ -166,6 +166,7 @@ const CatalogItem = ({
                     value={count}
                     name="fieldInputCount"
                     type="number"
+                    min={0}
                     onChange={(value) => handleSetCount(value)}
                   />
                 </div>

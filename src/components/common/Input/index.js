@@ -15,6 +15,8 @@ const Input = ({
   onChange,
   onClick,
   type,
+  min,
+  max,
   icon
 }) => {
   const inputClassName = classnames(['input', className]);
@@ -62,6 +64,8 @@ const Input = ({
         {type !== 'file' && (
           <input
             type={type}
+            min={min}
+            max={max}
             placeholder={placeholder}
             className="input input__grouped"
             value={value}
@@ -75,6 +79,8 @@ const Input = ({
   return (
     <input
       type={type}
+      min={min}
+      max={max}
       placeholder={placeholder}
       className={inputClassName}
       value={value}
@@ -86,6 +92,8 @@ const Input = ({
 Input.propTypes = {
   className: PropTypes.string,
   value: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number,
   placeholder: PropTypes.string,
   onChange: PropTypes.func,
   type: PropTypes.string,
