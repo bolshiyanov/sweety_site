@@ -160,7 +160,7 @@ const App = () => {
       {nameTheme === "theme6" && (
         <AppTheme6 />
       )}
-      {nameTheme === "theme8" && (
+      {nameTheme === "theme7" && (
         <AppTheme7 />
       )}
       {

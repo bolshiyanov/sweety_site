@@ -15,8 +15,6 @@ const Story = ({
   scrollPosition
 }) => {
   const story = (
-
-
     <LazyLoadComponent scrollPosition={scrollPosition} threshold={10}>
       {!selected && (
         <div className={classnames([{ 'story-picture': image }, className])}

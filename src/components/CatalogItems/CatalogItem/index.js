@@ -55,6 +55,13 @@ const CatalogItem = ({
     });
   }
 
+  const handleSetCount = (value) => {
+    dispatch({
+      type: CATALOG_ORDER, guid, count: value,
+      sum: value * parseFloat(price), currency
+    });
+  }
+
   const handleChecked = (e) => {
     if (count === 0) {
       handlePlus(e);
@@ -92,7 +99,6 @@ const CatalogItem = ({
           )}
           {(text && !textEn) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
-
               <div className="catalogItem__title">{text}</div>
             </div>
           )}
@@ -116,9 +122,7 @@ const CatalogItem = ({
               {!price && <div className="catalogItem-price-empty"></div>}
             </div>
           )}
-
         </div>
-
       );
 
       if (price || number)
@@ -162,7 +166,7 @@ const CatalogItem = ({
                     value={count}
                     name="fieldInputCount"
                     type="number"
-                    onChange={(value) => ('count', value)}
+                    onChange={(value) => handleSetCount(value)}
                   />
                 </div>
                 {price && <div className="catalogItem-price-currency">{sumValue}&nbsp;{currency}</div>}

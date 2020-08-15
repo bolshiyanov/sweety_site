@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { trackWindowScroll, LazyLoadComponent } from 'react-lazy-load-image-component';
 import { useCookies } from 'react-cookie';
 import { uuid } from 'uuidv4';
-import { useSelector } from 'react-redux';
 import CatalogItem from './CatalogItem';
 import CatalogItemSettings from './CatalogItemSettings';
 import Slider from 'components/common/Slider';
@@ -24,6 +24,9 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
   const [catalogItemData, setCatalogItemData] = useState(emptySettings);
   const [cookies] = useCookies();
 
+  const { catalogItems } = useSelector((state) => state.config.data);
+  const { storyGuid } = useSelector((state) => state.config);
+
   const closeCatalogItemsSettings = () => {
     setSettingsOpened(null);
   };
@@ -31,11 +34,6 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
   const onOpenCatalogItemSettings = (catalogItemId) => {
     setSettingsOpened(catalogItemId);
   };
-
-  const { active } = useSelector((state) => state.config.account);
-
-  const { catalogItems } = useSelector((state) => state.config.data);
-  const { storyGuid } = useSelector((state) => state.config);
 
   var inviteId = cookies[profile];
   if (inviteId === "undefined") {
@@ -64,9 +62,10 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
   // if (!inviteId && !active) { 
   //   return null;
   // }
+
+  catalogItems.sort((a, b) => b.order - a.order);
   return (
     <React.Fragment>
-
       {
         data.filter(checkCatalogItem).map((catalogItem) =>
           <LazyLoadComponent key={catalogItem.guid} scrollPosition={scrollPosition} threshold={10}>
@@ -74,13 +73,14 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
               key={catalogItem.guid}
               {...catalogItem}
               scrollPosition={scrollPosition}
-              onClick={() => onOpenCatalogItemSettings(catalogItem.guid)}  />
+              onClick={catalogItem.price || catalogItem.number ? (() => onOpenCatalogItemSettings(catalogItem.guid)) : null}  />
           </LazyLoadComponent>)
       }
       <Slider
         opened={settingsOpened}
         onClose={closeCatalogItemsSettings}
         onSubmit={closeCatalogItemsSettings}
+        submitTitle={"ЗАКРЫТЬ"}
       >
         <CatalogItemSettings {...catalogItemData} />
       </Slider>
@@ -96,4 +96,4 @@ CatalogItems.defaultProps = {
   data: []
 };
 
-export default CatalogItems;
+export default trackWindowScroll(CatalogItems);

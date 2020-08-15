@@ -64,6 +64,7 @@ const StoriesTheme2 = ({ data, profile, scrollPosition }) => {
   // if (!inviteId && !active) {
   //   return null;
   // }
+  stories.sort((a, b) => b.order - a.order);
   return (
     <React.Fragment>
       <div className="stories-theme2">

@@ -20,6 +20,10 @@ const Input = ({
   const inputClassName = classnames(['input', className]);
   const inputRef = useRef(null);
 
+  const handleClick = (e) => {
+    e.stopPropagation();
+  }
+
   let iconComponent = null;
   if (icon) {
     iconComponent = (
@@ -43,7 +47,8 @@ const Input = ({
             type="file"
             className="input__hidden"
             value={value}
-            onChange={(e) => e.target.files.length && onChange(e.target.files)}
+            onClick={handleClick}
+            onChange={(e) => e.target.files.length && onChange(e.target.files, e)}
           />
         </Button>
       );
@@ -60,7 +65,8 @@ const Input = ({
             placeholder={placeholder}
             className="input input__grouped"
             value={value}
-            onChange={(e) => onChange(e.target.value)}
+            onClick={handleClick}
+            onChange={(e) => onChange(e.target.value, e)}
           />)}
       </InputGroup>
     );
@@ -72,7 +78,8 @@ const Input = ({
       placeholder={placeholder}
       className={inputClassName}
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onClick={handleClick}
+      onChange={(e) => onChange(e.target.value, e)}
     />);
 };
 

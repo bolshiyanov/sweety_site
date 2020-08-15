@@ -8,11 +8,14 @@ import { CATALOG_ORDER_CLEAR } from 'constants/actions';
 
 const Order = () => {
     const [orderOpened, setOrderOpened] = useState(false);
-    const { order, number } = useSelector((state) => state.config);
+    const [phone, setPhone] = useState("");
+    const { order } = useSelector((state) => state.config);
     const { catalogItems } = useSelector((state) => state.config.data);
     const dispatch = useDispatch();
 
-    const numberTelephone = "";
+    const { messengers } = useSelector((state) => state.config.data);
+    const emailMessenger = messengers.filter(e => e.title === "Email")[0];
+    const hasEmail = emailMessenger?.value;
 
     const orderItems = [];
     for (var propName in order) {
@@ -51,30 +54,33 @@ const Order = () => {
         <Slider
             opened={orderOpened}
             title="Ваш предварительный заказ"
-            subtitle= "Пожалуйста отредактируйте количество интересующих позиций, укажите контактную информацию и отправьте ваш заказ. Мы ответим вам в самое ближайшее время"
+            subtitle="Пожалуйста, отредактируйте количество интересующих позиций, укажите контактную информацию и отправьте ваш заказ. Мы ответим вам в самое ближайшее время"
+            submitTitle="ОТПРАВИТЬ"
             onRemove={handleClear}
             onClose={() => setOrderOpened(false)}
-            onSubmit={() => setOrderOpened(false)}
+            onSubmit={!hasEmail ? null : (() => setOrderOpened(false))}
             
             >
             {orderItems.map(orderItem => {
                 const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
                 return (
                 <div className="order__description" key={orderItem.guid}> &#8470;<b>{catalogItem?.number}</b> | {catalogItem?.text}: &nbsp; 
-                <b>{orderItem.count}</b>ед. x {catalogItem?.price} {orderItem.currency}  =  
+                <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency}  =  
                 {orderItem.sum} {orderItem.currency}</div>
                 );
             })}
             
             <div className="order__total">Итого: {sum.toFixed(2)} {currency}</div>
-            <Input
-            className="story-settings__settings__input"
-            value={numberTelephone}
-            type="text"
-            placeholder="Напишите свой телефон"
-            onChange={(value) => ('numberTelephone', value)}
-          />
-          <div className="story-input-descriptions">Информация не будет передана третьим лицам</div>
+            {hasEmail && <React.Fragment>
+                <Input
+                    className="story-settings__settings__input"
+                    value={phone}
+                    type="text"
+                    placeholder="Напишите свой телефон"
+                    onChange={(value) => setPhone(value)}
+                />
+                <div className="story-input-descriptions">Информация не будет передана третьим лицам</div>
+            </React.Fragment>}
         </Slider>}
     </React.Fragment>
 };

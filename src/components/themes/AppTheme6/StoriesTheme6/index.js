@@ -60,7 +60,6 @@ const StoriesTheme6 = ({ data }) => {
         dispatch({ type: ROTATE_STORY, guid, order });
     };
 
-
     stories.sort((a, b) => b.order - a.order);
     return (
         <React.Fragment>
