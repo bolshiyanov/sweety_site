@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'components/common/Slider';
 import Input from 'components/common/Input';
@@ -12,13 +12,26 @@ const Order = () => {
     const [orderOpened, setOrderOpened] = useState(false);
     const [phone, setPhone] = useState("");
     const [comment, setComment] = useState("");
+    const [sent, setSent] = useState(false);
     const { order } = useSelector((state) => state.config);
     const { catalogItems } = useSelector((state) => state.config.data);
     const dispatch = useDispatch();
+    const [timer, setTimer] = useState(null);
 
     const { messengers } = useSelector((state) => state.config.data);
     const emailMessenger = messengers.filter(e => e.title === "Email")[0];
     const hasEmail = emailMessenger?.value;
+
+    useEffect(() => {
+        timer && timer > 0 && setTimeout(() => {
+            if (!timer || timer <= 1) {
+                setTimer(null);
+                setSent(false);
+                return;
+            }
+            setTimer(timer - 1);
+        }, 1000);
+    }, [timer]);
 
     const orderItems = [];
     for (var propName in order) {
@@ -62,18 +75,23 @@ const Order = () => {
             currency: currency,
             mobile: phone,
             comment
-        }).then((response) => {
-            // response?.email
+        }).then(() => {
+            setTimer(30);
+            setSent(true);
         });
     }
 
     return <React.Fragment>
-        {!orderOpened && 
+        {!sent && !orderOpened && 
         <div className="order"
          onClick={() => setOrderOpened(true)}>
             Ваш заказ на сумму: {sum.toFixed(2)} {currency}
         </div>}
-        {orderOpened && 
+        {sent && 
+        <div className="order">
+            Ваш заказ отправлен{timer % 3 === 0 ? "..." : timer % 3 === 1 ? ".." : "."}
+        </div>}
+        {!sent && orderOpened && 
         <Slider
             opened={orderOpened}
             title="Ваш предварительный заказ"
@@ -82,7 +100,6 @@ const Order = () => {
             onRemove={handleClear}
             onClose={() => setOrderOpened(false)}
             onSubmit={!hasEmail ? null : handleSubmit}
-            
             >
             {orderItems.map(orderItem => {
                 const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
