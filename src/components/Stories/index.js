@@ -82,6 +82,7 @@ const Stories = ({ data, profile, scrollPosition }) => {
         opened={settingsOpened}
         onClose={closeStoriesSettings}
         onSubmit={closeStoriesSettings}
+        submitTitle={"ЗАКРЫТЬ"} 
       >
         <StorySettings {...storyData} />
       </Slider>

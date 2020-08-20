@@ -17,12 +17,28 @@
         font-weight: 400;
         padding-top: 6px;
         border-bottom: 1px solid black;
+        margin: 0 12px;
     }
 
     &__total {
         font-size: 18px;
         font-weight: 600;
         color: red;
+        margin: 12px 12px;
+
+    }
+
+    &__input {
+        margin: 6px 12px;
+        width: calc(100% - 24px);
+
+        &__descriptions {
+            color: gray;
+            margin: 0 12px 12px;
+            font-size: 10px;
+        }
 
     }
 }
+
+

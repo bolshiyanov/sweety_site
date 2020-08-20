@@ -112,23 +112,23 @@ const Order = () => {
             
             <div className="order__total">Итого: {sum.toFixed(2)} {currency}</div>
             {hasEmail && <React.Fragment>
-                <Input
-                    className="story-settings__settings__input"
+                <Input 
+                    className="order__input"
                     value={phone}
                     type="text"
                     placeholder="Напишите свой телефон"
                     onChange={(value) => setPhone(value)}
                 />
                 <Textarea
-                    className="story-settings__settings__input"
+                    className="order__input"
                     value={comment}
                     type="text"
-                    placeholder="Комментарий к заказу"
+                    placeholder="Напишите в этом поле комментарий к заказу, укажите альтернативный способ связи, или задайте свой вопрос. ЗАПОЛНЕНИЕ НЕ ОБЯЗАТЕЛЬНО"
                     onChange={(value) => setComment(value)}
                 />
-                <div className="story-input-descriptions">Информация не будет передана третьим лицам</div>
+                <div className="order__input__descriptions">Информация не будет передана третьим лицам</div>
                
-            </React.Fragment>}
+            </React.Fragment>} 
             
         </Slider>}
     </React.Fragment>
