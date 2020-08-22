@@ -102,8 +102,8 @@
       z-index: 1;
       position: relative;
       text-align: center;
-      font-size: 24px;
-      font-weight: bold;
+      font-size: 20px;
+      font-weight: normal;
       min-height: 28px;
     }
 
@@ -126,8 +126,8 @@
       .catalogItem__title {
         color: #fff !important;
         max-width: 100% ;
-        font-size: 24px;
-        font-weight: bold;
+        font-size: 20px;
+        font-weight: normal;
       }
 
       &__with-button {
