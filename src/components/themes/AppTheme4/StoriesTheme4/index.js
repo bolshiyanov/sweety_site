@@ -62,10 +62,10 @@ const StoriesTheme4 = ({ data, profile, scrollPosition }) => {
         setStoryData({ ...settings });
     }, [settingsOpened, stories]);
 
-    // if (!inviteId && !active) {
-    //   return null;
-    // }
-    stories.sort((a, b) => b.order - a.order);    
+    if (!inviteId && !active) {
+        return null;
+    }
+    stories.sort((a, b) => b.order - a.order);
     return (
         <React.Fragment>
             <div className="stories-theme4-box">
@@ -74,17 +74,17 @@ const StoriesTheme4 = ({ data, profile, scrollPosition }) => {
                     {data.length === 0 && (
                         <div className="stories-theme4__box">
                             <div className="stories-theme4__box__didlimiter"></div>
-                            <Button onClick={() => {}} 
+                            <Button onClick={() => { }}
                                 key="add-button"
                             >
                                 Меню1
                         </Button>
-                            <Button onClick={() => {}}
+                            <Button onClick={() => { }}
                                 key="add-button"
                             >
                                 Меню2
                         </Button>
-                            <Button onClick={() => {}}
+                            <Button onClick={() => { }}
                                 key="add-button"
                             >
                                 Меню3
@@ -96,12 +96,12 @@ const StoriesTheme4 = ({ data, profile, scrollPosition }) => {
                     {data.length > 0 && (
                         <div className="stories-theme4__box-story">
                             <div className="stories-theme4__box">
-                            {(theme === "theme4" ? data.slice(0, 3) : data).map((story) =>
+                                {(theme === "theme4" ? data.slice(0, 3) : data).map((story) =>
                                     <Story className='stories-theme4__box__item'
-                                    onClick={() => handleStoryClick(story.guid)}
-                                    key={story.guid} {...story}
-                                    selected={storyGuid === story.guid}
-                                    scrollPosition={scrollPosition} />)}
+                                        onClick={() => handleStoryClick(story.guid)}
+                                        key={story.guid} {...story}
+                                        selected={storyGuid === story.guid}
+                                        scrollPosition={scrollPosition} />)}
                             </div>
                         </div>
                     )}

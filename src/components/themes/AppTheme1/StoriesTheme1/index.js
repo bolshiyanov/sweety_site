@@ -62,9 +62,9 @@ const StoriesTheme1 = ({ data, profile, scrollPosition }) => {
         setStoryData({ ...settings });
     }, [settingsOpened, stories]);
 
-    // if (!inviteId && !active) {
-    //   return null;
-    // }
+    if (!inviteId && !active) {
+        return null;
+    }
     return (
         <React.Fragment>
             <div className="stories-theme1" >

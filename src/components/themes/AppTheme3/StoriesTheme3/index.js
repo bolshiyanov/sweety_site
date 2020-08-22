@@ -61,9 +61,9 @@ const StoriesTheme3 = ({ data, profile, scrollPosition }) => {
         setStoryData({ ...settings });
     }, [settingsOpened, stories]);
 
-    // if (!inviteId && !active) {
-    //   return null;
-    // }
+    if (!inviteId && !active) {
+        return null;
+    }
     stories.sort((a, b) => b.order - a.order);
     return (
         <React.Fragment>

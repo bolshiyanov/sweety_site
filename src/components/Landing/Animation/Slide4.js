@@ -27,9 +27,9 @@ const Slide4 = () => {
             >
                 <div className="main-page__page1__container-anime__text1-flexBox">
                     <div className="main-page__page1__container-anime__text1-flexBox__text2">
-                        Конструктор мобильных приложений
+                        Конструктор мобильных приложений 
                         <div className="main-page__page1__container-anime__text1-flexBox__text3">
-                         Создай сам за 10 минут, без программистов, без регистрации, без подписок. Кредитная карта не понадобится. 
+                        Бесплатно, на русском создай сам за 10 минут, без программистов, без регистрации, без подписок. Кредитная карта не понадобится. 
                   </div>
                   </div>
                 </div>

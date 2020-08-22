@@ -23,6 +23,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
   const [settingsOpened, setSettingsOpened] = useState(null);
   const [catalogItemData, setCatalogItemData] = useState(emptySettings);
   const [cookies] = useCookies();
+  const { active } = useSelector((state) => state.config.account);
 
   const { catalogItems } = useSelector((state) => state.config.data);
   const { storyGuid } = useSelector((state) => state.config);
@@ -59,9 +60,9 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
         (!e.timeFrom && e.timeTo && parseInt(e.timeTo) >= hour));
   }
 
-  // if (!inviteId && !active) { 
-  //   return null;
-  // }
+  if (!inviteId && !active) { 
+  return null;  
+  }
 
   catalogItems.sort((a, b) => b.order - a.order);
   return (
