@@ -27,7 +27,7 @@ const AvatarBase = ({
   return <React.Fragment>
     {isIOs && avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar})` }} />}
     
-    {!isIOs && avatarPreview && !isVideoAvatar && !isVideoLoaded && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatarPreview})` }} />}
+    {!isIOs && avatarPreview && isVideoAvatar && !isVideoLoaded && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatarPreview})` }} />}
     {!isIOs && isVideoAvatar && <div className={wrapperVideoClass}>
       <video className="avatar-video-base" preload="auto" autoplay="true" loop="true" muted="muted"
         onLoadedData={() => {
