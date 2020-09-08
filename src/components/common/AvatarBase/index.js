@@ -12,14 +12,21 @@ const AvatarBase = ({
 }) => {
   const [videoAvatar, setVideoAvatar] = useState(true);
 
+  const detectIOs = () => {
+    const toMatch = [/iPhone/i, /iPad/i, /iPod/i, /iMac/i]; return toMatch.some((toMatchItem) => { return navigator.userAgent.match(toMatchItem); });
+  }
+
   return <React.Fragment>
-    {avatarPreview && videoAvatar && <div className={wrapperVideoClass}>
+    {detectIOs && avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarDefault})` }} />}
+    
+    {!detectIOs && avatarPreview && videoAvatar && <div className={wrapperVideoClass}>
       <video className="avatar-video-base" poster={avatarPreview} preload="auto" autoplay="true" loop="true" muted="muted">
         <source src={avatar} onError={() => setVideoAvatar(false)}></source>
       </video>
     </div>}
-    {avatarPreview && !videoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarPreview})` }} />}
-    {!avatarPreview && avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarDefault})` }} />}
+    {!detectIOs && avatarPreview && !videoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarPreview})` }} />}
+    {!detectIOs && !avatarPreview && avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarDefault})` }} />}
+    
     {!avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatarDefault})` }} />}
   </React.Fragment>
 };
