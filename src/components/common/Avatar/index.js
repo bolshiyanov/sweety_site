@@ -6,7 +6,7 @@ import AvatarBase from 'components/common/AvatarBase';
 import './index.scss';
 
 const Avatar = ({ image, imagePreview }) => {
-  return <AvatarBase avatar={imagePreview ?? image} avatarDefault={addedAvatar} wrapperImageClass="avatar" wrapperVideoClass="avatar-video" />
+  return <AvatarBase avatar={image} avatarPreview={imagePreview} avatarDefault={addedAvatar} needPreview={true} wrapperImageClass="avatar" wrapperVideoClass="avatar-video" />
 };
 
 Avatar.propTypes = {

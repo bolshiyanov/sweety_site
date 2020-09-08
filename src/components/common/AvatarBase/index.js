@@ -19,12 +19,12 @@ const AvatarBase = ({
   return <React.Fragment>
     {detectIOs && avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarDefault})` }} />}
     
-    {!detectIOs && avatarPreview && videoAvatar && <div className={wrapperVideoClass}>
+    {!detectIOs && avatarPreview && !needPreview && videoAvatar && <div className={wrapperVideoClass}>
       <video className="avatar-video-base" poster={avatarPreview} preload="auto" autoplay="true" loop="true" muted="muted">
         <source src={avatar} onError={() => setVideoAvatar(false)}></source>
       </video>
     </div>}
-    {!detectIOs && avatarPreview && !videoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarPreview})` }} />}
+    {!detectIOs && avatarPreview && (needPreview || !videoAvatar) && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarPreview}), URL(${avatarDefault})` }} />}
     {!detectIOs && !avatarPreview && avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarDefault})` }} />}
     
     {!avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatarDefault})` }} />}
@@ -40,7 +40,8 @@ AvatarBase.propTypes = {
 AvatarBase.defaultProps = {
   avatar: null,
   avatarPreview: null,
-  avatarDefault: null
+  avatarDefault: null,
+  needPreview: false
 };
 
 export default AvatarBase; 
