@@ -7,6 +7,7 @@ const AvatarBase = ({
     avatar, 
     avatarPreview, 
     avatarDefault, 
+    needPreview,
     wrapperImageClass, 
     wrapperVideoClass 
 }) => {
