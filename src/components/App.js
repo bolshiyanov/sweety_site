@@ -175,6 +175,7 @@ const App = () => {
               <Header
                 name={data.name}
                 avatar={data.avatar}
+                avatarPreview={data.avatarPreview}
                 profile={profile}
               />
               <Stories data={data.stories} profile={profile} />

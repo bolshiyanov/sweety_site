@@ -7,13 +7,9 @@ import Button from 'components/common/Button';
 import './index.scss';
 
 const AvatarTheme5 = () => {
-  const [data, setData] = useState({ name: '', avatar: '' });
   const { currentTheme } = useSelector((state) => state.config);
-  
-  const backgroundStyles = currentTheme.getBackgroundStyles();
 
-
-  const { name, avatar, url } = useSelector((state) => state.config.data);
+  const { name, avatar, avatarPreview, url } = useSelector((state) => state.config.data);
 
   return (
     <React.Fragment>
@@ -23,7 +19,8 @@ const AvatarTheme5 = () => {
         </div>
       </div>
       <div className="avatar-theme5"
-        style={{ backgroundImage: `URL(${avatar || addedAvatar})` }} />
+        style={{ backgroundImage: !avatarPreview ? `URL(${avatar || addedAvatar})` :
+        `URL(${avatar}), URL(${avatarPreview})` }} />
     </React.Fragment>
   );
 };

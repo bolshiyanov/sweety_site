@@ -12,7 +12,7 @@ import classnames from 'classnames';
 
 import './index.scss';
 
-const Header = ({ avatar, name, className, profile }) => {
+const Header = ({ avatar, avatarPreview, name, className, profile }) => {
   const [cookies] = useCookies();
   const [editOpened, setEditOpened] = useState(false);
   const [recoverSent, setRecoverSent] = useState(false);
@@ -75,7 +75,7 @@ const Header = ({ avatar, name, className, profile }) => {
   return (
     <React.Fragment>
       <header className={className}>
-        <Avatar image={avatar} />
+        <Avatar image={avatar} imagePreview={avatarPreview} />
         <div className="user-name" >{name|| "Твой бренд будет здесь"} </div>
         <span className="flex-delimiter" />
         

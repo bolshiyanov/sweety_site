@@ -6,16 +6,13 @@ import addedAvatar from 'images/addedAvatar2.png';
 import './index.scss';
 
 const AvatarTheme3 = () => {
-  const [data, setData] = useState({ name: '', avatar: '' });
-
-  const { avatar } = useSelector((state) => state.config.data);
-
- 
+  const { avatar, avatarPreview } = useSelector((state) => state.config.data);
 
   return (
     <React.Fragment>
       <div className="avatar-theme3"
-        style={{ backgroundImage: `URL(${avatar || addedAvatar})` }}
+        style={{ backgroundImage: !avatarPreview ? `URL(${avatar || addedAvatar})` :
+          `URL(${avatar}), URL(${avatarPreview})` }}
         />
     </React.Fragment>
   );

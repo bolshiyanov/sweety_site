@@ -7,14 +7,12 @@ import Button from 'components/common/Button';
 import './index.scss';
 
 const AvatarTheme1 = () => {
-  const [data, setData] = useState({ name: '', avatar: '' });
-
   const detectMobile = () => {
     const toMatch = [/Android/i, /webOS/i, /iPhone/i, /iPad/i, /iPod/i,
       /BlackBerry/i, /Windows Phone/i]; return toMatch.some((toMatchItem) => { return navigator.userAgent.match(toMatchItem); });
   }
 
-  const { name, avatar, url } = useSelector((state) => state.config.data);
+  const { name, avatar, avatarPreview, url } = useSelector((state) => state.config.data);
 
   const onShare = () => {
     navigator.share({
@@ -36,7 +34,8 @@ const AvatarTheme1 = () => {
         </div>
       </Button>
 
-      <div className="avatar-theme1" style={{ backgroundImage: `URL(${avatar || addedAvatar})` }} />
+      <div className="avatar-theme1" style={{ backgroundImage: !avatarPreview ? `URL(${avatar || addedAvatar})` :
+        `URL(${avatar}), URL(${avatarPreview})` }} />
 
 
     </React.Fragment>
