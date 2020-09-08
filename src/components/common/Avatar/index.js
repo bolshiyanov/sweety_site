@@ -1,18 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import addedAvatar from 'images/addedAvatar2.png';
-
+import AvatarBase from 'components/common/AvatarBase';
 
 import './index.scss';
 
 const Avatar = ({ image, imagePreview }) => {
-  if (imagePreview)
-    return <div className="avatar" style={{ backgroundImage: `URL(${image}), URL(${imagePreview})` }} />;
-  if (!image)
-    return <div className="avatar" style={{ backgroundImage: `URL(${addedAvatar})` }} />;
-  return (
-    <div className="avatar" style={{ backgroundImage: `URL(${image})` }} />
-  );
+  return <AvatarBase avatar={imagePreview ?? image} avatarDefault={addedAvatar} wrapperImageClass="avatar" wrapperVideoClass="avatar-video" />
 };
 
 Avatar.propTypes = {

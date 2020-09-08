@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import Icon from 'components/common/Icon';
 import addedAvatar from 'images/addedAvatar2.png';
+
+import Icon from 'components/common/Icon';
+import AvatarBase from 'components/common/AvatarBase';
 import Button from 'components/common/Button';
+
 import './index.scss';
 
 const AvatarTheme4 = () => {
-  const { currentTheme } = useSelector((state) => state.config);
-  
   const detectMobile = () => {
     const toMatch = [/Android/i, /webOS/i, /iPhone/i, /iPad/i, /iPod/i,
       /BlackBerry/i, /Windows Phone/i]; return toMatch.some((toMatchItem) => { return navigator.userAgent.match(toMatchItem); });
@@ -34,9 +35,8 @@ const AvatarTheme4 = () => {
               <Icon type="shareSquare" /></Button>}
         </div>
       </div>
-      <div className="avatar-theme4"
-        style={{ backgroundImage: !avatarPreview ? `URL(${avatar || addedAvatar})` :
-        `URL(${avatar}), URL(${avatarPreview})` }} />
+
+      <AvatarBase avatar={avatar} avatarPreview={avatarPreview} avatarDefault={addedAvatar} wrapperImageClass="avatar-theme4" wrapperVideoClass="avatar-video-theme4" />
     </React.Fragment>
   );
 };

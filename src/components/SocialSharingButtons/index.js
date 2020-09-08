@@ -56,7 +56,7 @@ import './index.scss';
 
  const SocialSharingButtons = () => {
   
- const { avatar, title, url } = useSelector((state) => state.config.data);
+ const { avatar, avatarPreview, title, url } = useSelector((state) => state.config.data);
  var text = "Попалось новенькое приложение для смартфона, мне кажется тебе будет интересно. Его можно поставить на домашний экран и потом посмотреть... Посмотри по этой ссылке ";  
  var texturl =  "Попалось вот такое новенькое приложение для смартфона, мне кажется тебе будет интересно. Его можно поставить на домашний экран и потом посмотреть... Посмотри по этой ссылке " +" "+ (url);  
  var texttitleemail =  "Попосмотри новенькое приложение для смартфона" + " " + (title); 
@@ -70,7 +70,7 @@ import './index.scss';
         <Button className="SocialSharingButtons_box ">
         {avatar && 
           <div className="SocialSharingButtons_box_avatar" image={avatar}>
-              <Avatar image={avatar} />
+              <Avatar image={avatar} imagePreview={avatarPreview} />
           </div>}
         
         <div className="SocialSharingButtons_box_items" >

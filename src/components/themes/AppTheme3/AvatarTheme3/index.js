@@ -1,33 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import addedAvatar from 'images/addedAvatar2.png';
- 
+import AvatarBase from 'components/common/AvatarBase';
+
 import './index.scss';
 
 const AvatarTheme3 = () => {
   const { avatar, avatarPreview } = useSelector((state) => state.config.data);
 
   return (
-    <React.Fragment>
-      <div className="avatar-theme3"
-        style={{ backgroundImage: !avatarPreview ? `URL(${avatar || addedAvatar})` :
-          `URL(${avatar}), URL(${avatarPreview})` }}
-        />
-    </React.Fragment>
+    <AvatarBase avatar={avatar} avatarPreview={avatarPreview} avatarDefault={addedAvatar} wrapperImageClass="avatar-theme3" wrapperVideoClass="avatar-video-theme3" />
   );
-};
-
-
-
-
-
-AvatarTheme3.propTypes = {
-  image: PropTypes.string
-};
-
-AvatarTheme3.defaultProps = {
-  image: '',
 };
 
 export default AvatarTheme3;

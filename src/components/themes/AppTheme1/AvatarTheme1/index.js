@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Icon from 'components/common/Icon';
 import addedAvatar from 'images/addedAvatar2.png';
 
+import AvatarBase from 'components/common/AvatarBase';
 import Button from 'components/common/Button';
 import './index.scss';
 
@@ -34,10 +35,7 @@ const AvatarTheme1 = () => {
         </div>
       </Button>
 
-      <div className="avatar-theme1" style={{ backgroundImage: !avatarPreview ? `URL(${avatar || addedAvatar})` :
-        `URL(${avatar}), URL(${avatarPreview})` }} />
-
-
+      <AvatarBase avatar={avatar} avatarPreview={avatarPreview} avatarDefault={addedAvatar} wrapperImageClass="avatar-theme1" wrapperVideoClass="avatar-video-theme1" />
     </React.Fragment>
   );
 };

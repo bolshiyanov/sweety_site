@@ -1,42 +1,49 @@
 .avatar-theme5-flexbox {
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    align-items: center;
-    z-index: 1; 
-    
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 1; 
+}
+  
+.user-name-theme5 {
+  max-width: 600px;
+  margin: 0 auto;
+  text-transform: uppercase ;
+  padding: 0 24px; 
+  font-size: 32px;
+  word-break: break-all;
+  text-align: center;
+  font-family: 'Ubuntu Condensed', sans-serif;
+}
+  
+.avatar-theme5 {
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30%;
+  padding-bottom: 30%;
+  z-index: 1;
+  border-radius: 50%;
+  border: 2px solid white;
+  
+  background: {
+    size: cover;
+    repeat: no-repeat;
+    position: center center;
   }
+}
   
-  .user-name-theme5 {
-    
-    max-width: 600px;
-    margin: 0 auto;
-    text-transform: uppercase ;
-    padding: 0 24px; 
-    font-size: 32px;
-    word-break: break-all;
-    text-align: center;
-    font-family: 'Ubuntu Condensed', sans-serif;
-  }
-  
-  .avatar-theme5 {
-    max-width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 30%;
-    padding-bottom: 30%;
-    z-index: 1;
-    border-radius: 50%;
-    border: 2px solid white;
-    
-    background: {
-      size: cover;
-      repeat: no-repeat;
-      position: center center;
-    }
-  
-    }
-  
-   
-  
-    @import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap');
+.avatar-video-theme5 {
+  max-width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 30%;
+  padding-bottom: 30%;
+  z-index: 1;
+  border-radius: 50%;
+  border: 2px solid white;
+  position: relative;
+}
+     
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&display=swap');
