@@ -29,7 +29,7 @@ const AvatarBase = ({
     
     {!isIOs && avatarPreview && !isVideoAvatar && !isVideoLoaded && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatarPreview})` }} />}
     {!isIOs && isVideoAvatar && <div className={wrapperVideoClass}>
-      <video className="avatar-video-base" poster={avatarPreview} preload="auto" autoplay="true" loop="true" muted="muted"
+      <video className="avatar-video-base" preload="auto" autoplay="true" loop="true" muted="muted"
         onLoadedData={() => {
           setIsVideoLoaded(true);
         }}>
