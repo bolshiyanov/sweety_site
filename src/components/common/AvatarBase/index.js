@@ -11,6 +11,7 @@ const AvatarBase = ({
     wrapperVideoClass 
 }) => {
   const [isVideoAvatar, setIsVideoAvatar] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
 
   const detectIOs = () => {
     const toMatch = [/iPhone/i, /iPad/i, /iPod/i, /iMac/i]; 
@@ -26,14 +27,17 @@ const AvatarBase = ({
   return <React.Fragment>
     {isIOs && avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar})` }} />}
     
+    {!isIOs && avatarPreview && !isVideoAvatar && !isVideoLoaded && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatarPreview})` }} />}
     {!isIOs && isVideoAvatar && <div className={wrapperVideoClass}>
-      <video className="avatar-video-base" poster={avatarPreview} preload="auto" autoplay="true" loop="true" muted="muted">
+      <video className="avatar-video-base" poster={avatarPreview} preload="auto" autoplay="true" loop="true" muted="muted"
+        onLoadedData={() => {
+          setIsVideoLoaded(true);
+        }}>
         <source src={avatar} onError={() => setIsVideoAvatar(false)}></source>
       </video>
     </div>}
-    {!isIOs && avatarPreview && !isVideoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarPreview})` }} />}
     {!isIOs && !avatarPreview && avatar && !isVideoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar})` }} />}
-    
+    {!isIOs && avatarPreview && !isVideoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarPreview})` }} />}    
     {!avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatarDefault})` }} />}
   </React.Fragment>
 };
