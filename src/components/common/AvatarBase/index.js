@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
 import './index.scss';
@@ -10,25 +10,29 @@ const AvatarBase = ({
     wrapperImageClass, 
     wrapperVideoClass 
 }) => {
-  const [isVideoAvatar, setIsVideoAvatar] = useState(avatar?.endsWith(".mp4") ?? false);
+  const [isVideoAvatar, setIsVideoAvatar] = useState(false);
 
   const detectIOs = () => {
     const toMatch = [/iPhone/i, /iPad/i, /iPod/i, /iMac/i]; 
     return toMatch.some((toMatchItem) => { return navigator.userAgent.match(toMatchItem); });
   };
 
+  useEffect(() => {
+    setIsVideoAvatar((avatar?.endsWith(".mp4") ?? false) || (avatar?.startsWith("data:video") ?? false));
+  }, [avatar]);
+
   const isIOs = detectIOs();
 
   return <React.Fragment>
-    {isIOs && avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarDefault})` }} />}
+    {isIOs && avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar})` }} />}
     
     {!isIOs && isVideoAvatar && <div className={wrapperVideoClass}>
       <video className="avatar-video-base" poster={avatarPreview} preload="auto" autoplay="true" loop="true" muted="muted">
         <source src={avatar} onError={() => setIsVideoAvatar(false)}></source>
       </video>
     </div>}
-    {!isIOs && avatarPreview && !isVideoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarPreview}), URL(${avatarDefault})` }} />}
-    {!isIOs && !avatarPreview && avatar && !isVideoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarDefault})` }} />}
+    {!isIOs && avatarPreview && !isVideoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarPreview})` }} />}
+    {!isIOs && !avatarPreview && avatar && !isVideoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar})` }} />}
     
     {!avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatarDefault})` }} />}
   </React.Fragment>
