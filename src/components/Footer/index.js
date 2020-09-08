@@ -13,7 +13,7 @@ const Footer = () => {
   const fontStyles = currentTheme.getFontColorStyles();
   return (
     <footer>
-      {active ? <br /> : <a href={url} className="textfooter">Создай приложение как у меня</a>}
+      {active ? <br /> : <a href={url} target="_blank" className="textfooter">Создай приложение как у меня</a>}
       <div className="textlogofooter"></div>
     </footer>
   );
