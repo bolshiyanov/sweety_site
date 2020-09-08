@@ -135,6 +135,7 @@ const AppTheme2 = () => {
           <Header
             name={data.name}
             avatar={data.avatar}
+            avatarPreview={data.avatarPreview}
             profile={profile}
           />
           <StoriesTheme2 data={data.stories} />
