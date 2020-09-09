@@ -2,17 +2,12 @@
   width: 40px;
   height: 40px;
   border-radius: 20px;
+  position: relative;
+  overflow: hidden; 
 
   background: {
     size: contain;
     repeat: no-repeat;
     position: center center;
   };
-}
-
-.avatar-video {
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  position: relative;
 }

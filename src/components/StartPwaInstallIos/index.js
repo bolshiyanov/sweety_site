@@ -12,13 +12,12 @@ import logo512 from 'images/referrer_avatar.jpg';
 import backgroundImage0 from 'images/background.jpg';
 
 import PwaInstall from "components/PwaInstall";
+import AvatarBase from 'components/common/AvatarBase';
 
 import './index.scss';
 
-
-
 const StartPwaInstallIos = ({ profile }) => {
-    const { title, description, name, avatar } = useSelector((state) => state.config.data);
+    const { title, description, name, avatar, avatarPreview } = useSelector((state) => state.config.data);
 
     const onShare = () => {
         navigator.share({
@@ -27,7 +26,7 @@ const StartPwaInstallIos = ({ profile }) => {
             url: window.location.href, // ссылка
         });
     };
-    const demoUrl = `${window.location.href}${"?demo=preview"} `;
+    const demoUrl = `${window.location.href}${window.location.href.indexOf("?") === -1 ? "?" : "&"}demo=preview`;
 
     return (
         <React.Fragment>
@@ -36,7 +35,7 @@ const StartPwaInstallIos = ({ profile }) => {
 
                     <div className="startPwaInstallIos-heder">
                         <div className="startPwaInstallIos-heder-avatar-box" >
-                            <div className="startPwaInstallIos-heder-avatar" style={{ backgroundImage: `URL(${avatar || logo512})` }} />
+                            <AvatarBase avatar={avatar} avatarPreview={avatarPreview} avatarDefault={logo512} wrapperImageClass="startPwaInstallIos-heder-avatar" />
                         </div>
 
                         <div className="startPwaInstallIos-heder-right-box" >

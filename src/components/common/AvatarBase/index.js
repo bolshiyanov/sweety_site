@@ -31,12 +31,13 @@ const AvatarBase = ({
     {isIOs && avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar})` }} />}
     
     {isSnapshot && avatarPreview && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatarPreview})` }} />}
-    {!isIOs && (!isSnapshot || !avatarPreview) && isVideoAvatar && <div className={wrapperVideoClass}>
+    
+    {!isIOs && !isSnapshot && isVideoAvatar && <div className={wrapperVideoClass ?? wrapperImageClass}>
       <video className="avatar-video-base" poster={avatarPreview} preload="auto" autoplay="true" loop="true" muted="muted">
         <source src={avatar} onError={() => setIsVideoAvatar(false)}></source>
       </video>
     </div>}
-    {!isSnapshot && !isIOs && avatarPreview && !isVideoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar}), URL(${avatarPreview})` }} />}    
+    {!isIOs && !isSnapshot && avatarPreview && !isVideoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatarPreview})` }} />}    
 
     {!isIOs && !avatarPreview && avatar && !isVideoAvatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatar})` }} />}
     {!avatar && <div className={wrapperImageClass} style={{ backgroundImage: `URL(${avatarDefault})` }} />}

@@ -108,8 +108,9 @@ const App = () => {
 
   const backgroundStyles = currentTheme.getBackgroundStyles();
 
-  var isDemo = getSearchString(window.location.search, 'demo') === "preview";
-  if (!isDemo && supported() && !isInstalled())
+  const isDemo = getSearchString(window.location.search, 'demo') === "preview";
+  const isDemoInstall = getSearchString(window.location.search, 'demo') === "install";
+  if ((!isDemo && supported() && !isInstalled()) || isDemoInstall)
     return <StartPwaInstallIos profile={profile} />;
 
   return (
