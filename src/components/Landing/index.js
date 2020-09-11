@@ -22,6 +22,7 @@ import Slide6 from 'components/Landing/Animation/Slide6.js';
 import Slide7 from 'components/Landing/Animation/Slide7.js';
 
 import API, { getAdminSite, getRef, getCookieDomain } from 'utils/api';
+import { getSearchString } from 'utils/url';
 import { event } from 'utils/googleAnalytics';
 
 import logoSweety from 'images/sweetylogo.png';
@@ -129,6 +130,11 @@ const Landing = () => {
       fontWeight: 'bold'
     }
   };
+
+  const hasRef = false; //getSearchString(window.location.search, 'ref') !== undefined;
+
+  if (!hasRef)
+    return null;
 
   return (
     <React.Fragment>
