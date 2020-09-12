@@ -131,8 +131,9 @@ const Landing = () => {
     }
   };
 
-  const hasRef = false; //getSearchString(window.location.search, 'ref') !== undefined;
+  const hasRef = true; //getSearchString(window.location.search, 'ref') !== undefined;
 
+  // TODO. Select theme
   if (!hasRef)
     return null;
 
