@@ -13,7 +13,7 @@ import Order from 'components/Order';
 import HeaderTheme6 from 'components/themes/AppTheme6/HeaderTheme6';
 import AvatarTheme3 from 'components/themes/AppTheme3/AvatarTheme3';
 import TitleTheme7 from 'components/themes/AppTheme7/TitleTheme7';
-import Stories from 'components/Stories';
+import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import Messengers from 'components/Messengers';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
@@ -136,7 +136,7 @@ const AppTheme7 = () => {
           <HeaderTheme6 />
           <AvatarTheme3 />
           <TitleTheme7 />
-          <Stories data={data.stories} />
+          <StoriesTheme2 data={data.stories} />
           <CatalogItems data={data.catalogItems} profile={profile} />
           <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
