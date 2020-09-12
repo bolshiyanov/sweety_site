@@ -39,13 +39,14 @@ const TitleTheme7 = () => {
 
   return (
     <React.Fragment>
+      {data.title && (
       <div className="title-theme7-box">
         <div className="title-theme7-button" >
-          <h1 className="title-theme7" >{data.title || 'Заголовок приложения'}</h1>
-          <div className="description-theme7" >{data.description ||
-            'Описание приложения'}</div>
+          <h1 className="title-theme7" >{data.title}</h1>
+          <div className="description-theme7" >{data.description}</div>
         </div>
       </div>
+       )}
     
     </React.Fragment>
   );
