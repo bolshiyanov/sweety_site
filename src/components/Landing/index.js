@@ -26,12 +26,6 @@ import { getSearchString } from 'utils/url';
 import { event } from 'utils/googleAnalytics';
 
 import logoSweety from 'images/sweetylogo.png';
-import backgroundImage2 from 'images/main-background2.jpg';
-import backgroundImage3 from 'images/main-background3.jpg';
-import backgroundImage4 from 'images/main-background4.jpg';
-import backgroundImage5 from 'images/main-background5.jpg';
-import backgroundImage6 from 'images/main-background6_1.jpg';
-// import backgroundImage7 from 'images/main-background7_1.jpg';
 
 import 'swiper/swiper.scss';
 import { truncate } from 'lodash';
@@ -140,10 +134,10 @@ const Landing = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <html lang="ru" amp />
-        <title>Конструктор мобильных приложений Sweety</title>
-        <meta name="description" content="Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%."
-    />
+        <html lang="en" amp />
+        <title>PWA builder</title>
+        <meta name="description" content="Create a progressive web application for IOS, Android or Windows yourself in the SWEETY constructor in 10 minutes, 
+        without programmers, without registration, without subscriptions, for free, to increase the number of repeated requests from your customers up to 300%"/>
         <link rel="canonical" href="https://sweety.link" />
         <meta property="og:site_name" content="Free Link Creator" />
         <link rel="apple-touch-icon" href="https://sweety.link/logo192.png" />
@@ -151,21 +145,23 @@ const Landing = () => {
         <link rel="manifest" href="https://sweety.link/manifest.json" />
         <meta property="og:url" content="https://sweety.link/" />
         <meta property="og:locale" content="https://sweety.link/" />
-        <meta property="og:type:profile:username" content="Конструктор мобильных приложений Sweety" />
+        <meta property="og:type:profile:username" content="PWA builder Sweety" />
         <meta property="og:type:article:published_time" content="May 01 2020 10:12 GMT" />
         <meta property="og:image" content="Free Link Creator" />
         <meta property="og:image:secure_url" content="https://sweety.link/logo512.png" />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
-        <meta property="og:title" content="Конструктор мобильных приложений Sweety" />
-        <meta property="og:description" content="Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%."
+        <meta property="og:title" content="PWA builder Sweety" />
+        <meta property="og:description" content="Create a progressive web application for IOS, Android or Windows yourself in the SWEETY constructor in 10 minutes, 
+        without programmers, without registration, without subscriptions, for free, to increase the number of repeated requests from your customers up to 300%"
     />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="https://sweety.link" />
-        <meta name="twitter:title" content="Конструктор мобильных приложений Sweety" />
-        <meta name="twitter:description" content="Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%."
+        <meta name="twitter:title" content="PWA builder Sweety" />
+        <meta name="twitter:description" content="Create a progressive web application for IOS, Android or Windows yourself in the SWEETY constructor in 10 minutes, 
+        without programmers, without registration, without subscriptions, for free, to increase the number of repeated requests from your customers up to 300%"
     />
-        <meta name="twitter:creator" content="Конструктор мобильных приложений Sweety" />
+        <meta name="twitter:creator" content="PWA builder Sweety" />
         <meta name="twitter:image:src" content="https://sweety.link/logo512.png/logo512.png" />
         <meta name="twitter:domain" content="https://sweety.link/logo512.png" />
         <link rel="icon" href="https://sweety.link/favicon.ico" />
@@ -197,7 +193,7 @@ const Landing = () => {
               <div className="main-page__page1__container-anime-dilimeter"></div>
             </div>
             <div className="main-page__page1__container-anime__text1-flexBox">
-              <div className="main-page__page1__container-anime__text1-flexBox__text1"><br />СОЗДАЙ СВОЕ ПРИЛОЖЕНИЕ ЗА 10 МИНУТ!</div>
+              <div className="main-page__page1__container-anime__text1-flexBox__text1"><h1>Create your <br />a progressive <br />web <br />application <br />in 10 minutes</h1></div>
             </div>
             <div className="main-page__page1__container-anime"><Slide2 /></div>
             <div className="main-page__page1__container-anime"><Slide5 /></div>
@@ -205,11 +201,11 @@ const Landing = () => {
 
 
             <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header"><Slide4 /></h1>
+              <h2 className="main-page__page1__header"><Slide4 /></h2>
             </div>
 
             <div className="main-page__page1__container1">
-              <h1 className="main-page__page1__header"><Slide7 /></h1>
+              <h2 className="main-page__page1__header"><Slide7 /></h2>
             </div>
           </div>
           <div className="main-page__page">
@@ -221,9 +217,9 @@ const Landing = () => {
 
           <div className="cookie-box" >
             <CookieBanner styles={styles}
-              message='Мы используем Cookies для Goole analitics. Мы не собираем персональные данные'
-              buttonMessage='Закрыть'
-              link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
+              message='We use Cookies,but we do not collect your data'
+              buttonMessage='close'
+              link={<a href='https://en.wikipedia.org/wiki/Cookie' target="_blank">What it is: COOKIES</a>}
             />
           </div>
 

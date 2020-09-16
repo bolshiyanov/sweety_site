@@ -27,8 +27,8 @@ const Slide4 = () => {
             >
                 <div className="main-page__page1__container-anime__button-slide7-flexBox">
                     <div className="main-page__page1__container-anime__button-slide7-flexBox__button-slide7 button-slide7">
-                        ЖМИ
-                       <div className="subtitle-slide7">ПОПРОБУЙ БЕЗ РЕГИСТРАЦИИ</div>
+                    START
+                       <div className="subtitle-slide7">without a template</div>
                     </div>
                 </div>
             </Animated>
