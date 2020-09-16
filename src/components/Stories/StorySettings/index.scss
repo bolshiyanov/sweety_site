@@ -102,6 +102,8 @@
       font-size: 14px;
       font-weight: bold;
       margin: 12px 12px 0;
+      white-space: pre-line;
+      overflow: hidden;
     }
 
     &__termtext {
@@ -110,6 +112,8 @@
       text-align: left;
       font-size: 11px;
       margin: 8px 12px 60px;
+      white-space: pre-line;
+      overflow: hidden;
     }
   
       
