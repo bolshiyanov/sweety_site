@@ -28,7 +28,7 @@ export const getDefaultLanguage = () => {
     var language = (window.navigator.userLanguage || window.navigator.language)?.substring(0, 2)?.toLowerCase();
 
     if (supportedLanguages.indexOf(language) >= 0) {
-        return lang;
+        return language;
     }
 
     return supportedLanguages[0];
