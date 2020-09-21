@@ -6,12 +6,12 @@ const supportedLanguages = [ "en", "ru", "es", "fr", "ge", "it" ];
 
 export const __ = (text) => {
     text = text.toLowerCase();
+    const defaultLang = getDefaultLanguage();
+
     const items = translates.filter(e => e.code.toLowerCase() === text || e.ru.toLowerCase() === text || e.en.toLowerCase() === text);
     if (items.length === 0) {
-        return "{{" + text + ":" + lang + "}}";
+        return "{{" + text + ":" + (lang ?? defaultLang) + "}}";
     }
-
-    const defaultLang = getDefaultLanguage();
 
     return items[0][lang ?? defaultLang] ?? items[0].en;
 };

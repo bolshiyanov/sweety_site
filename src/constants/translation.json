@@ -210,6 +210,14 @@
         "ge": "Anweisungen zum Erstellen einer Anwendung",
         "it": "Istruzioni su come creare un'applicazione"
     }, {
+        "code": "footer.browser",
+        "en": "Open the link to your application in the browser",
+        "ru": "Откройте ссылку на ваше приложение в браузере",
+        "es": "Abra el enlace a su aplicación en el navegador",
+        "fr": "Ouvrez le lien vers votre application dans le navigateur",
+        "ge": "Öffnen Sie den Link zu Ihrer Anwendung im Browser",
+        "it": "Apri il link alla tua applicazione nel browser"
+    }, {
         "code": "footer.copied",
         "en": "Copied to clipboard",
         "ru": "Ссылка скопирована",
