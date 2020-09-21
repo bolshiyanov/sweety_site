@@ -313,12 +313,12 @@
         "it": "Il tuo preordine"
     }, {
         "code": "order.text",
-        "en": "Please edit the number of items of interest, provide contact information and submit your order. We will answer you is a while.",
+        "en": "Please edit the number of items of interest, provide contact information and submit your order. We will answer you as a while.",
         "ru": "Пожалуйста, отредактируйте количество интересующих позиций, укажите контактную информацию и отправьте ваш заказ. Мы ответим вам в самое ближайшее время",
-        "es": "Edite el número de artículos de interés, proporcione información de contacto y envíe su pedido. Te responderemos en un rato.",
-        "fr": "Veuillez modifier le nombre d'articles qui vous intéressent, fournir vos coordonnées et soumettre votre commande. Nous vous répondrons dans un moment.",
-        "ge": "Bitte bearbeiten Sie die Anzahl der gewünschten Artikel, geben Sie die Kontaktinformationen an und senden Sie Ihre Bestellung ab. Wir werden Ihnen gleich antworten.",
-        "it": "Modifica il numero di articoli di interesse, fornisci le informazioni di contatto e invia il tuo ordine. Ti risponderemo tra poco."
+        "es": "Edite el número de artículos de interés, proporcione información de contacto y envíe su pedido. Nosotros te responderemos un rato.",
+        "fr": "Veuillez modifier le nombre d'articles qui vous intéressent, fournir vos coordonnées et soumettre votre commande. Nosotros te responderemos un rato.",
+        "ge": "Bitte bearbeiten Sie die Anzahl der gewünschten Artikel, geben Sie die Kontaktinformationen an und senden Sie Ihre Bestellung ab. Wir werden Ihnen eine Weile antworten.",
+        "it": "Modifica il numero di articoli di interesse, fornisci le informazioni di contatto e invia il tuo ordine. Ti risponderemo tra un poco."
     }, {
         "code": "order.send",
         "en": "SUBMIT",
