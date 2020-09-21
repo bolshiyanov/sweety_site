@@ -95,6 +95,10 @@ const Landing = () => {
     }
   }, []);
 
+  if (getRef() !== undefined) {
+    return <Loading/>;
+  }
+
   const styles = {
     banner: {
       fontFamily: 'Source Sans Pro',
