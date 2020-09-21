@@ -89,6 +89,12 @@ const Landing = () => {
     });
   };
 
+  useEffect(() => {
+    if (getRef() !== undefined) {
+      startClick();
+    }
+  }, []);
+
   const styles = {
     banner: {
       fontFamily: 'Source Sans Pro',
@@ -125,10 +131,6 @@ const Landing = () => {
       fontWeight: 'bold'
     }
   };
-
-  if (getRef() !== undefined) {
-    startClick();
-  }
 
   return (
     <React.Fragment>
