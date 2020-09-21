@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+
+import {__} from 'utils/translation';
+
 import './index.scss';
 
 const CatalogItemSettings = (props) => {
@@ -23,7 +26,7 @@ const CatalogItemSettings = (props) => {
                 <div className="catalogItem-slider__title">{text}</div>
                 <div className="catalogItem-slider__pic"><img src={image} alt={text} /></div>
                 {price && (
-                    <div className="catalogItem-slider__price">Стоимость (Price):{space}{price}{space}{currency}</div>
+                    <div className="catalogItem-slider__price">{__("Стоимость")}:{space}{price}{space}{currency}</div>
                 )}
                 {description && (
                     <div className="catalogItem-slider__description">{description}</div>
@@ -35,7 +38,7 @@ const CatalogItemSettings = (props) => {
                     <div className="catalogItem-slider__description">{descriptionEn}</div>
                 )}
                 {number && (
-                    <div className="catalogItem-slider__number">Артикул:{space}{number}</div>
+                    <div className="catalogItem-slider__number">{__("Артикул")}:{space}{number}</div>
                 )}
             </div>
         </React.Fragment >

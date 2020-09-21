@@ -7,6 +7,8 @@ import { uuid } from 'uuidv4';
 import CatalogItem from './CatalogItem';
 import CatalogItemSettings from './CatalogItemSettings';
 import Slider from 'components/common/Slider';
+import {__} from 'utils/translation';
+
 import './index.scss';
 
 const emptySettings = {
@@ -81,7 +83,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
         opened={settingsOpened}
         onClose={closeCatalogItemsSettings}
         onSubmit={closeCatalogItemsSettings}
-        submitTitle={"ЗАКРЫТЬ"}
+        submitTitle={__("ЗАКРЫТЬ")?.toUpperCase()}
       >
         <CatalogItemSettings {...catalogItemData} />
       </Slider>

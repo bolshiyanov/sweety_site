@@ -116,6 +116,24 @@
     },
 
     {
+        "code": "catalog.price",
+        "en": "Price",
+        "ru": "Стоимость",
+        "es": "Costo",
+        "fr": "Coût",
+        "ge": "Kosten",
+        "it": "Costo"
+    }, {
+        "code": "catalog.articul",
+        "en": "Vendor code",
+        "ru": "Артикул",
+        "es": "Código de proveedor",
+        "fr": "Code de fournisseur",
+        "ge": "Herstellerkürzel",
+        "it": "Codice venditore"
+    },
+
+    {
         "code": "title.name",
         "en": "App Title",
         "ru": "Заголовок приложения",

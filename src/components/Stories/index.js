@@ -6,6 +6,8 @@ import { uuid } from 'uuidv4';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import { useCookies } from 'react-cookie';
 
+import {__} from 'utils/translation';
+
 import Slider from 'components/common/Slider';
 
 import StorySettings from './StorySettings';
@@ -82,7 +84,7 @@ const Stories = ({ data, profile, scrollPosition }) => {
         opened={settingsOpened}
         onClose={closeStoriesSettings}
         onSubmit={closeStoriesSettings}
-        submitTitle={"ЗАКРЫТЬ"} 
+        submitTitle={__("ЗАКРЫТЬ")?.toUpperCase()} 
       >
         <StorySettings {...storyData} />
       </Slider>
