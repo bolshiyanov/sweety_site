@@ -24,6 +24,7 @@ import Slide7 from 'components/Landing/Animation/Slide7.js';
 import API, { getAdminSite, getRef, getCookieDomain } from 'utils/api';
 import { getSearchString } from 'utils/url';
 import { event } from 'utils/googleAnalytics';
+import { __ } from 'utils/translation';
 
 import logoSweety from 'images/sweetylogo.png';
 
@@ -125,11 +126,9 @@ const Landing = () => {
     }
   };
 
-  const hasRef = true; //getSearchString(window.location.search, 'ref') !== undefined;
-
-  // TODO. Select theme
-  if (!hasRef)
-    return null;
+  if (getRef() !== undefined) {
+    startClick();
+  }
 
   return (
     <React.Fragment>
@@ -193,12 +192,18 @@ const Landing = () => {
               <div className="main-page__page1__container-anime-dilimeter"></div>
             </div>
             <div className="main-page__page1__container-anime__text1-flexBox">
-              <div className="main-page__page1__container-anime__text1-flexBox__text1"><h1>Create your <br />a progressive <br />web <br />application <br />in 10 minutes</h1></div>
+              <div className="main-page__page1__container-anime__text1-flexBox__text1">
+                <h1>Create your 
+                  <br />progressive 
+                  <br />web 
+                  <br />application 
+                  <br />in 10 minutes
+                </h1>
+              </div>
             </div>
             <div className="main-page__page1__container-anime"><Slide2 /></div>
             <div className="main-page__page1__container-anime"><Slide5 /></div>
             <div className="main-page__page1__container-anime"><Slide6 /></div>
-
 
             <div className="main-page__page1__container1">
               <h2 className="main-page__page1__header"><Slide4 /></h2>
@@ -217,10 +222,10 @@ const Landing = () => {
 
           <div className="cookie-box" >
             <CookieBanner styles={styles}
-              message='We use Cookies,but we do not collect your data'
-              buttonMessage='close'
-              link={<a href='https://en.wikipedia.org/wiki/Cookie' target="_blank">What it is: COOKIES</a>}
-            />
+                message={__('Мы используем Cookies для Google analytics. Мы не собираем персональные данные')}
+                buttonMessage={__('Закрыть')}
+                link={<a href={__('https://ru.wikipedia.org/wiki/Cookie')} target="_blank">{__("Что это: COOKIES")}</a>}
+              />
           </div>
 
           <Start /> 
