@@ -1,0 +1,467 @@
+[
+    {
+        "code": "app.builder.title",
+        "en": "Mobile App Builder Sweety",
+        "ru": "Конструктор мобильных приложений Sweety",
+        "es": "Generador de aplicaciones móviles Sweety",
+        "fr": "Créateur d'applications mobiles Sweety",
+        "ge": "Builder für mobile Apps Sweety",
+        "it": "Generatore di mobili app Sweety"
+    }, {
+        "code": "app.builder.description",
+        "en": "Create a mobile application for IOS, Android or Windows yourself in the SWEETY constructor in 10 minutes, without programmers, without registration, without subscriptions, for only $199 forever, in order to increase the number of repeated calls from your customers up to 300%. BONUS: 4 hours of dedicated technical support",
+        "ru": "Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ",
+        "es": "Cree usted mismo una aplicación móvil para IOS, Android o Windows en el constructor SWEETY en 10 minutos, sin programadores, sin registro, sin suscripciones, por solo 199€ para siempre, para aumentar el número de llamadas repetidas de sus clientes hasta en un 300%. BONUS: 4 horas de soporte técnico dedicado",
+        "fr": "Créez vous-même une application mobile pour IOS, Android ou Windows dans le constructeur SWEETY en 10 minutes, sans programmeur, sans inscription, sans abonnement, pour seulement 199€ pour toujours, afin d'augmenter le nombre d'appels répétés de vos clients jusqu'à 300% . BONUS: 4 heures d'assistance technique dédiée",
+        "ge": "Erstellen Sie selbst eine mobile Anwendung für IOS, Android oder Windows im SWEETY-Konstruktor in 10 Minuten, ohne Programmierer, ohne Registrierung, ohne Abonnements für nur 199€ für immer, um die Anzahl der wiederholten Anrufe Ihrer Kunden auf bis zu 300% zu erhöhen. BONUS: 4 Stunden engagierter technischer Support",
+        "it": "Crea tu stesso un'applicazione mobile per IOS, Android o Windows nel costruttore SWEETY in 10 minuti, senza programmatori, senza registrazione, senza abbonamenti, a soli 199€ per sempre, in modo da aumentare il numero di chiamate ripetute dai tuoi clienti fino al 300% . BONUS: 4 ore di supporto tecnico dedicato"
+    }, {
+        "code": "app.activelink.title",
+        "en": "Active link Sweety",
+        "ru": "Активная ссылка Sweety link",
+        "es": "Enlace activo Sweety link",
+        "fr": "Lien actif Sweety link",
+        "ge": "Aktiver Link Sweety",
+        "it": "Collegamento attivo Sweety link"
+    }, {
+        "code": "app.activelink.description",
+        "en": "Create a colorful Sweety Link yourself with an active link to earn more, easier, faster on social networks",
+        "ru": "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее",
+        "es": "Active Link diseñe un Sweety Link colorido para ganar más, más fácil y más rápido en las redes sociales",
+        "fr": "Active Link crée un Sweety Link coloré pour gagner plus, plus facilement et plus rapidement sur les réseaux sociaux",
+        "ge": "Active Link Entwerfen Sie selbst einen farbenfrohen Sweety Link, um in sozialen Netzwerken mehr, einfacher und schneller zu verdienen",
+        "it": "Active link crea tu stesso un colorato Sweety Link per guadagnare di più, più facilmente e più velocemente sui social network"
+    }, {
+        "code": "app.cookies.text",
+        "en": "We use cookies for Google analytics. We do not collect personal data",
+        "ru": "Мы используем Cookies для Google analytics. Мы не собираем персональные данные",
+        "es": "Usamos cookies para análisis de Google. No recopilamos datos personales",
+        "fr": "Nous utilisons des cookies pour Google Analytics. Nous ne collectons pas de données personnelles",
+        "ge": "Wir verwenden Cookies für Google Analytics. Wir sammeln keine personenbezogenen Daten",
+        "it": "Utilizziamo i cookie per Google Analytics. Non raccogliamo dati personali"
+    }, {
+        "code": "app.cookies.title",
+        "en": "What is it: COOKIES",
+        "ru": "Что это: COOKIES",
+        "es": "Qué es: COOKIES",
+        "fr": "Qu'est-ce que c'est: COOKIES",
+        "ge": "Was ist das: COOKIES",
+        "it": "Che cos'è: COOKIE"
+    }, {
+        "code": "app.cookies.close",
+        "en": "Close",
+        "ru": "Закрыть",
+        "es": "Cerca",
+        "fr": "Fermer",
+        "ge": "Schließen",
+        "it": "Vicino"
+    }, {
+        "code": "app.brand",
+        "en": "Brand name",
+        "ru": "Название бренда",
+        "es": "Nombre de la marca",
+        "fr": "Marque",
+        "ge": "Markenname",
+        "it": "Marchio"
+    }, {
+        "code": "app.cookies.url",
+        "en": "https://en.wikipedia.org/wiki/HTTP_cookie",
+        "ru": "https://ru.wikipedia.org/wiki/Cookie",
+        "es": "https://es.wikipedia.org/wiki/Cookie_(inform%C3%A1tica)",
+        "fr": "https://fr.wikipedia.org/wiki/Cookie_(informatique)",
+        "ge": "https://de.wikipedia.org/wiki/HTTP-Cookie",
+        "it": "https://www.ionos.it/digitalguide/hosting/tecniche-hosting/che-cosa-sono-i-cookie/"
+    }, {
+        "code": "app.install",
+        "en": "Install my app from this link",
+        "ru": "Установи мое приложение по этой ссылке",
+        "es": "Instalar mi aplicación desde este enlace",
+        "fr": "Installer mon application à partir de ce lien",
+        "ge": "Installieren Sie meine Anwendung über diesen Link",
+        "it": "Installa la mia applicazione da questo link"
+    },
+
+    {
+        "code": "block.example.title",
+        "en": "Subtitle example",
+        "ru": "Пример подзаголовка",
+        "es": "Ejemplo de subtítulo",
+        "fr": "Exemple de sous-titre",
+        "ge": "Untertitelbeispiel",
+        "it": "Esempio di sottotitoli"
+    }, {
+        "code": "block.example.description",
+        "en": "Example of a paragraph. You can place your text here. In total, you have more than 18 content options and buttons with pictures available. It is possible to automatically receive snippets from Instagram and YouTube. You can combine all kinds of content. The number of blocks is not limited.",
+        "ru": "Пример абзаца. Здесь вы можете разместить свой текст. Всего вам доступно более 18 вариантов контента и кнопок с картинками. Возможно автоматическое получение снипетов из Instagram и YouTube. Вы можете комбинировать все виды контента. Количество блоков не имеет ограничений.",
+        "es": "Ejemplo de un párrafo. Puede colocar su texto aquí. En total, tiene más de 18 opciones de contenido y botones con imágenes disponibles. Es posible recibir automáticamente fragmentos de Instagram y YouTube. Puedes combinar todo tipo de contenido. El número de bloques no está limitado.",
+        "fr": "Exemple de paragraphe. Vous pouvez placer votre texte ici. Au total, vous avez plus de 18 options de contenu et boutons avec des images disponibles. Il est possible de recevoir automatiquement des extraits d'Instagram et de YouTube. Vous pouvez combiner toutes sortes de contenus. Le nombre de blocs n'est pas limité.",
+        "ge": "Beispiel eines Absatzes. Hier können Sie Ihren Text platzieren. Insgesamt stehen Ihnen mehr als 18 Inhaltsoptionen und Schaltflächen mit Bildern zur Verfügung. Es ist möglich, automatisch Schnipsel von Instagram und YouTube zu empfangen. Sie können alle Arten von Inhalten kombinieren. Die Anzahl der Blöcke ist nicht begrenzt.",
+        "it": "Esempio di un paragrafo. Puoi inserire il tuo testo qui. In totale, hai più di 18 opzioni di contenuto e pulsanti con immagini disponibili. È possibile ricevere automaticamente snippet da Instagram e YouTube. Puoi combinare tutti i tipi di contenuto. Il numero di blocchi non è limitato."
+    }, {
+        "code": "block.example.button",
+        "en": "Button example",
+        "ru": "Пример кнопки",
+        "es": "Ejemplo de botón",
+        "fr": "Exemple de bouton",
+        "ge": "Beispiel für eine Schaltfläche",
+        "it": "Esempio di pulsante"
+    }, {
+        "code": "block.ads",
+        "en": "ads from",
+        "ru": "реклама от",
+        "es": "publicidad de",
+        "fr": "publicité de",
+        "ge": "Werbung von",
+        "it": "pubblicità da"
+    },
+
+    {
+        "code": "title.name",
+        "en": "App Title",
+        "ru": "Заголовок приложения",
+        "es": "Titulo de la aplicación",
+        "fr": "Titre de l'application",
+        "ge": "Bewerbungstitel",
+        "it": "Titolo dell'app"
+    }, {
+        "code": "title.desc",
+        "en": "App Description",
+        "ru": "Описание приложения",
+        "es": "Descripción de la aplicación",
+        "fr": "Description de l'application",
+        "ge": "App Beschreibung",
+        "it": "Descrizione dell'app"
+    },
+
+    {
+        "code": "landing.instagram",
+        "en": "Enter your Instagram",
+        "ru": "Укажите ваш Instagram",
+        "es": "Ingresa tu Instagram",
+        "fr": "Entrez votre Instagram",
+        "ge": "Geben Sie Ihr Instagram ein",
+        "it": "Inserisci il tuo Instagram"
+    }, {
+        "code": "landing.noinstagram",
+        "en": "Instagram wasn't found",
+        "ru": "Instagram не найден",
+        "es": "Instagram no se encontró",
+        "fr": "Instagram n'a pas été trouvé",
+        "ge": "Instagram wurde nicht gefunden",
+        "it": "Instagram non è stato trovato"
+    }, {
+        "code": "landing.noyoutube",
+        "en": "Channel or video was not found",
+        "ru": "Канал или видео не найдены",
+        "es": "No se encontró el canal o el video",
+        "fr": "Chaîne ou vidéo introuvable",
+        "ge": "Kanal oder Video wurde nicht gefunden",
+        "it": "Il canale o il video non è stato trovato"
+    }, {
+        "code": "landing.invalidmobile",
+        "en": "Invalid phone number",
+        "ru": "Некорректный номер телефона",
+        "es": "Numero de telefono invalido",
+        "fr": "Numéro de téléphone invalide",
+        "ge": "Ungültige Telefonnummer",
+        "it": "Numero di telefono invalido"
+    }, {
+        "code": "landing.continue",
+        "en": "Continue the last",
+        "ru": "Продолжить последнее",
+        "es": "Continúa l'último",
+        "fr": "Continuez le dernier",
+        "ge": "Setzen Sie den letzten fort",
+        "it": "Continua l'ultimo"
+    },
+    
+    {
+        "code": "landing.constructor",
+        "en": "Mobile App Builder",
+        "ru": "Конструктор мобильных приложений",
+        "es": "Generador de aplicaciones móviles",
+        "fr": "Créateur d'applications mobiles",
+        "ge": "Builder für mobile Apps",
+        "it": "Generatore di mobili app"
+    }, {
+        "code": "landing.desc",
+        "en": "Free, create it yourself in 10 minutes, no programmers, no registration, no subscriptions. No credit card required.",
+        "ru": "Бесплатно, на русском создай сам за 10 минут, без программистов, без регистрации, без подписок. Кредитная карта не понадобится.",
+        "es": "Gratis, créelo usted mismo en 10 minutos, sin programadores, sin registro, sin suscripciones. No se requiere tarjeta de crédito.",
+        "fr": "Gratuit, créez-le vous-même en 10 minutes, pas de programmeur, pas d'inscription, pas d'abonnement. Pas de carte de crédit nécessaire.",
+        "ge": "Kostenlos, erstellen Sie sich in 10 Minuten, keine Programmierer, keine Registrierung, keine Abonnements. Keine Kreditkarte benötigt.",
+        "it": "Gratuito, te stesso in 10 minuti, nessun programmatore, nessuna registrazione, nessun abbonamento. Nessuna carta di credito richiesta."
+    },
+
+    {
+        "code": "footer.creation",
+        "en": "Create an application like mine",
+        "ru": "Создай приложение как у меня",
+        "es": "Crea una aplicación como la mía",
+        "fr": "Créez une application comme la mienne",
+        "ge": "Erstellen Sie eine Anwendung wie meine",
+        "it": "Crea un'applicazione come la mia"
+    }, {
+        "code": "footer.instruction",
+        "en": "Instruction on how to create an application",
+        "ru": "Инструкция как создать приложение",
+        "es": "Instruccion sobre cómo crear una aplicación",
+        "fr": "Instruction pour créer une application",
+        "ge": "Anweisungen zum Erstellen einer Anwendung",
+        "it": "Istruzioni su come creare un'applicazione"
+    }, {
+        "code": "footer.copied",
+        "en": "Copied to clipboard",
+        "ru": "Ссылка скопирована",
+        "es": "Copiado al portapapeles",
+        "fr": "Copié dans le presse-papier",
+        "ge": "In die Zwischenablage kopiert",
+        "it": "Copiato negli appunti"
+    },
+
+    {
+        "code": "share.title",
+        "en": "Share our app",
+        "ru": "Поделись нашим приложением",
+        "es": "Comparte nuestra aplicación",
+        "fr": "Partagez notre appli",
+        "ge": "Teilen Sie unsere App",
+        "it": "Condividi la nostra app"
+    }, {
+        "code": "share.text",
+        "en": "I came across a new app for smartphone, I think you will be interested. You can put it on your home screen and then watch it ... Look at this link ",
+        "ru": "Попалось новенькое приложение для смартфона, мне кажется тебе будет интересно. Его можно поставить на домашний экран и потом посмотреть... Посмотри по этой ссылке ",
+        "es": "Encontré una nueva aplicación para teléfonos inteligentes, creo que te interesará. Puedes ponerlo en tu pantalla de inicio y luego verlo ... Mira este enlace ",
+        "fr": "Je suis tombé sur une toute nouvelle application pour smartphone, je pense que cela vous intéressera. Vous pouvez le mettre sur votre écran d'accueil, puis le regarder ... Regardez ce lien ",
+        "ge": "Ich bin auf eine brandneue Smartphone-Anwendung gestoßen. Ich denke, Sie werden interessiert sein. Sie können es auf Ihrem Startbildschirm platzieren und dann ansehen ... Schauen Sie sich diesen Link an ",
+        "it": "Mi sono imbattuto in una nuovissima applicazione per smartphone, penso che ti interesserà. Puoi metterlo sulla schermata iniziale e guardarlo ... Guarda questo link "
+    }, {
+        "code": "share.email.title",
+        "en": "Check out a new app for smartphone ",
+        "ru": "Посмотри новенькое приложение для смартфона ",
+        "es": "Echa un vistazo a la nueva aplicación para smartphone ",
+        "fr": "Découvrez la toute nouvelle application pour smartphone ",
+        "ge": "Schauen Sie sich die brandneue Smartphone-App an ",
+        "it": "Dai un'occhiata alla nuovissima app per smartphone "
+    }, {
+        "code": "share.email.text",
+        "en": "Hello! I came across such an application for smartphone, I think you will be interested. You can put it on your home screen and then watch it ... Look at this link",
+        "ru": "Привет! Попалось такое приложение для смартфона, мне кажется тебе будет интересно. Его можно поставить на домашний экран и потом посмотреть... Посмотри по этой ссылке",
+        "es": "¡Hola! Me encontré con una aplicación de este tipo para smartphone, creo que te interesará. Puedes ponerlo en tu pantalla de inicio y luego verlo ... Mira este enlace",
+        "fr": "salut! Je suis tombé sur une telle application pour un smartphone, je pense que cela vous intéressera. Vous pouvez le mettre sur votre écran d'accueil, puis le regarder ... Regardez ce lien",
+        "ge": "Hallo! Ich bin auf eine solche Anwendung für ein Smartphone gestoßen, ich denke, Sie werden interessiert sein. Sie können es auf Ihrem Startbildschirm platzieren und dann ansehen ... Schauen Sie sich diesen Link an",
+        "it": "Ciao! Mi sono imbattuto in un'applicazione del genere per uno smartphone, penso che ti interesserà. Puoi metterlo sulla schermata iniziale e guardarlo ... Guarda questo link"
+    }, {
+        "code": "share.twitter",
+        "en": "An interesting application that can be installed via a link in the phone, without marketplace. Try PWA, I liked it",
+        "ru": "Интересное приложение, которое можно установить по ссылке в телефон, баз маркетплейс. Попробуй PWA, мне понравилось",
+        "es": "Una aplicación interesante que se puede instalar mediante un enlace en el teléfono, sin marketplace. Prueba PWA, me gustó",
+        "fr": "Une application intéressante qui peut être installée via un lien dans le téléphone, sans marketplace. Essayez PWA, je l'ai aimé",
+        "ge": "Eine interessante Anwendung, die über einen Link im Telefon ohne Marktplatz installiert werden kann. Versuchen Sie PWA, es hat mir gefallen",
+        "it": "Un'applicazione interessante che può essere installata tramite un collegamento nel telefono, senza marketplace. Prova PWA, mi è piaciuto"
+    },
+
+    {
+        "code": "order.totalis",
+        "en": "Your total is",
+        "ru": "Ваш заказ на сумму:",
+        "es": "Tu total es",
+        "fr": "Votre total est",
+        "ge": "Ihre Summe ist",
+        "it": "Il tuo totale è"
+    }, {
+        "code": "order.sent",
+        "en": "Your order has been sent",
+        "ru": "Ваш заказ отправлен",
+        "es": "Tu pedido ha sido enviado",
+        "fr": "Votre commande a été envoyée",
+        "ge": "Ihre Bestellung wurde versendet",
+        "it": "Il tuo ordine è stato inviato"
+    }, {
+        "code": "order.pre",
+        "en": "Your pre-order",
+        "ru": "Ваш предварительный заказ",
+        "es": "Tu pedido anticipado",
+        "fr": "Votre précommande",
+        "ge": "Ihre Vorbestellung",
+        "it": "Il tuo preordine"
+    }, {
+        "code": "order.text",
+        "en": "Please edit the number of items of interest, provide contact information and submit your order. We will answer you is a while.",
+        "ru": "Пожалуйста, отредактируйте количество интересующих позиций, укажите контактную информацию и отправьте ваш заказ. Мы ответим вам в самое ближайшее время",
+        "es": "Edite el número de artículos de interés, proporcione información de contacto y envíe su pedido. Te responderemos en un rato.",
+        "fr": "Veuillez modifier le nombre d'articles qui vous intéressent, fournir vos coordonnées et soumettre votre commande. Nous vous répondrons dans un moment.",
+        "ge": "Bitte bearbeiten Sie die Anzahl der gewünschten Artikel, geben Sie die Kontaktinformationen an und senden Sie Ihre Bestellung ab. Wir werden Ihnen gleich antworten.",
+        "it": "Modifica il numero di articoli di interesse, fornisci le informazioni di contatto e invia il tuo ordine. Ti risponderemo tra poco."
+    }, {
+        "code": "order.send",
+        "en": "SUBMIT",
+        "ru": "ОТПРАВИТЬ",
+        "es": "ENVIAR",
+        "fr": "SOUMETTRE",
+        "ge": "einreichen",
+        "it": "Invia"
+    }, {
+        "code": "order.total",
+        "en": "Total:",
+        "ru": "Итого:",
+        "es": "Total:",
+        "fr": "Total:",
+        "ge": "Gesamt:",
+        "it": "Totale:"
+    }, {
+        "code": "order.phone",
+        "en": "Write your phone",
+        "ru": "Напишите свой телефон",
+        "es": "Escribe tu teléfono",
+        "fr": "Écrivez votre téléphone",
+        "ge": "Schreiben Sie Ihr Telefon",
+        "it": "Scrivi il tuo telefono"
+    }, {
+        "code": "order.comment",
+        "en": "Write in this field a comment to the order, indicate an alternative method of contact or ask your question. FILLING IS NOT NECESSARY",
+        "ru": "Напишите в этом поле комментарий к заказу, укажите альтернативный способ связи или задайте свой вопрос. ЗАПОЛНЕНИЕ НЕ ОБЯЗАТЕЛЬНО",
+        "es": "Escriba en este campo un comentario al pedido, indique un método alternativo de contacto o haga su pregunta. EL LLENADO NO ES NECESARIO",
+        "fr": "Écrivez dans ce champ un commentaire à la commande, indiquez une méthode alternative de contact ou posez votre question. LE REMPLISSAGE N'EST PAS NÉCESSAIRE",
+        "ge": "Schreiben Sie in dieses Feld einen Kommentar zur Bestellung, geben Sie eine alternative Kontaktmethode an oder stellen Sie Ihre Frage. FÜLLEN IST NICHT NOTWENDIG",
+        "it": "Scrivi in ​​questo campo un commento all'ordine, indica un metodo alternativo di contatto o fai la tua domanda. IL RIEMPIMENTO NON È NECESSARIO"
+    }, {
+        "code": "order.thirdparty",
+        "en": "Information wouldn't be shared with third parties",
+        "ru": "Информация не будет передана третьим лицам",
+        "es": "La información no se compartirá con terceros",
+        "fr": "Les informations ne seront pas partagées avec des tiers",
+        "ge": "Informationen werden nicht an Dritte weitergegeben",
+        "it": "Le informazioni non saranno condivise con terze parti"
+    },
+
+    {
+        "code": "install.mobile.desc",
+        "en": "The application with my avatar will appear on your phone screen immediately after installation",
+        "ru": "Приложение с моей аватаркой появится на экране твоего телефона сразу после установки",
+        "es": "La aplicación con mi avatar aparecerá en la pantalla de su teléfono inmediatamente después de la instalación",
+        "fr": "L'application avec mon avatar apparaîtra sur l'écran de votre téléphone immédiatement après l'installation",
+        "ge": "Die Anwendung mit meinem Avatar wird sofort nach der Installation auf Ihrem Telefonbildschirm angezeigt",
+        "it": "L'applicazione con il mio avatar apparirà sullo schermo del telefono subito dopo l'installazione"
+    }, {
+        "code": "install.desktop.desc",
+        "en": "You can find the application with my avatar on the START> APPS> NEW tab, right after installation",
+        "ru": "Приложение с моей аватаркой ты сможешь найти на вкладке ПУСК > ПРИЛОЖЕНИЯ > НОВОЕ, сразу после установки",
+        "es": "Puede encontrar la aplicación con mi avatar en la pestaña INICIO> APLICACIONES> NUEVO, justo después de la instalación",
+        "fr": "Vous pouvez trouver l'application avec mon avatar dans l'onglet DÉMARRER> APPLICATIONS> NOUVEAU, juste après l'installation",
+        "ge": "Sie finden die Anwendung mit meinem Avatar direkt nach der Installation auf der Registerkarte START> APPS> NEU",
+        "it": "Puoi trovare l'applicazione con il mio avatar nella scheda START> APP> NUOVO, subito dopo l'installazione"
+    }, {
+        "code": "install.motivation",
+        "en": "You will receive our best offers now",
+        "ru": "Теперь вы получите наши лучшие предложения",
+        "es": "Ahora recibirás nuestras mejores ofertas",
+        "fr": "Vous recevrez désormais nos meilleures offres",
+        "ge": "Sie erhalten jetzt unsere besten Angebote",
+        "it": "Ora riceverai le nostre migliori offerte"
+    }, {
+        "code": "install.desc.title",
+        "en": "Description:",
+        "ru": "Описание:",
+        "es": "Descripción:",
+        "fr": "Description:",
+        "ge": "Beschreibung:",
+        "it": "Descrizione:"
+    }, {
+        "code": "install.desc",
+        "en": "Installation will be done through your BROWSER. No credit card required, no registration required, mailing is not technically possible",
+        "ru": "Установка будет произвдена через ваш БРАУЗЕР. Кредитная карта не понадобится, регистрация не нужна, рассылки технически не возможны",
+        "es": "La instalación se realizará a través de su NAVEGADOR. No se requiere tarjeta de crédito, no se requiere registro, el envío por correo no es técnicamente posible",
+        "fr": "L'installation se fera via votre NAVIGATEUR. Aucune carte de crédit requise, aucune inscription requise, l'envoi postal n'est pas techniquement possible",
+        "ge": "Die Installation erfolgt über Ihren BROWSER. Keine Kreditkarte erforderlich, keine Registrierung erforderlich, Versand ist technisch nicht möglich",
+        "it": "L'installazione verrà eseguita tramite il tuo BROWSER. Nessuna carta di credito richiesta, nessuna registrazione richiesta, l'invio non è tecnicamente possibile"
+    }, {
+        "code": "install.install",
+        "en": "Install",
+        "ru": "Установить",
+        "es": "Instalar",
+        "fr": "Installer",
+        "ge": "Installieren",
+        "it": "Installare"
+    }, {
+        "code": "install.cancel",
+        "en": "Cancel",
+        "ru": "Отменить",
+        "es": "Cancelar",
+        "fr": "Annuler",
+        "ge": "Stornieren",
+        "it": "Annulla"
+    }, {
+        "code": "install.title",
+        "en": "To install this app:",
+        "ru": "Для установки этого приложения:",
+        "es": "Para instalar esta aplicación:",
+        "fr": "Pour installer cette application:",
+        "ge": "So installieren Sie diese App:",
+        "it": "Per installare questa app:"
+    }, {
+        "code": "install.clicknext",
+        "en": "Then click",
+        "ru": "Затем нажми",
+        "es": "Luego haga clic en",
+        "fr": "Puis clique",
+        "ge": "Dann klick",
+        "it": "Quindi fare clic su"
+    }, {
+        "code": "install.ios.safari",
+        "en": "Open in Safari",
+        "ru": "Открой в Safari",
+        "es": "Abrir en Safari",
+        "fr": "Ouvrir dans Safari",
+        "ge": "In Safari öffnen",
+        "it": "Apri in Safari"
+    }, {
+        "code": "install.ios.home",
+        "en": "Go to Home Screen",
+        "ru": "На экран 'Домой'",
+        "es": "Ir a la pantalla de inicio",
+        "fr": "Aller à l'écran d'accueil",
+        "ge": "Gehen Sie zum Startbildschirm",
+        "it": "Vai alla schermata principale"
+    }, {
+        "code": "install.firefox.icon",
+        "en": "Click on this icon in the address bar:",
+        "ru": "Нажми на эту иконку в адресной строке:",
+        "es": "Haga clic en este icono en la barra de direcciones:",
+        "fr": "Cliquez sur cette icône dans la barre d'adresse:",
+        "ge": "Klicken Sie auf dieses Symbol in der Adressleiste:",
+        "it": "Fare clic su questa icona nella barra degli indirizzi:"
+    }, {
+        "code": "install.firefox.main",
+        "en": "Add to home screen",
+        "ru": "Добавить на главный экран",
+        "es": "Añadir a la pantalla principal",
+        "fr": "Ajouter à l'écran d'accueil",
+        "ge": "Zum Startbildschirm hinzufügen",
+        "it": "Aggiungere alla schermata Home"
+    }, {
+        "code": "install.opera.menu",
+        "en": "Click on the menu button:",
+        "ru": "Нажми на кнопку меню:",
+        "es": "Haga clic en el botón de menú:",
+        "fr": "Cliquez sur le bouton de menu:",
+        "ge": "Klicken Sie auf die Menüschaltfläche:",
+        "it": "Fare clic sul pulsante del menu:"
+    }, {
+        "code": "install.opera.home",
+        "en": "Main screen",
+        "ru": "Главный экран",
+        "es": "Pantalla principal",
+        "fr": "Écran principal",
+        "ge": "Hauptbildschirm",
+        "it": "Schermo principale"
+    }, {
+        "code": "install.unknown",
+        "en": "Sorry, installation is not supported in your browser. Open this app in Google Chrome browser",
+        "ru": "К сожалению, установка не поддерживается в вашем браузере. Открой это приложение в браузере Google Chrome",
+        "es": "Lo sentimos, la instalación no es compatible con su navegador. Abra esta aplicación en el navegador Google Chrome",
+        "fr": "Désolé, l'installation n'est pas prise en charge dans votre navigateur. Ouvrez cette application dans le navigateur Google Chrome",
+        "ge": "Die Installation in Ihrem Browser wird leider nicht unterstützt. Öffnen Sie diese App im Google Chrome-Browser",
+        "it": "Spiacenti, l'installazione non è supportata nel tuo browser. Apri questa app nel browser Google Chrome"
+    }
+]

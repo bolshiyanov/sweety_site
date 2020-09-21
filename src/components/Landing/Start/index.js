@@ -8,6 +8,8 @@ import { event } from 'utils/googleAnalytics';
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
 
+import {__} from 'utils/translation';
+
 import './index.scss';
 
 const Start = () => {
@@ -42,7 +44,7 @@ const Start = () => {
       return;
     }
     if (!instagram) {
-      setInstagramInvalid("Укажите ваш Instagram");
+      setInstagramInvalid(__("Укажите ваш Instagram"));
       return;
     }
 
@@ -50,8 +52,7 @@ const Start = () => {
     setCounter(30);
     API.getInstagramFeed(instagram).then((instaProfile) => {
       if (!instaProfile?.feed?.title) {
-        console.log('not found');
-        setInstagramInvalid("Instagram не найден");
+        setInstagramInvalid(__("Instagram не найден"));
 
         setCounter(null);
         setStarting(false);
@@ -75,13 +76,13 @@ const Start = () => {
         }).then((response) => {
           if (response?.errors) {
             if (response.errors.Instagram) {
-              setInstagramInvalid("Instagram не найден");
+              setInstagramInvalid(__("Instagram не найден"));
             }
             if (response.errors.Youtube) {
-              setYoutubeInvalid("Канал или видео не найдены");
+              setYoutubeInvalid(__("Канал или видео не найдены"));
             }
             if (response.errors.WhatsApp) {
-              setWhatsappInvalid("Некорректный номер телефона");
+              setWhatsappInvalid(__("Некорректный номер телефона"));
             }
           }
           else if (response?.invitationId) {
@@ -157,7 +158,7 @@ const Start = () => {
         {!starting ? 'ВЗЯТЬ ИМЯ ИЗ INSTAGRAM' : 'Собираем проект...'} {counter}
       </Button> */}
       {lastId && <div className="start__text">
-        <a onClick={handleContinue}>Продолжить последнее</a>
+        <a onClick={handleContinue}>{__("Продолжить последнее")}</a>
       </div>}
     </div>
   );

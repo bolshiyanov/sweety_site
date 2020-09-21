@@ -36,6 +36,7 @@ import AppTheme7 from "components/themes/AppTheme7";
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
 import GoogleAnalytics from 'utils/googleAnalytics';
+import {__} from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
 
@@ -117,28 +118,25 @@ const App = () => {
     <React.Fragment>
       <Helmet>
         <html lang="Ru" amp />
-        <title>{data.title || "Конструктор мобильных приложений Sweety"}</title>
-        <meta name="description" content={data.description || "Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ "
-   } />
+        <title>{data.title || __("Конструктор мобильных приложений Sweety")}</title>
+        <meta name="description" content={data.description || __("Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ")} />
         <link rel="canonical" href={data.url} />
-        <meta property="og:site_name" content={data.name || "Конструктор мобильных приложений Sweety"} />
+        <meta property="og:site_name" content={data.name || __("Конструктор мобильных приложений Sweety")} />
         <meta property="og:url" content={data.url} />
         <meta property="og:locale" content={data.lang} />
-        <meta property="og:type:profile:username" content={data.name || "Конструктор мобильных приложений Sweety"} />
+        <meta property="og:type:profile:username" content={data.name || __("Конструктор мобильных приложений Sweety")} />
         <meta property="og:type:article:published_time" content={data.paymentData} />
-        <meta property="og:image" content={data.title || "Конструктор мобильных приложений Sweety"} />
+        <meta property="og:image" content={data.title || __("Конструктор мобильных приложений Sweety")} />
         <meta property="og:image:secure_url" content={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/'}logo512.png`} />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
-        <meta property="og:title" content={data.title || "Конструктор мобильных приложений Sweety"} />
-        <meta property="og:description" content={data.description || "Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ "
-   } />
+        <meta property="og:title" content={data.title || __("Конструктор мобильных приложений Sweety")} />
+        <meta property="og:description" content={data.description || __("Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ")} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={data.url} />
-        <meta name="twitter:title" content={data.title || "Конструктор мобильных приложений Sweety"} />
-        <meta name="twitter:description" content={data.description || "Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ "
-   } />
-        <meta name="twitter:creator" content={data.name || "Конструктор мобильных приложений Sweety"} />
+        <meta name="twitter:title" content={data.title || __("Конструктор мобильных приложений Sweety")} />
+        <meta name="twitter:description" content={data.description || __("Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ")} />
+        <meta name="twitter:creator" content={data.name || __("Конструктор мобильных приложений Sweety")} />
         <meta name="twitter:image:src" content={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/'}logo512.png`} />
         <meta name="twitter:domain" content={data.url} />
       </Helmet>
@@ -191,9 +189,9 @@ const App = () => {
               <Footer />
               {!isDemo && <div className="cookie-box" >
                 <CookieBanner styles={styles}
-                  message='Мы используем Cookies для Goole analitics. Мы не собираем персональные данные'
-                  buttonMessage='Закрыть'
-                  link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
+                  message={__('Мы используем Cookies для Google analytics. Мы не собираем персональные данные')}
+                  buttonMessage={__('Закрыть')}
+                  link={<a href={__('https://ru.wikipedia.org/wiki/Cookie')} target="_blank">{__("Что это: COOKIES")}</a>}
                 />
               </div>}
             </div>

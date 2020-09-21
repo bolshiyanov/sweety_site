@@ -6,6 +6,7 @@ import addedAvatar from 'images/addedAvatar2.png';
 import Icon from 'components/common/Icon';
 import AvatarBase from 'components/common/AvatarBase';
 import Button from 'components/common/Button';
+import {__} from 'utils/translation';
 
 import './index.scss';
 
@@ -20,7 +21,7 @@ const AvatarTheme4 = () => {
   const onShare = () => {
     navigator.share({
       title: { name }, // Заголовок
-      text: 'Установи мое приложение по этой ссылке', // Текст
+      text: __('Установи мое приложение по этой ссылке'), // Текст
       url: window.location.href, // ссылка
     });
   };
@@ -28,7 +29,7 @@ const AvatarTheme4 = () => {
   return (
     <React.Fragment>
       <div className="avatar-theme4-flexbox" >
-        <div className="user-name-theme4"  >{name || "Название бренда"}
+        <div className="user-name-theme4"  >{name || __("Название бренда")}
           {detectMobile() ? " : Official App  "  : " : Official Website  "}
           {navigator.share &&
             <Button onClick={onShare} isInline className="tooltip-theme1">

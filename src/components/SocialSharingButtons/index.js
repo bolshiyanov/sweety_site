@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { useSelector } from 'react-redux';
 import Avatar from 'components/common/Avatar';
+import {__} from 'utils/translation';
 
-import classnames from 'classnames';
+import './index.scss';
 
 import Button from 'components/common/Button';
 import {
@@ -48,20 +49,13 @@ import {
   WeiboIcon,
 } from 'react-share';
 
-
-
-import './index.scss';
-
-
-
- const SocialSharingButtons = () => {
-  
- const { avatar, avatarPreview, title, url } = useSelector((state) => state.config.data);
- var text = "Попалось новенькое приложение для смартфона, мне кажется тебе будет интересно. Его можно поставить на домашний экран и потом посмотреть... Посмотри по этой ссылке ";  
- var texturl =  "Попалось вот такое новенькое приложение для смартфона, мне кажется тебе будет интересно. Его можно поставить на домашний экран и потом посмотреть... Посмотри по этой ссылке " +" "+ (url);  
- var texttitleemail =  "Попосмотри новенькое приложение для смартфона" + " " + (title); 
- var texttwitter = "Интересное приложение, которое можно установить по ссылке в телефон, баз маркетплейс, попробуй PWA, мне понравилось";
-
+const SocialSharingButtons = () => {
+  const { avatar, avatarPreview, title, url } = useSelector((state) => state.config.data);
+  var text = __("Попалось новенькое приложение для смартфона, мне кажется тебе будет интересно. Его можно поставить на домашний экран и потом посмотреть... Посмотри по этой ссылке ");  
+  var texturl =  text + url;  
+  var texttitleemail =  __("Посмотри новенькое приложение для смартфона ") + (title); 
+  var textEmail = __("Привет! Попалось такое приложение для смартфона, мне кажется тебе будет интересно. Его можно поставить на домашний экран и потом посмотреть... Посмотри по этой ссылке");
+  var texttwitter = __("Интересное приложение, которое можно установить по ссылке в телефон, баз маркетплейс. Попробуй PWA, мне понравилось");
 
     return (
       <React.Fragment>
@@ -74,7 +68,7 @@ import './index.scss';
           </div>}
         
         <div className="SocialSharingButtons_box_items" >
-          <div className="SocialSharingButtons_title">Поделись нашим приложением</div>
+          <div className="SocialSharingButtons_title">{__("Поделись нашим приложением")}</div>
           <div className="SocialSharingButtons_container">
 
 
@@ -82,8 +76,7 @@ import './index.scss';
           <EmailShareButton
             url={url}
             subject={texttitleemail}
-            body="Привет! Попалось такое приложение для смартфона, мне кажется тебе будет интересно. 
-            Его можно поставить на домашний экран и потом посмотреть... Посмотри по этой ссылке&mdash;"
+            body={textEmail + "&mdash;"}
             className="SocialSharingButtons__some-network__share-button"
           >
             <EmailIcon size={45} round />
@@ -94,8 +87,7 @@ import './index.scss';
           <WhatsappShareButton
             url={url}
             title={title}
-            separator="&mdash;Попалось такое приложение для смартфона, мне кажется тебе будет интересно. 
-            Его можно поставить на домашний экран и потом посмотреть... Посмотри по этой ссылке&mdash;"
+            separator={"&mdash;" + text + "&mdash;"}
             className="SocialSharingButtons__some-network__share-button"
           >
             <WhatsappIcon size={45} round />
@@ -106,8 +98,7 @@ import './index.scss';
           <ViberShareButton
             url={url}
             title={title}
-            separator="&mdash;Попалось приложение для смартфона, мне кажется тебе будет интересно. 
-            Можно поставить как приложение... Ссылка&mdash;"
+            separator={"&mdash;" + text + "&mdash;"}
             className="SocialSharingButtons__some-network__share-button"
           >
             <ViberIcon size={45} round />

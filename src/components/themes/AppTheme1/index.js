@@ -26,6 +26,7 @@ import SocialSharingButtons from "components/SocialSharingButtons";
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
 import GoogleAnalytics from 'utils/googleAnalytics';
+import {__} from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
 
@@ -106,24 +107,24 @@ const AppTheme1 = () => {
     <React.Fragment>
       <Helmet>
         <html lang="Ru" amp />
-        <title>{data.title || "Активная ссылка Sweety link"}</title>
-        <meta name="description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
+        <title>{data.title || __("Активная ссылка Sweety link")}</title>
+        <meta name="description" content={data.description || __("Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее")} />
         <link rel="canonical" href={data.url} />
         <meta property="og:site_name" content={data.name || "Free Link Creator"} />
         <meta property="og:url" content={data.url} />
         <meta property="og:locale" content={data.lang} />
         <meta property="og:type:profile:username" content={data.name || "Free Link Creator"} />
         <meta property="og:type:article:published_time" content={data.paymentData} />
-        <meta property="og:image" content={data.title || "Активная ссылка Sweety link"} />
+        <meta property="og:image" content={data.title || __("Активная ссылка Sweety link")} />
         <meta property="og:image:secure_url" content={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/'}logo512.png`} />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
-        <meta property="og:title" content={data.title || "Активная ссылка Sweety link"} />
-        <meta property="og:description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
+        <meta property="og:title" content={data.title || __("Активная ссылка Sweety link")} />
+        <meta property="og:description" content={data.description || __("Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее")} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={data.url} />
-        <meta name="twitter:title" content={data.title || "Активная ссылка Sweety link"} />
-        <meta name="twitter:description" content={data.description || "Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее"} />
+        <meta name="twitter:title" content={data.title || __("Активная ссылка Sweety link")} />
+        <meta name="twitter:description" content={data.description || __("Активная ссылка оформи САМ красочную Sweety Link, чтобы зарабатывать в соцсетях больше, проще, быстрее")} />
         <meta name="twitter:creator" content={data.name || "Free Link Creator"} />
         <meta name="twitter:image:src" content={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/'}logo512.png`} />
         <meta name="twitter:domain" content={data.url} />
@@ -145,9 +146,9 @@ const AppTheme1 = () => {
           <Footer />
           {!isDemo && <div className="cookie-box" >
             <CookieBanner styles={styles}
-              message='Мы используем Cookies для Goole analitics. Мы не собираем персональные данные'
-              buttonMessage='Закрыть'
-              link={<a href='https://ru.wikipedia.org/wiki/Cookie' target="_blank">Что это: COOKIES</a>}
+              message={__('Мы используем Cookies для Google analytics. Мы не собираем персональные данные')}
+              buttonMessage={__('Закрыть')}
+              link={<a href={__('https://ru.wikipedia.org/wiki/Cookie')} target="_blank">{__("Что это: COOKIES")}</a>}
             />
           </div>}
         </div>

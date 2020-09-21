@@ -5,6 +5,8 @@ import copy from 'clipboard-copy';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 import Slider from 'components/common/Slider';
 
+import {__} from 'utils/translation';
+
 import './index.scss';
 
 const Footer = () => {
@@ -23,20 +25,19 @@ const Footer = () => {
   return (
     <footer>
       {active ? <br /> : 
-      (supported() && !isInstalled()) ? <a href={url} target="_blank" className="textfooter">Создай приложение как у меня</a> :
-      <a onClick={() => setOpened(true)} className="textfooter">Создай приложение как у меня</a>}
+      (supported() && !isInstalled()) ? <a href={url} target="_blank" className="textfooter">{__("Создай приложение как у меня")}</a> :
+      <a onClick={() => setOpened(true)} className="textfooter">{__("Создай приложение как у меня")}</a>}
       <div className="textlogofooter"></div>
       
       <Slider
         opened={opened}
         onClose={() => setOpened(false)}
-        title="Инструкция как создать приложение"
+        title={__("Инструкция как создать приложение")}
         subtitle=
-        {<p>Откройте ссылку на ваше приложение в браузере
-        </p>}
+        {<p>{__("Откройте ссылку на ваше приложение в браузере")}</p>}
       >
         {!urlCopied && <a onClick={onCopy} className="textfooter">{url}</a>}
-        {urlCopied && <div>Ссылка скопирована</div>}
+        {urlCopied && <div>{__("Ссылка скопирована")}</div>}
       </Slider>
     </footer>
   );

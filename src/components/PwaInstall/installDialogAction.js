@@ -5,6 +5,7 @@ import { IOSShareIcon, FireFoxA2HSIcon, OperaMenuIcon, OperaA2HSIcon } from "./i
 import Icon from 'components/common/Icon';
 import { IonIcon } from '@ionic/react';
 import { shareOutline } from 'ionicons/icons';
+import {__} from 'utils/translation';
 
 export default function InstallDialogAction(props) {
   return (
@@ -12,20 +13,20 @@ export default function InstallDialogAction(props) {
       <DialogActions>
         {props.platform === platforms.NATIVE && (
           <>
-            <Button onClick={props.onClose}>Отменить</Button>
+            <Button onClick={props.onClose}>{__("Отменить")}</Button>
             <Button onClick={props.onSubmit} color="primary" variant="contained" disableElevation>
-              Установить
+              {__("Установить")}
             </Button>
           </>
         )}
         {props.platform === platforms.IDEVICE && (
           <Box width="100%" display="flex" flexDirection="column">
             <Box>
-              <Typography variant="subtitle1">Для установки этого приложения:</Typography>
+              <Typography variant="subtitle1">{__("Для установки этого приложения:")}</Typography>
               <ul>
-                <li>Открой в Safari <Icon className="icon-16" type="compass" /></li> 
-                <li>Затем нажми <IonIcon slot="start" icon={shareOutline } /></li>
-                <li>Затем жми <Icon className="icon-16" type="plusSquare" /> - На экран "Домой"</li>
+                <li>{__("Открой в Safari")} <Icon className="icon-16" type="compass" /></li> 
+                <li>{__("Затем нажми")} <IonIcon slot="start" icon={shareOutline } /></li>
+                <li>{__("Затем нажми")} <Icon className="icon-16" type="plusSquare" /> - {__("На экран 'Домой'")}</li>
               </ul>
             </Box>
             <Box width="100%" textAlign="right">
@@ -36,15 +37,15 @@ export default function InstallDialogAction(props) {
         {props.platform === platforms.FIREFOX && (
           <Box width="100%" display="flex" flexDirection="column">
             <Box>
-              <Typography variant="subtitle1">Для установки этого приложения:</Typography>
+              <Typography variant="subtitle1">{__("Для установки этого приложения:")}</Typography>
               <ul>
                 <li>
                   <span style={{ display: "flex", alignItems: "center" }}>
-                    Нажми на эту иконку в адресной строке:
+                    {__("Нажми на эту иконку в адресной строке:")}
                     <FireFoxA2HSIcon />
                   </span>
                 </li>
-                <li>Затем нажми '+Добавить на главный экран'</li>
+                <li>{__("Затем нажми")} '+{__("Добавить на главный экран")}'</li>
               </ul>
             </Box>
             <Box width="100%" textAlign="right">
@@ -55,19 +56,19 @@ export default function InstallDialogAction(props) {
         {props.platform === platforms.OPERA && (
           <Box width="100%" display="flex" flexDirection="column">
             <Box>
-              <Typography variant="subtitle1">Для установки этого приложения:</Typography>
+              <Typography variant="subtitle1">{__("Для установки этого приложения:")}</Typography>
               <ul>
                 <li>
                   <span style={{ display: "flex", alignItems: "center" }}>
-                    Нажми на кнопку меню:
+                    {__("Нажми на кнопку меню:")}
                     <OperaMenuIcon />
                   </span>
                 </li>
                 <li>
                   <span style={{ display: "flex", alignItems: "center" }}>
-                    Затем нажми &nbsp;'
+                    {__("Затем нажми")} &nbsp;'
                     <OperaA2HSIcon />
-                    Главный экран'
+                    {__("Главный экран")}'
                   </span>
                 </li>
               </ul>
@@ -79,7 +80,7 @@ export default function InstallDialogAction(props) {
         )}
         {props.platform === platforms.OTHER && (
           <Box width="100%" display="flex" flexDirection="column">
-            <Box>К сожеланию, установка не поддерживается в вашем браузере. Открой это приложение в браузере Google Chrome</Box>
+            <Box>{__("К сожалению, установка не поддерживается в вашем браузере. Открой это приложение в браузере Google Chrome")}</Box>
             <Box width="100%" textAlign="right">
               <Button onClick={props.onClose}>Ok</Button>
             </Box>

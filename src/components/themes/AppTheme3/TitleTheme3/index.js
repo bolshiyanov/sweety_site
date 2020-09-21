@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Button from 'components/common/Button';
+import {__} from 'utils/translation';
 
 import { UPDATE_CONFIG_DATA } from 'constants/actions';
 
@@ -20,9 +21,9 @@ const TitleTheme3 = () => {
   return (
     <React.Fragment>
       <Button className="title-theme3-button" onClick={() => {}}>
-          <h1 className="title-theme3" >{title || 'Заголовок приложения'}</h1>
+          <h1 className="title-theme3" >{title || __('Заголовок приложения')}</h1>
           <div className="description-theme3" >{description || 
-          'Описание приложения'}</div>
+          __('Описание приложения')}</div>
       </Button>
       
     </React.Fragment> 

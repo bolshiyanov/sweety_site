@@ -7,6 +7,7 @@ import './index.scss';
 
 import { CATALOG_ORDER_CLEAR } from 'constants/actions';
 import API from 'utils/api';
+import {__} from 'utils/translation';
 
 const Order = () => {
     const [orderOpened, setOrderOpened] = useState(false);
@@ -85,18 +86,18 @@ const Order = () => {
         {!sent && !orderOpened && 
         <div className="order"
          onClick={() => setOrderOpened(true)}>
-            Ваш заказ на сумму: {sum.toFixed(2)} {currency}
+            {__("Ваш заказ на сумму:")} {sum.toFixed(2)} {currency}
         </div>}
         {sent && 
         <div className="order">
-            Ваш заказ отправлен{timer % 3 === 0 ? "..." : timer % 3 === 1 ? ".." : "."}
+            {__("Ваш заказ отправлен")}{timer % 3 === 0 ? "..." : timer % 3 === 1 ? ".." : "."}
         </div>}
         {!sent && orderOpened && 
         <Slider
             opened={orderOpened}
-            title="Ваш предварительный заказ"
-            subtitle="Пожалуйста, отредактируйте количество интересующих позиций, укажите контактную информацию и отправьте ваш заказ. Мы ответим вам в самое ближайшее время"
-            submitTitle="ОТПРАВИТЬ"
+            title={__("Ваш предварительный заказ")}
+            subtitle={__("Пожалуйста, отредактируйте количество интересующих позиций, укажите контактную информацию и отправьте ваш заказ. Мы ответим вам в самое ближайшее время")}
+            submitTitle={__("ОТПРАВИТЬ").toUpperCase()}
             onRemove={handleClear}
             onClose={() => setOrderOpened(false)}
             onSubmit={!hasEmail ? null : handleSubmit}
@@ -110,23 +111,23 @@ const Order = () => {
                 );
             })}
             
-            <div className="order__total">Итого: {sum.toFixed(2)} {currency}</div>
+            <div className="order__total">{__("Итого:")} {sum.toFixed(2)} {currency}</div>
             {hasEmail && <React.Fragment>
                 <Input 
                     className="order__input"
                     value={phone}
                     type="text"
-                    placeholder="Напишите свой телефон"
+                    placeholder={__("Напишите свой телефон")}
                     onChange={(value) => setPhone(value)}
                 />
                 <Textarea
                     className="order__input"
                     value={comment}
                     type="text"
-                    placeholder="Напишите в этом поле комментарий к заказу, укажите альтернативный способ связи или задайте свой вопрос. ЗАПОЛНЕНИЕ НЕ ОБЯЗАТЕЛЬНО"
+                    placeholder={__("Напишите в этом поле комментарий к заказу, укажите альтернативный способ связи или задайте свой вопрос. ЗАПОЛНЕНИЕ НЕ ОБЯЗАТЕЛЬНО")}
                     onChange={(value) => setComment(value)}
                 />
-                <div className="order__input__descriptions">Информация не будет передана третьим лицам</div>
+                <div className="order__input__descriptions">{__("Информация не будет передана третьим лицам")}</div>
                
             </React.Fragment>} 
             

@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { trackWindowScroll, LazyLoadComponent } from 'react-lazy-load-image-component';
 
+import {__} from 'utils/translation';
+
 import Block from './Block';
 import './index.scss';
 
@@ -9,7 +11,7 @@ const Blocks = ({ data, referrerTitle, scrollPosition }) => {
   return (
     <React.Fragment>
       <div className="blocks">
-        {referrerTitle && <div className="ad-label">реклама от @{referrerTitle}</div>}
+        {referrerTitle && <div className="ad-label">{__("реклама от")} @{referrerTitle}</div>}
         {
           data.map((block) => 
           <LazyLoadComponent key={block.guid} scrollPosition={scrollPosition} threshold={10}>

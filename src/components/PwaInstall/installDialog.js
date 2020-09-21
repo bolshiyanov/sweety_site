@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Typography, Dialog, DialogTitle, DialogContent } from "@material-ui/core";
 import InstallDialogAction from "./installDialogAction";
 import { platforms } from "./platforms";
+import {__} from 'utils/translation';
 
 export default function InstallDialog(props) {
   return (
@@ -25,7 +26,7 @@ export default function InstallDialog(props) {
         </Box>
         {!!props.description && (
           <>
-            <Typography variant="subtitle1">Описание:</Typography>
+            <Typography variant="subtitle1">{props.descriptionTitle}</Typography>
             <Typography variant="body2" component="div">
               {props.description}
             </Typography>

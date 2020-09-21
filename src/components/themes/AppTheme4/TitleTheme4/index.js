@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import {__} from 'utils/translation';
 import './index.scss';
 
 const TitleTheme4 = () => {
@@ -7,16 +8,15 @@ const TitleTheme4 = () => {
 
     const { title, description } = useSelector((state) => state.config.data);
 
-
     useEffect(() => {
         setData({ title, description });
     }, [title, description]);
 
     return (
         <React.Fragment>
-            <h1 className="title-theme4" >{data.title || 'Заголовок приложения'}</h1>
+            <h1 className="title-theme4" >{data.title || __('Заголовок приложения')}</h1>
             <div className="description-theme4">{data.description ||
-                'Описание приложения'}</div>
+                __('Описание приложения')}</div>
 
         </React.Fragment>
     );
