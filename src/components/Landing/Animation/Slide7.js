@@ -2,8 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
 import { Animated } from "react-animated-css";
 
-
-
+import {__} from "utils/translation";
 
 const Slide4 = () => {
 
@@ -27,8 +26,8 @@ const Slide4 = () => {
             >
                 <div className="main-page__page1__container-anime__button-slide7-flexBox">
                     <div className="main-page__page1__container-anime__button-slide7-flexBox__button-slide7 button-slide7">
-                    START
-                       <div className="subtitle-slide7">without a template</div>
+                    {__("START").toUpperCase()}
+                       <div className="subtitle-slide7">{__("without template").toLowerCase()}</div>
                     </div>
                 </div>
             </Animated>

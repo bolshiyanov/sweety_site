@@ -209,7 +209,23 @@
         "fr": "Gratuit, créez-le vous-même en 10 minutes, pas de programmeur, pas d'inscription, pas d'abonnement. Pas de carte de crédit nécessaire.",
         "ge": "Kostenlos, erstellen Sie sich in 10 Minuten, keine Programmierer, keine Registrierung, keine Abonnements. Keine Kreditkarte benötigt.",
         "it": "Gratuito, te stesso in 10 minuti, nessun programmatore, nessuna registrazione, nessun abbonamento. Nessuna carta di credito richiesta."
-    },
+    }, {
+        "code": "landing.start",
+        "en": "START",
+        "ru": "НАЧАТЬ",
+        "es": "Empezar",
+        "fr": "Commencer",
+        "ge": "Beginnen",
+        "it": "Iniziare"
+    }, {
+        "code": "landing.withouttemplate",
+        "en": "without template",
+        "ru": "без шаблона",
+        "es": "sin plantilla",
+        "fr": "sans gabarit",
+        "ge": "ohne Vorlage",
+        "it": "senza modello"
+    }, 
 
     {
         "code": "footer.creation",
