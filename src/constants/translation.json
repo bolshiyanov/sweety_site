@@ -569,5 +569,41 @@
         "fr": "Désolé, l'installation n'est pas prise en charge dans votre navigateur. Ouvrez cette application dans le navigateur Google Chrome",
         "ge": "Die Installation in Ihrem Browser wird leider nicht unterstützt. Öffnen Sie diese App im Google Chrome-Browser",
         "it": "Spiacenti, l'installazione non è supportata nel tuo browser. Apri questa app nel browser Google Chrome"
+    },
+    
+    {
+        "code": "pwaupbanner.title",
+        "en": "Application installation",
+        "ru": "Установка приложения",
+        "es": "Instalación de la aplicación",
+        "fr": "Installation de l'application",
+        "ge": "Installieren der Anwendung",
+        "it": "Installazione dell'applicazione"
+    },{
+        "code": "pwaupbanner.subtitle",
+        "en": "Paste the link into your browser and install this app in 1 minute",
+        "ru": "Incolla il link nel browser e installa questa app in 1 minuto",
+        "es": "Inserte el enlace en el navegador e instale esta aplicación en 1 minuto",
+        "fr": "Collez le lien dans le navigateur et installez cette application en 1 minute",
+        "ge": "Fügen Sie den Link in den Browser ein und installieren Sie diese Anwendung in 1 Minute",
+        "it": "Incolla il link nel browser e installa questa app in 1 minuto"
+    },{
+        "code": "pwaupbanner.how",
+        "en": "HOW DOES IT WORK?",
+        "ru": "КАК ЭТО РАБОТАЕТ?",
+        "es": "¿CÓMO FUNCIONA?",
+        "fr": "COMMENT CELA FONCTIONNE?",
+        "ge": "WIE FUNKTIONIERT DAS?",
+        "it": "COME FUNZIONA?"
+    },{
+        "code": "pwaupbanner.how",
+        "en": "The app will be instantly installed on your phone screen using your browser. Copy the link, paste it into your browser, and follow the simple instructions",
+        "ru": "Приложение будет мгновенно установлено на экран телефона, при помощи вашего браузера. Скопируйте ссылку, вставьте в ваш браузер, следуйте простой инструкции",
+        "es": "La aplicación se instalará instantáneamente en la pantalla del Teléfono, utilizando su navegador. Copie el enlace, pegue en su navegador, siga las instrucciones simples",
+        "fr": "L'application sera instantanément installé sur l'écran du téléphone, en utilisant votre navigateur. Copiez le lien, collez-le dans votre navigateur, suivez les instructions simples",
+        "ge": "Die Anwendung wird sofort auf dem Bildschirm des Telefons installiert werden, mit Ihrem Browser. Kopieren Sie den Link, fügen Sie ihn in Ihren Browser ein, Folgen Sie den einfachen Anweisungen",
+        "it": "L'applicazione verrà immediatamente installato sullo schermo del telefono, utilizzando il browser. Copia il link, incolla nel tuo browser, segui le semplici istruzioni"
     }
+
+
 ]

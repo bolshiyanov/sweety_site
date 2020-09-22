@@ -1,0 +1,75 @@
+.pwaupbanner {
+    background-color: white;
+    padding: 22px 0px;
+    color: #888;
+    transition: .4s;
+    font-size: 12px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 100%;
+    height: 60px;
+    z-index: 4;
+
+    
+    &__close {
+        position: absolute;
+        top: 18px;
+        left: 5px;
+      
+      svg {
+        color: red;
+      }
+    }
+
+    &__install {
+        position: absolute;
+        top: 18px;
+        right: 5px;
+        
+        svg {
+          color: blue;
+        }
+      }
+
+    
+  
+    
+    &.hidden {
+      display: none;
+    }
+  }
+
+.linkpwaupbanner {
+    font-size: 12px;
+    color: #007aff;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 1px 8px 2px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .pwaupbannercall {
+    text-transform: lowercase;
+    font-size: 8px;
+  }
+  
+  .pwaupbannerwhytitle {
+    font-size: 10px;
+    color: gray;
+    text-align: left;
+    margin-left: 12px;
+    margin-top: 18px;
+  }
+  .pwaupbannerwhybody {
+    font-size: 8px;
+    color: gray;
+    text-align: left;
+    margin-left: 12px;
+    margin-top: 4px;
+  }
+  .pwaupbannerempty {
+    width: 100%;
+    height: 20px;
+  }
+  
