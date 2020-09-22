@@ -33,7 +33,7 @@ export default function InstallDialog(props) {
           </>
         )}
       </DialogContent>
-      <InstallDialogAction platform={props.platform} onSubmit={props.onSubmit} onClose={props.onClose} />
+      <InstallDialogAction platform={props.platform} nativeInstall={props.nativeInstall} onSubmit={props.onSubmit} onClose={props.onClose} />
     </Dialog>
   );
 }

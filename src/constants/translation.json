@@ -394,6 +394,22 @@
         "ge": "Sie finden die Anwendung mit meinem Avatar direkt nach der Installation auf der Registerkarte START> APPS> NEU",
         "it": "Puoi trovare l'applicazione con il mio avatar nella scheda START> APP> NUOVO, subito dopo l'installazione"
     }, {
+        "code": "install.webview.desc",
+        "en": "Unfortunately, installation is not supported from within your application. Open this app in Google Chrome browser",
+        "ru": "К сожалению, установка не поддерживается из вашего приложения. Открой это приложение в браузере Google Chrome",
+        "es": "Desafortunadamente, la instalación no es compatible desde dentro de su aplicación. Abra esta aplicación en el navegador Google Chrome",
+        "fr": "Malheureusement, l'installation n'est pas prise en charge depuis votre application. Ouvrez cette application dans le navigateur Google Chrome",
+        "ge": "Leider wird die Installation in Ihrer Anwendung nicht unterstützt. Öffnen Sie diese App im Google Chrome-Browser",
+        "it": "Sfortunatamente, l'installazione non è supportata dall'interno della tua applicazione. Apri questa app nel browser Google Chrome"
+    }, {
+        "code": "install.anonym.desc",
+        "en": "Unfortunately, installation is not supported from anonymous mode. Open this app in normal Google Chrome mode",
+        "ru": "К сожалению, установка не поддерживается из анонимного режима. Открой это приложение в обычном режиме Google Chrome",
+        "es": "Desafortunadamente, la instalación no es compatible con el modo anónimo. Abra esta aplicación en el modo normal de Google Chrome",
+        "fr": "Malheureusement, l'installation n'est pas prise en charge à partir du mode anonyme. Ouvrez cette application en mode Google Chrome normal",
+        "ge": "Leider wird die Installation im anonymen Modus nicht unterstützt. Öffnen Sie diese App im normalen Google Chrome-Modus",
+        "it": "Sfortunatamente, l'installazione non è supportata dalla modalità anonima. Apri questa app nella normale modalità Google Chrome"
+    }, {
         "code": "install.motivation",
         "en": "You will receive our best offers now",
         "ru": "Теперь вы получите наши лучшие предложения",

@@ -6,19 +6,14 @@ import { IonIcon } from '@ionic/react';
 import { logoPwa, logoApple, logoAndroid, logoWindows } from 'ionicons/icons';
 import './index.scss';
 import {__} from 'utils/translation';
+import { isWebView, isMobile } from 'utils/browser';
 
 const PwaInstall = ({ profile }) => {
   const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
-  
-  
-  const detectMobile = () => {
-    const toMatch = [/Android/i, /webOS/i, /iPhone/i, /iPad/i, /iPod/i,
-      /BlackBerry/i, /Windows Phone/i]; return toMatch.some((toMatchItem) => { return navigator.userAgent.match(toMatchItem); });
-  }
 
   const handleClick = () => {
     pwaInstall({
-      title:  detectMobile() ? __("Приложение с моей аватаркой появится на экране твоего телефона сразу после установки") :
+      title: isMobile() || isWebView() ? __("Приложение с моей аватаркой появится на экране твоего телефона сразу после установки") :
       __("Приложение с моей аватаркой ты сможешь найти на вкладке ПУСК > ПРИЛОЖЕНИЯ > НОВОЕ, сразу после установки")  ,
       logo: `https://sweety.link/content/img/${profile}/logo192.png`,
       features: (

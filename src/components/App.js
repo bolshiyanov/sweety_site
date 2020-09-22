@@ -6,6 +6,7 @@ import { Route, Switch, useParams } from 'react-router-dom';
 import CookieBanner from 'react-cookie-banner';
 import StartPwaInstallIos from 'components/StartPwaInstallIos';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
+import { getPlatform } from "components/PwaInstall/platforms";
 
 import Loading from 'components/common/Loading';
 

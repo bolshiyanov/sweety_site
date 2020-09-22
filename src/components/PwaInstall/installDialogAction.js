@@ -6,12 +6,13 @@ import Icon from 'components/common/Icon';
 import { IonIcon } from '@ionic/react';
 import { shareOutline } from 'ionicons/icons';
 import {__} from 'utils/translation';
+import { isWebView } from 'utils/browser';
 
 export default function InstallDialogAction(props) {
   return (
     <>
       <DialogActions>
-        {props.platform === platforms.NATIVE && (
+        {props.platform === platforms.NATIVE && props.nativeInstall && (
           <>
             <Button onClick={props.onClose}>{__("Отменить")}</Button>
             <Button onClick={props.onSubmit} color="primary" variant="contained" disableElevation>
@@ -75,6 +76,22 @@ export default function InstallDialogAction(props) {
             </Box>
             <Box width="100%" textAlign="right">
               <Button onClick={props.onSubmit}>Ok</Button>
+            </Box>
+          </Box>
+        )}
+        {props.platform === platforms.NATIVE && !props.nativeInstall && isWebView() && (
+          <Box width="100%" display="flex" flexDirection="column">
+            <Box>{__("К сожалению, установка не поддерживается из вашего приложения. Открой это приложение в браузере Google Chrome")}</Box>
+            <Box width="100%" textAlign="right">
+              <Button onClick={props.onClose}>Ok</Button>
+            </Box>
+          </Box>
+        )}
+        {props.platform === platforms.NATIVE && !props.nativeInstall && !isWebView() && (
+          <Box width="100%" display="flex" flexDirection="column">
+            <Box>{__("К сожалению, установка не поддерживается из анонимного режима. Открой это приложение в обычном режиме Google Chrome")}</Box>
+            <Box width="100%" textAlign="right">
+              <Button onClick={props.onClose}>Ok</Button>
             </Box>
           </Box>
         )}

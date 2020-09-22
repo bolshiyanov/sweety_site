@@ -54,6 +54,7 @@ export const ReactPWAInstallProvider = ({ children, enableLogging }) => {
   }
 
   function handleBeforeInstallPromptEvent(event) {
+    alert("handle");
     event.preventDefault();
     deferredprompt.current = event;
     logger("beforeinstallprompt event fired and captured");
@@ -120,6 +121,7 @@ export const ReactPWAInstallProvider = ({ children, enableLogging }) => {
         onSubmit={handleInstall}
         onClose={handleClose}
         platform={platform}
+        nativeInstall={deferredprompt.current != null}
         {...dialogState}
       />
     </>
