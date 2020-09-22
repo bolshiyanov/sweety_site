@@ -54,7 +54,6 @@ export const ReactPWAInstallProvider = ({ children, enableLogging }) => {
   }
 
   function handleBeforeInstallPromptEvent(event) {
-    alert("handle");
     event.preventDefault();
     deferredprompt.current = event;
     logger("beforeinstallprompt event fired and captured");
