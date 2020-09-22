@@ -11,13 +11,20 @@ const webviewRules = [
 ];
 
 const webviewRegExp = new RegExp('(' + webviewRules.join('|') + ')', 'ig');
+const userAgent = window.navigator.userAgent;
+const platform = window.navigator.platform;
 
 export const isWebView = () => {
-    return !!window.navigator.userAgent.match(webviewRegExp)
+    return !!userAgent.match(webviewRegExp)
 }
 
 export const isMobile = () => {
     const toMatch = [/Android/i, /webOS/i, /iPhone/i, /iPad/i, /iPod/i, /BlackBerry/i, /Windows Phone/i]; 
     return toMatch.some((toMatchItem) => { 
-        return window.navigator.userAgent.match(toMatchItem); });
+        return userAgent.match(toMatchItem); });
+}
+
+export const isIDevice = () => {
+    return /iPad|iPhone|iPod/.test(platform) ||
+        (platform === "MacIntel" && navigator.maxTouchPoints > 1);
 }
