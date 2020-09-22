@@ -14,12 +14,19 @@ const Footer = () => {
   const { active } = useSelector((state) => state.config.account);
   const [opened, setOpened] = useState(false);
   const [urlCopied, setUrlCopied] = useState(false);
+  const [urlCopied1, setUrlCopied1] = useState(false);
   const { supported, isInstalled } = useReactPWAInstall();
 
   const onCopy = () => {
     copy(url);
     setUrlCopied(true);
     setTimeout(() => setUrlCopied(false), 2000);
+  }
+
+  const onCopy1 = () => {
+    copy("https://sweety.link");
+    setUrlCopied1(true);
+    setTimeout(() => setUrlCopied1(false), 2000);
   }
 
   return (
@@ -32,12 +39,25 @@ const Footer = () => {
       <Slider
         opened={opened}
         onClose={() => setOpened(false)}
-        title={__("Инструкция как создать приложение")}
+        title={__("Получите копию этого приложения")}
         subtitle=
-        {<p>{__("Откройте ссылку на ваше приложение в браузере")}</p>}
+        {<p>{__("Вставьте в браузер эту ссылку, установите создатель Sweety, отредактируйте контент, ваше приложение готово за 1 минуту")}</p>}
       >
-        {!urlCopied && <a onClick={onCopy} className="textfooter">{url}</a>}
+        {!urlCopied && <a onClick={onCopy} className="linkfooter">{url}</a>}
         {urlCopied && <div>{__("Ссылка скопирована")}</div>}
+
+        <div className="footercall">{__("Нажмите, чтобы скопировать")}</div>
+        <div className="footerwhytitle">{__("ПОЧЕМУ ЭТО ВОЗМОЖНО?")}</div>
+        <div className="footerwhybody">{__("В соответствии с политикой использования разрешается копирование любых приложений, которые созданы в создателе SWEETY , если автор приложения использует тариф БЕСПЛАТНЫЙ. Чтобы защитить от копирования свое приложения, нужно перейти на тариф BUSINESS")}</div>
+        
+        <div className="footerwhytitle">{__("СЛИШКОМ СЛОЖНО?")}</div>
+        <div className="footerwhybody">{__("Всего за 4000 рублей мы изучим ваш бизнес и создадим продающий дизайн для вашего бесплатного приложения. Переходите по ссылке https://sweety.link и оставляйте заявку")}</div>
+        
+        {!urlCopied1 && <a onClick={onCopy1} className="linkfooter">https://sweety.link</a>}
+        {urlCopied1 && <div>{__("Ссылка скопирована")}</div>}
+
+        <div className="footercall">{__("Нажмите, чтобы скопировать")}</div>
+        <div className="footerempty"></div>
       </Slider>
     </footer>
   );

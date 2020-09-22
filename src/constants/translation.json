@@ -237,20 +237,20 @@
         "it": "Crea un'applicazione come la mia"
     }, {
         "code": "footer.instruction",
-        "en": "Instruction on how to create an application",
-        "ru": "Инструкция как создать приложение",
-        "es": "Instruccion sobre cómo crear una aplicación",
-        "fr": "Instruction pour créer une application",
-        "ge": "Anweisungen zum Erstellen einer Anwendung",
-        "it": "Istruzioni su come creare un'applicazione"
+        "en": "Get a copy of this app",
+        "ru": "Получите копию этого приложения",
+        "es": "Obtenga una copia de esta aplicación",
+        "fr": "Obtenez une copie de cette application",
+        "ge": "Holen Sie sich eine Kopie dieser App",
+        "it": "Ottieni una copia di questa app"
     }, {
         "code": "footer.browser",
-        "en": "Open the link to your application in the browser",
-        "ru": "Откройте ссылку на ваше приложение в браузере",
-        "es": "Abra el enlace a su aplicación en el navegador",
-        "fr": "Ouvrez le lien vers votre application dans le navigateur",
-        "ge": "Öffnen Sie den Link zu Ihrer Anwendung im Browser",
-        "it": "Apri il link alla tua applicazione nel browser"
+        "en": "Paste this link into your browser, install the Sweety Creator, edit the content, and your app is ready in 1 minute",
+        "ru": "Вставьте в браузер эту ссылку, установите создатель Sweety, отредактируйте контент, ваше приложение готово за 1 минуту",
+        "es": "Inserte este enlace en su navegador, instale el creador de Sweety, edite el contenido, su aplicación está lista en 1 minuto",
+        "fr": "Collez ce lien dans le navigateur, installez Sweety Creator, modifiez le contenu, votre application est prête en 1 minute",
+        "ge": "Fügen Sie diesen Link in den Browser ein, installieren Sie den Schöpfer von Sweety, Bearbeiten Sie den Inhalt, Ihre App ist in 1 Minute fertig",
+        "it": "Incolla questo link nel browser, installa il creatore di Sweety, modifica il contenuto, la tua app è pronta in 1 minuto"
     }, {
         "code": "footer.copied",
         "en": "Copied to clipboard",
@@ -259,6 +259,46 @@
         "fr": "Copié dans le presse-papier",
         "ge": "In die Zwischenablage kopiert",
         "it": "Copiato negli appunti"
+    },{
+        "code": "footer.call",
+        "en": "Click to copy",
+        "ru": "Нажмите, чтобы скопировать",
+        "es": "Haga clic para copiar",
+        "fr": "Cliquez sur copier",
+        "ge": "Klicken zum kopieren",
+        "it": "Fare clic per copiare"
+    },{
+        "code": "footer.whytitle1",
+        "en": "WHY IS THIS POSSIBLE?",
+        "ru": "ПОЧЕМУ ЭТО ВОЗМОЖНО?",
+        "es": "¿POR QUÉ ES ESTO POSIBLE?",
+        "fr": "POURQUOI EST-CE POSSIBLE?",
+        "ge": "WARUM IST DAS MÖGLICH?",
+        "it": "PERCHÉ È POSSIBILE?"
+    },{
+        "code": "footer.whybody1",
+        "en": "In accordance with the usage policy, it is allowed to copy any applications that are created in the Creator of SWEETY , if the author of the application uses the free plan. To protect your app from copying, you need to switch to the BUSINESS plan",
+        "ru": "В соответствии с политикой использования разрешается копирование любых приложений, которые созданы в создателе SWEETY , если автор приложения использует тариф БЕСПЛАТНЫЙ. Чтобы защитить от копирования свое приложения, нужно перейти на тариф BUSINESS",
+        "es": "De acuerdo con la política de uso, se permite copiar cualquier aplicación creada en el creador de SWEETY si el autor de la aplicación utiliza la tarifa GRATUITA. Para proteger contra la copia de su aplicación, debe actualizar a la tarifa BUSINESS",
+        "fr": "La politique d'utilisation autorise la copie de toutes les applications créées dans Sweety Creator si l'auteur de L'application utilise le tarif GRATUIT. Pour protéger votre application contre la copie, vous devez passer au tarif BUSINESS",
+        "ge": "Gemäß der nutzungsrichtlinie ist das kopieren von Apps, die im SWEETY-Ersteller erstellt wurden , zulässig, wenn der Autor der APP DEN kostenlosen tarif verwendet. Um Ihre Anwendung vor dem kopieren zu schützen, müssen Sie zum BUSINESS-tarif wechseln",
+        "it": "In base alla politica di utilizzo, è consentito copiare qualsiasi app creata nel creatore di SWEETY se l'autore dell'app utilizza la tariffa gratuita. Per proteggere la tua app dalla copia, devi passare alla tariffa BUSINESS"
+    },{
+        "code": "footer.whytitle2",
+        "en": "TOO COMPLICATED?",
+        "ru": "СЛИШКОМ СЛОЖНО?",
+        "es": "¿DEMASIADO DIFÍCIL?",
+        "fr": "TROP COMPLIQUÉ?",
+        "ge": "ZU KOMPLIZIERT?",
+        "it": "TROPPO DIFFICILE?"
+    },{
+        "code": "footer.whybody2",
+        "en": "For just $ 49, we will study your business and create a sales design for your free app. Follow the link https://sweety.link and leave a request",
+        "ru": "Всего за 4000 рублей мы изучим ваш бизнес и создадим продающий дизайн для вашего бесплатного приложения. Переходите по ссылке https://sweety.link и оставляйте заявку",
+        "es": "Por solo 39 euros, estudiaremos su negocio y crearemos un diseño de venta para su aplicación gratuita. Siga el enlace https://sweety.link y dejar la aplicación",
+        "fr": "Pour seulement 39 euros, nous étudierons votre entreprise et créerons un design de vente pour votre application gratuite. Suivez le lien https://sweety.link et laisser une demande",
+        "ge": "Für nur 39 Euro werden wir Ihr Geschäft untersuchen und ein verkaufendes Design für Ihre Kostenlose App erstellen. Klicken Sie auf den Link https://sweety.link und Bewerbung hinterlassen",
+        "it": "In soli 39 euros, studieremo la tua attività e creeremo un design di vendita per la tua applicazione gratuita. Segui il link https://sweety.link e lasciare l'applicazione"
     },
 
     {
