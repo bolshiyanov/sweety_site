@@ -25,8 +25,12 @@ export default function InstallDialogAction(props) {
             <Box>
               <Typography variant="subtitle1">{__("Для установки этого приложения:")}</Typography>
               <ul>
-                <li>{__("Открой в Safari")} <Icon className="icon-16" type="compass" /></li> 
-                <li>{__("Затем нажми")} <IonIcon slot="start" icon={shareOutline } /></li>
+                {isWebView() && 
+                  <>
+                    <li>{__("Открой в Safari")} <Icon className="icon-16" type="compass" /></li>
+                    <li>{__("Затем нажми")} <IonIcon slot="start" icon={shareOutline } /></li>
+                  </>}
+                {!isWebView() && <li>{__("Нажми")} <IonIcon slot="start" icon={shareOutline } /></li>}
                 <li>{__("Затем нажми")} <Icon className="icon-16" type="plusSquare" /> - {__("На экран 'Домой'")}</li>
               </ul>
             </Box>

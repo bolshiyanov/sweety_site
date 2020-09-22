@@ -461,10 +461,18 @@
         "code": "install.clicknext",
         "en": "Then click",
         "ru": "Затем нажми",
-        "es": "Luego haga clic en",
+        "es": "Luego haga clic",
         "fr": "Puis clique",
         "ge": "Dann klick",
-        "it": "Quindi fare clic su"
+        "it": "Quindi fare clic"
+    }, {
+        "code": "install.click",
+        "en": "Click",
+        "ru": "Нажми",
+        "es": "Haga clic",
+        "fr": "Clique",
+        "ge": "Klick",
+        "it": "Clic"
     }, {
         "code": "install.ios.safari",
         "en": "Open in Safari",
