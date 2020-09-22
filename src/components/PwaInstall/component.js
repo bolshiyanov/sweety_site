@@ -50,8 +50,7 @@ export const ReactPWAInstallProvider = ({ children, enableLogging }) => {
       logger("supported: false - web view");
       return false;
     }
-    if (platform !== platforms.NATIVE && platform !== platforms.IDEVICE && 
-        platform !== platforms.OTHER) {
+    if (platform !== platforms.NATIVE && platform !== platforms.OTHER) {
       logger("supported: true - manual support");
       return true;
     }
