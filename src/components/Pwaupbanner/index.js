@@ -35,6 +35,9 @@ const Pwaupbanner = ({
   } 
 
   const handleInstall = () => {
+    if (!needBrowser) {
+      return;
+    }
     setOpened(true);
   }
 
