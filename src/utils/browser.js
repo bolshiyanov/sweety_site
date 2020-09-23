@@ -28,3 +28,14 @@ export const isIDevice = () => {
     return /iPad|iPhone|iPod/.test(platform) ||
         (platform === "MacIntel" && navigator.maxTouchPoints > 1);
 }
+
+export const isIOsSafari = () => {
+    if (!isIDevice()) {
+        return false;
+    }
+    if (/Safari/.test(userAgent) && /Version/.test(userAgent) && 
+        !/YaBrowser/.test(userAgent)) {
+        return true;
+    }
+    return false;
+}

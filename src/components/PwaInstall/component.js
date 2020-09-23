@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, createContext, useContext } from "react";
 import { platforms, getPlatform } from "./platforms";
 import InstallDialog from "./installDialog";
-import { isWebView } from "utils/browser";
+import { isWebView, isIOsSafari, isMobile, isIDevice } from "utils/browser";
 
 const ReactPWAInstallContext = createContext(Promise.reject);
 
@@ -49,6 +49,9 @@ export const ReactPWAInstallProvider = ({ children, enableLogging }) => {
     if (isWebView()) {
       logger("supported: false - web view");
       return false;
+    }
+    if (isIDevice() && isMobile()) {
+      return isIOsSafari();
     }
     if (platform !== platforms.NATIVE && platform !== platforms.OTHER) {
       logger("supported: true - manual support");

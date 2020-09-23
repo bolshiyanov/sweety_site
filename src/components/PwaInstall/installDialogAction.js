@@ -6,7 +6,7 @@ import Icon from 'components/common/Icon';
 import { IonIcon } from '@ionic/react';
 import { shareOutline } from 'ionicons/icons';
 import {__} from 'utils/translation';
-import { isWebView } from 'utils/browser';
+import { isIOsSafari, isMobile, isWebView } from 'utils/browser';
 
 export default function InstallDialogAction(props) {
   return (
@@ -25,15 +25,15 @@ export default function InstallDialogAction(props) {
             <Box>
               <Typography variant="subtitle1">{__("Для установки этого приложения:")}</Typography>
               <ul>
-                {isWebView() && 
+                {!(isMobile() && isIOsSafari()) && 
                   <>
                     <li>{__("Открой в Safari")} <Icon className="icon-16" type="compass" /></li>
                     <li>{__("Затем нажми")} <IonIcon slot="start" icon={shareOutline } /></li>
                   </>}
-                {!isWebView() && <li>{__("Нажми")} <IonIcon slot="start" icon={shareOutline } /></li>}
+                {(isMobile() && isIOsSafari()) && 
+                  <li>{__("Нажми")} <IonIcon slot="start" icon={shareOutline } /></li>}
                 <li>{__("Затем нажми")} <Icon className="icon-16" type="plusSquare" /> - {__("На экран 'Домой'")}</li>
               </ul>
-              {window.navigator.userAgent}
             </Box>
             <Box width="100%" textAlign="right">
               <Button onClick={props.onSubmit}>Ok</Button>
