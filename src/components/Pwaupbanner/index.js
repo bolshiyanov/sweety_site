@@ -7,7 +7,7 @@ import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 import PwaInstall from "components/PwaInstall";
-
+import {isIDevice} from 'utils/browser';
 import {__} from 'utils/translation';
 
 import './index.scss';
@@ -61,7 +61,9 @@ const Pwaupbanner = ({
         onClose={() => setOpened(false)}
         title={__("Установка приложения")}
         subtitle=
-        {<p>{__("Вставьте в браузер ссылку и установите это приложения за 1 минуту")}</p>}
+        {<p>{ isIDevice() ? 
+          __("Вставьте в браузер Safari ссылку и установите это приложения за 1 минуту") :
+          __("Вставьте в браузер Chrome ссылку и установите это приложения за 1 минуту")}</p>}
       >
         {!urlCopied && <a onClick={onCopy} className="linkpwaupbanner">{url}</a>}
         {urlCopied && <div>{__("Ссылка скопирована")}</div>}

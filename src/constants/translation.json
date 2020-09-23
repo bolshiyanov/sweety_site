@@ -244,13 +244,21 @@
         "ge": "Holen Sie sich eine Kopie dieser App",
         "it": "Ottieni una copia di questa app"
     }, {
-        "code": "footer.browser",
-        "en": "Paste this link into your browser, install the Sweety Creator, edit the content, and your app is ready in 1 minute",
-        "ru": "Вставьте в браузер эту ссылку, установите создатель Sweety, отредактируйте контент, ваше приложение готово за 1 минуту",
-        "es": "Inserte este enlace en su navegador, instale el creador de Sweety, edite el contenido, su aplicación está lista en 1 minuto",
-        "fr": "Collez ce lien dans le navigateur, installez Sweety Creator, modifiez le contenu, votre application est prête en 1 minute",
-        "ge": "Fügen Sie diesen Link in den Browser ein, installieren Sie den Schöpfer von Sweety, Bearbeiten Sie den Inhalt, Ihre App ist in 1 Minute fertig",
-        "it": "Incolla questo link nel browser, installa il creatore di Sweety, modifica il contenuto, la tua app è pronta in 1 minuto"
+        "code": "footer.browser.chrome",
+        "en": "Paste the link into your Chrome browser and install this application in 1 minute",
+        "ru": "Вставьте в браузер Chrome ссылку и установите это приложения за 1 минуту",
+        "es": "Pegue el enlace en su navegador Chrome e instale esta aplicación en 1 minuto",
+        "fr": "Collez le lien dans votre navigateur Chrome et installez cette application en 1 minute",
+        "ge": "Fügen Sie den Link in Ihren Chrome-Browser ein und installieren Sie diese Anwendung in 1 Minute",
+        "it": "Incolla il link nel tuo browser Chrome e installa questa applicazione in 1 minuto"
+    }, {
+        "code": "footer.browser.Safari",
+        "en": "Paste the link into your Safari browser and install this application in 1 minute",
+        "ru": "Вставьте в браузер Safari ссылку и установите это приложения за 1 минуту",
+        "es": "Pegue el enlace en su navegador Safari e instale esta aplicación en 1 minuto",
+        "fr": "Collez le lien dans votre navigateur Safari et installez cette application en 1 minute",
+        "ge": "Fügen Sie den Link in Ihren Safari-Browser ein und installieren Sie diese Anwendung in 1 Minute",
+        "it": "Incolla il link nel tuo browser Safari e installa questa applicazione in 1 minuto"
     }, {
         "code": "footer.copied",
         "en": "Copied to clipboard",
