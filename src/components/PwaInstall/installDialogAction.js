@@ -33,6 +33,7 @@ export default function InstallDialogAction(props) {
                 {!isWebView() && <li>{__("Нажми")} <IonIcon slot="start" icon={shareOutline } /></li>}
                 <li>{__("Затем нажми")} <Icon className="icon-16" type="plusSquare" /> - {__("На экран 'Домой'")}</li>
               </ul>
+              {window.navigator.userAgent}
             </Box>
             <Box width="100%" textAlign="right">
               <Button onClick={props.onSubmit}>Ok</Button>
