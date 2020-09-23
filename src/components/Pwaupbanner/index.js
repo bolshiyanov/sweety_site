@@ -21,7 +21,7 @@ const Pwaupbanner = ({
   const { supported, isInstalled } = useReactPWAInstall();
 
   const [showPwaupbanner, setShowPwaupbanner] = useState(!isInstalled());
-  const needSlider = !supported();
+  const needBrowser = !supported();
 
   const onCopy = () => {
     copy(url);
@@ -40,23 +40,15 @@ const Pwaupbanner = ({
 
   return (
     <div className={classnames(['pwaupbanner', { hidden: !showPwaupbanner }])}>
+      <div onClick={handleInstall}>
+        {needBrowser && __("Установка приложения")}
+        {!needBrowser && <PwaInstall profile={profile} />}
+      </div>
       <Button
         noStyled
         isInline
         className="pwaupbanner__close"
         onClick={handleClose}
-      >
-        <Icon type="timesCircle" />
-      </Button>
-      <div onClick={handleInstall}>
-        {needSlider && __("Установка приложения")}
-        {!needSlider && <PwaInstall profile={profile} />}
-      </div>
-      <Button
-        noStyled
-        isInline
-        className="pwaupbanner__install"
-        onClick={handleInstall}
       >
         <Icon type="timesCircle" />
       </Button>
