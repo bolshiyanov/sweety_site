@@ -6,6 +6,7 @@ import Slider from 'components/common/Slider';
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
+import PwaInstall from "components/PwaInstall";
 
 import {__} from 'utils/translation';
 
@@ -17,9 +18,10 @@ const Pwaupbanner = ({
   const { url } = useSelector((state) => state.config.config.whiteLabel);
   const [opened, setOpened] = useState(false);
   const [urlCopied, setUrlCopied] = useState(false);
-  const { supported } = useReactPWAInstall();
+  const { supported, isInstalled } = useReactPWAInstall();
 
-  const [showPwaupbanner, setShowPwaupbanner] = useState(!supported());
+  const [showPwaupbanner, setShowPwaupbanner] = useState(!isInstalled());
+  const needSlider = !supported();
 
   const onCopy = () => {
     copy(url);
@@ -47,7 +49,8 @@ const Pwaupbanner = ({
         <Icon type="timesCircle" />
       </Button>
       <div onClick={handleInstall}>
-        {__("Установка приложения")}
+        {needSlider && __("Установка приложения")}
+        {!needSlider && <PwaInstall profile={profile} />}
       </div>
       <Button
         noStyled
