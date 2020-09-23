@@ -244,21 +244,13 @@
         "ge": "Holen Sie sich eine Kopie dieser App",
         "it": "Ottieni una copia di questa app"
     }, {
-        "code": "footer.browser.chrome",
-        "en": "Paste the link into your Chrome browser and install this application in 1 minute",
-        "ru": "Вставьте в браузер Chrome ссылку и установите это приложения за 1 минуту",
-        "es": "Pegue el enlace en su navegador Chrome e instale esta aplicación en 1 minuto",
-        "fr": "Collez le lien dans votre navigateur Chrome et installez cette application en 1 minute",
-        "ge": "Fügen Sie den Link in Ihren Chrome-Browser ein und installieren Sie diese Anwendung in 1 Minute",
-        "it": "Incolla il link nel tuo browser Chrome e installa questa applicazione in 1 minuto"
-    }, {
-        "code": "footer.browser.Safari",
-        "en": "Paste the link into your Safari browser and install this application in 1 minute",
-        "ru": "Вставьте в браузер Safari ссылку и установите это приложения за 1 минуту",
-        "es": "Pegue el enlace en su navegador Safari e instale esta aplicación en 1 minuto",
-        "fr": "Collez le lien dans votre navigateur Safari et installez cette application en 1 minute",
-        "ge": "Fügen Sie den Link in Ihren Safari-Browser ein und installieren Sie diese Anwendung in 1 Minute",
-        "it": "Incolla il link nel tuo browser Safari e installa questa applicazione in 1 minuto"
+        "code": "footer.browser",
+        "en": "Paste the link into your [browser] browser and install this application in 1 minute",
+        "ru": "Вставьте в браузер [browser] ссылку и установите это приложения за 1 минуту",
+        "es": "Pegue el enlace en su navegador [browser] e instale esta aplicación en 1 minuto",
+        "fr": "Collez le lien dans votre navigateur [browser] et installez cette application en 1 minute",
+        "ge": "Fügen Sie den Link in Ihren [browser]-Browser ein und installieren Sie diese Anwendung in 1 Minute",
+        "it": "Incolla il link nel tuo browser [browser] e installa questa applicazione in 1 minuto"
     }, {
         "code": "footer.copied",
         "en": "Copied to clipboard",
@@ -589,12 +581,12 @@
         "it": "Installazione dell'applicazione"
     },{
         "code": "pwaupbanner.subtitle",
-        "en": "Paste the link into your browser and install this app in 1 minute",
-        "ru": "Incolla il link nel browser e installa questa app in 1 minuto",
-        "es": "Inserte el enlace en el navegador e instale esta aplicación en 1 minuto",
-        "fr": "Collez le lien dans le navigateur et installez cette application en 1 minute",
-        "ge": "Fügen Sie den Link in den Browser ein und installieren Sie diese Anwendung in 1 Minute",
-        "it": "Incolla il link nel browser e installa questa app in 1 minuto"
+        "en": "Paste the link into your [browser] browser and install this app in 1 minute",
+        "ru": "Вставьте в браузер [browser] ссылку и установите это приложения за 1 минуту",
+        "es": "Inserte el enlace en el navegador [browser] e instale esta aplicación en 1 minuto",
+        "fr": "Collez le lien dans le navigateur [browser] et installez cette application en 1 minute",
+        "ge": "Fügen Sie den Link in den Browser [browser] ein und installieren Sie diese Anwendung in 1 Minute",
+        "it": "Incolla il link nel browser [browser] e installa questa app in 1 minuto"
     },{
         "code": "pwaupbanner.how",
         "en": "HOW DOES IT WORK?",
@@ -605,13 +597,11 @@
         "it": "COME FUNZIONA?"
     },{
         "code": "pwaupbanner.how",
-        "en": "The app will be instantly installed on your phone screen using your browser. Copy the link, paste it into your browser, and follow the simple instructions",
-        "ru": "Приложение будет мгновенно установлено на экран телефона, при помощи вашего браузера. Скопируйте ссылку, вставьте в ваш браузер, следуйте простой инструкции",
-        "es": "La aplicación se instalará instantáneamente en la pantalla del Teléfono, utilizando su navegador. Copie el enlace, pegue en su navegador, siga las instrucciones simples",
-        "fr": "L'application sera instantanément installé sur l'écran du téléphone, en utilisant votre navigateur. Copiez le lien, collez-le dans votre navigateur, suivez les instructions simples",
-        "ge": "Die Anwendung wird sofort auf dem Bildschirm des Telefons installiert werden, mit Ihrem Browser. Kopieren Sie den Link, fügen Sie ihn in Ihren Browser ein, Folgen Sie den einfachen Anweisungen",
-        "it": "L'applicazione verrà immediatamente installato sullo schermo del telefono, utilizzando il browser. Copia il link, incolla nel tuo browser, segui le semplici istruzioni"
+        "en": "The app will be instantly installed on your phone screen using your browser. Copy the link, paste it into your [browser] browser, and follow the simple instructions",
+        "ru": "Приложение будет мгновенно установлено на экран телефона, при помощи вашего браузера. Скопируйте ссылку, вставьте в ваш браузер [browser], следуйте простой инструкции",
+        "es": "La aplicación se instalará instantáneamente en la pantalla del Teléfono, utilizando su navegador. Copie el enlace, pegue en su navegador [browser], siga las instrucciones simples",
+        "fr": "L'application sera instantanément installé sur l'écran du téléphone, en utilisant votre navigateur. Copiez le lien, collez-le dans votre navigateur [browser], suivez les instructions simples",
+        "ge": "Die Anwendung wird sofort auf dem Bildschirm des Telefons installiert werden, mit Ihrem Browser. Kopieren Sie den Link, fügen Sie ihn in Ihren Browser [browser] ein, Folgen Sie den einfachen Anweisungen",
+        "it": "L'applicazione verrà immediatamente installato sullo schermo del telefono, utilizzando il browser. Copia il link, incolla nel tuo browser [browser], segui le semplici istruzioni"
     }
-
-
 ]

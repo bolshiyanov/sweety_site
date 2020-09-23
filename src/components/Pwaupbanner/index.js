@@ -41,6 +41,8 @@ const Pwaupbanner = ({
     setOpened(true);
   }
 
+  const toBrowser = isIDevice() ? "Safari" : "Chrome";
+
   return (
     <div className={classnames(['pwaupbanner', { hidden: !showPwaupbanner }])}>
       <div onClick={handleInstall}>
@@ -61,16 +63,15 @@ const Pwaupbanner = ({
         onClose={() => setOpened(false)}
         title={__("Установка приложения")}
         subtitle=
-        {<p>{ isIDevice() ? 
-          __("Вставьте в браузер Safari ссылку и установите это приложения за 1 минуту") :
-          __("Вставьте в браузер Chrome ссылку и установите это приложения за 1 минуту")}</p>}
+        {<p>{__("Вставьте в браузер [browser] ссылку и установите это приложения за 1 минуту").replace("[browser]", toBrowser)}</p>}
       >
         {!urlCopied && <a onClick={onCopy} className="linkpwaupbanner">{url}</a>}
         {urlCopied && <div>{__("Ссылка скопирована")}</div>}
 
         <div className="pwaupbannercall">{__("Нажмите, чтобы скопировать")}</div>
         <div className="pwaupbannerwhytitle">{__("КАК ЭТО РАБОТАЕТ?")}</div>
-        <div className="pwaupbannerwhybody">{__("Приложение будет мгновенно установлено на экран телефона, при помощи вашего браузера. Скопируйте ссылку, вставьте в ваш браузер, следуйте простой инструкции")}</div>
+        <div className="pwaupbannerwhybody">{__("Приложение будет мгновенно установлено на экран телефона, при помощи вашего браузера. Скопируйте ссылку, вставьте в ваш браузер [browser], следуйте простой инструкции")
+          .replace("[browser]", toBrowser)}</div>
         
         <div className="pwaupbannerempty"></div>
       </Slider>
