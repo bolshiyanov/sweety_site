@@ -134,7 +134,7 @@ const AppTheme3 = () => {
       <div className="app" style={backgroundStyles}>
         {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
         <div className="app-container">
-          <Pwaupbanner />
+          <Pwaupbanner profile={profile} />
           <Order />
           <HeaderTheme3 />
           <StoriesTheme3 data={data.stories} />
