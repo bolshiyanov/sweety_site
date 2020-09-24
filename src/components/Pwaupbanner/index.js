@@ -77,10 +77,9 @@ const Pwaupbanner = ({
           <div className="fourthBox">{__("без регистрации, бесплатно, мгновенно")}</div>
         </div>
         <div className="box-right">
-          <div className="install"
-            onClick={handleInstall}>
+          <div className="install" onClick={handleInstall}>
             {needBrowser && __("Установить")}
-            {!needBrowser && <PwaInstall profile={profile} />}
+            {!needBrowser && <PwaInstall noStyled isInline profile={profile} />}
           </div>
         </div>
       </div>
