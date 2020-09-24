@@ -25,7 +25,7 @@ const Pwaupbanner = ({
   const [urlCopied, setUrlCopied] = useState(false);
   const { supported, isInstalled } = useReactPWAInstall();
 
-  const [showPwaupbanner, setShowPwaupbanner] = useState(!supported() || !isInstalled());
+  const [showPwaupbanner, setShowPwaupbanner] = useState(true/*!supported() || !isInstalled()*/);
   const needBrowser = !supported();
 
   const onCopy = () => {
