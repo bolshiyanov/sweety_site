@@ -8,6 +8,7 @@
     display: flex;
     flex-wrap: nowrap;
     flex-flow: row;
+    justify-content: space-between;
     width: 100%;
     max-width: 600px;
     height: 80px;
@@ -118,8 +119,14 @@
 }
 
 .box-right {
-    min-width: 90px;
-    max-width: 90px;
+    min-width: 95px;
+    max-width: 95px;
+    height: 68px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
 
   }
 
@@ -133,7 +140,6 @@
     border-radius: 6px;
     text-align: center;
     font-weight: 600;
-    margin-top: 22px;
     
   }
 
