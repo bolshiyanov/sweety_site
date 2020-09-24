@@ -7,15 +7,20 @@ import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 import PwaInstall from "components/PwaInstall";
-import {isIDevice} from 'utils/browser';
-import {__} from 'utils/translation';
+import logo512 from 'images/referrer_avatar.jpg';
+import raiting from 'images/raiting.png';
+import { IonIcon } from '@ionic/react';
+import { shareOutline, star, starHalf } from 'ionicons/icons';
+import { isIDevice } from 'utils/browser';
+import AvatarBase from 'components/common/AvatarBase';
+import { __ } from 'utils/translation';
 
 import './index.scss';
 
 const Pwaupbanner = ({
   profile
 }) => {
-  const { url } = useSelector((state) => state.config.config.whiteLabel);
+  const { title, description, name, avatar, avatarPreview, url } = useSelector((state) => state.config.data);
   const [opened, setOpened] = useState(false);
   const [urlCopied, setUrlCopied] = useState(false);
   const { supported, isInstalled } = useReactPWAInstall();
@@ -32,7 +37,7 @@ const Pwaupbanner = ({
   const handleClose = (e) => {
     setShowPwaupbanner(false);
     e.stopPropagation();
-  } 
+  }
 
   const handleInstall = () => {
     if (!needBrowser) {
@@ -44,20 +49,46 @@ const Pwaupbanner = ({
   const toBrowser = isIDevice() ? "Safari" : "Chrome";
 
   return (
-    <div className={classnames(['pwaupbanner', { hidden: !showPwaupbanner }])}>
-      <div onClick={handleInstall}>
-        {needBrowser && __("Установка приложения")}
-        {!needBrowser && <PwaInstall profile={profile} />}
+    <div>
+      <div className={classnames(['pwaupbanner', { hidden: !showPwaupbanner }])}>
+
+        <div className="box-left">
+          <Button
+            noStyled
+            isInline
+            className="box-left__close"
+            onClick={handleClose}
+          >
+            <Icon type="timesCircle" />
+          </Button>
+        </div>
+
+        <div className="pwaupbanner-heder-avatar-box" >
+          <AvatarBase avatar={avatar} avatarPreview={avatarPreview} avatarDefault={logo512} wrapperImageClass="pwaupbanner-heder-avatar" />
+        </div>
+
+
+
+
+        <div className="titleBox">
+          <div className="firstBox">{title}</div>
+          <div className="secondBox">{description}</div>
+          <div className="thirdBox" style={{ backgroundImage: `URL(${raiting})` }}/>
+          <div className="fourthBox">{__("без регистрации, бесплатно, мгновенно")}</div>
+        </div>
+        <div className="box-right">
+          <Button
+            noStyled
+            isInline
+            className="install"
+            onClick={handleInstall}>
+            {needBrowser && __("Установить")}
+            {!needBrowser && <PwaInstall profile={profile} />}
+          </Button>
+
+        </div>
       </div>
-      <Button
-        noStyled
-        isInline
-        className="pwaupbanner__close"
-        onClick={handleClose}
-      >
-        <Icon type="timesCircle" />
-      </Button>
-        
+
       <Slider
         opened={opened}
         onClose={() => setOpened(false)}
@@ -65,17 +96,17 @@ const Pwaupbanner = ({
         subtitle=
         {<p>{__("Вставьте в браузер [browser] ссылку и установите это приложения за 1 минуту").replace("[browser]", toBrowser)}</p>}
       >
-        {!urlCopied && <a onClick={onCopy} className="linkpwaupbanner">{url}</a>}
-        {urlCopied && <div>{__("Ссылка скопирована")}</div>}
+        {!urlCopied && <div className="linkpwaupbanner"><a onClick={onCopy} >{url}</a></div>}
+        {urlCopied && <div className="pwaupbannercopied">{__("Ссылка скопирована")}</div>}
 
         <div className="pwaupbannercall">{__("Нажмите, чтобы скопировать")}</div>
         <div className="pwaupbannerwhytitle">{__("КАК ЭТО РАБОТАЕТ?")}</div>
         <div className="pwaupbannerwhybody">{__("Приложение будет мгновенно установлено на экран телефона, при помощи вашего браузера. Скопируйте ссылку, вставьте в ваш браузер [browser], следуйте простой инструкции")
           .replace("[browser]", toBrowser)}</div>
-        
+
         <div className="pwaupbannerempty"></div>
       </Slider>
     </div>);
 };
-    
+
 export default Pwaupbanner;  

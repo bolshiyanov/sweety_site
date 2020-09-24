@@ -573,12 +573,20 @@
     
     {
         "code": "pwaupbanner.title",
-        "en": "Application installation",
-        "ru": "Установка приложения",
-        "es": "Instalación de la aplicación",
-        "fr": "Installation de l'application",
-        "ge": "Installieren der Anwendung",
-        "it": "Installazione dell'applicazione"
+        "en": "Install",
+        "ru": "Установить",
+        "es": "Instalar",
+        "fr": "Installer",
+        "ge": "Installieren",
+        "it": "Installa"
+    },{
+        "code": "pwaupbanner.installtext",
+        "en": "without registration, for free, instantly",
+        "ru": "без регистрации, бесплатно, мгновенно",
+        "es": "sin registro, gratis, al instante",
+        "fr": "sans inscription, gratuit, instantanément",
+        "ge": "keine Registrierung, kostenlos, sofort",
+        "it": "nessuna registrazione, gratis, istantaneamente"
     },{
         "code": "pwaupbanner.subtitle",
         "en": "Paste the link into your [browser] browser and install this app in 1 minute",
@@ -604,4 +612,4 @@
         "ge": "Die Anwendung wird sofort auf dem Bildschirm des Telefons installiert werden, mit Ihrem Browser. Kopieren Sie den Link, fügen Sie ihn in Ihren Browser [browser] ein, Folgen Sie den einfachen Anweisungen",
         "it": "L'applicazione verrà immediatamente installato sullo schermo del telefono, utilizzando il browser. Copia il link, incolla nel tuo browser [browser], segui le semplici istruzioni"
     }
-]
+] 

@@ -1,44 +1,135 @@
 .pwaupbanner {
     background-color: white;
-    padding: 22px 0px;
+    padding: 6px 0px;
     color: #888;
-    transition: .4s;
     font-size: 12px;
     position: fixed;
     top: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-flow: row;
     width: 100%;
-    max-width: 100%;
-    height: 60px;
+    height: 80px;
     z-index: 4;
 
-    
-    &__close {
-        position: absolute;
-        top: 18px;
-        left: 5px;
-      
-      svg {
-        color: red;
-      }
-    }
-
-    &__install {
-        position: absolute;
-        top: 18px;
-        right: 5px;
-        
-        svg {
-          color: blue;
-        }
-      }
-
-    
-  
-    
     &.hidden {
       display: none;
     }
   }
+
+    .box-left {
+      width:35px;
+      min-width: 35px;
+
+      &__close {
+        margin-left: 4px;
+        margin-top: 20px;
+      
+      svg {
+        color: rgb(191, 187, 187);
+        }
+      }
+    }
+
+    .pwaupbanner-heder-avatar-box {
+      width: 68px;
+      min-width: 68px;
+      height: 100%;
+      border-radius: 16px;
+      margin-right: 12px;
+      border: 2px solid rgb(90, 90, 90);
+  }
+
+  .pwaupbanner-heder-avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden; 
+  
+    background: {
+      size: cover;
+      repeat: no-repeat;
+      position: center center;
+    }
+}
+
+
+.titleBox {
+  overflow-y: hidden;
+
+}
+
+.firstBox {
+  min-height: 21px;
+  max-height: 21px;
+  font-size: 10px;
+  text-transform: uppercase;
+  color: black;
+  overflow: hidden;
+  word-wrap: none;
+  text-align: left;
+  margin-right: 12px;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+
+.secondBox {
+  color: #888;
+  font-size: 8px;
+  padding-right: 12px;
+  line-height: 1.1;
+  min-height: 18px;
+  max-height: 18px;
+  overflow: hidden;
+  word-wrap: none;
+  text-align: left;
+  margin-bottom: 2px;
+}
+
+.thirdBox {
+  width: 80px;
+  height: 12px;
+  position: relative;
+  overflow: hidden; 
+  margin-left: -2px;
+  margin-bottom: 2px;
+
+  background: {
+    size: cover;
+    repeat: no-repeat;
+    position: center center;
+  }
+}
+
+.fourthBox {
+  color: #888;
+  overflow: hidden;
+  word-wrap: none;
+  height: 11px;
+  font-size: 8px;
+  margin-right: -85px;
+  text-align: left;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+
+.install {
+  background-color: #007aff;
+  color: white;
+  padding: 2px;
+  text-transform: uppercase;
+  font-size: 11px;
+  border: 2px solid #007aff;
+  border-radius: 6px;
+  margin-right: 12px;
+  margin-top: 26px;
+  }
+    
+
+
 
 .linkpwaupbanner {
     font-size: 12px;
@@ -46,12 +137,22 @@
     background-color: rgba(255, 255, 255, 0.7);
     padding: 1px 8px 2px;
     border-radius: 4px;
+    text-align: center;
     cursor: pointer;
+  }
+
+  .pwaupbannercopied{
+    font-size: 14px;
+    color: green;
+    text-align: center;
+    text-transform: uppercase;
+
   }
 
   .pwaupbannercall {
     text-transform: lowercase;
     font-size: 8px;
+    text-align: center;
   }
   
   .pwaupbannerwhytitle {
@@ -72,4 +173,3 @@
     width: 100%;
     height: 20px;
   }
-  
