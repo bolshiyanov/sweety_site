@@ -77,22 +77,21 @@ const Pwaupbanner = ({
           <div className="fourthBox">{__("без регистрации, бесплатно, мгновенно")}</div>
         </div>
         <div className="box-right">
-          <Button
-            noStyled
-            isInline
-            className="install"
+          <div 
+            className="box-right__install"
             onClick={handleInstall}>
             {needBrowser && __("Установить")}
             {!needBrowser && <PwaInstall profile={profile} />}
-          </Button>
-
+          </div>
         </div>
       </div>
+
+      
 
       <Slider
         opened={opened}
         onClose={() => setOpened(false)}
-        title={__("Установка приложения")}
+        title={__("Для установки этого приложения:")}
         subtitle=
         {<p>{__("Вставьте в браузер [browser] ссылку и установите это приложения за 1 минуту").replace("[browser]", toBrowser)}</p>}
       >
