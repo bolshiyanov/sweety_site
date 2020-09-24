@@ -73,12 +73,11 @@ const Pwaupbanner = ({
         <div className="titleBox">
           <div className="firstBox">{title}</div>
           <div className="secondBox">{description}</div>
-          <div className="thirdBox" style={{ backgroundImage: `URL(${raiting})` }}/>
+          <div className="thirdBox" style={{ backgroundImage: `URL(${raiting})` }} />
           <div className="fourthBox">{__("без регистрации, бесплатно, мгновенно")}</div>
         </div>
         <div className="box-right">
-          <div 
-            className="box-right__install"
+          <div className="install"
             onClick={handleInstall}>
             {needBrowser && __("Установить")}
             {!needBrowser && <PwaInstall profile={profile} />}
@@ -86,7 +85,7 @@ const Pwaupbanner = ({
         </div>
       </div>
 
-      
+
 
       <Slider
         opened={opened}
@@ -100,7 +99,7 @@ const Pwaupbanner = ({
 
         <div className="pwaupbannercall">{__("Нажмите, чтобы скопировать")}</div>
         <div className="pwaupbannerwhytitle">{__("КАК ЭТО РАБОТАЕТ?")}</div>
-        <div className="pwaupbannerwhybody">{__("Приложение будет мгновенно установлено на экран телефона, при помощи вашего браузера. Скопируйте ссылку, вставьте в ваш браузер [browser], следуйте простой инструкции")
+        <div className="pwaupbannerwhybody">{__("Приложение будет мгновенно установлено на экран телефона, при помощи вашего браузера  [browser]. Скопируйте ссылку, вставьте в браузер, следуйте простой инструкции")
           .replace("[browser]", toBrowser)}</div>
 
         <div className="pwaupbannerempty"></div>

@@ -1,6 +1,6 @@
 .pwaupbanner {
     background-color: white;
-    padding: 6px 0px;
+    padding: 6px;
     color: #888;
     font-size: 12px;
     position: fixed;
@@ -9,8 +9,10 @@
     flex-wrap: nowrap;
     flex-flow: row;
     width: 100%;
+    max-width: 600px;
     height: 80px;
     z-index: 4;
+    overflow: hidden;
 
     &.hidden {
       display: none;
@@ -18,11 +20,10 @@
   }
 
     .box-left {
-      width:35px;
-      min-width: 35px;
+      width:30px;
+      min-width: 30px;
 
       &__close {
-        margin-left: 4px;
         margin-top: 20px;
       
       svg {
@@ -56,7 +57,7 @@
 
 
 .titleBox {
-  overflow-y: hidden;
+  overflow: hidden;
 
 }
 
@@ -95,6 +96,7 @@
   overflow: hidden; 
   margin-left: -2px;
   margin-bottom: 2px;
+  
 
   background: {
     size: cover;
@@ -109,14 +111,19 @@
   word-wrap: none;
   height: 11px;
   font-size: 8px;
-  margin-right: -85px;
+  margin-right: -12px;
   text-align: left;
   margin-bottom: 2px;
   text-transform: uppercase;
 }
 
 .box-right {
-  &__install {
+    min-width: 80px;
+    max-width: 80px;
+
+  }
+
+  .install {
     background-color: #007aff;
     color: white;
     padding: 2px;
@@ -124,13 +131,11 @@
     font-size: 11px;
     border: 2px solid #007aff;
     border-radius: 6px;
-    margin-right: 12px;
-    margin-top: 26px;
-    }
-  }
+    text-align: center;
+    font-weight: 600;
+    margin-top: 22px;
     
-
-
+  }
 
 .linkpwaupbanner {
     font-size: 12px;
