@@ -25,6 +25,7 @@ import Start from 'components/Start';
 import Stories from 'components/Stories';
 import PwaInstall from "components/PwaInstall";
 import PwaInstallIOs from "components/PwaInstallIOs";
+import Pwaupbanner from 'components/Pwaupbanner';
 import SocialSharingButtons from "components/SocialSharingButtons";
 import AppTheme1 from "components/themes/AppTheme1";
 import AppTheme2 from "components/themes/AppTheme2";
@@ -171,6 +172,7 @@ const App = () => {
           <div className="app" style={backgroundStyles}>
             {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
             <div className="app-container">
+              <Pwaupbanner profile={profile} />
               <Order />
               <Header
                 name={data.name}

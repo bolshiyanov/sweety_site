@@ -16,7 +16,7 @@ import AvatarTheme3 from 'components/themes/AppTheme3/AvatarTheme3';
 import Messengers from 'components/Messengers';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
-import Pwaupbanner from 'components/Pwaupbanner';
+import Pwaupbanner from 'components/Pwaupbanner'; 
 import Social from 'components/Social';
 import Footer from 'components/Footer';
 import TitleTheme3 from 'components/themes/AppTheme3/TitleTheme3';

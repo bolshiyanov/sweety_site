@@ -8,7 +8,7 @@ import StartPwaInstallIos from 'components/StartPwaInstallIos';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 
 import Loading from 'components/common/Loading';
-
+import Pwaupbanner from 'components/Pwaupbanner';
 import Order from 'components/Order';
 import AvatarTheme5 from 'components/themes/AppTheme5/AvatarTheme5';
 import MessengersTheme4 from 'components/themes/AppTheme4/MessengersTheme4';
@@ -132,6 +132,7 @@ const AppTheme5 = () => {
             <div className="app" style={backgroundStyles}>
                 {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
                 <div className="app-container">
+                    <Pwaupbanner profile={profile} />
                     <Order />
                     <Stories data={data.stories} />
                     <AvatarTheme5 />

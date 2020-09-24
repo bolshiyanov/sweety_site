@@ -8,7 +8,7 @@ import StartPwaInstallIos from 'components/StartPwaInstallIos';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 
 import Loading from 'components/common/Loading';
-
+import Pwaupbanner from 'components/Pwaupbanner'; 
 import Order from 'components/Order';
 import HeaderTheme6 from 'components/themes/AppTheme6/HeaderTheme6';
 import AvatarTheme3 from 'components/themes/AppTheme3/AvatarTheme3';
@@ -133,6 +133,7 @@ const AppTheme6 = () => {
       <div className="app" style={backgroundStyles}>
         {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
         <div className="app-container">
+          <Pwaupbanner profile={profile} />
           <Order />
           <HeaderTheme6 />
           <AvatarTheme3 />

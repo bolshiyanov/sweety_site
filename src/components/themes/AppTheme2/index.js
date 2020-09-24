@@ -8,7 +8,7 @@ import StartPwaInstallIos from 'components/StartPwaInstallIos';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 
 import Loading from 'components/common/Loading';
-
+import Pwaupbanner from 'components/Pwaupbanner';
 import Order from 'components/Order';
 import Header from 'components/Header';
 import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
@@ -26,7 +26,7 @@ import SocialSharingButtons from "components/SocialSharingButtons";
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
 import GoogleAnalytics from 'utils/googleAnalytics';
-import {__} from 'utils/translation';
+import { __ } from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
 
@@ -132,6 +132,7 @@ const AppTheme2 = () => {
       <div className="app" style={backgroundStyles}>
         {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
         <div className="app-container">
+          <Pwaupbanner profile={profile} />
           <Order />
           <Header
             name={data.name}
