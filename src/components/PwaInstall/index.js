@@ -27,8 +27,11 @@ const PwaInstall = ({ profile }) => {
   return (
     <React.Fragment>
         <div className="publish-pwainstall">
-          <Button className="publish-pwainstall__button" type="Pwa_Install"
-            onClick={handleClick}>
+          <Button  
+          noStyled
+          isInline 
+          className="publish-pwainstall__button" type="Pwa_Install" 
+          onClick={handleClick}>
             {__("Установить")}
           </Button>
         </div>
