@@ -572,14 +572,6 @@
     },
     
     {
-        "code": "pwaupbanner.title",
-        "en": "Install",
-        "ru": "Установить",
-        "es": "Instalar",
-        "fr": "Installer",
-        "ge": "Installieren",
-        "it": "Installa"
-    },{
         "code": "pwaupbanner.installtext",
         "en": "without registration, for free, instantly",
         "ru": "без регистрации, бесплатно, мгновенно",

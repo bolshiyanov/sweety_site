@@ -11,7 +11,7 @@ import logo512 from 'images/referrer_avatar.jpg';
 import raiting from 'images/raiting.png';
 import { IonIcon } from '@ionic/react';
 import { shareOutline, star, starHalf } from 'ionicons/icons';
-import { isIDevice } from 'utils/browser';
+import { isIDevice, isIOsSafari } from 'utils/browser';
 import AvatarBase from 'components/common/AvatarBase';
 import { __ } from 'utils/translation';
 
@@ -25,8 +25,12 @@ const Pwaupbanner = ({
   const [urlCopied, setUrlCopied] = useState(false);
   const { supported, isInstalled } = useReactPWAInstall();
 
-  const [showPwaupbanner, setShowPwaupbanner] = useState(true/*!supported() || !isInstalled()*/);
-  const needBrowser = !supported();
+  const isDemo = getSearchString(window.location.search, 'demo') === "preview";
+  const needBanner = (isIDevice() && (isDemo || isIOsSafari() || !isInstalled())) || 
+    (!isIDevice() && (!supported() || !isInstalled()));
+  const [showPwaupbanner, setShowPwaupbanner] = useState(needBanner);
+  const needBrowser = (isIDevice() && (!supported() || !isIOsSafari())) ||
+    (!isIDevice() && !supported());
 
   const onCopy = () => {
     copy(url);
