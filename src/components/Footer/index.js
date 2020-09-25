@@ -20,7 +20,7 @@ const Footer = () => {
   const onCopy = () => {
     copy(url);
     setUrlCopied(true);
-    setTimeout(() => setUrlCopied(false), 2000);
+    setTimeout(() => setUrlCopied(false), 2000); 
   }
 
   const onCopy1 = () => {
