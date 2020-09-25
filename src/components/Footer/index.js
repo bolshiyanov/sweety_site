@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import copy from 'clipboard-copy';
-
+import { isIDevice } from 'utils/browser';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 import Slider from 'components/common/Slider';
 
@@ -16,7 +16,7 @@ const Footer = () => {
   const [urlCopied, setUrlCopied] = useState(false);
   const [urlCopied1, setUrlCopied1] = useState(false);
   const { supported, isInstalled } = useReactPWAInstall();
-
+  const toBrowser = isIDevice() ? "Safari" : "Chrome";
   const onCopy = () => {
     copy(url);
     setUrlCopied(true);
@@ -41,7 +41,7 @@ const Footer = () => {
         onClose={() => setOpened(false)}
         title={__("Получите копию этого приложения")}
         subtitle=
-        {<p>{__("Вставьте в браузер эту ссылку, установите создатель Sweety, отредактируйте контент, ваше приложение готово за 1 минуту")}</p>}
+        {<p>{__("Вставьте в браузер [browser] эту ссылку, установите Sweety App Creator , отредактируйте контент, ваше приложение готово за 1 минуту").replace("[browser]", toBrowser)}</p>}
       >
         {!urlCopied && <a onClick={onCopy} className="linkfooter">{url}</a>}
         {urlCopied && <div>{__("Ссылка скопирована")}</div>}

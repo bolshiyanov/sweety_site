@@ -13,7 +13,7 @@ import backgroundImage0 from 'images/background.jpg';
 
 import PwaInstall from "components/PwaInstall";
 import AvatarBase from 'components/common/AvatarBase';
-
+import {__} from 'utils/translation';
 import './index.scss';
 
 const StartPwaInstallIos = ({ profile }) => {
@@ -22,8 +22,8 @@ const StartPwaInstallIos = ({ profile }) => {
     const onShare = () => {
         navigator.share({
             title: { title }, // Заголовок
-            text: 'Установи это приложение по ссылке', // Текст
-            url: window.location.href, // ссылка
+            text: __("Установи это приложение по ссылке, через браузер [browser]").replace("[browser]", toBrowser), // Текст 
+            url: window.location.href, // ссылка 
         });
     };
     const demoUrl = `${window.location.href}${window.location.href.indexOf("?") === -1 ? "?" : "&"}demo=preview`;
@@ -39,8 +39,8 @@ const StartPwaInstallIos = ({ profile }) => {
                         </div>
 
                         <div className="startPwaInstallIos-heder-right-box" >
-                            <div className="startPwaInstallIos-heder-title">{title || "Твой бренд из настроек"}</div>
-                            <div className="startPwaInstallIos-heder-subtitle"><a href={demoUrl}>Открыть без установки приложения</a></div>
+                            <div className="startPwaInstallIos-heder-title">{title || "Sweety app creator" }</div>
+                            <div className="startPwaInstallIos-heder-subtitle"><a href={demoUrl}>{__("Открыть без установки приложения")}</a></div>
                             <div className="startPwaInstallIos-heder-buttons-flexBox">
                                 <div className="startPwaInstallIos-heder-button-install"><PwaInstall profile={profile} /></div>
                                 {navigator.share && 
@@ -58,34 +58,34 @@ const StartPwaInstallIos = ({ profile }) => {
                                 <ion-icon size="small" icon={star}></ion-icon>
                                 <ion-icon size="small" icon={starHalf}></ion-icon>
                             </div>
-                            <div className="startPwaInstallIos-rating__descriptions">235 оценок</div>
+                            <div className="startPwaInstallIos-rating__descriptions">{__("235 Оценок")}</div>
                         </div>
 
                         <div className="startPwaInstallIos-ratingBox">
-                            <div className="startPwaInstallIos-rating">RU&nbsp;
+                            <div className="startPwaInstallIos-rating">{__("RU ")}
                             </div>
-                            <div className="startPwaInstallIos-rating__descriptions">Язык</div>
+                            <div className="startPwaInstallIos-rating__descriptions">{__("Язык")}</div>
                         </div>
 
                         <div className="startPwaInstallIos-ratingBox">
                             <div className="startPwaInstallIos-rating">18+&nbsp;
                             </div>
-                            <div className="startPwaInstallIos-rating__descriptions">Возраст</div>
+                            <div className="startPwaInstallIos-rating__descriptions">{__("Возраст")}</div>
                         </div>
                     </div>
 
-                    <div className="startPwaInstallIos-previewTitle">Предпросмотр</div>
+                    <div className="startPwaInstallIos-previewTitle">{__("Предпросмотр")}</div>
                     
                     <div className="startPwaInstallIos-itemsBox">
 
                         <div className="startPwaInstallIos-itemsBox-items"
                             style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
-                            <div className="startPwaInstallIos-itemsBox-items-title">Приложение</div>
+                            <div className="startPwaInstallIos-itemsBox-items-title">{__("Приложение")}</div>
                         </div>
 
 
                         <div className="startPwaInstallIos-itemsBox-items" >
-                            <div className="startPwaInstallIos-itemsBox-items-title">QR код приложения</div>
+                            <div className="startPwaInstallIos-itemsBox-items-title">{__("QR код приложения")}</div>
                             <QRCode size="200" value={`https://sweety.link/${profile}`} />
                         </div>
 
@@ -98,10 +98,10 @@ const StartPwaInstallIos = ({ profile }) => {
                                 <ion-icon size="small" icon={logoAndroid}></ion-icon>&nbsp;
                                 <ion-icon size="small" icon={logoWindows}></ion-icon>&nbsp;
                                 </div>
-                        <div className="startPwaInstallIos-iconsBox__sutitle">Поддерживается</div>
+                        <div className="startPwaInstallIos-iconsBox__sutitle">{__("Поддерживается")}</div>
                     </div>
 
-                    <div className="startPwaInstallIos-descriotionsTitle">Описание
+                    <div className="startPwaInstallIos-descriotionsTitle">{__("Описание")}
                     <div className="startPwaInstallIos-descriotions">
                             {title} &nbsp; {description}
                         </div>
@@ -109,9 +109,9 @@ const StartPwaInstallIos = ({ profile }) => {
                     <div className="startPwaInstallIos-descriotionsline" />
 
 
-                    <div className="startPwaInstallIos-descriotionsTitle">Дополнительно
+                    <div className="startPwaInstallIos-descriotionsTitle">{__("Дополнительно")}
                     <div className="startPwaInstallIos-descriotions">
-                            <p> &mdash;&nbsp;Установите наше приложение, чтобы вы могли в любой момент найти нас в своем телефоне.
+                            <p> &mdash;&nbsp;{__("Установите наше приложение, чтобы вы могли в любой момент найти нас в своем телефоне. Вы будете получать накопительную скидку. Вы сможете узнать о наших акциях и горящих предложениях.")} 
                             </p>
 
                         </div>
@@ -123,30 +123,30 @@ const StartPwaInstallIos = ({ profile }) => {
 
 
 
-                    <div className="startPwaInstallIos-infoTitle">Информация</div>
+                    <div className="startPwaInstallIos-infoTitle">{__("Информация")}</div>
                     <div className="startPwaInstallIos-infoFlexItems">
-                        <div className="startPwaInstallIos-infoFlexItems__item-left"> Авторские права</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-left">{__("Авторские права")}</div>
                         <div className="startPwaInstallIos-infoFlexItems__item-right"> {name}</div>
                     </div>
                     <div className="startPwaInstallIos-infoFlexItems">
-                        <div className="startPwaInstallIos-infoFlexItems__item-left">Размер  </div>
-                        <div className="startPwaInstallIos-infoFlexItems__item-right">1,8 МБ </div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-left">{__("Размер")}</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-right">1,8 Mb </div>
                     </div>
                     <div className="startPwaInstallIos-infoFlexItems">
-                        <div className="startPwaInstallIos-infoFlexItems__item-left">Категория</div>
-                        <div className="startPwaInstallIos-infoFlexItems__item-right">Малый бизнес</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-left">{__("Категория")}</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-right">{__("Для предпринимателей")}</div>
                     </div>
                     <div className="startPwaInstallIos-infoFlexItems">
-                        <div className="startPwaInstallIos-infoFlexItems__item-left">Языки</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-left">{__("Язык")}</div>
                         <div className="startPwaInstallIos-infoFlexItems__item-right">Русский</div>
                     </div>
                     <div className="startPwaInstallIos-infoFlexItems">
-                        <div className="startPwaInstallIos-infoFlexItems__item-left">Возраст</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-left">{__("Возраст")}</div>
                         <div className="startPwaInstallIos-infoFlexItems__item-right">18+</div>
                     </div>
                     <div className="startPwaInstallIos-infoFlexItems">
-                        <div className="startPwaInstallIos-infoFlexItems__item-left">Разработчик приложения</div>
-                        <div className="startPwaInstallIos-infoFlexItems__item-right"> ООО "Профессиональная бизнес сеть Имек"</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-left">{__("Возраст")}</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-right"> https://sweety.linl ltd.Imec-Pro</div>
                     </div>
                 </div>
             </div>

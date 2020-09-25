@@ -251,7 +251,16 @@
         "fr": "Collez le lien dans votre navigateur [browser] et installez cette application en 1 minute",
         "ge": "Fügen Sie den Link in Ihren [browser]-Browser ein und installieren Sie diese Anwendung in 1 Minute",
         "it": "Incolla il link nel tuo browser [browser] e installa questa applicazione in 1 minuto"
-    }, {
+    }, 
+    {
+        "code": "footer.browsercopy",
+        "en": "Paste this link into [browser], install Sweety App Creator , edit the content, and your app is ready in 1 minute",
+        "ru": "Вставьте в браузер [browser] эту ссылку, установите Sweety App Creator , отредактируйте контент, ваше приложение готово за 1 минуту",
+        "es": "Pegue este enlace en [navegador], instale Sweety App Creator, edite el contenido y su aplicación estará lista en 1 minuto",
+        "fr": "Collez ce lien dans [browser], installez Sweety App Creator , modifiez le contenu et votre application est prête en 1 minute",
+        "ge": "Fügen Sie diesen link in [browser] ein, installieren Sie Sweety App Creator , Bearbeiten Sie den Inhalt und Ihre app ist in 1 minute fertig",
+        "it": "Incolla questo link in [browser], installa Sweety App Creator, modifica il contenuto e la tua app è pronta in 1 minuto"
+    },{
         "code": "footer.copied",
         "en": "Copied to clipboard",
         "ru": "Ссылка скопирована",
@@ -570,6 +579,154 @@
         "ge": "Die Installation in Ihrem Browser wird leider nicht unterstützt. Öffnen Sie diese App im Google Chrome-Browser",
         "it": "Spiacenti, l'installazione non è supportata nel tuo browser. Apri questa app nel browser Google Chrome"
     },
+
+    {
+        "code": "startpwainstallios.text1",
+        "en": "Install this app via the link in your browser [browser]",
+        "ru": "Установи это приложение по ссылке, через браузер [browser]",
+        "es": "Instalar esta aplicación desde el enlace, a través del navegador [browser]",
+        "fr": "Installez cette application via le lien, via le navigateur [browser]",
+        "ge": "Installieren Sie diese Anwendung über den Link, über den Browser [browser]",
+        "it": "Installare questa applicazione dal link, attraverso il browser [browser]"
+    },{
+        "code": "startpwainstallios.text3",
+        "en": "Open without installing the app",
+        "ru": "Открыть без установки приложения",
+        "es": "Abrir sin instalar la aplicación",
+        "fr": "Ouvrir sans installer l'application",
+        "ge": "Öffnen, ohne die Anwendung zu installieren",
+        "it": "Apri senza installare l'applicazione"
+    },{
+        "code": "startpwainstallios.text4",
+        "en": "235 Ratings",
+        "ru": "235 Оценок",
+        "es": "235 Evalu...",
+        "fr": "235 Évalu...",
+        "ge": "235 Bewer...",
+        "it": "235 valut..."
+    },{
+        "code": "startpwainstallios.text5",
+        "en": "EN ",
+        "ru": "RU ",
+        "es": "ES ",
+        "fr": "FR ",
+        "ge": "DE ",
+        "it": "IT "
+    },{
+        "code": "startpwainstallios.text6",
+        "en": "Lang",
+        "ru": "Язык",
+        "es": "Idioma",
+        "fr": "Lang",
+        "ge": "Sprac",
+        "it": "Ling"
+    },{
+        "code": "startpwainstallios.text7",
+        "en": "Age",
+        "ru": "Возраст",
+        "es": "Edad",
+        "fr": "Âge",
+        "ge": "Alter",
+        "it": "Eta"
+    },{
+        "code": "startpwainstallios.text8",
+        "en": "Preview",
+        "ru": "Предпросмотр",
+        "es": "Previo",
+        "fr": "Aperçu",
+        "ge": "Vorschau",
+        "it": "Anteprima"
+    },{
+        "code": "startpwainstallios.text9",
+        "en": "Application",
+        "ru": "Приложение",
+        "es": "Aplicación",
+        "fr": "Application",
+        "ge": "Applikation",
+        "it": "Applicazione"
+    },{
+        "code": "startpwainstallios.text10",
+        "en": "QR code of the app",
+        "ru": "QR код приложения",
+        "es": "Código QR App",
+        "fr": "QR code App",
+        "ge": "QR Code App",
+        "it": "Codice QR app"
+    },{
+        "code": "startpwainstallios.text11",
+        "en": "Supports",
+        "ru": "Поддерживается",
+        "es": "Apoya",
+        "fr": "Soutient",
+        "ge": "Unterstützen",
+        "it": "Supporta"
+    },{
+        "code": "startpwainstallios.text13",
+        "en": "Additionally",
+        "ru": "Дополнительно",
+        "es": "Complementariamente",
+        "fr": "Supplémentaire",
+        "ge": "Zusätzlich",
+        "it": "In più"
+    },{
+        "code": "startpwainstallios.text14",
+        "en": "Install our app so that you can find us in your phone at any time. You will receive a cumulative discount. You can find out about our promotions and hot offers.",
+        "ru": "Установите наше приложение, чтобы вы могли в любой момент найти нас в своем телефоне. Вы будете получать накопительную скидку. Вы сможете узнать о наших акциях и горящих предложениях.",
+        "es": "Instala nuestra aplicación para que puedas encontrarnos en tu Teléfono en cualquier momento. Usted recibirá un descuento acumulativo. Usted será capaz de aprender acerca de nuestras promociones y ofertas ardientes.",
+        "fr": "Installez notre application afin que vous puissiez nous trouver sur votre téléphone à tout moment. Vous recevrez un rabais cumulatif. Vous serez en mesure de connaître nos Promotions et offres de Dernière minute.",
+        "ge": "Installieren Sie unsere App, damit Sie uns jederzeit in Ihrem Telefon finden können. Sie erhalten einen kumulativen Rabatt. Sie können sich über unsere Aktionen und brennende Angebote informieren.",
+        "it": "Installa la nostra app in modo che tu possa trovarci nel tuo telefono in qualsiasi momento. Riceverai uno sconto cumulativo. Sarete in grado di conoscere le nostre promozioni e offerte last minute."
+    },{
+        "code": "startpwainstallios.text15",
+        "en": "Information",
+        "ru": "Информация",
+        "es": "Información",
+        "fr": "Information",
+        "ge": "Information",
+        "it": "Informazione"
+    },{
+        "code": "startpwainstallios.text16",
+        "en": "Copyright",
+        "ru": "Авторские права",
+        "es": "Propiedad intelectual",
+        "fr": "Droit d'auteur",
+        "ge": "geistiges Eigentum",
+        "it": "Diritti d'autore"
+    },{
+        "code": "startpwainstallios.text17",
+        "en": "Size",
+        "ru": "Размер",
+        "es": "Tamaño",
+        "fr": "Taille",
+        "ge": "Größe",
+        "it": "Dimensione"
+    },{
+        "code": "startpwainstallios.text18",
+        "en": "Category",
+        "ru": "Категория",
+        "es": "Categoría",
+        "fr": "Catégorie",
+        "ge": "Kategorie",
+        "it": "Categoria"
+    },{
+        "code": "startpwainstallios.text19",
+        "en": "For entrepreneurs",
+        "ru": "Для предпринимателей",
+        "es": "Para emprendedores",
+        "fr": "Pour les entrepreneurs",
+        "ge": "Für Unternehmer",
+        "it": "Per gli imprenditori"
+    },{
+        "code": "startpwainstallios.text20",
+        "en": "Application developer",
+        "ru": "Разработчик приложения",
+        "es": "Desarrollador de aplicaciones",
+        "fr": "Développeur de l'application",
+        "ge": "App-Entwickler",
+        "it": "Sviluppatore dell'applicazione"
+    },
+
+
     
     {
         "code": "pwaupbanner.title",
