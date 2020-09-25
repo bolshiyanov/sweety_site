@@ -27,7 +27,7 @@ const Pwaupbanner = ({
   const { supported, isInstalled } = useReactPWAInstall();
 
   const isDemo = getSearchString(window.location.search, 'demo') === "preview";
-  const needBanner = (isIDevice() && (isDemo || isIOsSafari() || !isInstalled())) || 
+  const needBanner = (isIDevice() && (isDemo || !isInstalled())) || 
     (!isIDevice() && (!supported() || !isInstalled()));
   const [showPwaupbanner, setShowPwaupbanner] = useState(needBanner);
   const needBrowser = (isIDevice() && (!supported() || !isIOsSafari())) ||
