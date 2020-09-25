@@ -10,7 +10,7 @@ import { phonePortraitSharp, logoPwa, logoApple, logoAndroid, logoWindows } from
 
 import logo512 from 'images/referrer_avatar.jpg';
 import backgroundImage0 from 'images/background.jpg';
-
+import { isIDevice } from 'utils/browser';
 import PwaInstall from "components/PwaInstall";
 import AvatarBase from 'components/common/AvatarBase';
 import {__} from 'utils/translation';
@@ -27,7 +27,7 @@ const StartPwaInstallIos = ({ profile }) => {
         });
     };
     const demoUrl = `${window.location.href}${window.location.href.indexOf("?") === -1 ? "?" : "&"}demo=preview`;
-
+    const toBrowser = isIDevice() ? "Safari" : "Chrome";
     return (
         <React.Fragment>
             <div className="app-StartPwaInstallIos">
