@@ -53,6 +53,9 @@ export const ReactPWAInstallProvider = ({ children, enableLogging }) => {
     if (isIDevice() && isMobile()) {
       return isIOsSafari();
     }
+    if (platform === platforms.FIREFOX && isMobile()) {
+      return false;
+    }
     if (platform !== platforms.NATIVE && platform !== platforms.OTHER) {
       logger("supported: true - manual support");
       return true;
