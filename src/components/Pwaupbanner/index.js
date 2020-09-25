@@ -14,6 +14,7 @@ import { shareOutline, star, starHalf } from 'ionicons/icons';
 import { isIDevice, isIOsSafari } from 'utils/browser';
 import AvatarBase from 'components/common/AvatarBase';
 import { __ } from 'utils/translation';
+import { getSearchString } from 'utils/url';
 
 import './index.scss';
 
