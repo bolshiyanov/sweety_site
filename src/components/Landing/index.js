@@ -170,7 +170,6 @@ const Landing = () => {
         <meta name="twitter:image:src" content="https://sweety.link/logo512.png/logo512.png" />
         <meta name="twitter:domain" content="https://sweety.link/logo512.png" />
         <link rel="icon" href="https://sweety.link/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <meta name="theme-color" content="#fff" />
         <meta name="author" content="Roman Bolshiyanov bolshiyanov@gmail.com" />

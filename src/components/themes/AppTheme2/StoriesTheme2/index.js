@@ -14,6 +14,7 @@ import Story from 'components/themes/AppTheme2/StoryTheme2'
 import { CATALOG_FILTER } from 'constants/actions';
 
 import './index.scss';
+import 'components/Stories/index.scss';
 
 const emptySettings = {
   guid: null,
@@ -23,7 +24,7 @@ const emptySettings = {
   image: '',
 };
 
-const StoriesTheme2 = ({ data, profile, scrollPosition }) => {
+const StoriesTheme2 = ({ data, profile, isSticky, scrollPosition }) => {
   const [settingsOpened, setSettingsOpened] = useState(null);
   const [storyData, setStoryData] = useState(emptySettings);
   const [cookies] = useCookies();
@@ -65,50 +66,16 @@ const StoriesTheme2 = ({ data, profile, scrollPosition }) => {
     return null;
   }
   stories.sort((a, b) => b.order - a.order);
+  const stickyPart = !isSticky ? "-theme2" : "";
+
   return (
     <React.Fragment>
-      <div className="stories-theme2">
-        <div className="stories-theme2-picker">
-
-          {!data.length > 0 && (
-            <div className="stories-theme2-picker__empty">
-              <div className="stories-theme2-picker-item">
-                <div className="stories-theme2-picker-item-flexbox">
-                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${addedAvatar})` }} />
-                  <Button onClick={() => { }} className="stories-theme2-picker-item-flexbox__title">Меню1</Button>
-                </div>
-              </div>
-              <div className="stories-theme2-picker-item">
-                <div className="stories-theme2-picker-item-flexbox">
-                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${addedAvatar})` }} />
-                  <Button onClick={() => { }} className="stories-theme2-picker-item-flexbox__title">Меню2</Button>
-                </div>
-              </div>
-              <div className="stories-theme2-picker-item">
-                <div className="stories-theme2-picker-item-flexbox">
-                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${addedAvatar})` }} />
-                  <Button onClick={() => { }} className="stories-theme2-picker-item-flexbox__title">Меню3</Button>
-                </div>
-              </div>
-              <div className="stories-theme2-picker-item">
-                <div className="stories-theme2-picker-item-flexbox">
-                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${addedAvatar})` }} />
-                  <Button onClick={() => { }} className="stories-theme2-picker-item-flexbox__title">Меню4</Button>
-                </div>
-              </div>
-              <div className="stories-theme2-picker-item">
-                <div className="stories-theme2-picker-item-flexbox">
-                  <div className="stories-theme2-picker-item-flexbox__box" style={{ backgroundImage: `URL(${addedAvatar})` }} />
-                  <Button onClick={() => { }} className="stories-theme2-picker-item-flexbox__title">Меню5</Button>
-                </div>
-              </div>
-
-            </div>
-          )}
-
+      <div className={`stories${stickyPart}`}>
+        <div className={`stories${stickyPart}-picker`}>
           {data.map((story) =>
-            <Story className={classnames(['stories-theme2-picker-item'])}
+            <Story className={classnames([`stories${stickyPart}-picker-item`])}
               onClick={() => handleStoryClick(story.guid)}
+              isSticky={isSticky}
               key={story.guid} {...story}
               selected={storyGuid === story.guid}
               scrollPosition={scrollPosition} />)}

@@ -149,8 +149,7 @@ const AppTheme2 = () => {
                   isSticky,
                   distanceFromBottom 
               }) => (<div style={{...backgroundStyles, ...style, zIndex: 10}}>
-                {!isSticky && (distanceFromBottom ?? 0) >= 0 && <StoriesTheme2 data={data.stories} />}
-                {!(!isSticky && (distanceFromBottom ?? 0) >= 0) && <Stories data={data.stories} />}
+                <StoriesTheme2 isSticky={isSticky || (distanceFromBottom ?? 0) < 0} data={data.stories} />
               </div>)}
             </Sticky>
             <TitleTheme2 />
