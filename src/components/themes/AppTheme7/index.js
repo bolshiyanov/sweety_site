@@ -142,7 +142,7 @@ const AppTheme7 = () => {
           <AvatarTheme3 />
           <TitleTheme7 />
           <StickyContainer>
-            <Sticky topOffset={100}>
+            <Sticky topOffset={200}>
               {({
                   style,
                   isSticky,
@@ -154,7 +154,7 @@ const AppTheme7 = () => {
                 </div>);
               }}
             </Sticky>
-            {storyIsSticky && <div style={{...backgroundStyles, height: 200}} />}
+            {storyIsSticky && <div style={{...backgroundStyles, height: 270}} />}
             <CatalogItems data={data.catalogItems} profile={profile} />
           </StickyContainer>
           <Blocks data={data.blocks} />
