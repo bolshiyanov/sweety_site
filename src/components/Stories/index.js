@@ -80,14 +80,14 @@ const Stories = ({ data, profile, scrollPosition }) => {
               scrollPosition={scrollPosition} />)}
           </div>
         </div> 
-      <Slider
+      {settingsOpened && <Slider
         opened={settingsOpened}
         onClose={closeStoriesSettings}
         onSubmit={closeStoriesSettings}
         submitTitle={__("ЗАКРЫТЬ")?.toUpperCase()} 
       >
         <StorySettings {...storyData} />
-      </Slider>
+      </Slider>}
       
     </React.Fragment>
   );
