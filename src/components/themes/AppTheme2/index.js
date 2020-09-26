@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,6 +36,7 @@ const AppTheme2 = () => {
   const dispatch = useDispatch();
   const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
   const { profile } = useParams();
+  const [storyIsSticky, setStoryIsSticky] = useState(null);
 
   useEffect(() => {
     API.updateProfile(profile);
@@ -143,15 +144,19 @@ const AppTheme2 = () => {
             profile={profile}
           />
           <StickyContainer>
-            <Sticky>
+            <Sticky topOffset={100}>
               {({
                   style,
                   isSticky,
                   distanceFromBottom 
-              }) => (<div style={{...backgroundStyles, ...style, zIndex: 10}}>
-                <StoriesTheme2 isSticky={isSticky || (distanceFromBottom ?? 0) < 0} data={data.stories} />
-              </div>)}
+              }) => {
+                setStoryIsSticky(isSticky);
+                return (<div style={{...backgroundStyles, ...style, zIndex: 10}}>
+                  <StoriesTheme2 isSticky={isSticky || (distanceFromBottom ?? 0) < 0} data={data.stories} />
+                </div>);
+              }}
             </Sticky>
+            {storyIsSticky && <div style={{...backgroundStyles, height: 200}} />}
             <TitleTheme2 />
             <CatalogItems data={data.catalogItems} profile={profile} />
           </StickyContainer>
