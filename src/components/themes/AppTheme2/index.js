@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams } from 'react-router-dom';
 import CookieBanner from 'react-cookie-banner';
+import { StickyContainer, Sticky } from 'react-sticky';
 import StartPwaInstallIos from 'components/StartPwaInstallIos';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 
@@ -12,6 +13,7 @@ import Pwaupbanner from 'components/Pwaupbanner';
 import Order from 'components/Order';
 import Header from 'components/Header';
 import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
+import Stories from 'components/Stories';
 import Messengers from 'components/Messengers';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
@@ -140,9 +142,20 @@ const AppTheme2 = () => {
             avatarPreview={data.avatarPreview}
             profile={profile}
           />
-          <StoriesTheme2 data={data.stories} />
-          <TitleTheme2 />
-          <CatalogItems data={data.catalogItems} profile={profile} />
+          <StickyContainer>
+            <Sticky>
+              {({
+                  style,
+                  isSticky,
+                  distanceFromBottom 
+              }) => (<div style={{...backgroundStyles, ...style, zIndex: 100}}>
+                {!isSticky && (distanceFromBottom ?? 0) >= 0 && <StoriesTheme2 data={data.stories} />}
+                {!(!isSticky && (distanceFromBottom ?? 0) >= 0) && <Stories data={data.stories} />}
+              </div>)}
+            </Sticky>
+            <TitleTheme2 />
+            <CatalogItems data={data.catalogItems} profile={profile} />
+          </StickyContainer>
           <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
           <Messengers />
