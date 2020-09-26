@@ -24,7 +24,7 @@ const StoryTheme2 = ({
                 onClick={onClick}
             >
                 <div className={`story-theme2-picture__box${selected ? "-selected" : ""}`} style={{ backgroundImage: `URL(${image})` }} />
-                <Button onClick={onClick} className="story-theme2-picture-title-selected">{title}</Button>
+                <Button onClick={onClick} className={`story-theme2-picture-title${selected ? "-selected" : ""}`}>{title}</Button>
             </div>
         )}
         {isSticky && (
