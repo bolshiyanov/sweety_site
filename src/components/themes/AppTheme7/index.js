@@ -37,7 +37,6 @@ const AppTheme7 = () => {
   const dispatch = useDispatch();
   const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
   const { profile } = useParams();
-  const [storyIsSticky, setStoryIsSticky] = useState(null);
 
   useEffect(() => {
     API.updateProfile(profile);
@@ -142,19 +141,18 @@ const AppTheme7 = () => {
           <AvatarTheme3 />
           <TitleTheme7 />
           <StickyContainer>
-            <Sticky topOffset={200}>
+            <Sticky>
               {({
                   style,
                   isSticky,
                   distanceFromBottom 
               }) => {
-                setStoryIsSticky(isSticky);
-                return (<div style={{...backgroundStyles, ...style, zIndex: 10}}>
-                  <StoriesTheme2 isSticky={isSticky || (distanceFromBottom ?? 0) < 0} data={data.stories} />
+                const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
+                return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
+                  <StoriesTheme2 isSticky={stickyBlock} data={data.stories} />
                 </div>);
               }}
             </Sticky>
-            {storyIsSticky && <div style={{...backgroundStyles, height: 270}} />}
             <CatalogItems data={data.catalogItems} profile={profile} />
           </StickyContainer>
           <Blocks data={data.blocks} />

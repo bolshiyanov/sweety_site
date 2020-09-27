@@ -144,19 +144,18 @@ const AppTheme2 = () => {
             profile={profile}
           />
           <StickyContainer>
-            <Sticky topOffset={200}>
+            <Sticky>
               {({
                   style,
                   isSticky,
                   distanceFromBottom 
               }) => {
-                setStoryIsSticky(isSticky);
-                return (<div style={{...backgroundStyles, ...style, zIndex: 10}}>
-                  <StoriesTheme2 isSticky={isSticky || (distanceFromBottom ?? 0) < 0} data={data.stories} />
+                const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
+                return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
+                  <StoriesTheme2 isSticky={stickyBlock} data={data.stories} />
                 </div>);
               }}
             </Sticky>
-            {storyIsSticky && <div style={{...backgroundStyles, height: 270}} />}
             <TitleTheme2 />
             <CatalogItems data={data.catalogItems} profile={profile} />
           </StickyContainer>
