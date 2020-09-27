@@ -51,10 +51,10 @@
         "code": "app.cookies.close",
         "en": "Close",
         "ru": "Закрыть",
-        "es": "Cerca",
+        "es": "Cerrar",
         "fr": "Fermer",
         "ge": "Schließen",
-        "it": "Vicino"
+        "it": "Chiudere"
     }, {
         "code": "app.brand",
         "en": "Brand name",
