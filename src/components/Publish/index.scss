@@ -1,0 +1,76 @@
+
+
+.publish-notification {
+    bottom: 0px;
+    position: fixed;
+    background-color: #fff;
+    z-index: 3;
+    color: rgb(30, 144, 255);
+    font-size: 8px;
+    padding-bottom: 24px;
+  }
+  
+  .publish { 
+    bottom: 0px;
+    position: fixed;
+    //left: 0;
+    width: 100%;
+    max-width: 600px;
+    background-color: #fff;
+    padding: 20px 20px 40px;
+    transition: .3s bottom; 
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .linkrenderer {
+      margin-left : -5px;
+      margin-right : -12px;
+      margin-top: -2px;
+      padding: 5px 5px;
+      width: 100%;
+      border: none;
+      border-radius: 4px ;
+      overflow: hidden;
+      white-space: nowrap;
+      background-color: #fff;
+      color:  rgb(30, 144, 255);
+      font-size: 14px;
+      text-rendering: auto; 
+      cursor: text;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+    }
+  
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    
+    &__button {
+      background-color: rgb(30, 144, 255);
+      color: #fff;
+      height: 50px;
+      flex-grow: 1;
+      
+      &__copy {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: 0;
+        transition: .5s;
+        
+        &__already {
+          background-color: rgba(30, 144, 255, .1);
+          color: #000;
+        }
+      }
+      
+      &__goto {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        flex-grow: 0;
+      }
+    }
+  }
+  

@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'components/common/Slider';
 import Input from 'components/common/Input';
+import Button from 'components/common/Button';
 import Textarea from 'components/common/Textarea';
 import './index.scss';
 
 import { CATALOG_ORDER_CLEAR } from 'constants/actions';
 import API from 'utils/api';
-import {__} from 'utils/translation';
+import { __ } from 'utils/translation';
 
 const Order = () => {
     const [orderOpened, setOrderOpened] = useState(false);
@@ -37,9 +38,9 @@ const Order = () => {
     const orderItems = [];
     for (var propName in order) {
         if (order[propName].count !== 0) {
-            orderItems.push({ 
-                guid: propName, 
-                count: order[propName].count, 
+            orderItems.push({
+                guid: propName,
+                count: order[propName].count,
                 sum: order[propName].sum,
                 currency: order[propName].currency
             });
@@ -83,56 +84,70 @@ const Order = () => {
     }
 
     return <React.Fragment>
-        {!sent && !orderOpened && 
-        <div className="order"
-         onClick={() => setOrderOpened(true)}>
-            {__("Ваш заказ на сумму:")} {sum.toFixed(2)} {currency}
-        </div>}
-        {sent && 
-        <div className="order">
-            {__("Ваш заказ отправлен")}{timer % 3 === 0 ? "..." : timer % 3 === 1 ? ".." : "."}
-        </div>}
-        {!sent && orderOpened && 
-        <Slider
-            opened={orderOpened}
-            title={__("Ваш предварительный заказ")}
-            subtitle={__("Пожалуйста, отредактируйте количество интересующих позиций, укажите контактную информацию и отправьте ваш заказ. Мы ответим вам в самое ближайшее время")}
-            submitTitle={__("ОТПРАВИТЬ").toUpperCase()}
-            onRemove={handleClear}
-            onClose={() => setOrderOpened(false)}
-            onSubmit={!hasEmail ? null : handleSubmit}
-            >
-            {orderItems.map(orderItem => {
-                const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
-                return (
-                <div className="order__description" key={orderItem.guid}> &#8470;<b>{catalogItem?.number}</b> | {catalogItem?.text}: &nbsp; 
-                <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency}  =  
-                {orderItem.sum} {orderItem.currency}</div>
-                );
-            })}
-            
-            <div className="order__total">{__("Итого:")} {sum.toFixed(2)} {currency}</div>
-            {hasEmail && <React.Fragment>
-                <Input 
-                    className="order__input"
-                    value={phone}
-                    type="text"
-                    placeholder={__("Напишите свой телефон")}
-                    onChange={(value) => setPhone(value)}
-                />
-                <Textarea
-                    className="order__input"
-                    value={comment}
-                    type="text"
-                    placeholder={__("Напишите в этом поле комментарий к заказу, укажите альтернативный способ связи или задайте свой вопрос. ЗАПОЛНЕНИЕ НЕ ОБЯЗАТЕЛЬНО")}
-                    onChange={(value) => setComment(value)}
-                />
-                <div className="order__input__descriptions">{__("Информация не будет передана третьим лицам")}</div>
-               
-            </React.Fragment>} 
-            
-        </Slider>}
+        <div className="publish">
+
+            {!sent && !orderOpened &&
+                <Button className="publish__button"
+                    onClick={() => setOrderOpened(true)}
+                    noStyled>
+                    {__("Ваш заказ на сумму:")} {sum.toFixed(2)} {currency}
+                </Button>
+            }
+            {!sent && !orderOpened &&
+                <div className="publish-notification"><b>{__("НАЖМИ, ЧТОБЫ ПОСМОТРЕТЬ ЗАКАЗ")}</b></div>
+            }
+
+            {sent &&
+                <Button
+                    className="publish__button__copy__already"
+                    noStyled>
+                    {__("Ваш заказ отправляется")}{timer % 3 === 0 ? "..." : timer % 3 === 1 ? ".." : "."}
+                </Button>}
+
+
+            {!sent && orderOpened &&
+                <Slider
+                    opened={orderOpened}
+                    title={__("Ваш предварительный заказ")}
+                    subtitle={__("Пожалуйста укажите контактную информацию и отправьте ваш заказ. Мы ответим вам в самое ближайшее время")}
+                    submitTitle={__("ОТПРАВИТЬ").toUpperCase()}
+                    onRemove={handleClear}
+                    onClose={() => setOrderOpened(false)}
+                    onSubmit={!hasEmail ? null : handleSubmit}
+                >
+                    {orderItems.map(orderItem => {
+                        const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
+                        return (
+                            <div className="order__description" key={orderItem.guid}> &#8470;<b>{catalogItem?.number}</b> | {catalogItem?.text}: &nbsp;
+                                <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency}  =
+                                {orderItem.sum} {orderItem.currency}</div>
+                        );
+                    })}
+
+                    <div className="order__total">{__("Итого:")} {sum.toFixed(2)} {currency}</div>
+                    {hasEmail && <React.Fragment>
+                        <Input
+                            className="order__input"
+                            value={phone}
+                            type="text"
+                            placeholder={__("Напишите свой телефон")}
+                            onChange={(value) => setPhone(value)}
+                        />
+                        <Textarea
+                            className="order__input"
+                            value={comment}
+                            type="text"
+                            placeholder={__("Напишите в этом поле комментарий к заказу, укажите альтернативный способ связи или задайте свой вопрос. ЗАПОЛНЕНИЕ НЕ ОБЯЗАТЕЛЬНО")}
+                            onChange={(value) => setComment(value)}
+                        />
+                        <div className="order__input__descriptions">{__("Информация не будет передана третьим лицам")}</div>
+
+                    </React.Fragment>}
+
+                </Slider>}
+        </div>
     </React.Fragment>
+
 };
 
 export default Order;

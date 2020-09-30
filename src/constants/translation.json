@@ -363,11 +363,19 @@
     }, {
         "code": "order.sent",
         "en": "Your order has been sent",
-        "ru": "Ваш заказ отправлен",
-        "es": "Tu pedido ha sido enviado",
-        "fr": "Votre commande a été envoyée",
-        "ge": "Ihre Bestellung wurde versendet",
-        "it": "Il tuo ordine è stato inviato"
+        "ru": "Ваш заказ отправляется",
+        "es": "Su pedido se envía",
+        "fr": "Votre commande est expédiée",
+        "ge": "Ihre Bestellung wird versendet",
+        "it": "Il tuo ordine viene spedito"
+    }, {
+        "code": "order.sent-title",
+        "en": "CLICK TO VIEW THE ORDER",
+        "ru": "НАЖМИ, ЧТОБЫ ПОСМОТРЕТЬ ЗАКАЗ",
+        "es": "HAGA CLIC PARA VER EL PEDIDO",
+        "fr": "CLIQUEZ POUR VOIR LA COMMANDE",
+        "ge": "KLICKEN SIE, UM DIE BESTELLUNG ZU SEHEN",
+        "it": "CLICCA PER VEDERE L'ORDINE"
     }, {
         "code": "order.pre",
         "en": "Your pre-order",
@@ -378,12 +386,12 @@
         "it": "Il tuo preordine"
     }, {
         "code": "order.text",
-        "en": "Please edit the number of items of interest, provide contact information and submit your order. We will answer you as a while.",
-        "ru": "Пожалуйста, отредактируйте количество интересующих позиций, укажите контактную информацию и отправьте ваш заказ. Мы ответим вам в самое ближайшее время",
-        "es": "Edite el número de artículos de interés, proporcione información de contacto y envíe su pedido. Nosotros te responderemos un rato.",
-        "fr": "Veuillez modifier le nombre d'articles qui vous intéressent, fournir vos coordonnées et soumettre votre commande. Nosotros te responderemos un rato.",
-        "ge": "Bitte bearbeiten Sie die Anzahl der gewünschten Artikel, geben Sie die Kontaktinformationen an und senden Sie Ihre Bestellung ab. Wir werden Ihnen eine Weile antworten.",
-        "it": "Modifica il numero di articoli di interesse, fornisci le informazioni di contatto e invia il tuo ordine. Ti risponderemo tra un poco."
+        "en": "Please enter your contact information and submit your order. We will get back to you as soon as possible",
+        "ru": "Пожалуйста укажите контактную информацию и отправьте ваш заказ. Мы ответим вам в самое ближайшее время",
+        "es": "Por favor proporcione la información de contacto y envíe su pedido. Le responderemos lo antes posible",
+        "fr": "Veuillez fournir les informations de contact et envoyer votre commande. Nous vous répondrons bientôt",
+        "ge": "Bitte geben Sie Kontaktinformationen an und senden Sie Ihre Bestellung. Wir werden Ihnen bald Antworten",
+        "it": "Si prega di fornire le informazioni di contatto e inviare il vostro ordine. Vi risponderemo AL PIÙ PRESTO"
     }, {
         "code": "order.send",
         "en": "SUBMIT",

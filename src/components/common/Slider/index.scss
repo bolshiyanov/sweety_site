@@ -12,7 +12,7 @@
   overflow-y: scroll;
   z-index: 10;
 
-  .slider-background {
+  .slider-background { 
     top: 0;
     position: absolute;
     width: 100%;
@@ -130,24 +130,22 @@
 }
 .slider-header-submitbody-submit {
   display: flex;
+  align-items: center;
   justify-content: center;
-  overflow-x: hidden;
 }
 
 .slider-header-submit {
-  max-width: 90%;
-  top: 40px;
-  margin-bottom: 60px;
-  font-size: 25px;
-  border: 2px;
-  border-color: #007aff;
-  background-color: #007aff;
-  border-radius: 5px;
-  padding: 5px 12px 4px 3px;
-  color: white;
-  cursor: pointer;
-  overflow-wrap: break-word;
-  z-index: 12;
+      background-color: rgb(30, 144, 255);
+      color: #fff;
+      flex-grow: 1;
+      text-transform: uppercase;
+      z-index: 12;
+      border-radius: 8px;
+      font-size: 14px;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      transition: .4s;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      padding: 16px ;
 
   svg {
    font-size: inherit;
