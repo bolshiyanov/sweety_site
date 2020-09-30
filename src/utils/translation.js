@@ -2,7 +2,7 @@ import translates from "constants/translation.json";
 
 let lang = null;
 
-const supportedLanguages = [ "en", "ru", "es", "fr", "ge", "it" ];
+const supportedLanguages = [ "en", "ru", "es", "fr", "de", "it" ];
 
 export const __ = (text) => {
     text = text.toLowerCase();
