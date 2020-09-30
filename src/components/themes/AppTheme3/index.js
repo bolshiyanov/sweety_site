@@ -69,6 +69,7 @@ const AppTheme3 = () => {
       backgroundSize: '30px 30px',
       backgroundColor: '',
       fontSize: '14px',
+      zIndex:1000,
       fontWeight: 600
     },
     button: {
