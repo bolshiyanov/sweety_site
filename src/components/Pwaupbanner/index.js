@@ -11,7 +11,7 @@ import logo512 from 'images/referrer_avatar.jpg';
 import raiting from 'images/raiting.png';
 import { IonIcon } from '@ionic/react';
 import { shareOutline, star, starHalf } from 'ionicons/icons';
-import { isIDevice, isIOsSafari } from 'utils/browser';
+import { isIDevice, isIOsSafari, isNativePwa } from 'utils/browser';
 import AvatarBase from 'components/common/AvatarBase';
 import { __ } from 'utils/translation';
 import { getSearchString } from 'utils/url';
@@ -28,7 +28,8 @@ const Pwaupbanner = ({
 
   const isDemo = getSearchString(window.location.search, 'demo') === "preview";
   const needBanner = (isIDevice() && (isDemo || !isInstalled())) || 
-    (!isIDevice() && (!supported() || !isInstalled()));
+    (!isIDevice() && isNativePwa() && !isInstalled()) ||
+    (!isIDevice() && !isNativePwa());
   const [showPwaupbanner, setShowPwaupbanner] = useState(needBanner);
   const needBrowser = (isIDevice() && (!supported() || !isIOsSafari())) ||
     (!isIDevice() && !supported());
@@ -56,7 +57,6 @@ const Pwaupbanner = ({
   return (
     <div>
       <div className={classnames(['pwaupbanner', { hidden: !showPwaupbanner }])}>
-
         <div className="box-left">
           <Button
             noStyled
@@ -67,14 +67,9 @@ const Pwaupbanner = ({
             <Icon type="timesCircle" />
           </Button>
         </div>
-
         <div className="pwaupbanner-heder-avatar-box" >
           <AvatarBase avatar={avatar} avatarPreview={avatarPreview} avatarDefault={logo512} wrapperImageClass="pwaupbanner-heder-avatar" />
         </div>
-
-
-
-
         <div className="titleBox">
           <div className="firstBox">{title}</div>
           <div className="secondBox">{description}</div>

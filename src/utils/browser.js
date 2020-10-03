@@ -39,3 +39,7 @@ export const isIOsSafari = () => {
     }
     return false;
 }
+
+export const isNativePwa = () => {
+    return window.hasOwnProperty("BeforeInstallPromptEvent");
+}
