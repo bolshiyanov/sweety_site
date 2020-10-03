@@ -11,3 +11,20 @@ export const getSearchString = (search, variable) => {
   }
   return undefined;
 };
+
+export const getSearchParams = (search) => {
+  const query = search.substring(1);
+  const vars = query.split('&');
+  let result = {};
+  for (let i = 0; i < vars.length; i++) {
+      const pair = vars[i].split('=');
+
+      if (pair.length > 1) {
+        result[decodeURI(pair[0])] = decodeURIComponent(pair[1]);
+      }
+      else {
+        result[decodeURI(pair[0])] = "";
+      }
+  }
+  return result;
+};

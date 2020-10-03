@@ -9,7 +9,7 @@ import './index.scss';
 import { CATALOG_ORDER_CLEAR } from 'constants/actions';
 import API from 'utils/api';
 import { __ } from 'utils/translation';
-import { getSearchString } from 'utils/url';
+import { getSearchParams } from 'utils/url';
 
 const Order = () => {
     const [orderOpened, setOrderOpened] = useState(false);
@@ -20,10 +20,13 @@ const Order = () => {
     const { catalogItems } = useSelector((state) => state.config.data);
     const dispatch = useDispatch();
     const [timer, setTimer] = useState(null);
+    const [orderProps, setOrderProps] = useState({});
+    const [visualProps, setVisualProps] = useState([]);
 
     const { messengers } = useSelector((state) => state.config.data);
     const emailMessenger = messengers.filter(e => e.title === "Email")[0];
     const hasEmail = emailMessenger?.value;
+    const params = getSearchParams(window.location.search);
 
     useEffect(() => {
         timer && timer > 0 && setTimeout(() => {
@@ -36,6 +39,24 @@ const Order = () => {
         }, 1000);
     }, [timer]);
 
+    useEffect(() => {
+        const isPwa = params['pwa'] === "" || params['pwa'];
+        const ignoredParams = [ "pwa", "demo" ];
+        const props = {}
+        const vprops = [];
+        props[__(isPwa ? "Отправлено из установленного приложения" : "Отправлено с сайта")] = "";
+        for (var propName in params) {
+            if (propName && !ignoredParams.includes(propName)) {
+                props[propName] = params[propName];
+                vprops.push({ key: propName, value: params[propName]});
+            }
+        }
+        setOrderProps(props);
+        setVisualProps(vprops);
+        console.log(vprops);
+    }, []);
+
+
     const orderItems = [];
     for (var propName in order) {
         if (order[propName].count !== 0) {
@@ -47,19 +68,16 @@ const Order = () => {
             });
         }
     }
-
-    const sum = orderItems.length === 0 ? 0 :
+    const orderSum = orderItems.length === 0 ? 0 :
         orderItems.reduce((a, e) => { return { sum: a.sum + e.sum } }).sum;
-    const currency = orderItems[0]?.currency;
+        const currency = orderItems[0]?.currency;
 
-    if (sum === 0)
+    if (orderSum === 0)
         return null;
 
     const handleClear = () => {
         dispatch({ type: CATALOG_ORDER_CLEAR });
     }
-
-    const isPwa = getSearchString(window.location.search, 'pwa') !== undefined;
 
     const handleSubmit = () => {
         setOrderOpened(false);
@@ -76,11 +94,11 @@ const Order = () => {
                     currency: orderItem.currency
                 };
             }),
-            total: parseFloat(sum.toFixed(2)),
+            total: parseFloat(orderSum.toFixed(2)),
             currency: currency,
             mobile: phone,
             comment,
-            isInstalled: isPwa ? true : false
+            props: orderProps
         }).then(() => {
             setTimer(30);
             setSent(true);
@@ -94,7 +112,7 @@ const Order = () => {
                 <Button className="publish__button"
                     onClick={() => setOrderOpened(true)}
                     noStyled>
-                    {__("Ваш заказ на сумму:")} {sum.toFixed(2)} {currency}
+                    {__("Ваш заказ на сумму:")} {orderSum.toFixed(2)} {currency}
                 </Button>
             }
             {!sent && !orderOpened &&
@@ -128,7 +146,10 @@ const Order = () => {
                         );
                     })}
 
-                    <div className="order__total">{__("Итого:")} {sum.toFixed(2)} {currency}</div>
+                    <div className="order__total">{__("Итого:")} {orderSum.toFixed(2)} {currency}</div>
+
+                    {visualProps.map(e => <div className="order__prop" key={e.key}>{e.key}{e.value ? ": " : ""} {e.value}</div>)}
+                    {visualProps.length > 0 ? <br/> : null}
                     {hasEmail && <React.Fragment>
                         <Input
                             className="order__input"

@@ -742,7 +742,7 @@
         "fr": "sans inscription, gratuit, instantanément",
         "de": "keine Registrierung, kostenlos, sofort",
         "it": "nessuna registrazione, gratis, istantaneamente"
-    },{
+    }, {
         "code": "pwaupbanner.subtitle",
         "en": "Paste the link into your [browser] browser and install this app in 1 minute",
         "ru": "Вставьте в браузер [browser] ссылку и установите это приложения за 1 минуту",
@@ -750,7 +750,7 @@
         "fr": "Collez le lien dans le navigateur [browser] et installez cette application en 1 minute",
         "de": "Fügen Sie den Link in den Browser [browser] ein und installieren Sie diese Anwendung in 1 Minute",
         "it": "Incolla il link nel browser [browser] e installa questa app in 1 minuto"
-    },{
+    }, {
         "code": "pwaupbanner.how",
         "en": "HOW DOES IT WORK?",
         "ru": "КАК ЭТО РАБОТАЕТ?",
@@ -758,7 +758,7 @@
         "fr": "COMMENT CELA FONCTIONNE?",
         "de": "WIE FUNKTIONIERT DAS?",
         "it": "COME FUNZIONA?"
-    },{
+    }, {
         "code": "pwaupbanner.how",
         "en": "The app will be instantly installed on your phone screen using your browser  [browser]. Copy the link, paste it into your browser, and follow the simple instructions",
         "ru": "Приложение будет мгновенно установлено на экран телефона, при помощи вашего браузера  [browser]. Скопируйте ссылку, вставьте в браузер, следуйте простой инструкции",
@@ -766,5 +766,23 @@
         "fr": "L'application sera instantanément installé sur l'écran du téléphone, en utilisant votre navigateur  [browser]. Copiez le lien, collez-le dans votre navigateur, suivez les instructions simples",
         "de": "Die Anwendung wird sofort auf dem Bildschirm des Telefons installiert werden, mit Ihrem Browser  [browser]. Kopieren Sie den Link, fügen Sie ihn in Ihren Browser ein, Folgen Sie den einfachen Anweisungen",
         "it": "L'applicazione verrà immediatamente installato sullo schermo del telefono, utilizzando il browser  [browser]. Copia il link, incolla nel tuo browser, segui le semplici istruzioni"
+    },
+
+    {
+        "code": "order.createby.app",
+        "en": "Submitted from installed app",
+        "ru": "Отправлено из установленного приложения",
+        "es": "Enviado desde la aplicación instalada",
+        "fr": "Envoyé depuis l'application installée",
+        "de": "Eingereicht von der installierten App",
+        "it": "Inviato dall'app installata"
+    }, {
+        "code": "order.createby.site",
+        "en": "Submitted from the site",
+        "ru": "Отправлено с сайта",
+        "es": "Enviado desde el sitio",
+        "fr": "Envoyé depuis le site",
+        "de": "Eingereicht von der Website",
+        "it": "Inviato dal sito"
     }
 ] 

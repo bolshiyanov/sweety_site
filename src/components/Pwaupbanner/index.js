@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import copy from 'clipboard-copy';
 import classnames from 'classnames';
@@ -14,7 +14,7 @@ import { shareOutline, star, starHalf } from 'ionicons/icons';
 import { isIDevice, isIOsSafari, isNativePwa } from 'utils/browser';
 import AvatarBase from 'components/common/AvatarBase';
 import { __ } from 'utils/translation';
-import { getSearchString } from 'utils/url';
+import { getSearchString, getSearchParams } from 'utils/url';
 
 import './index.scss';
 
@@ -25,14 +25,26 @@ const Pwaupbanner = ({
   const [opened, setOpened] = useState(false);
   const [urlCopied, setUrlCopied] = useState(false);
   const { supported, isInstalled } = useReactPWAInstall();
+  const [showPwaupbanner, setShowPwaupbanner] = useState(false);
+  const [needBrowser, setNeedBrowser] = useState(false);
+  const params = getSearchParams(window.location.search);
 
-  const isDemo = getSearchString(window.location.search, 'demo') === "preview";
-  const needBanner = (isIDevice() && (isDemo || !isInstalled())) || 
-    (!isIDevice() && isNativePwa() && !isInstalled()) ||
-    (!isIDevice() && !isNativePwa());
-  const [showPwaupbanner, setShowPwaupbanner] = useState(needBanner);
-  const needBrowser = (isIDevice() && (!supported() || !isIOsSafari())) ||
-    (!isIDevice() && !supported());
+  useEffect(() => {
+    const ignoredParams = [ "pwa", "demo" ];
+    let hasProps = false;
+    for (var propName in params) {
+      if (propName && !ignoredParams.includes(propName)) {
+          hasProps = true;
+          break;
+      }
+    }
+    const isDemo = params['demo'] === "preview";
+    const needBanner = !hasProps && ((isIDevice() && (isDemo || !isInstalled())) || 
+      (!isIDevice() && isNativePwa() && !isInstalled()) ||
+      (!isIDevice() && !isNativePwa()));
+    setShowPwaupbanner(needBanner);
+    setNeedBrowser((isIDevice() && (!supported() || !isIOsSafari())) || (!isIDevice() && !supported()));
+  }, []);
 
   const onCopy = () => {
     copy(url);

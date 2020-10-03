@@ -1,5 +1,6 @@
 import superagent from 'superagent';
 import { getSearchString } from 'utils/url';
+import { getDefaultLanguage } from 'utils/translation';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong!';
 
@@ -74,11 +75,10 @@ const requests = {
 
 const API = {
   updateProfile: (value) => {
-    console.log(value);
     setProfile(value);
   },
   getData: () => requests.get(`/api/profiles/pages/public/${profile}`),
-  register: (data) => requests.post('/api/users/register', data),
+  register: (data) => requests.post('/api/users/register', { ...data, lang: getDefaultLanguage() }),
   sendOrder: (data) => requests.post(`/api/profiles/${profile}/preorders`, data),
   getInstagramFeed: (account) => {
     const url = 
