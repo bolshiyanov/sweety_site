@@ -9,6 +9,7 @@ import './index.scss';
 import { CATALOG_ORDER_CLEAR } from 'constants/actions';
 import API from 'utils/api';
 import { __ } from 'utils/translation';
+import { getSearchString } from 'utils/url';
 
 const Order = () => {
     const [orderOpened, setOrderOpened] = useState(false);
@@ -58,6 +59,8 @@ const Order = () => {
         dispatch({ type: CATALOG_ORDER_CLEAR });
     }
 
+    const isPwa = getSearchString(window.location.search, 'pwa') !== undefined;
+
     const handleSubmit = () => {
         setOrderOpened(false);
 
@@ -76,7 +79,8 @@ const Order = () => {
             total: parseFloat(sum.toFixed(2)),
             currency: currency,
             mobile: phone,
-            comment
+            comment,
+            isInstalled: isPwa ? true : false
         }).then(() => {
             setTimer(30);
             setSent(true);
