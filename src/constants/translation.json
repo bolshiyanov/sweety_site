@@ -134,6 +134,26 @@
     },
 
     {
+        "code": "catalog.botton-plus",
+        "en": "Add",
+        "ru": "Добавить",
+        "es": "Agregar",
+        "fr": "Ajouter",
+        "de": "Hinzufügen",
+        "it": "Aggiungere"
+    },
+
+    {
+        "code": "catalog.botton-menus",
+        "en": "Remove",
+        "ru": "Убрать",
+        "es": "Eliminar",
+        "fr": "Enlever",
+        "de": "Abräumen",
+        "it": "Rimuovere"
+    },
+
+    {
         "code": "title.name",
         "en": "App Title",
         "ru": "Заголовок приложения",

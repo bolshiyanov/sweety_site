@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
-import {__} from 'utils/translation';
+import Button from 'components/common/Button';
+import { __ } from 'utils/translation';
 
 import './index.scss';
 
@@ -28,6 +28,20 @@ const CatalogItemSettings = (props) => {
                 {price && (
                     <div className="catalogItem-slider__price">{__("Стоимость")}:{space}{price}{space}{currency}</div>
                 )}
+
+                <div className="catalogItem-order-box">
+                    <Button className="catalogItem-order-botton" 
+                    noStyled
+                    onClick={() => {}} >
+                        {__("Добавить")}
+                    </Button>
+                    <div className="catalogItem-order-box-quantity">1</div>
+                    <Button className="catalogItem-order-botton" 
+                    noStyled
+                    onClick={() => {}} >
+                        {__("Убрать")}
+                    </Button>
+                </div>
                 {description && (
                     <div className="catalogItem-slider__description">{description}</div>
                 )}

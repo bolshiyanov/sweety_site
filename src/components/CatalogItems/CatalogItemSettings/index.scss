@@ -16,7 +16,7 @@ overflow-x: hidden;
   text-transform: uppercase;
 }
 
-&__price {
+&__price { 
   color: red;
   position: relative;
   text-align: center;
@@ -48,7 +48,34 @@ overflow-x: hidden;
     width:100%;
     max-width: 600px;
     z-index: 11;
+    img {
+      height: auto;
+      width: 100%;
+  }
   }
 
+}
+
+.catalogItem-order-box {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  max-width: 100%;
+  min-width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.catalogItem-order-botton {
+  flex-grow: 1;
+  min-height: 48px;
+  background-color: green;
+}
+.catalogItem-order-box-quantity {
+  font-weight: 600;
+  font-size: 34px;
+  padding: 0 16px 4px;
+  border: grey 2px solid;
+  border-radius: 50%;
+  margin: 0 12px;
 }
 
