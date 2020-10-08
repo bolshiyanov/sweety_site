@@ -10,6 +10,7 @@ import { CATALOG_ORDER_CLEAR } from 'constants/actions';
 import API from 'utils/api';
 import { __ } from 'utils/translation';
 import { getSearchParams } from 'utils/url';
+import { parse } from 'superagent';
 
 const Order = () => {
     const [orderOpened, setOrderOpened] = useState(false);
@@ -141,8 +142,7 @@ const Order = () => {
                         const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
                         return (
                             <div className="order__description" key={orderItem.guid}> &#8470;<b>{catalogItem?.number}</b> | {catalogItem?.text}: &nbsp;
-                                <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency}  =
-                                {orderItem.sum} {orderItem.currency}</div>
+                                <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
                         );
                     })}
 
