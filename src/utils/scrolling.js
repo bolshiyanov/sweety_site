@@ -6,9 +6,9 @@ export const scrollTo = (componentId, onScrolled) => {
   
         Events.scrollEvent.remove('end');
       });
-  
+
       scroller.scrollTo(componentId, {
-        duration: 2000,
+        duration: 100 + document.getElementById(componentId).getBoundingClientRect().y < 0 ? 2000 : 0,
         smooth: 'easeInOutQuint'
       });
 };
