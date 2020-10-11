@@ -4,6 +4,7 @@ import { handleActions } from 'redux-actions';
 import Theme from 'utils/theme';
 import Background from 'utils/background';
 import ButtonColor from 'utils/buttonColor';
+import { scroller } from 'react-scroll'
 
 import {
   LOADING_ERROR,
@@ -28,9 +29,7 @@ const initialState = {
   config: {},
   account: {},
   storyGuid : null,
-  order: {},
-  refs : {},
-  catalogRef: null
+  order: {}
 };
 
 const reducer = handleActions({
@@ -65,17 +64,6 @@ const reducer = handleActions({
         currentTheme = new Theme({ ...currentTheme, button: selectedButtonColor });
     }
 
-    const refs = data.catalogItems.filter(e => e.storyGuid)
-      .reduce((acc, e) => {
-        if (!acc[e.storyGuid]) {
-          acc[e.storyGuid] = { 
-            guid: e.guid,
-            ref: React.createRef() 
-          }
-        } 
-        return acc;
-      }, {});
-
     return {
       ...state,
       themes: themes.map((theme) => new Theme(theme)),
@@ -85,9 +73,7 @@ const reducer = handleActions({
       account,
       data,
       currentTheme,
-      error: null,
-      refs,
-      catalogRef: React.createRef()
+      error: null
     };
   },
 
@@ -123,13 +109,10 @@ const reducer = handleActions({
   },
 
   [CATALOG_FILTER] : (state, { storyGuid } ) => {
-    const catalogRef = state.catalogRef;
-    if (catalogRef) {
-      catalogRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      });
-    }
+    scroller.scrollTo('catalog', {
+      duration: 2000,
+      smooth: 'easeInOutQuint'
+    });
 
     return {
       ...state,
