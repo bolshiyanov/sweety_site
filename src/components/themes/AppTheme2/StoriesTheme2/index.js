@@ -11,6 +11,8 @@ import Button from 'components/common/Button';
 import StorySettings from 'components/Stories/StorySettings';
 import Story from 'components/themes/AppTheme2/StoryTheme2'
 
+import { scrollTo } from 'utils/scrolling';
+import { SCROLL_CATALOG_ID } from 'constants/scrolls';
 import { CATALOG_FILTER } from 'constants/actions';
 
 import './index.scss';
@@ -43,7 +45,9 @@ const StoriesTheme2 = ({ data, profile, isSticky, scrollPosition }) => {
 
   const handleStoryClick = (storyId) => {
     if (catalogItems.filter(e => e.storyGuid === storyId).length > 0) {
-      dispatch({ type: CATALOG_FILTER, storyGuid: storyGuid !== storyId ? storyId : null });
+      scrollTo(SCROLL_CATALOG_ID, () => {
+        dispatch({ type: CATALOG_FILTER, storyGuid: storyGuid !== storyId ? storyId : null });
+      });
     } else {
       setSettingsOpened(storyId);
     }

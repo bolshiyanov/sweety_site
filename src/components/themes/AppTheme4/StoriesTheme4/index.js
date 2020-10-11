@@ -8,6 +8,9 @@ import { useCookies } from 'react-cookie';
 
 import Slider from 'components/common/Slider';
 import Button from 'components/common/Button';
+
+import { scrollTo } from 'utils/scrolling';
+import { SCROLL_CATALOG_ID } from 'constants/scrolls';
 import { CATALOG_FILTER } from 'constants/actions';
 
 import StorySettings from 'components/Stories/StorySettings';
@@ -43,7 +46,9 @@ const StoriesTheme4 = ({ data, profile, scrollPosition }) => {
 
     const handleStoryClick = (storyId) => {
         if (catalogItems.filter(e => e.storyGuid === storyId).length > 0) {
-            dispatch({ type: CATALOG_FILTER, storyGuid: storyGuid !== storyId ? storyId : null });
+            scrollTo(SCROLL_CATALOG_ID, () => {
+                dispatch({ type: CATALOG_FILTER, storyGuid: storyGuid !== storyId ? storyId : null });
+            });
         } else {
             setSettingsOpened(storyId);
         }

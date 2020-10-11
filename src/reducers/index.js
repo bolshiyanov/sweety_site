@@ -1,10 +1,11 @@
 import React from 'react';
 import { handleActions } from 'redux-actions';
+import { takeEvery, put, call } from 'redux-saga/effects';
 
 import Theme from 'utils/theme';
 import Background from 'utils/background';
 import ButtonColor from 'utils/buttonColor';
-import { scroller } from 'react-scroll'
+import { Events, scroller } from 'react-scroll'
 
 import {
   LOADING_ERROR,
@@ -13,6 +14,7 @@ import {
   SET_INSTAGRAM_FEED,
   SET_YOUTUBE_FEED,
   CATALOG_FILTER,
+  CATALOG_SET_STORY,
   CATALOG_ORDER,
   CATALOG_ORDER_CLEAR
 } from 'constants/actions';
@@ -109,16 +111,12 @@ const reducer = handleActions({
   },
 
   [CATALOG_FILTER] : (state, { storyGuid } ) => {
-    scroller.scrollTo('catalog', {
-      duration: 2000,
-      smooth: 'easeInOutQuint'
-    });
-
     return {
       ...state,
       storyGuid
     }
   },
+
 
   [CATALOG_ORDER] : (state, { guid, count, sum, currency }) => {
     return {

@@ -8,6 +8,7 @@ import CatalogItem from './CatalogItem';
 import CatalogItemSettings from './CatalogItemSettings';
 import Slider from 'components/common/Slider';
 import {__} from 'utils/translation';
+import { SCROLL_CATALOG_ID } from 'constants/scrolls';
 
 import './index.scss';
 
@@ -69,7 +70,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
   catalogItems.sort((a, b) => b.order - a.order);
   return (
     <React.Fragment>
-      <div id="catalog">{
+      <div id={SCROLL_CATALOG_ID}>{
         data.filter(checkCatalogItem).map((catalogItem) =>
           <LazyLoadComponent key={catalogItem.guid} scrollPosition={scrollPosition} threshold={10}>
             <CatalogItem

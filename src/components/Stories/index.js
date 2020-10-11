@@ -13,6 +13,8 @@ import Slider from 'components/common/Slider';
 import StorySettings from './StorySettings';
 import Story from './Story';
 
+import { scrollTo } from 'utils/scrolling';
+import { SCROLL_CATALOG_ID } from 'constants/scrolls';
 import { CATALOG_FILTER } from 'constants/actions';
 
 import './index.scss';
@@ -44,7 +46,9 @@ const Stories = ({ data, profile, scrollPosition }) => {
 
   const handleStoryClick = (storyId) => {
     if (catalogItems.filter(e => e.storyGuid === storyId).length > 0) {
-      dispatch({ type: CATALOG_FILTER, storyGuid: storyGuid !== storyId ? storyId : null });
+      scrollTo(SCROLL_CATALOG_ID, () => {
+        dispatch({ type: CATALOG_FILTER, storyGuid: storyGuid !== storyId ? storyId : null });
+      });
     } else {
       setSettingsOpened(storyId);
     }
