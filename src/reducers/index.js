@@ -1,3 +1,4 @@
+import React from 'react';
 import { handleActions } from 'redux-actions';
 
 import Theme from 'utils/theme';
@@ -27,7 +28,9 @@ const initialState = {
   config: {},
   account: {},
   storyGuid : null,
-  order: {}
+  order: {},
+  refs : {},
+  catalogRef: null
 };
 
 const reducer = handleActions({
@@ -62,6 +65,17 @@ const reducer = handleActions({
         currentTheme = new Theme({ ...currentTheme, button: selectedButtonColor });
     }
 
+    const refs = data.catalogItems.filter(e => e.storyGuid)
+      .reduce((acc, e) => {
+        if (!acc[e.storyGuid]) {
+          acc[e.storyGuid] = { 
+            guid: e.guid,
+            ref: React.createRef() 
+          }
+        } 
+        return acc;
+      }, {});
+
     return {
       ...state,
       themes: themes.map((theme) => new Theme(theme)),
@@ -71,7 +85,9 @@ const reducer = handleActions({
       account,
       data,
       currentTheme,
-      error: null
+      error: null,
+      refs,
+      catalogRef: React.createRef()
     };
   },
 
@@ -107,6 +123,14 @@ const reducer = handleActions({
   },
 
   [CATALOG_FILTER] : (state, { storyGuid } ) => {
+    const catalogRef = state.catalogRef;
+    if (catalogRef) {
+      catalogRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+
     return {
       ...state,
       storyGuid

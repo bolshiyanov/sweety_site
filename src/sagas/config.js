@@ -7,11 +7,11 @@ import {
 } from 'constants/actions';
 
 import API from 'utils/api';
-//import mockData from 'mocks/data.json';
+//import loadingData from 'mocks/data.json';
 
 function* loadConfig() {
   try {
-    const mockData = yield call(API.getData, {});
+    const loadingData = yield call(API.getData, {});
     const {
       themes,
       buttonColors,
@@ -19,7 +19,7 @@ function* loadConfig() {
       config,
       account,
       ...data
-    } = mockData;
+    } = loadingData;
 
     yield put({
       type: SET_DATA,

@@ -87,6 +87,7 @@ const CatalogItem = ({
             { 'catalogItem__left__with-image__with-button': image && (price || number) },
             className
           ])}
+          key={guid}
           onClick={onClick}
         >
           {image && (price || number) && (
@@ -155,6 +156,7 @@ const CatalogItem = ({
             className
           ])}
           style={style}
+          key={guid}
           onClick={onClick}
         >
           <div className="catalogItem__title">{text}
@@ -201,6 +203,7 @@ const CatalogItem = ({
             { 'catalogItem__right__with-image__with-button': image && (price || number) },
             className
           ])}
+          key={guid}
           onClick={onClick}
         >
           {image && (price || number) && (
@@ -262,10 +265,6 @@ const CatalogItem = ({
         );
       return catalogItem;
     }
-
-
-
-
   }
 };
 
@@ -280,7 +279,8 @@ CatalogItem.propTypes = {
   number: PropTypes.number,
   outOfStock: PropTypes.bool,
   type: PropTypes.string,
-  technical: PropTypes.bool
+  technical: PropTypes.bool,
+  refObj: PropTypes.object
 };
 
 CatalogItem.defaultProps = {
@@ -293,7 +293,8 @@ CatalogItem.defaultProps = {
   number: undefined,
   outOfStock: false,
   type: undefined,
-  technical: false
+  technical: false,
+  refObj: undefined
 };
 
 export default CatalogItem;

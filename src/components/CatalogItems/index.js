@@ -28,7 +28,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
   const { active } = useSelector((state) => state.config.account);
 
   const { catalogItems } = useSelector((state) => state.config.data);
-  const { storyGuid } = useSelector((state) => state.config);
+  const { storyGuid, catalogRef } = useSelector((state) => state.config);
 
   const closeCatalogItemsSettings = () => {
     setSettingsOpened(null);
@@ -63,13 +63,13 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
   }
 
   if (!inviteId && !active) { 
-  return null;  
+    return null;  
   }
 
   catalogItems.sort((a, b) => b.order - a.order);
   return (
     <React.Fragment>
-      {
+      <div ref={catalogRef}>{
         data.filter(checkCatalogItem).map((catalogItem) =>
           <LazyLoadComponent key={catalogItem.guid} scrollPosition={scrollPosition} threshold={10}>
             <CatalogItem
@@ -78,7 +78,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
               scrollPosition={scrollPosition}
               onClick={catalogItem.price || catalogItem.number ? (() => onOpenCatalogItemSettings(catalogItem.guid)) : null}  />
           </LazyLoadComponent>)
-      }
+      }</div>
       <Slider
         opened={settingsOpened}
         onClose={closeCatalogItemsSettings}
