@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Slider from 'components/common/Slider';
 import Input from 'components/common/Input';
 import Button from 'components/common/Button';
+import Icon from 'components/common/Icon';
 import Textarea from 'components/common/Textarea';
 import './index.scss';
 
@@ -42,14 +43,14 @@ const Order = () => {
 
     useEffect(() => {
         const isPwa = params['pwa'] === "" || params['pwa'];
-        const ignoredParams = [ "pwa", "demo" ];
+        const ignoredParams = ["pwa", "demo"];
         const props = {}
         const vprops = [];
         props[__(isPwa ? "Отправлено из установленного приложения" : "Отправлено с сайта")] = "";
         for (var propName in params) {
             if (propName && !ignoredParams.includes(propName)) {
                 props[propName] = params[propName];
-                vprops.push({ key: propName, value: params[propName]});
+                vprops.push({ key: propName, value: params[propName] });
             }
         }
         setOrderProps(props);
@@ -71,7 +72,7 @@ const Order = () => {
     }
     const orderSum = orderItems.length === 0 ? 0 :
         orderItems.reduce((a, e) => { return { sum: a.sum + e.sum } }).sum;
-        const currency = orderItems[0]?.currency;
+    const currency = orderItems[0]?.currency;
 
     if (orderSum === 0)
         return null;
@@ -141,7 +142,12 @@ const Order = () => {
                     {orderItems.map(orderItem => {
                         const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
                         return (
-                            <div className="order__description" key={orderItem.guid}> &#8470;<b>{catalogItem?.number}</b> | {catalogItem?.text}: &nbsp;
+                            <div className="order__description" key={orderItem.guid}>
+                                <Button className="order-remove" onClick={() => { }}
+                                    isInline noStyled>
+                                    <Icon type="trash" noStyled />
+                                </Button>
+                                &#8470;<b>{catalogItem?.number}</b> | {catalogItem?.text}: &nbsp;
                                 <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
                         );
                     })}
@@ -149,7 +155,7 @@ const Order = () => {
                     <div className="order__total">{__("Итого:")} {orderSum.toFixed(2)} {currency}</div>
 
                     {visualProps.map(e => <div className="order__prop" key={e.key}>{e.key}{e.value ? ": " : ""} {e.value}</div>)}
-                    {visualProps.length > 0 ? <br/> : null}
+                    {visualProps.length > 0 ? <br /> : null}
                     {hasEmail && <React.Fragment>
                         <Input
                             className="order__input"
