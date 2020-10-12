@@ -7,7 +7,7 @@ import Icon from 'components/common/Icon';
 import Textarea from 'components/common/Textarea';
 import './index.scss';
 
-import { CATALOG_ORDER_CLEAR } from 'constants/actions';
+import { CATALOG_ORDER, CATALOG_ORDER_CLEAR } from 'constants/actions';
 import API from 'utils/api';
 import { __ } from 'utils/translation';
 import { getSearchParams } from 'utils/url';
@@ -81,6 +81,16 @@ const Order = () => {
         dispatch({ type: CATALOG_ORDER_CLEAR });
     }
 
+    const handleRemove = (orderItem) => {
+        dispatch({
+            type: CATALOG_ORDER, 
+            guid: orderItem.guid,
+            count: 0,
+            sum: 0,
+            currency
+        });
+    }
+
     const handleSubmit = () => {
         setOrderOpened(false);
 
@@ -143,7 +153,7 @@ const Order = () => {
                         const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
                         return (
                             <div className="order__description" key={orderItem.guid}>
-                                <Button className="order-remove" onClick={() => { }}
+                                <Button className="order-remove" onClick={() => handleRemove(orderItem)}
                                     isInline noStyled>
                                     <Icon type="trash" noStyled />
                                 </Button>
