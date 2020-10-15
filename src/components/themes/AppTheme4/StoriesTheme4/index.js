@@ -76,27 +76,7 @@ const StoriesTheme4 = ({ data, profile, scrollPosition }) => {
             <div className="stories-theme4-box">
 
                 <div className="stories-theme4">
-                    {data.length === 0 && (
-                        <div className="stories-theme4__box">
-                            <div className="stories-theme4__box__didlimiter"></div>
-                            <Button onClick={() => { }}
-                                key="add-button"
-                            >
-                                Меню1
-                        </Button>
-                            <Button onClick={() => { }}
-                                key="add-button"
-                            >
-                                Меню2
-                        </Button>
-                            <Button onClick={() => { }}
-                                key="add-button"
-                            >
-                                Меню3
-                        </Button>
-                            <div className="stories-theme4__box__didlimiter"></div>
-                        </div>
-                    )}
+                    
 
                     {data.length > 0 && (
                         <div className="stories-theme4__box-story">
