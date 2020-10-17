@@ -73,42 +73,7 @@ const StoriesTheme1 = ({ data, profile, scrollPosition }) => {
     return (
         <React.Fragment>
             <div className="stories-theme1" >
-                {data.length === 0 && (
-                    <div className="stories-theme1__box">
-                        <div className="stories-theme1__box__didlimiter"></div>
-                        <ButtonTheme1 className="story-picture-title-theme1"
-                            key="add-button1"
-                            onClick={() => { }}
-                        >
-                            Меню1
-                    </ButtonTheme1>
-                        <ButtonTheme1 className="story-picture-title-theme1"
-                            key="add-button2"
-                            onClick={() => { }}
-                        >
-                            Меню2
-                    </ButtonTheme1>
-                        <ButtonTheme1 className="story-picture-title-theme1"
-                            key="add-button3"
-                            onClick={() => { }}
-                        >
-                            Меню3
-                    </ButtonTheme1>
-                        <ButtonTheme1 className="story-picture-title-theme1"
-                            key="add-button4"
-                            onClick={() => { }}
-                        >
-                            Меню4
-                    </ButtonTheme1>
-                        <ButtonTheme1 className="story-picture-title-theme1"
-                            key="add-button5"
-                            onClick={() => { }}
-                        >
-                            Меню5
-                    </ButtonTheme1>
-                        <div className="stories-theme1__box__didlimiter"></div>
-                    </div>
-                )}
+                
                 <div className="stories-theme1__box">
                     {(theme === "theme1" ? data.slice(0, 5) : data).map((story) =>
                         <Story className='stories-theme1__box__item'

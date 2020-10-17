@@ -75,32 +75,7 @@ const StoriesTheme3 = ({ data, profile, scrollPosition }) => {
             <div className="stories-theme3-box">
 
                 <div className="stories-theme3">
-                    {data.length === 0 && (
-                        <div className="stories-theme3__box">
-                            <div className="stories-theme3__box__didlimiter"></div>
-                            <div className="story-picture-title-theme3"
-                                key="add-button1"
-                            >
-                                Меню1
-                        </div>
-                            <div className="story-picture-title-theme3"
-                                key="add-button2"
-                            >
-                                Меню2
-                        </div>
-                            <div className="story-picture-title-theme3"
-                                key="add-button3"
-                            >
-                                Меню3
-                        </div>
-                            <div className="story-picture-title-theme3"
-                                key="add-button4"
-                            >
-                                Меню4
-                        </div>
-                            <div className="stories-theme3__box__didlimiter"></div>
-                        </div>
-                    )}
+                    
 
                     {data.length > 0 && (
                         <div className="stories-theme3__box-story">

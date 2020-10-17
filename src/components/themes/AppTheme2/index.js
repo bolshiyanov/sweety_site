@@ -13,7 +13,6 @@ import Pwaupbanner from 'components/Pwaupbanner';
 import Order from 'components/Order';
 import Header from 'components/Header';
 import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
-import AvatarTheme3 from 'components/themes/AppTheme3/AvatarTheme3';
 import Messengers from 'components/Messengers';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
@@ -157,7 +156,6 @@ const AppTheme2 = () => {
                 </div>);
               }}
             </Sticky>
-            <AvatarTheme3 />
             <TitleTheme2 />
             <CatalogItems data={data.catalogItems} profile={profile} />
           </StickyContainer>
