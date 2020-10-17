@@ -429,7 +429,7 @@
         "de": "Gesamt:",
         "it": "Totale:"
     }, {
-        "code": "order.phone",
+        "code": "order.setphone",
         "en": "Write your phone",
         "ru": "Напишите свой телефон",
         "es": "Escribe tu teléfono",
@@ -437,7 +437,39 @@
         "de": "Schreiben Sie Ihr Telefon",
         "it": "Scrivi il tuo telefono"
     }, {
-        "code": "order.comment",
+        "code": "order.setname",
+        "en": "Write your name",
+        "ru": "Напишите своё имя",
+        "es": "Escribe tu nombre",
+        "fr": "Écrivez votre nom",
+        "de": "Schreiben deinen Namen",
+        "it": "Scrivi il tuo nome"
+    }, {
+        "code": "order.name",
+        "en": "Name",
+        "ru": "Имя",
+        "es": "Nombre",
+        "fr": "Nom",
+        "de": "Namen",
+        "it": "Nome"
+    }, {
+        "code": "order.setaddress",
+        "en": "Write your address",
+        "ru": "Напишите свой адрес",
+        "es": "Escribe tu dirección",
+        "fr": "Écrivez votre adresse",
+        "de": "Schreib deine Adresse",
+        "it": "Scrivi il tuo indirizzo"
+    }, {
+        "code": "order.address",
+        "en": "Address",
+        "ru": "Адрес",
+        "es": "Dirección",
+        "fr": "Adresse",
+        "de": "Adresse",
+        "it": "Indirizzo"
+    }, {
+        "code": "order.setcomment",
         "en": "Write in this field a comment to the order, indicate an alternative method of contact or ask your question. FILLING IS NOT NECESSARY",
         "ru": "Напишите в этом поле комментарий к заказу, укажите альтернативный способ связи или задайте свой вопрос. ЗАПОЛНЕНИЕ НЕ ОБЯЗАТЕЛЬНО",
         "es": "Escriba en este campo un comentario al pedido, indique un método alternativo de contacto o haga su pregunta. EL LLENADO NO ES NECESARIO",

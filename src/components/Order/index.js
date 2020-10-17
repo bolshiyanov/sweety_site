@@ -16,6 +16,8 @@ import { parse } from 'superagent';
 const Order = () => {
     const [orderOpened, setOrderOpened] = useState(false);
     const [phone, setPhone] = useState("");
+    const [name, setName] = useState("");
+    const [address, setAddress] = useState("");
     const [comment, setComment] = useState("");
     const [sent, setSent] = useState(false);
     const { order } = useSelector((state) => state.config);
@@ -29,6 +31,7 @@ const Order = () => {
     const emailMessenger = messengers.filter(e => e.title === "Email")[0];
     const hasEmail = emailMessenger?.value;
     const params = getSearchParams(window.location.search);
+    const { lang } = useSelector((state) => state.config.config);
 
     useEffect(() => {
         timer && timer > 0 && setTimeout(() => {
@@ -46,7 +49,7 @@ const Order = () => {
         const ignoredParams = ["pwa", "demo"];
         const props = {}
         const vprops = [];
-        props[__(isPwa ? "Отправлено из установленного приложения" : "Отправлено с сайта")] = "";
+        props[__(isPwa ? "Отправлено из установленного приложения" : "Отправлено с сайта", lang)] = "";
         for (var propName in params) {
             if (propName && !ignoredParams.includes(propName)) {
                 props[propName] = params[propName];
@@ -93,7 +96,14 @@ const Order = () => {
 
     const handleSubmit = () => {
         setOrderOpened(false);
-
+        let props = JSON.parse(JSON.stringify(orderProps));
+        if (name) {
+            props[__("Имя", lang)] = name;
+        }
+        if (address) {
+            props[__("Адрес", lang)] = address;
+        }
+  
         API.sendOrder({
             items: orderItems.map(orderItem => {
                 const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
@@ -173,6 +183,20 @@ const Order = () => {
                             type="text"
                             placeholder={__("Напишите свой телефон")}
                             onChange={(value) => setPhone(value)}
+                        />
+                        <Input
+                            className="order__input"
+                            value={name}
+                            type="text"
+                            placeholder={__("Напишите своё имя")}
+                            onChange={(value) => setName(value)}
+                        />
+                        <Input
+                            className="order__input"
+                            value={address}
+                            type="text"
+                            placeholder={__("Напишите свой адрес")}
+                            onChange={(value) => setAddress(value)}
                         />
                         <Textarea
                             className="order__input"

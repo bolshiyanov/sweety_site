@@ -120,13 +120,13 @@ const App = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <html lang="Ru" amp />
+        <html lang={data?.config?.lang} amp />
         <title>{data.title || __("Конструктор мобильных приложений Sweety")}</title>
         <meta name="description" content={data.description || __("Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ")} />
         <link rel="canonical" href={data.url} />
         <meta property="og:site_name" content={data.name || __("Конструктор мобильных приложений Sweety")} />
         <meta property="og:url" content={data.url} />
-        <meta property="og:locale" content={data.lang} />
+        <meta property="og:locale" content={data?.config?.lang} />
         <meta property="og:type:profile:username" content={data.name || __("Конструктор мобильных приложений Sweety")} />
         <meta property="og:type:article:published_time" content={data.paymentData} />
         <meta property="og:image" content={data.title || __("Конструктор мобильных приложений Sweety")} />

@@ -4,7 +4,7 @@ let lang = null;
 
 const supportedLanguages = [ "en", "ru", "es", "fr", "de", "it" ];
 
-export const __ = (text) => {
+export const __ = (text, language) => {
     text = text.toLowerCase();
     const defaultLang = getDefaultLanguage();
 
