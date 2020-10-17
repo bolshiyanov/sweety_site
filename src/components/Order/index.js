@@ -49,7 +49,7 @@ const Order = () => {
         const ignoredParams = ["pwa", "demo"];
         const props = {}
         const vprops = [];
-        props[__(isPwa ? "Отправлено из установленного приложения" : "Отправлено с сайта", lang)] = "";
+        props[__(isPwa ? "Отправлено из установленного приложения" : "Отправлено с сайта", lang ?? "en")] = "";
         for (var propName in params) {
             if (propName && !ignoredParams.includes(propName)) {
                 props[propName] = params[propName];
@@ -98,10 +98,10 @@ const Order = () => {
         setOrderOpened(false);
         let props = JSON.parse(JSON.stringify(orderProps));
         if (name) {
-            props[__("Имя", lang)] = name;
+            props[__("Имя", lang ?? "en")] = name;
         }
         if (address) {
-            props[__("Адрес", lang)] = address;
+            props[__("Адрес", lang ?? "en")] = address;
         }
   
         API.sendOrder({
