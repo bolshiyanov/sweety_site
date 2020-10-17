@@ -10,10 +10,10 @@ export const __ = (text, language) => {
 
     const items = translates.filter(e => e.code.toLowerCase() === text || e.ru.toLowerCase() === text || e.en.toLowerCase() === text);
     if (items.length === 0) {
-        return "{{" + text + ":" + (lang ?? defaultLang) + "}}";
+        return "{{" + text + ":" + ((language ?? lang) ?? defaultLang) + "}}";
     }
 
-    return items[0][lang ?? defaultLang] ?? items[0].en;
+    return items[0][(language ?? lang) ?? defaultLang] ?? items[0].en;
 };
 
 export const setLocalizationLang = (value) => {
