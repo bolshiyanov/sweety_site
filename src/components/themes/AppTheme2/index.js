@@ -143,7 +143,7 @@ const AppTheme2 = () => {
             avatarPreview={data.avatarPreview}
             profile={profile}
           />
-          <StickyContainer>
+          {data.stories && data.stories.length > 0 && <StickyContainer>
             <Sticky>
               {({
                   style,
@@ -158,7 +158,7 @@ const AppTheme2 = () => {
             </Sticky>
             <TitleTheme2 />
             <CatalogItems data={data.catalogItems} profile={profile} />
-          </StickyContainer>
+          </StickyContainer>}
           <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
           <Messengers />

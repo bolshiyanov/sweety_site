@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams } from 'react-router-dom';
 import { StickyContainer, Sticky } from 'react-sticky';
 import CookieBanner from 'react-cookie-banner';
+
 import StartPwaInstallIos from 'components/StartPwaInstallIos';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 
@@ -141,7 +142,7 @@ const AppTheme7 = () => {
           <HeaderTheme6 />
           <AvatarTheme3 />
           <TitleTheme7 />
-          <StickyContainer>
+          {data.stories && data.stories.length > 0 && <StickyContainer>
             <Sticky>
               {({
                   style,
@@ -155,7 +156,7 @@ const AppTheme7 = () => {
               }}
             </Sticky>
             <CatalogItems data={data.catalogItems} profile={profile} />
-          </StickyContainer>
+          </StickyContainer>}
           <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
           <Messengers />

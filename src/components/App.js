@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams } from 'react-router-dom';
 import CookieBanner from 'react-cookie-banner';
+import { StickyContainer, Sticky } from 'react-sticky';
+
 import StartPwaInstallIos from 'components/StartPwaInstallIos';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 import { getPlatform } from "components/PwaInstall/platforms";
@@ -181,10 +183,23 @@ const App = () => {
                 avatarPreview={data.avatarPreview}
                 profile={profile}
               />
-              <Stories data={data.stories} profile={profile} />
-              <Title />
-              <Messengers />
-              <CatalogItems data={data.catalogItems} profile={profile} />
+              {data.stories && data.stories.length > 0 && <StickyContainer>
+                <Sticky>
+                  {({
+                      style,
+                      isSticky,
+                      distanceFromBottom 
+                  }) => {
+                    const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
+                    return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
+                      <Stories data={data.stories} profile={profile} />
+                    </div>);
+                  }}
+                </Sticky>
+                <Title />
+                <Messengers />
+                <CatalogItems data={data.catalogItems} profile={profile} />
+              </StickyContainer>}
               <Blocks data={data.blocks} />
               {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
               <Rss />
