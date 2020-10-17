@@ -120,7 +120,7 @@ const Order = () => {
             currency: currency,
             mobile: phone,
             comment,
-            props: orderProps
+            props
         }).then(() => {
             setTimer(30);
             setSent(true);
