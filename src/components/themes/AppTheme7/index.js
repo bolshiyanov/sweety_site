@@ -108,6 +108,8 @@ const AppTheme7 = () => {
   if (!isDemo && supported() && !isInstalled())
     return <StartPwaInstallIos profile={profile} />;
 
+  const needSticky = (data.stories?.length ?? 0) > 0 && (data.catalogItems?.length ?? 0) > 0;
+
   return (
     <React.Fragment>
       <Helmet>
@@ -142,7 +144,7 @@ const AppTheme7 = () => {
           <HeaderTheme6 />
           <AvatarTheme3 />
           <TitleTheme7 />
-          {data.stories && data.stories.length > 0 && <StickyContainer>
+          {needSticky && <StickyContainer>
             <Sticky>
               {({
                   style,
@@ -157,6 +159,10 @@ const AppTheme7 = () => {
             </Sticky>
             <CatalogItems data={data.catalogItems} profile={profile} />
           </StickyContainer>}
+          {!needSticky && <>
+            <StoriesTheme2 data={data.stories} />
+            <CatalogItems data={data.catalogItems} profile={profile} />
+          </>}
           <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
           <Messengers />
