@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-
-import { Helmet } from 'react-helmet';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams } from 'react-router-dom';
 import CookieBanner from 'react-cookie-banner';
@@ -24,7 +22,7 @@ import Admin from 'components/Admin';
 import Landing from 'components/Landing';
 import Rss from 'components/Rss';
 import Start from 'components/Start';
-import Stories from 'components/Stories';
+import Stories from 'components/Stories'; 
 import PwaInstall from "components/PwaInstall";
 import PwaInstallIOs from "components/PwaInstallIOs";
 import Pwaupbanner from 'components/Pwaupbanner';
@@ -123,30 +121,7 @@ const App = () => {
 
   return (
     <React.Fragment>
-      <Helmet>
-        <html lang={data?.config?.lang} amp />
-        <title>{data.title || __("Конструктор мобильных приложений Sweety")}</title>
-        <meta name="description" content={data.description || __("Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ")} />
-        <link rel="canonical" href={data.url} />
-        <meta property="og:site_name" content={data.name || __("Конструктор мобильных приложений Sweety")} />
-        <meta property="og:url" content={data.url} />
-        <meta property="og:locale" content={data?.config?.lang} />
-        <meta property="og:type:profile:username" content={data.name || __("Конструктор мобильных приложений Sweety")} />
-        <meta property="og:type:article:published_time" content={data.paymentData} />
-        <meta property="og:image" content={data.title || __("Конструктор мобильных приложений Sweety")} />
-        <meta property="og:image:secure_url" content={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/'}logo512.png`} />
-        <meta property="og:image:width" content="512" />
-        <meta property="og:image:height" content="512" />
-        <meta property="og:title" content={data.title || __("Конструктор мобильных приложений Sweety")} />
-        <meta property="og:description" content={data.description || __("Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ")} />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content={data.url} />
-        <meta name="twitter:title" content={data.title || __("Конструктор мобильных приложений Sweety")} />
-        <meta name="twitter:description" content={data.description || __("Мобильное приложение для IOS, Android или Windows создай сам в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, всего за 9999 рублей навсегда, чтобы увеличить количество повторных обращений ваших клиентов до 300%. БОНУС: 4 часа выделеннной техподдержки,  для тех кому нужно мобильное приложение ПОД КЛЮЧ")} />
-        <meta name="twitter:creator" content={data.name || __("Конструктор мобильных приложений Sweety")} />
-        <meta name="twitter:image:src" content={`${data.url.replace('https://sweety.link/', 'https://sweety.link/content/img/')}${data.url && data.url[data.url.length - 1] === '/' ? '' : '/'}logo512.png`} />
-        <meta name="twitter:domain" content={data.url} />
-      </Helmet>
+      
 
       {nameTheme === "theme1" && (
         <AppTheme1 />
