@@ -167,7 +167,7 @@ const Order = () => {
                                     isInline noStyled>
                                     <Icon type="trash" noStyled />
                                 </Button>
-                                &#8470;<b>{catalogItem?.number}</b> | {catalogItem?.text}: &nbsp;
+                                {catalogItem?.number ? <>&#8470;<b>{catalogItem?.number}</b> | </> : null}{catalogItem?.text}: &nbsp;
                                 <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
                         );
                     })}
