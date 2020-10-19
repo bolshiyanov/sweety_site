@@ -4,7 +4,8 @@ import copy from 'clipboard-copy';
 import { isIDevice } from 'utils/browser';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 import Slider from 'components/common/Slider';
-
+import { IonIcon } from '@ionic/react';
+import { logoPwa, logoApple, logoAndroid, logoWindows } from 'ionicons/icons';
 import {__} from 'utils/translation';
 
 import './index.scss';
@@ -22,7 +23,7 @@ const Footer = () => {
     setUrlCopied(true);
     setTimeout(() => setUrlCopied(false), 2000); 
   }
-
+  const startUrl = 'https://sweety.link'
   const onCopy1 = () => {
     copy("https://sweety.link");
     setUrlCopied1(true);
@@ -31,7 +32,7 @@ const Footer = () => {
 
   return (
     <footer>
-      {active ? <br /> : 
+      {/* {active ? <br /> : 
       (supported() && !isInstalled()) ? <a href={url} target="_blank" className="textfooter">{__("Создай приложение как у меня")}</a> :
       <a onClick={() => setOpened(true)} className="textfooter">{__("Создай приложение как у меня")}</a>}
       <div className="textlogofooter"></div>
@@ -58,7 +59,15 @@ const Footer = () => {
 
         <div className="footercall">{__("Нажмите, чтобы скопировать")}</div>
         <div className="footerempty"></div>
-      </Slider>
+      </Slider>  */}
+      
+      <div className="footer-brends-box-items">
+          <div className="brends-items"><IonIcon className="footer-brends-box-items-icon-icon" icon={logoPwa} /></div>
+          <div className="brends-items"><IonIcon size="small" icon={logoApple} /></div>
+          <div className="brends-items"><IonIcon size="small" icon={logoAndroid} /></div>
+          <div className="brends-items"><IonIcon size="amall" icon={logoWindows} /></div>
+        </div>
+        <a href={startUrl} className="textlogofooter">&reg;SWEETY.LINK&nbsp;2015-2020</a>
     </footer>
   );
 };
