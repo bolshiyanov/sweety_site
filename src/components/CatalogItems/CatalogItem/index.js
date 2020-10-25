@@ -17,24 +17,40 @@ import {
 
 import { CATALOG_ORDER } from 'constants/actions';
 import { parse } from 'superagent';
+import { ___ } from 'utils/translation';
 
-const CatalogItem = ({
-  guid,
-  animation,
-  image,
-  text,
-  textEn,
-  price,
-  currency,
-  number,
-  outOfStock,
-  type,
-  onClick,
-  className,
-  technical
-}) => {
+const CatalogItem = (props) => {
+  const {
+    guid,
+    animation,
+    image,
+    text,
+    textEn,
+    textRu,
+    textEs,
+    textFr,
+    textDe,
+    textIt,
+    textAlt,
+    textAltEn,
+    textAltRu,
+    textAltEs,
+    textAltFr,
+    textAltDe,
+    textAltIt,
+    price,
+    currency,
+    number,
+    outOfStock,
+    type,
+    onClick,
+    className,
+    technical
+  } = props;
   const dispatch = useDispatch();
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
+  const textView = ___(props, "text");
+  const textAltView = ___(props, "textAlt");
 
   const handlePlus = (e) => {
     e.stopPropagation();
@@ -93,21 +109,21 @@ const CatalogItem = ({
           {image && (price || number) && (
             <img src={image} alt={text} />
           )}
-          {(!price && !number) && text && (
+          {(!price && !number) && textView && (
             <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem-left-title-without-button">{text}</div>
+              <div className="catalogItem-left-title-without-button">{textView}</div>
             </div>
           )}
-          {(text && !textEn) && (price || number) && (
+          {(textView && !textAltView) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem__title">{text}</div>
+              <div className="catalogItem__title">{textView}</div>
             </div>
           )}
-          {(text && textEn) && (price || number) && (
+          {(textView && textAltView) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
-              <div className="catalogItem__title">{text}</div>
-              <div className="catalogItem-text-en">{textEn}</div>
+              <div className="catalogItem__title">{textView}</div>
+              <div className="catalogItem-text-en">{textAltView}</div>
             </div>
           )}
 
@@ -137,7 +153,6 @@ const CatalogItem = ({
       return catalogItem;
     }
 
-
     case CATALOG_CENTER: {
       const style = {};
       if (image)
@@ -152,14 +167,14 @@ const CatalogItem = ({
             { 'catalogItem__center__with-button': (price || number) },
             { 'catalogItem__center__with-image__with-button': image && (price || number) },
             { 'catalogItem__center__with-image__without-button': image && (!price & !number) },
-            { 'catalogItem-withimage-wihout-title': image && (!price & !number & !text) },
+            { 'catalogItem-withimage-wihout-title': image && (!price & !number & !textView) },
             className
           ])}
           style={style}
           key={guid}
           onClick={onClick}
         >
-          <div className="catalogItem__title">{text}
+          <div className="catalogItem__title">{textView}
             {(price || number) && (
               <div className="catalogItem-preorder-flex-column-center">
                 <div className="catalogItem-preorder-flex-row">
@@ -207,22 +222,16 @@ const CatalogItem = ({
           onClick={onClick}
         >
           {image && (price || number) && (
-            <img src={image} alt={text} />
+            <img src={image} alt={textView} />
           )}
-          {(!price && !number) && text && (
-            <div className="catalogItem-right-title-without-button">{text}</div>
+          {(!price && !number) && textView && (
+            <div className="catalogItem-right-title-without-button">{textView}</div>
           )}
-          {(text && textEn) && (price || number) && (
+          {(textView) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
 
-              <div className="catalogItem__title">{text}</div>
-              <div className="catalogItem-text-en">{textEn}</div>
-            </div>
-          )}
-          {(text && !textEn) && (price || number) && (
-            <div className="catalogItem-preorder-flex-column">
-
-              <div className="catalogItem__title">{text}</div>
+              <div className="catalogItem__title">{textView}</div>
+              {textAltView && <div className="catalogItem-text-en">{textAltView}</div>}
             </div>
           )}
 
