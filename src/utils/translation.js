@@ -16,7 +16,7 @@ export const __ = (text, language) => {
     return items[0][(language ?? lang) ?? defaultLang] ?? items[0].en;
 };
 
-export const ___ = (props, propName, language) => {
+export const translatedProperty = (props, propName, language) => {
     const defaultLang = (language ?? lang) ?? getDefaultLanguage();
     const localizedPropName = propName + defaultLang[0].toUpperCase() + defaultLang[1];
     let result = props[localizedPropName];
