@@ -85,13 +85,13 @@ const StoriesTheme2 = ({ data, profile, isSticky, scrollPosition }) => {
               scrollPosition={scrollPosition} />)}
         </div>
       </div>
-      {settingsOpened && <Slider
+      <Slider
         opened={settingsOpened}
         onClose={closeStoriesSettings}
         onSubmit={closeStoriesSettings}
       >
         <StorySettings {...storyData} />
-      </Slider>}
+      </Slider>
 
     </React.Fragment>
   );

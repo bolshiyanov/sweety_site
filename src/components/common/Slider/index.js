@@ -18,7 +18,8 @@ const Slider = ({
   submitTitle,
   children
 }) => (
-  <div className={classnames(['slider-container', { opened }])}>
+<>
+  {opened && <div className={classnames(['slider-container', { opened }])}>
     <div className="slider-background" onClick={onClose} />
     <div className="slider">
       <div className="slider__header">
@@ -46,8 +47,8 @@ const Slider = ({
         )}
       </div>
     </div>
-  </div>
-);
+  </div>}
+</>);
 
 Slider.propTypes = {
   opened: PropTypes.bool,
