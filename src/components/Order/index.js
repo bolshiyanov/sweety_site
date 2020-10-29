@@ -12,6 +12,7 @@ import API from 'utils/api';
 import { __ } from 'utils/translation';
 import { getSearchParams } from 'utils/url';
 import { parse } from 'superagent';
+import { translatedProperty } from 'utils/translation';
 
 const Order = () => {
     const [orderOpened, setOrderOpened] = useState(false);
@@ -58,7 +59,6 @@ const Order = () => {
         }
         setOrderProps(props);
         setVisualProps(vprops);
-        console.log(vprops);
     }, []);
 
 
@@ -109,7 +109,7 @@ const Order = () => {
                 const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
                 return {
                     number: catalogItem?.number,
-                    text: catalogItem?.text,
+                    text: translatedProperty(catalogItem, "text", lang ?? "en"),
                     price: catalogItem?.price ? parseFloat(catalogItem?.price) : null,
                     count: orderItem.count,
                     sum: parseFloat(orderItem.sum.toFixed(2)),
