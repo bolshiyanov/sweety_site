@@ -30,6 +30,7 @@ import logoSweety from 'images/sweetylogo.png';
 
 import 'swiper/swiper.scss';
 import { truncate } from 'lodash';
+import history from 'utils/history';
 
 const Landing = () => {
   const [_, setCookie] = useCookies();
@@ -46,7 +47,9 @@ const Landing = () => {
     setStartOpened(true);
   }, [setStartOpened]);
 
-
+  useEffect(() => {
+    history.push('/es');
+  }, []);
 
   useEffect(() => {
     if (swiper) {
