@@ -358,7 +358,9 @@ import {
   faArrowCircleRight,
   faUniversity,
   faPlusCircle,
-  faMinusCircle
+  faMinusCircle,
+  faStop,
+  faPause
 } from '@fortawesome/free-solid-svg-icons';
 import {
   fa500px,
@@ -1305,6 +1307,7 @@ const icons = {
   paperPlane: faPaperPlane,
   paperclip: faPaperclip,
   patreon: faPatreon,
+  pause: faPause,
   pauseCircle: faPauseCircle,
   pen:faPen,
   pennyArcade: faPennyArcade,
@@ -1403,6 +1406,7 @@ const icons = {
   steamSquare: faSteamSquare,
   steamSymbol: faSteamSymbol,
   stickerMule: faStickerMule,
+  stop: faStop,
   strava: faStrava,
   stripe: faStripe,
   stripeS: faStripeS,

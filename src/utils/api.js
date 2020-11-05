@@ -1,8 +1,12 @@
 import superagent from 'superagent';
 import { getSearchString } from 'utils/url';
 import { getDefaultLanguage } from 'utils/translation';
+import { openDB } from 'idb';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong!';
+const DATABASE_NAME = "Sweety";
+const DATABASE_VERSION = 1;
+const CONTENT_STORE = "content";
 
 const host = 'https://api.sweety.link';
 const adminSite = "https://dash.sweety.link";
@@ -57,9 +61,18 @@ const handleError = (e) => {
   }
 };
 
+const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
+  upgrade(db, oldVersion, newVersion, transaction) {
+    switch (oldVersion) {
+      case 0:
+        db.createObjectStore(CONTENT_STORE);
+      case 1:
+    }
+  }
+});
+
 const requests = {
   get: (url, params) => superagent.get(`${host}${url}`).query(params)
-    .retry(100)
     .catch(handleError)
     .then(responseBody),
   post: (url, params) => superagent.post(`${host}${url}`).send(params)
@@ -77,7 +90,17 @@ const API = {
   updateProfile: (value) => {
     setProfile(value);
   },
-  getData: () => requests.get(`/api/profiles/pages/public/${profile}`),
+  getData: () => {
+    return superagent.get(`${host}/api/profiles/pages/public/${profile}`).query()
+      .catch(async (e) => {
+        return (await dbPromise).get(CONTENT_STORE, profile);
+      })
+      .then(async (res) => {
+        var result = responseBody(res);
+        (await dbPromise).put(CONTENT_STORE, result, profile);
+        return result;
+      });
+  },
   register: (data) => requests.post('/api/users/register', { ...data, lang: getDefaultLanguage() }),
   sendOrder: (data) => requests.post(`/api/profiles/${profile}/preorders`, data),
   getInstagramFeed: (account) => {

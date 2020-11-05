@@ -1,4 +1,5 @@
 import React from 'react';
+import useSound from 'use-sound';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -24,6 +25,7 @@ const CatalogItem = (props) => {
     guid,
     animation,
     image,
+    audio,
     price,
     currency,
     number,
@@ -37,6 +39,7 @@ const CatalogItem = (props) => {
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
   const text = translatedProperty(props, "text");
   const textAlt = translatedProperty(props, "textAlt");
+  const [play, { stop, pause, isPlaying }] = useSound(audio);
 
   const handlePlus = (e) => {
     e.stopPropagation();
@@ -72,6 +75,14 @@ const CatalogItem = (props) => {
     }
   }
 
+  const handlePlay = () => {
+    if (!isPlaying) {
+      play();
+    } else {
+      pause();
+    }
+  }
+
   const sumValue = count !== 0 ? sum.toFixed(2) :
     parseFloat(price).toFixed(2);
 
@@ -90,7 +101,7 @@ const CatalogItem = (props) => {
             className
           ])}
           key={guid}
-          onClick={onClick}
+          onClick={audio ? handlePlay : onClick}
         >
           {image && (price || number) && (
             <img src={image} alt={text} />
@@ -113,7 +124,7 @@ const CatalogItem = (props) => {
             </div>
           )}
 
-          {(price || number) && (
+          {(price || number) && !audio && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
@@ -125,10 +136,19 @@ const CatalogItem = (props) => {
               {!price && <div className="catalogItem-price-empty"></div>}
             </div>
           )}
+
+          {audio && (
+            <div className="catalogItem-preorder-flex-column">
+              <div className="catalogItem-price-empty"></div>
+              <div className="catalogItem-preorder-flex-row">
+                <Button isInline noStyled onClick={handlePlay} ><Icon type={!isPlaying ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
+              </div>
+            </div>
+          )}
         </div>
       );
 
-      if (price || number)
+      if (price || number || audio)
         return (
           <div >
             <Button className="button-in-catalogItem-left " isPulse={animation} technical={technical}>
@@ -180,7 +200,6 @@ const CatalogItem = (props) => {
           </div>
         </div>
       );
-
 
       if (price || number)
         return (
