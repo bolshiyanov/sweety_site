@@ -94,11 +94,14 @@ function* loadConfig({ profile }) {
       data
     });
 
-    yield put({
-      type: PRELOAD_DATA,
-      profile,
-      contentUrls: [...new Set(tracks.filter(t => !keys.includes(contentKey(profile, t))))]
-    });
+    const preloading = [...new Set(tracks.filter(t => !keys.includes(contentKey(profile, t))))];
+    if (preloading.length > 0) {
+      yield put({
+        type: PRELOAD_DATA,
+        profile,
+        contentUrls: preloading
+      });
+    }
   }
   catch (error) {
     yield put({ type: LOADING_ERROR, error });
@@ -130,7 +133,9 @@ function* preloadData({ profile, contentUrls}) {
     }
   });
 
-  yield put({ type: CACHE_DATA, cached });
+  if (cached.length > 0) {
+    yield put({ type: CACHE_DATA, cached });
+  }
 }
 
 export default function* config() {
