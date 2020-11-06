@@ -164,7 +164,7 @@ const CatalogItem = (props) => {
             className
           ])}
           key={guid}
-          onClick={() => { audio ? handleAudioClick() : onClick() }}
+          onClick={(e) => { audio ? handleAudioClick(e) : onClick() }}
         >
           {image && (price || number) && (
             <img src={image} alt={text} />
