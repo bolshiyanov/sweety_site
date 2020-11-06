@@ -43,9 +43,9 @@ const CatalogItem = (props) => {
   const textAlt = translatedProperty(props, "textAlt");
   let [play, { stop, pause, isPlaying }] = useSound(cachedAudio);
 
-  useEffect(() => {
+  useEffect(async () => {
     if (audio) {
-      setCachedAudio(API.getCachedContent(audio) ?? audio);
+      setCachedAudio((await API.getCachedContent(audio)) ?? audio);
     }
   }, []);
 
