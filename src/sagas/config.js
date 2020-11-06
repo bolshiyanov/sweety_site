@@ -24,11 +24,9 @@ function dbPromise() {
       switch (oldVersion) {
         case 0:
           db.createObjectStore(PROFILE_STORE);
-          db.createObjectStore(CONTENT_STORE);
         case 1:
           db.createObjectStore(CONTENT_STORE);
         case 2:
-          db.clear(CONTENT_STORE);
       }
     }
   });
