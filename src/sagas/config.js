@@ -148,17 +148,21 @@ function* preloadByUrl(url) {
 
 function* preloadData({ profile, contentUrls}) {
   const cachingBase64 = yield all(contentUrls.map(url => call(preloadByUrl, url)));
+  console.log("caches: " + JSON.stringify(cachingBase64));
   const db = yield call(dbPromise, {});
 
   const cached = {};
+  const putCalls = [];
   contentUrls.forEach((url, i) => {
     const cachedBase64 = cachingBase64[i];
     if (cachedBase64) {
       cached[url] = cachedBase64;
-      call(dbPut, db, CONTENT_STORE, cachedBase64.replace("data:video", "data:audio"), contentKey(profile, url));
+      putCalls.push(call(dbPut, db, CONTENT_STORE, cachedBase64.replace("data:video", "data:audio"), contentKey(profile, url)));
     }
   });
+  yield all(putCalls);
 
+  console.log("cached: " + JSON.stringify(cached));
   if (Object.keys(cached).length > 0) {
     yield put({ type: CACHE_DATA, cached });
   }
