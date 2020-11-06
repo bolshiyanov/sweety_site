@@ -21,8 +21,17 @@ const CONTENT_STORE = "content";
 function dbPromise() {
   return openDB(DATABASE_NAME, DATABASE_VERSION, {
     upgrade(db, oldVersion, newVersion, transaction) {
-      db.createObjectStore(PROFILE_STORE);
-      db.createObjectStore(CONTENT_STORE);
+      if (oldVersion < newVersion) {
+        try {
+          db.createObjectStore(PROFILE_STORE);
+        } catch {
+        }
+
+        try {
+          db.createObjectStore(CONTENT_STORE);
+        } catch {
+        }
+      }
     }
   });
 }
