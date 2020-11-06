@@ -54,11 +54,15 @@ function* loadConfig({ profile }) {
   try {
     let loadingData = null;
     const db = yield call(dbPromise, {});
-    try {
-      loadingData = yield call(API.getData, {});
-      yield call(dbPut, db, PROFILE_STORE, loadingData, profile);
-    } catch (error) {
-      loadingData = yield call(dbGet, db, PROFILE_STORE, profile);
+    let loading = 0;
+    while (!loadingData && loading < 100) {
+      try {
+        loadingData = yield call(API.getData, {});
+        yield call(dbPut, db, PROFILE_STORE, loadingData, profile);
+      } catch (error) {
+        loadingData = yield call(dbGet, db, PROFILE_STORE, profile);
+      }
+      loading++;
     }
     const {
       themes,
