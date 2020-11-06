@@ -79,12 +79,11 @@ function* loadConfig({ profile }) {
     }
     let loading = 0;
     while (!loadingData && loading < 10) {
-      try {
-        loadingData = yield call(API.getData, {});
+      loadingData = yield call(API.getData, {});
+      if (loadingData != null) {
         yield call(dbPut, db, PROFILE_STORE, loadingData, profile);
-      } catch (error) {
+      } else {
         loadingData = yield call(dbGet, db, PROFILE_STORE, profile);
-        console.log("Profile from DB: " + JSON.stringify(loadingData));
       }
       loading++;
     }
