@@ -229,6 +229,9 @@ const API = {
         xhr.onload = function() {
           resolve(xhr.response);
         };
+        xhr.onerror = function () {
+          console.log(`An error occurred during download ${url}`);
+        };
         xhr.open('GET', url);
         xhr.responseType = 'blob';
         xhr.send();
