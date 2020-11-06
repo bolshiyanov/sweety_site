@@ -7,7 +7,7 @@ const SOMETHING_WENT_WRONG = 'Something went wrong!';
 const DATABASE_NAME = "Sweety";
 const DATABASE_VERSION = 2;
 const PROFILE_STORE = "profile";
-let CONTENT_STORE = "content";
+const CONTENT_STORE = "content";
 
 const host = 'https://api.sweety.link';
 const adminSite = "https://dash.sweety.link";
@@ -16,7 +16,6 @@ let profile = null;
 
 const setProfile = (newProfile) => {
   profile = newProfile;
-  //CONTENT_STORE = `content_${profile}`;
 };
   
 export const getInvite = () => {
@@ -105,17 +104,18 @@ const API = {
         const keys = await db.getAllKeys(CONTENT_STORE);
         for (let i = 0; i < tracks.length; i++) {
           const a = tracks[i];
-          if (!keys.includes(a)) {
+          const key = `${profile}:${a}`;
+          if (!keys.includes(key)) {
             API.toDataUrl(a).then(base64 => {
-              db.put(CONTENT_STORE, base64, a);
+              db.put(CONTENT_STORE, base64, key);
             });
-          } /*else {
+          } else {
             result.catalogItems.filter(c => c.audio === a).forEach(async e => {
-              e.audio = await db.get(CONTENT_STORE, a);
+              e.audio = await db.get(CONTENT_STORE, key);
             })
-          }*/
+          }
         }
-        keys.filter(k => !tracks.includes(k)).forEach(k => {
+        keys.filter(k => k.startsWith(profile) && !tracks.includes(k.replace(`${profile}:`, ""))).forEach(k => {
           db.delete(CONTENT_STORE, k);
         });
         db.put(PROFILE_STORE, result, profile);
