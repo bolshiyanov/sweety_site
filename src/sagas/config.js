@@ -66,7 +66,13 @@ function contentKey(profile, key) {
 function* loadConfig({ profile }) {
   try {
     let loadingData = null;
-    const db = yield call(dbPromise, {});
+    let db = null;
+    try {
+      db = yield call(dbPromise, {});
+    }
+    catch (error) {
+      console.warn(error);
+    }
     let loading = 0;
     while (!loadingData && loading < 100) {
       try {
