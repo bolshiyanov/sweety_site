@@ -136,7 +136,7 @@ function* loadConfig({ profile }) {
       });
 
       const preloadingAvatars = [];
-      if (data.avatar && keys.includes(contentKey(profile, data.avatar))) {
+      /*if (data.avatar && keys.includes(contentKey(profile, data.avatar))) {
         data.avatar = yield call(dbGet, db, CONTENT_STORE, contentKey(profile, data.avatar));
       } else if (data.avatar) {
         preloadingAvatars.push({ url: data.avatar, type: "image" });
@@ -145,7 +145,7 @@ function* loadConfig({ profile }) {
         data.avatarPreview = yield call(dbGet, db, CONTENT_STORE, contentKey(profile, data.avatarPreview));
       } else if (data.avatarPreview) {
         preloadingAvatars.push({ url: data.avatarPreview, type: "image" });
-      }
+      }*/
 
       yield put({
         type: SET_DATA,
