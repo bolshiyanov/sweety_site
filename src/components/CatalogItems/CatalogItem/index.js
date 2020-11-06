@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -38,9 +38,16 @@ const CatalogItem = (props) => {
   } = props;
   const dispatch = useDispatch();
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
+  const [ cachedAudio, setCachedAudio ] = useState(null);
   const text = translatedProperty(props, "text");
   const textAlt = translatedProperty(props, "textAlt");
-  let [play, { stop, pause, isPlaying }] = useSound(audio);
+  let [play, { stop, pause, isPlaying }] = useSound(cachedAudio);
+
+  useEffect(() => {
+    if (audio) {
+      setCachedAudio(API.getCachedContent(audio) ?? audio);
+    }
+  }, []);
 
   const handlePlus = (e) => {
     e.stopPropagation();

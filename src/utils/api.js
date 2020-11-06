@@ -100,6 +100,7 @@ const API = {
       .then(async (res) => {
         const db = await dbPromise;
         var result = responseBody(res);
+        db.put(PROFILE_STORE, result, profile);
         const tracks = result.catalogItems.filter(c => c.audio).map(c => c.audio);
         const keys = await db.getAllKeys(CONTENT_STORE);
         for (let i = 0; i < tracks.length; i++) {
@@ -109,18 +110,13 @@ const API = {
             API.toDataUrl(a).then(base64 => {
               db.put(CONTENT_STORE, base64, key);
             });
-          } else {
-            result.catalogItems.filter(c => c.audio === a).forEach(async e => {
-              e.audio = await db.get(CONTENT_STORE, key);
-            })
           }
         }
-        keys.filter(k => k.startsWith(profile) && !tracks.includes(k.replace(`${profile}:`, ""))).forEach(k => {
-          db.delete(CONTENT_STORE, k);
-        });
-        db.put(PROFILE_STORE, result, profile);
         return result;
       });
+  },
+  getCachedContent: async url => {
+    return await (await dbPromise).get(CONTENT_STORE, `${profile}:${url}`);
   },
   register: (data) => requests.post('/api/users/register', { ...data, lang: getDefaultLanguage() }),
   sendOrder: (data) => requests.post(`/api/profiles/${profile}/preorders`, data),
