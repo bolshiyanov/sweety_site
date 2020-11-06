@@ -78,7 +78,7 @@ const CatalogItem = (props) => {
   const seekSec = pad(seek % 60);
 
   const handlePlus = (e) => {
-    e?.stopPropagation();
+    e.stopPropagation();
     dispatch({
       type: CATALOG_ORDER, guid, count: count + 1,
       sum: sum + parseFloat(price), currency
@@ -86,7 +86,7 @@ const CatalogItem = (props) => {
   }
 
   const handleMinus = (e) => {
-    e?.stopPropagation();
+    e.stopPropagation();
     if (count === 0) {
       return;
     }
@@ -111,8 +111,16 @@ const CatalogItem = (props) => {
     }
   }
 
+  const handleAudioClick = (e) => {
+    e.stopPropagation();
+    if (!isPlaying) {
+      handlePlay();
+    } else {
+      handleStop();
+    }
+  }
+
   const handlePlay = (e) => {
-    e?.stopPropagation();
     if (!isPlaying) {
       if (sound && duration) {
         play();
@@ -127,13 +135,10 @@ const CatalogItem = (props) => {
           }
         }, 1000));
       }
-    } else {
-      handleStop(e);
     }
   }
 
-  const handleStop = (e) => {
-    e?.stopPropagation();
+  const handleStop = () => {
     if (isPlaying) {
       setSeek(sound.seek());
       stop();
@@ -159,7 +164,7 @@ const CatalogItem = (props) => {
             className
           ])}
           key={guid}
-          onClick={() => { audio ? handlePlay() : onClick() }}
+          onClick={() => { audio ? handleAudioClick() : onClick() }}
         >
           {image && (price || number) && (
             <img src={image} alt={text} />
@@ -199,7 +204,7 @@ const CatalogItem = (props) => {
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
-                <Button onClick={handlePlay} isInline noStyled ><Icon type={!(sound && duration) ? "sync" : !isPlaying || audioError ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
+                <Button onClick={handleAudioClick} isInline noStyled ><Icon type={!(sound && duration) ? "sync" : !isPlaying || audioError ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
               </div>
             </div>
           )}
