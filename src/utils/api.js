@@ -2,6 +2,7 @@ import superagent from 'superagent';
 import { getSearchString } from 'utils/url';
 import { getDefaultLanguage } from 'utils/translation';
 import { openDB } from 'idb';
+import fileReader from 'utils/fileReader';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong!';
 const DATABASE_NAME = "Sweety";
@@ -107,8 +108,9 @@ const API = {
           const a = tracks[i];
           const key = `${profile}:${a}`;
           if (!keys.includes(key)) {
-            API.toDataUrl(a).then(base64 => {
-              db.put(CONTENT_STORE, base64, key);
+            API.toDataUrl(a).then(async blob => {
+              let data = await fileReader(blob);
+              db.put(CONTENT_STORE, data, key);
             });
           }
         }
