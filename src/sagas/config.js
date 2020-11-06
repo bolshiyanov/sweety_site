@@ -159,7 +159,7 @@ function* preloadData({ profile, contentUrls}) {
     }
   });
 
-  if (cached.length > 0) {
+  if (Object.keys(cached).length > 0) {
     yield put({ type: CACHE_DATA, cached });
   }
 }
