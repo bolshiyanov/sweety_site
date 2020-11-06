@@ -110,7 +110,7 @@ const API = {
           if (!keys.includes(key)) {
             API.toDataUrl(a).then(async blob => {
               let data = await fileReader(blob);
-              db.put(CONTENT_STORE, data, key);
+              db.put(CONTENT_STORE, data.replace("data:video", "data:audio"), key);
             });
           }
         }
