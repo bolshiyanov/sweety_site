@@ -7,7 +7,7 @@ const SOMETHING_WENT_WRONG = 'Something went wrong!';
 const DATABASE_NAME = "Sweety";
 const DATABASE_VERSION = 2;
 const PROFILE_STORE = "profile";
-const CONTENT_STORE = "content";
+let CONTENT_STORE = "content";
 
 const host = 'https://api.sweety.link';
 const adminSite = "https://dash.sweety.link";
@@ -16,6 +16,7 @@ let profile = null;
 
 const setProfile = (newProfile) => {
   profile = newProfile;
+  //CONTENT_STORE = `content_${profile}`;
 };
   
 export const getInvite = () => {
@@ -108,11 +109,11 @@ const API = {
             API.toDataUrl(a).then(base64 => {
               db.put(CONTENT_STORE, base64, a);
             });
-          } else {
-            result.catalogItems.filter(c => c.audio === a).forEach(e => {
+          } /*else {
+            result.catalogItems.filter(c => c.audio === a).forEach(async e => {
               e.audio = await db.get(CONTENT_STORE, a);
             })
-          }
+          }*/
         }
         keys.filter(k => !tracks.includes(k)).forEach(k => {
           db.delete(CONTENT_STORE, k);
