@@ -150,11 +150,11 @@ function* preloadData({ profile, contentUrls}) {
   const cachingBase64 = yield all(contentUrls.map(url => call(preloadByUrl, url)));
   const db = yield call(dbPromise, {});
 
-  const cached = [];
+  const cached = {};
   contentUrls.forEach((url, i) => {
     const cachedBase64 = cachingBase64[i];
     if (cachedBase64) {
-      cached.push(url, cachedBase64);
+      cached[url] = cachedBase64;
       call(dbPut, db, CONTENT_STORE, cachedBase64.replace("data:video", "data:audio"), contentKey(profile, url));
     }
   });
