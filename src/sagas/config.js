@@ -84,6 +84,7 @@ function* loadConfig({ profile }) {
         yield call(dbPut, db, PROFILE_STORE, loadingData, profile);
       } catch (error) {
         loadingData = yield call(dbGet, db, PROFILE_STORE, profile);
+        console.log("Profile from DB: " + JSON.stringify(loadingData));
       }
       loading++;
     }
