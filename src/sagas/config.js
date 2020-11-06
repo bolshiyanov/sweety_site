@@ -135,6 +135,18 @@ function* loadConfig({ profile }) {
         }
       });
 
+      const preloadingAvatars = [];
+      if (data.avatar && keys.includes(contentKey(profile, data.avatar))) {
+        data.avatar = yield call(dbGet, db, CONTENT_STORE, contentKey(profile, data.avatar));
+      } else {
+        preloadingAvatars.push({ url: data.avatar, type: "image" });
+      }
+      if (data.avatarPreview && keys.includes(contentKey(profile, data.avatarPreview))) {
+        data.avatarPreview = yield call(dbGet, db, CONTENT_STORE, contentKey(profile, data.avatarPreview));
+      } else {
+        preloadingAvatars.push({ url: data.avatarPreview, type: "image" });
+      }
+
       yield put({
         type: SET_DATA,
         themes,
@@ -146,9 +158,10 @@ function* loadConfig({ profile }) {
       });
 
       const preloading = [...new Set(
-        tracks.filter(t => !keys.includes(contentKey(profile, t)))
-          .concat(cimages.filter(t => !keys.includes(contentKey(profile, t))))
-          .concat(simages.filter(t => !keys.includes(contentKey(profile, t)))))];
+        tracks.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "audio" }})
+          .concat(cimages.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "image" }}))
+          .concat(simages.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "image" }}))
+          .concat(preloadingAvatars))];
       if (preloading.length > 0) {
         yield put({
           type: PRELOAD_DATA,
@@ -176,16 +189,18 @@ function* preloadByUrl(url) {
 }
 
 function* preloadData({ profile, contentUrls}) {
-  const cachingBase64 = yield all(contentUrls.map(url => call(preloadByUrl, url)));
+  const cachingBase64 = yield all(contentUrls.map(cu => call(preloadByUrl, cu.url)));
   const db = yield call(dbPromise, {});
 
   const cached = {};
   const putCalls = [];
-  contentUrls.forEach((url, i) => {
+  contentUrls.forEach((cu, i) => {
     const cachedBase64 = cachingBase64[i];
     if (cachedBase64) {
-      cached[url] = cachedBase64;
-      putCalls.push(call(dbPut, db, CONTENT_STORE, cachedBase64.replace("data:video", "data:audio"), contentKey(profile, url)));
+      cached[cu.url] = cachedBase64;
+      putCalls.push(call(dbPut, db, CONTENT_STORE, 
+        cu.type == "audio" ? cachedBase64.replace("data:video", "data:audio") : cachedBase64,
+        contentKey(profile, cu)));
     }
   });
   yield all(putCalls);
