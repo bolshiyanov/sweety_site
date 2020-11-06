@@ -5,7 +5,8 @@ import { openDB } from 'idb';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong!';
 const DATABASE_NAME = "Sweety";
-const DATABASE_VERSION = 1;
+const DATABASE_VERSION = 2;
+const PROFILE_STORE = "profile";
 const CONTENT_STORE = "content";
 
 const host = 'https://api.sweety.link';
@@ -65,6 +66,7 @@ const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
   upgrade(db, oldVersion, newVersion, transaction) {
     switch (oldVersion) {
       case 0:
+        db.createObjectStore(PROFILE_STORE);
         db.createObjectStore(CONTENT_STORE);
       case 1:
     }
@@ -93,11 +95,26 @@ const API = {
   getData: () => {
     return superagent.get(`${host}/api/profiles/pages/public/${profile}`).query()
       .catch(async (e) => {
-        return (await dbPromise).get(CONTENT_STORE, profile);
+        return (await dbPromise).get(PROFILE_STORE, profile);
       })
       .then(async (res) => {
+        const db = await dbPromise;
         var result = responseBody(res);
-        (await dbPromise).put(CONTENT_STORE, result, profile);
+        db.put(PROFILE_STORE, result, profile);
+        if (!result?.catalogItems) {
+          return result;
+        }
+        const tracks = result.catalogItems.filter(c => c.audio).map(c => c.audio);
+        const keys = await db.getAllKeys(CONTENT_STORE);
+        for (let i = 0; i < tracks.length; i++) {
+          const a = tracks[i];
+          if (!keys.includes(a)) {
+            console.log(a);
+            API.toDataUrl(a).then(async base64 => {
+              await db.put(CONTENT_STORE, base64, a);
+            });
+          }
+        }
         return result;
       });
   },
@@ -205,7 +222,18 @@ const API = {
         };
       });
     },
-    recoverPassword: (profile) => requests.post('/api/users/password/recover', { page: profile })
+    recoverPassword: (profile) => requests.post('/api/users/password/recover', { page: profile }),
+    toDataUrl: (url) => {
+      return new Promise ((resolve) => {
+        var xhr = new XMLHttpRequest();
+        xhr.onload = function() {
+          resolve(xhr.response);
+        };
+        xhr.open('GET', url);
+        xhr.responseType = 'blob';
+        xhr.send();
+      })
+    },
   };
 
 export default API;
