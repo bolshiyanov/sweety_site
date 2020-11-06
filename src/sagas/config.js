@@ -147,7 +147,8 @@ function* loadConfig({ profile }) {
 
       const preloading = [...new Set(
         tracks.filter(t => !keys.includes(contentKey(profile, t)))
-          .concat(cimages.filter(t => !keys.includes(contentKey(profile, t)))))];
+          .concat(cimages.filter(t => !keys.includes(contentKey(profile, t))))
+          .concat(simages.filter(t => !keys.includes(contentKey(profile, t)))))];
       if (preloading.length > 0) {
         yield put({
           type: PRELOAD_DATA,
