@@ -100,9 +100,13 @@ function* loadConfig({ profile }) {
       const cachedTracks = tracks.filter(t => keys.includes(contentKey(profile, t)));
       const trackCaches = yield all(cachedTracks.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
 
-      const images = data.catalogItems.filter(c => c.image && c.image.startsWith("http")).map(c => c.image);
-      const cachedImages = images.filter(t => keys.includes(contentKey(profile, t)));
-      const imageCaches = yield all(cachedImages.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
+      const cimages = data.catalogItems.filter(c => c.image && c.image.startsWith("http")).map(c => c.image);
+      const cachedCImages = cimages.filter(t => keys.includes(contentKey(profile, t)));
+      const cimageCaches = yield all(cachedCImages.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
+
+      const simages = data.stories.filter(c => c.image && c.image.startsWith("http")).map(c => c.image);
+      const cachedSImages = simages.filter(t => keys.includes(contentKey(profile, t)));
+      const simageCaches = yield all(cachedSImages.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
 
       cachedTracks.forEach((a, i) => {
         let cachedBlob = trackCaches[i];
@@ -113,10 +117,19 @@ function* loadConfig({ profile }) {
         }
       });
 
-      cachedImages.forEach((a, i) => {
-        let cachedBlob = imageCaches[i];
+      cachedCImages.forEach((a, i) => {
+        let cachedBlob = cimageCaches[i];
         if (cachedBlob) {
           data.catalogItems.filter(c => c.image === a).forEach(c => {
+            c.image = cachedBlob;
+          });
+        }
+      });
+
+      cachedSImages.forEach((a, i) => {
+        let cachedBlob = simageCaches[i];
+        if (cachedBlob) {
+          data.stories.filter(c => c.image === a).forEach(c => {
             c.image = cachedBlob;
           });
         }
@@ -134,7 +147,7 @@ function* loadConfig({ profile }) {
 
       const preloading = [...new Set(
         tracks.filter(t => !keys.includes(contentKey(profile, t)))
-          .concat(images.filter(t => !keys.includes(contentKey(profile, t)))))];
+          .concat(cimages.filter(t => !keys.includes(contentKey(profile, t)))))];
       if (preloading.length > 0) {
         yield put({
           type: PRELOAD_DATA,
