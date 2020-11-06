@@ -127,7 +127,7 @@ function* preloadData({ profile, contentUrls}) {
     const cachedBase64 = cachingBase64[i];
     if (cachedBase64) {
       cached.push(url, cachedBase64);
-      call(dbPut, db, CONTENT_STORE, cachedBase64, contentKey(profile, url));
+      call(dbPut, db, CONTENT_STORE, cachedBase64.replace("data:video", "data:audio"), contentKey(profile, url));
     }
   });
 
