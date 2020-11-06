@@ -33,15 +33,30 @@ function dbPromise() {
 }
 
 function dbPut(db, storeName, value, query) {
-  return db.put(storeName, value, query);
+  try {
+    return db.put(storeName, value, query);
+  } catch (error) {
+    console.warn(error);
+    return Promise.resolve(null);
+  }
 }
 
 function dbGet(db, storeName, query) {
-  return db.get(storeName, query);
+  try {
+    return db.get(storeName, query);
+  } catch (error) {
+    console.warn(error);
+    return Promise.resolve(null);
+  }
 }
 
 function dbGetAllKeys(db, storeName) {
-  return db.getAllKeys(storeName);
+  try {
+    return db.getAllKeys(storeName);
+  } catch (error) {
+    console.warn(error);
+    return Promise.resolve([]);
+  }
 }
 
 function contentKey(profile, key) {
@@ -72,7 +87,7 @@ function* loadConfig({ profile }) {
     } = loadingData;
 
     const tracks = data.catalogItems.filter(c => c.audio && c.audio.startsWith("http")).map(c => c.audio);
-    const keys = yield call(dbGetAllKeys, db, CONTENT_STORE);
+    let keys = yield call(dbGetAllKeys, db, CONTENT_STORE);
 
     const cachedTracks = tracks.filter(t => keys.includes(contentKey(profile, t)));
     const cachedBlobs = yield all(cachedTracks.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
