@@ -157,20 +157,12 @@ const reducer = handleActions({
       }
     });
 
-    if (avatar && cached[avatar]) {
-      avatar = cached[avatar];
-    }
-
-    if (avatarPreview && cached[avatarPreview]) {
-      avatarPreview = cached[avatarPreview];
-    }
-
     return {
       ...state,
       data: {
         ...state.data,
-        avatar,
-        avatarPreview,
+        avatar: avatar && cached[avatar] ? cached[avatar] : avatar,
+        avatarPreview: avatarPreview && cached[avatarPreview] ? cached[avatarPreview] : avatarPreview,
         stories,
         catalogItems
       }
