@@ -2,6 +2,8 @@ export const LOADING_ERROR = 'LOADING_ERROR';
 
 export const CONFIG_LOAD = 'CONFIG_LOAD';
 export const SET_DATA = 'SET_DATA';
+export const PRELOAD_DATA = 'PRELOAD_DATA';
+export const CACHE_DATA = 'CACHE_DATA';
 
 export const CHANGE_THEME = 'CHANGE_THEME';
 export const CHANGE_BACKGROUND = 'CHANGE_BACKGROUND';

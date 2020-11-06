@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import useSound from 'use-sound';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -40,7 +40,15 @@ const CatalogItem = (props) => {
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
   const text = translatedProperty(props, "text");
   const textAlt = translatedProperty(props, "textAlt");
-  let [play, { stop, pause, isPlaying }] = useSound(audio);
+  const [ audioError, setAudioError ] = useState(false);
+
+  let [play, { stop, pause, isPlaying }] = useSound(audio, { 
+    onend: () => {
+    }, 
+    onerror: () => {
+      setAudioError(true);
+    } 
+  });
 
   const handlePlus = (e) => {
     e.stopPropagation();
@@ -88,7 +96,6 @@ const CatalogItem = (props) => {
     parseFloat(price).toFixed(2);
 
   switch (type) {
-
     case CATALOG_LEFT:
     default: {
       const catalogItem = (
@@ -142,7 +149,7 @@ const CatalogItem = (props) => {
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
-                <Button isInline noStyled onClick={handlePlay} ><Icon type={!isPlaying ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
+                <Button isInline noStyled onClick={handlePlay} ><Icon type={!isPlaying || audioError ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
               </div>
             </div>
           )}

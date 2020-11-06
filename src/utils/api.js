@@ -1,6 +1,7 @@
 import superagent from 'superagent';
 import { getSearchString } from 'utils/url';
 import { getDefaultLanguage } from 'utils/translation';
+import fileReader from 'utils/fileReader';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong!';
 
@@ -183,7 +184,6 @@ const API = {
     },
     recoverPassword: (profile) => requests.post('/api/users/password/recover', { page: profile }),
     toDataUrl: (url) => {
-      console.log(JSON.stringify(url));
       return new Promise ((resolve) => {
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {

@@ -16,7 +16,8 @@ import {
   CATALOG_FILTER,
   CATALOG_SET_STORY,
   CATALOG_ORDER,
-  CATALOG_ORDER_CLEAR
+  CATALOG_ORDER_CLEAR,
+  CACHE_DATA
 } from 'constants/actions';
 
 const defaultTheme = new Theme({ name: 'Default' });
@@ -133,8 +134,24 @@ const reducer = handleActions({
       ...state,
       order: {}
     }
-  }
+  },
 
+  [CACHE_DATA] : (state, { cached }) => {
+    const { catalogItems } = state.data;
+    catalogItems.forEach(ci => {
+      if (ci.audio && cached[ci.audio]) {
+        ci.audio = cached[ci.audio];
+      }
+    });
+
+    return {
+      ...state,
+      data: {
+        ...state.data,
+        catalogItems
+      }
+    }
+  }
 }, initialState);
 
 export default reducer;
