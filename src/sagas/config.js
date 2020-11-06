@@ -148,7 +148,6 @@ function* preloadByUrl(url) {
 
 function* preloadData({ profile, contentUrls}) {
   const cachingBase64 = yield all(contentUrls.map(url => call(preloadByUrl, url)));
-  console.log("caches: " + JSON.stringify(cachingBase64));
   const db = yield call(dbPromise, {});
 
   const cached = {};
@@ -162,7 +161,6 @@ function* preloadData({ profile, contentUrls}) {
   });
   yield all(putCalls);
 
-  console.log("cached: " + JSON.stringify(cached));
   if (Object.keys(cached).length > 0) {
     yield put({ type: CACHE_DATA, cached });
   }

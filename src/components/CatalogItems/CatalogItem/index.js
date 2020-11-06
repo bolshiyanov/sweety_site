@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useSound from 'use-sound';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -41,14 +41,35 @@ const CatalogItem = (props) => {
   const text = translatedProperty(props, "text");
   const textAlt = translatedProperty(props, "textAlt");
   const [ audioError, setAudioError ] = useState(false);
+  const [ seek, setSeek ] = useState(false);
+  const [ seekInterval, setSeekInterval ] = useState(null);
 
-  let [play, { stop, pause, isPlaying }] = useSound(audio, { 
+  let [play, { stop, pause, isPlaying, duration, sound }] = useSound(audio, {
+    autoUnlock: true,
     onend: () => {
     }, 
     onerror: () => {
       setAudioError(true);
     } 
   });
+
+  useEffect(() => {
+    if (!sound) {
+      return;
+    }
+    if (seekInterval) {
+      clearInterval(seekInterval);
+    }
+    setSeekInterval(setInterval(() => {
+      if (sound?.seek()) {
+        setSeek(sound?.seek() ?? 0);
+      }
+    }, 1000));
+  }, [sound]);
+  const durationMin = Math.round(duration / 1000 / 60);
+  const durationSec = Math.round(duration / 1000 % 60);
+  const seekMin = Math.round(seek / 60);
+  const seekSec = Math.round(seek % 60);
 
   const handlePlus = (e) => {
     e.stopPropagation();
@@ -86,9 +107,14 @@ const CatalogItem = (props) => {
 
   const handlePlay = () => {
     if (!isPlaying) {
-      play();
+      if (sound && duration) {
+        play();
+        if (seek) {
+          sound.seek(seek);
+        }
+      }
     } else {
-      pause();
+      stop();
     }
   }
 
@@ -119,16 +145,16 @@ const CatalogItem = (props) => {
               <div className="catalogItem-left-title-without-button">{text}</div>
             </div>
           )}
-          {(text && !textAlt) && (price || number) && (
+          {(text && !textAlt && !seek) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem__title">{text}</div>
             </div>
           )}
-          {(text && textAlt) && (price || number) && (
+          {(text && (textAlt || seek)) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem__title">{text}</div>
-              <div className="catalogItem-text-en">{textAlt}</div>
+              <div className="catalogItem-text-en">{(seek ?? 0) > 0 ? `${seekMin}:${seekSec} [${durationMin}:${durationSec}]` : textAlt}</div>
             </div>
           )}
 
@@ -149,7 +175,7 @@ const CatalogItem = (props) => {
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
-                <Button isInline noStyled onClick={handlePlay} ><Icon type={!isPlaying || audioError ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
+                <Button isInline noStyled ><Icon type={!isPlaying || audioError ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
               </div>
             </div>
           )}
