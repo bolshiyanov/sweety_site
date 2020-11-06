@@ -138,12 +138,12 @@ function* loadConfig({ profile }) {
       const preloadingAvatars = [];
       if (data.avatar && keys.includes(contentKey(profile, data.avatar))) {
         data.avatar = yield call(dbGet, db, CONTENT_STORE, contentKey(profile, data.avatar));
-      } else {
+      } else if (data.avatar) {
         preloadingAvatars.push({ url: data.avatar, type: "image" });
       }
       if (data.avatarPreview && keys.includes(contentKey(profile, data.avatarPreview))) {
         data.avatarPreview = yield call(dbGet, db, CONTENT_STORE, contentKey(profile, data.avatarPreview));
-      } else {
+      } else if (data.avatarPreview) {
         preloadingAvatars.push({ url: data.avatarPreview, type: "image" });
       }
 
