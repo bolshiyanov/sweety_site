@@ -13,21 +13,16 @@ import API from 'utils/api';
 import fileReader from 'utils/fileReader';
 //import loadingData from 'mocks/data.json';
 
-const DATABASE_NAME = "Sweety";
-const DATABASE_VERSION = 3;
+const DATABASE_NAME = "SweetyLink";
+const DATABASE_VERSION = 1;
 const PROFILE_STORE = "profile";
 const CONTENT_STORE = "content";
 
 function dbPromise() {
   return openDB(DATABASE_NAME, DATABASE_VERSION, {
     upgrade(db, oldVersion, newVersion, transaction) {
-      switch (oldVersion) {
-        case 0:
-          db.createObjectStore(PROFILE_STORE);
-        case 1:
-          db.createObjectStore(CONTENT_STORE);
-        case 2:
-      }
+      db.createObjectStore(PROFILE_STORE);
+      db.createObjectStore(CONTENT_STORE);
     }
   });
 }
@@ -74,7 +69,7 @@ function* loadConfig({ profile }) {
       console.warn(error);
     }
     let loading = 0;
-    while (!loadingData && loading < 100) {
+    while (!loadingData && loading < 10) {
       try {
         loadingData = yield call(API.getData, {});
         yield call(dbPut, db, PROFILE_STORE, loadingData, profile);
