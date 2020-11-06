@@ -17,7 +17,7 @@ import {
   CATALOG_RIGHT,
 } from 'constants/catalogTypes';
 
-import { CATALOG_ORDER, CATALOG_PLAY, CATALOG_PAUSE } from 'constants/actions';
+import { CATALOG_ORDER, CATALOG_PLAY, CATALOG_PLAYED, CATALOG_PAUSE } from 'constants/actions';
 import { parse } from 'superagent';
 import { translatedProperty } from 'utils/translation';
 
@@ -45,10 +45,14 @@ const CatalogItem = (props) => {
   const [ seek, setSeek ] = useState(false);
   const [ seekInterval, setSeekInterval ] = useState(null);
 
-  let [play, { stop, pause, isPlaying, duration, sound }] = useSound(audio, {
+  let [play, { stop, isPlaying, duration, sound }] = useSound(audio, {
     autoUnlock: true,
     onend: () => {
       setSeek(null);
+      clearInterval(seekInterval);
+      if (duration < 30 * 60 * 1000) {
+        dispatch({ type: CATALOG_PLAYED, guid });
+      }
     }, 
     onerror: () => {
       setAudioError(true);
@@ -58,8 +62,10 @@ const CatalogItem = (props) => {
   useEffect(() => {
     if (isPlaying && playingGuid !== guid) {
       handleStop();
+    } else if (!isPlaying && sound && duration && playingGuid === guid) {
+      handlePlay();
     }
-  }, [playingGuid]);
+  }, [playingGuid, sound, duration]);
 
    const pad = (num) => {
     var s = "0" + Math.round(num);
@@ -129,9 +135,9 @@ const CatalogItem = (props) => {
     if (isPlaying) {
       setSeek(sound.seek());
       stop();
-      dispatch({ type: CATALOG_PAUSE, guid });
-      clearInterval(seekInterval);
     }
+    clearInterval(seekInterval);
+    dispatch({ type: CATALOG_PAUSE, guid });
   }
 
   const sumValue = count !== 0 ? sum.toFixed(2) :

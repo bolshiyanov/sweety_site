@@ -94,17 +94,30 @@ function* loadConfig({ profile }) {
         ...data
       } = loadingData;
 
-      const tracks = data.catalogItems.filter(c => c.audio && c.audio.startsWith("http")).map(c => c.audio);
       let keys = yield call(dbGetAllKeys, db, CONTENT_STORE);
 
+      const tracks = data.catalogItems.filter(c => c.audio && c.audio.startsWith("http")).map(c => c.audio);
       const cachedTracks = tracks.filter(t => keys.includes(contentKey(profile, t)));
-      const cachedBlobs = yield all(cachedTracks.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
+      const trackCaches = yield all(cachedTracks.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
+
+      const images = data.catalogItems.filter(c => c.image && c.image.startsWith("http")).map(c => c.image);
+      const cachedImages = images.filter(t => keys.includes(contentKey(profile, t)));
+      const imageCaches = yield all(cachedImages.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
 
       cachedTracks.forEach((a, i) => {
-        let cachedBlob = cachedBlobs[i];
+        let cachedBlob = trackCaches[i];
         if (cachedBlob) {
           data.catalogItems.filter(c => c.audio === a).forEach(c => {
             c.audio = cachedBlob;
+          });
+        }
+      });
+
+      cachedImages.forEach((a, i) => {
+        let cachedBlob = imageCaches[i];
+        if (cachedBlob) {
+          data.catalogItems.filter(c => c.image === a).forEach(c => {
+            c.image = cachedBlob;
           });
         }
       });
@@ -119,7 +132,9 @@ function* loadConfig({ profile }) {
         data
       });
 
-      const preloading = [...new Set(tracks.filter(t => !keys.includes(contentKey(profile, t))))];
+      const preloading = [...new Set(
+        tracks.filter(t => !keys.includes(contentKey(profile, t)))
+          .concat(images.filter(t => !keys.includes(contentKey(profile, t)))))];
       if (preloading.length > 0) {
         yield put({
           type: PRELOAD_DATA,
@@ -156,7 +171,7 @@ function* preloadData({ profile, contentUrls}) {
     const cachedBase64 = cachingBase64[i];
     if (cachedBase64) {
       cached[url] = cachedBase64;
-      putCalls.push(call(dbPut, db, CONTENT_STORE, cachedBase64.replace("data:video", "data:audio"), contentKey(profile, url)));
+      putCalls.push(call(dbPut, db, CONTENT_STORE, cachedBase64, contentKey(profile, url)));
     }
   });
   yield all(putCalls);

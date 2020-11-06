@@ -19,7 +19,8 @@ import {
   CATALOG_ORDER_CLEAR,
   CACHE_DATA,
   CATALOG_PLAY,
-  CATALOG_PAUSE
+  CATALOG_PAUSE,
+  CATALOG_PLAYED
 } from 'constants/actions';
 
 const defaultTheme = new Theme({ name: 'Default' });
@@ -145,6 +146,9 @@ const reducer = handleActions({
       if (ci.audio && cached[ci.audio]) {
         ci.audio = cached[ci.audio];
       }
+      if (ci.image && cached[ci.image]) {
+        ci.image = cached[ci.image];
+      }
     });
 
     return {
@@ -166,6 +170,17 @@ const reducer = handleActions({
     return {
       ...state,
       playingGuid: state.playingGuid === guid ? null : state.playingGuid
+    }
+  },
+  [CATALOG_PLAYED] : (state, { guid }) => {
+    const { catalogItems } = state.data;
+    const sorted = catalogItems.sort((a, b) => a.order < b.order ? 1 : -1);
+    const playedInd = sorted.map((e, i) => { return { guid: e.guid, i} }).filter(e => e.guid === guid)[0].i;
+    const playingGuid = playedInd === sorted.length - 1 ? sorted[0].guid : sorted[playedInd + 1].guid;
+
+    return {
+      ...state,
+      playingGuid
     }
   },
 }, initialState);
