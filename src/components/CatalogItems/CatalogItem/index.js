@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useSound from 'use-sound';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -7,6 +7,7 @@ import classnames from 'classnames';
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import Input from 'components/common/Input';
+import API from 'utils/api';
 
 import './index.scss';
 
@@ -39,7 +40,7 @@ const CatalogItem = (props) => {
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
   const text = translatedProperty(props, "text");
   const textAlt = translatedProperty(props, "textAlt");
-  const [play, { stop, pause, isPlaying }] = useSound(audio);
+  let [play, { stop, pause, isPlaying }] = useSound(audio);
 
   const handlePlus = (e) => {
     e.stopPropagation();
@@ -101,7 +102,7 @@ const CatalogItem = (props) => {
             className
           ])}
           key={guid}
-          onClick={audio ? handlePlay : onClick}
+          onClick={() => { audio ? handlePlay() : onClick() }}
         >
           {image && (price || number) && (
             <img src={image} alt={text} />

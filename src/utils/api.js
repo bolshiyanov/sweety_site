@@ -100,21 +100,24 @@ const API = {
       .then(async (res) => {
         const db = await dbPromise;
         var result = responseBody(res);
-        db.put(PROFILE_STORE, result, profile);
-        if (!result?.catalogItems) {
-          return result;
-        }
         const tracks = result.catalogItems.filter(c => c.audio).map(c => c.audio);
         const keys = await db.getAllKeys(CONTENT_STORE);
         for (let i = 0; i < tracks.length; i++) {
           const a = tracks[i];
           if (!keys.includes(a)) {
             API.toDataUrl(a).then(base64 => {
-              console.log(`${a}: ${base64}`);
               db.put(CONTENT_STORE, base64, a);
             });
+          } else {
+            result.catalogItems.filter(c => c.audio === a).forEach(e => {
+              e.audio = await db.get(CONTENT_STORE, a);
+            })
           }
         }
+        keys.filter(k => !tracks.includes(k)).forEach(k => {
+          db.delete(CONTENT_STORE, k);
+        });
+        db.put(PROFILE_STORE, result, profile);
         return result;
       });
   },
