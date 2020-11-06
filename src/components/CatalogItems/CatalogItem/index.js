@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import useSound from 'use-sound';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -17,7 +17,7 @@ import {
   CATALOG_RIGHT,
 } from 'constants/catalogTypes';
 
-import { CATALOG_ORDER } from 'constants/actions';
+import { CATALOG_ORDER, CATALOG_PLAY, CATALOG_PAUSE } from 'constants/actions';
 import { parse } from 'superagent';
 import { translatedProperty } from 'utils/translation';
 
@@ -38,6 +38,7 @@ const CatalogItem = (props) => {
   } = props;
   const dispatch = useDispatch();
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
+  const { playingGuid } = useSelector((state) => state.config);
   const text = translatedProperty(props, "text");
   const textAlt = translatedProperty(props, "textAlt");
   const [ audioError, setAudioError ] = useState(false);
@@ -47,6 +48,7 @@ const CatalogItem = (props) => {
   let [play, { stop, pause, isPlaying, duration, sound }] = useSound(audio, {
     autoUnlock: true,
     onend: () => {
+      setSeek(null);
     }, 
     onerror: () => {
       setAudioError(true);
@@ -54,22 +56,20 @@ const CatalogItem = (props) => {
   });
 
   useEffect(() => {
-    if (!sound) {
-      return;
+    if (isPlaying && playingGuid !== guid) {
+      handleStop();
     }
-    if (seekInterval) {
-      clearInterval(seekInterval);
-    }
-    setSeekInterval(setInterval(() => {
-      if (sound?.seek()) {
-        setSeek(sound?.seek() ?? 0);
-      }
-    }, 1000));
-  }, [sound]);
-  const durationMin = Math.round(duration / 1000 / 60);
-  const durationSec = Math.round(duration / 1000 % 60);
-  const seekMin = Math.round(seek / 60);
-  const seekSec = Math.round(seek % 60);
+  }, [playingGuid]);
+
+   const pad = (num) => {
+    var s = "0" + Math.round(num);
+    return s.substr(s.length - 2);
+  }
+
+  const durationMin = pad(duration / 1000 / 60);
+  const durationSec = pad(duration / 1000 % 60);
+  const seekMin = pad(seek / 60);
+  const seekSec = pad(seek % 60);
 
   const handlePlus = (e) => {
     e.stopPropagation();
@@ -112,9 +112,25 @@ const CatalogItem = (props) => {
         if (seek) {
           sound.seek(seek);
         }
+        dispatch({ type: CATALOG_PLAY, guid });
+
+        setSeekInterval(setInterval(() => {
+          if (sound?.seek()) {
+            setSeek(sound?.seek() ?? 0);
+          }
+        }, 1000));
       }
     } else {
+      handleStop();
+    }
+  }
+
+  const handleStop = () => {
+    if (isPlaying) {
+      setSeek(sound.seek());
       stop();
+      dispatch({ type: CATALOG_PAUSE, guid });
+      clearInterval(seekInterval);
     }
   }
 
@@ -154,7 +170,7 @@ const CatalogItem = (props) => {
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem__title">{text}</div>
-              <div className="catalogItem-text-en">{(seek ?? 0) > 0 ? `${seekMin}:${seekSec} [${durationMin}:${durationSec}]` : textAlt}</div>
+              <div className="catalogItem-text-en">{(seek ?? 0) > 0 ? `${seekMin}:${seekSec} / ${durationMin}:${durationSec}` : textAlt}</div>
             </div>
           )}
 
@@ -175,7 +191,7 @@ const CatalogItem = (props) => {
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
-                <Button isInline noStyled ><Icon type={!isPlaying || audioError ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
+                <Button isInline noStyled ><Icon type={!(sound && duration) ? "sync" : !isPlaying || audioError ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
               </div>
             </div>
           )}

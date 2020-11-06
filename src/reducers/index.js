@@ -17,7 +17,9 @@ import {
   CATALOG_SET_STORY,
   CATALOG_ORDER,
   CATALOG_ORDER_CLEAR,
-  CACHE_DATA
+  CACHE_DATA,
+  CATALOG_PLAY,
+  CATALOG_PAUSE
 } from 'constants/actions';
 
 const defaultTheme = new Theme({ name: 'Default' });
@@ -32,7 +34,8 @@ const initialState = {
   config: {},
   account: {},
   storyGuid : null,
-  order: {}
+  order: {},
+  playingGuid: null
 };
 
 const reducer = handleActions({
@@ -151,7 +154,20 @@ const reducer = handleActions({
         catalogItems
       }
     }
-  }
+  },
+
+  [CATALOG_PLAY] : (state, { guid }) => {
+    return {
+      ...state,
+      playingGuid: guid
+    }
+  },
+  [CATALOG_PAUSE] : (state, { guid }) => {
+    return {
+      ...state,
+      playingGuid: state.playingGuid === guid ? null : state.playingGuid
+    }
+  },
 }, initialState);
 
 export default reducer;
