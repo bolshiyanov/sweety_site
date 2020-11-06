@@ -54,13 +54,12 @@ function* loadConfig({ profile }) {
   try {
     let loadingData = null;
     const db = yield call(dbPromise, {});
-    loadingData = yield call(dbGet, db, PROFILE_STORE, profile);
-    /*try {
+    try {
       loadingData = yield call(API.getData, {});
       yield call(dbPut, db, PROFILE_STORE, loadingData, profile);
     } catch (error) {
       loadingData = yield call(dbGet, db, PROFILE_STORE, profile);
-    }*/
+    }
     const {
       themes,
       buttonColors,
