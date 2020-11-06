@@ -38,7 +38,7 @@ const AppTheme1 = () => {
   useEffect(() => {
     API.updateProfile(profile);
 
-    dispatch({ type: CONFIG_LOAD });
+    dispatch({ type: CONFIG_LOAD, profile: profile });
   }, []); // eslint-disable-line
 
   const { data = {} } = useSelector((state) => state.config);

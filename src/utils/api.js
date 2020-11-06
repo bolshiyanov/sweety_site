@@ -1,14 +1,8 @@
 import superagent from 'superagent';
 import { getSearchString } from 'utils/url';
 import { getDefaultLanguage } from 'utils/translation';
-import { openDB } from 'idb';
-import fileReader from 'utils/fileReader';
 
 const SOMETHING_WENT_WRONG = 'Something went wrong!';
-const DATABASE_NAME = "Sweety";
-const DATABASE_VERSION = 2;
-const PROFILE_STORE = "profile";
-const CONTENT_STORE = "content";
 
 const host = 'https://api.sweety.link';
 const adminSite = "https://dash.sweety.link";
@@ -63,17 +57,6 @@ const handleError = (e) => {
   }
 };
 
-const dbPromise = openDB(DATABASE_NAME, DATABASE_VERSION, {
-  upgrade(db, oldVersion, newVersion, transaction) {
-    switch (oldVersion) {
-      case 0:
-        db.createObjectStore(PROFILE_STORE);
-        db.createObjectStore(CONTENT_STORE);
-      case 1:
-    }
-  }
-});
-
 const requests = {
   get: (url, params) => superagent.get(`${host}${url}`).query(params)
     .catch(handleError)
@@ -93,33 +76,7 @@ const API = {
   updateProfile: (value) => {
     setProfile(value);
   },
-  getData: () => {
-    return superagent.get(`${host}/api/profiles/pages/public/${profile}`).query()
-      .catch(async (e) => {
-        return (await dbPromise).get(PROFILE_STORE, profile);
-      })
-      .then(async (res) => {
-        const db = await dbPromise;
-        var result = responseBody(res);
-        db.put(PROFILE_STORE, result, profile);
-        const tracks = result.catalogItems.filter(c => c.audio).map(c => c.audio);
-        const keys = await db.getAllKeys(CONTENT_STORE);
-        for (let i = 0; i < tracks.length; i++) {
-          const a = tracks[i];
-          const key = `${profile}:${a}`;
-          if (!keys.includes(key)) {
-            API.toDataUrl(a).then(async blob => {
-              let data = await fileReader(blob);
-              db.put(CONTENT_STORE, data.replace("data:video", "data:audio"), key);
-            });
-          }
-        }
-        return result;
-      });
-  },
-  getCachedContent: async url => {
-    return await (await dbPromise).get(CONTENT_STORE, `${profile}:${url}`);
-  },
+  getData: () => requests.get(`/api/profiles/pages/public/${profile}`),
   register: (data) => requests.post('/api/users/register', { ...data, lang: getDefaultLanguage() }),
   sendOrder: (data) => requests.post(`/api/profiles/${profile}/preorders`, data),
   getInstagramFeed: (account) => {
@@ -226,13 +183,14 @@ const API = {
     },
     recoverPassword: (profile) => requests.post('/api/users/password/recover', { page: profile }),
     toDataUrl: (url) => {
+      console.log(JSON.stringify(url));
       return new Promise ((resolve) => {
         var xhr = new XMLHttpRequest();
         xhr.onload = function() {
           resolve(xhr.response);
         };
         xhr.onerror = function () {
-          console.log(`An error occurred during download ${url}`);
+          resolve(null);
         };
         xhr.open('GET', url);
         xhr.responseType = 'blob';
