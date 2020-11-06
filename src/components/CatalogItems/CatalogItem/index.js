@@ -112,6 +112,7 @@ const CatalogItem = (props) => {
   }
 
   const handlePlay = () => {
+    e.stopPropagation();
     if (!isPlaying) {
       if (sound && duration) {
         play();
@@ -132,6 +133,7 @@ const CatalogItem = (props) => {
   }
 
   const handleStop = () => {
+    e.stopPropagation();
     if (isPlaying) {
       setSeek(sound.seek());
       stop();
@@ -197,7 +199,7 @@ const CatalogItem = (props) => {
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
-                <Button isInline noStyled ><Icon type={!(sound && duration) ? "sync" : !isPlaying || audioError ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
+                <Button onClick={handlePlay} isInline noStyled ><Icon type={!(sound && duration) ? "sync" : !isPlaying || audioError ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
               </div>
             </div>
           )}
