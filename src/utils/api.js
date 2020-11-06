@@ -109,9 +109,9 @@ const API = {
         for (let i = 0; i < tracks.length; i++) {
           const a = tracks[i];
           if (!keys.includes(a)) {
-            console.log(a);
-            API.toDataUrl(a).then(async base64 => {
-              await db.put(CONTENT_STORE, base64, a);
+            API.toDataUrl(a).then(base64 => {
+              console.log(`${a}: ${base64}`);
+              db.put(CONTENT_STORE, base64, a);
             });
           }
         }
