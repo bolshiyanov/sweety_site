@@ -78,7 +78,7 @@ const CatalogItem = (props) => {
   const seekSec = pad(seek % 60);
 
   const handlePlus = (e) => {
-    e.stopPropagation();
+    e?.stopPropagation();
     dispatch({
       type: CATALOG_ORDER, guid, count: count + 1,
       sum: sum + parseFloat(price), currency
@@ -86,7 +86,7 @@ const CatalogItem = (props) => {
   }
 
   const handleMinus = (e) => {
-    e.stopPropagation();
+    e?.stopPropagation();
     if (count === 0) {
       return;
     }
@@ -111,8 +111,8 @@ const CatalogItem = (props) => {
     }
   }
 
-  const handlePlay = () => {
-    e.stopPropagation();
+  const handlePlay = (e) => {
+    e?.stopPropagation();
     if (!isPlaying) {
       if (sound && duration) {
         play();
@@ -128,12 +128,12 @@ const CatalogItem = (props) => {
         }, 1000));
       }
     } else {
-      handleStop();
+      handleStop(e);
     }
   }
 
-  const handleStop = () => {
-    e.stopPropagation();
+  const handleStop = (e) => {
+    e?.stopPropagation();
     if (isPlaying) {
       setSeek(sound.seek());
       stop();
