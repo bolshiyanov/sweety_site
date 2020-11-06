@@ -45,7 +45,9 @@ const CatalogItem = (props) => {
 
   useEffect(async () => {
     if (audio) {
-      setCachedAudio((await API.getCachedContent(audio)) ?? audio);
+      const cache = (await API.getCachedContent(audio)) ?? audio;
+      console.log(cache);
+      setCachedAudio(cache);
     }
   }, []);
 
