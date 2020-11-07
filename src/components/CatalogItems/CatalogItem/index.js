@@ -176,13 +176,13 @@ const CatalogItem = (props) => {
           )}
           {(text && !textAlt && !seek) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem__title">{sound?._src?.substring(0, 20) ?? text}</div>
+              <div className="catalogItem__title">{text}</div>
             </div>
           )}
           {(text && (textAlt || seek)) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
-              <div className="catalogItem__title">{sound?._src?.substring(0, 20) ?? text}</div>
+              <div className="catalogItem__title">{text}</div>
               <div className="catalogItem-text-en">{(seek ?? 0) > 0 ? `${seekMin}:${seekSec} / ${durationMin}:${durationSec}` : textAlt}</div>
             </div>
           )}
