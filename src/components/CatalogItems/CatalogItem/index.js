@@ -45,8 +45,7 @@ const CatalogItem = (props) => {
   const [ seek, setSeek ] = useState(false);
   const [ seekInterval, setSeekInterval ] = useState(null);
 
-  const playingAudio = !audio || audio.startsWith("http") ? null : audio;
-  let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio, {
+  let [play, { stop, isPlaying, duration, sound }] = useSound(audio, {
     autoUnlock: true,
     onend: () => {
       setSeek(null);
@@ -67,16 +66,6 @@ const CatalogItem = (props) => {
       handlePlay();
     }
   }, [playingGuid, sound, duration]);
-
-  useEffect(() => {
-    if (!sound) return;
-
-    console.log("change audio source");
-    console.log(sound);
-    sound.unload(true);
-    sound._src = playingAudio;
-    sound.load();
-  }, [playingAudio]);
 
    const pad = (num) => {
     var s = "0" + Math.round(num);
@@ -187,13 +176,13 @@ const CatalogItem = (props) => {
           )}
           {(text && !textAlt && !seek) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem__title">{text}</div>
+              <div className="catalogItem__title">{sound?._src?.substring(0, 20) ?? text}</div>
             </div>
           )}
           {(text && (textAlt || seek)) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
-              <div className="catalogItem__title">{text}</div>
+              <div className="catalogItem__title">{sound?._src?.substring(0, 20) ?? text}</div>
               <div className="catalogItem-text-en">{(seek ?? 0) > 0 ? `${seekMin}:${seekSec} / ${durationMin}:${durationSec}` : textAlt}</div>
             </div>
           )}
