@@ -45,7 +45,8 @@ const CatalogItem = (props) => {
   const [ seek, setSeek ] = useState(false);
   const [ seekInterval, setSeekInterval ] = useState(null);
 
-  let [play, { stop, isPlaying, duration, sound }] = useSound(audio, {
+  const playingAudio = !audio || audio.startsWith("http") ? null : audio;
+  let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio, {
     autoUnlock: true,
     onend: () => {
       setSeek(null);
@@ -66,6 +67,14 @@ const CatalogItem = (props) => {
       handlePlay();
     }
   }, [playingGuid, sound, duration]);
+
+  useEffect(() => {
+    if (!sound) return;
+
+    sound.unload();
+    sound._src = playingAudio;
+    sound.load();
+  }, [playingAudio]);
 
    const pad = (num) => {
     var s = "0" + Math.round(num);
