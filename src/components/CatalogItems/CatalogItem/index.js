@@ -71,7 +71,9 @@ const CatalogItem = (props) => {
   useEffect(() => {
     if (!sound) return;
 
-    sound.unload();
+    console.log("change audio source");
+    console.log(sound);
+    sound.unload(true);
     sound._src = playingAudio;
     sound.load();
   }, [playingAudio]);
