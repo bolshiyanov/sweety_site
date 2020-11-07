@@ -46,7 +46,7 @@ const CatalogItem = (props) => {
   const [ seekInterval, setSeekInterval ] = useState(null);
 
   let [play, { stop, isPlaying, duration, sound }] = useSound(audio, {
-    autoUnlock: true,
+    autoUnlock: !!audio,
     onend: () => {
       setSeek(null);
       clearInterval(seekInterval);
@@ -200,18 +200,18 @@ const CatalogItem = (props) => {
             </div>
           )}
 
-          {audio && (
+          {!!audio && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
-                <Button onClick={handleAudioClick} isInline noStyled ><Icon type={!(sound && duration) ? "sync" : !isPlaying || audioError ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
+                <Button isInline noStyled ><Icon type={!(!!sound && duration) ? "sync" : !isPlaying || audioError ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
               </div>
             </div>
           )}
         </div>
       );
 
-      if (price || number || audio)
+      if (price || number || !!audio)
         return (
           <div >
             <Button className="button-in-catalogItem-left " isPulse={animation} technical={technical}>
