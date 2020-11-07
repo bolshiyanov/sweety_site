@@ -3,6 +3,7 @@ import { openDB } from 'idb';
 
 import {
   CONFIG_LOAD,
+  CONFIG_LOAD_ONLINE,
   LOADING_ERROR,
   SET_DATA,
   PRELOAD_DATA,
@@ -17,6 +18,7 @@ const DATABASE_NAME = "SweetyLink";
 const DATABASE_VERSION = 1;
 const PROFILE_STORE = "profile";
 const CONTENT_STORE = "content";
+const LOADING_ATTEMPTS = 10;
 
 function dbPromise() {
   return openDB(DATABASE_NAME, DATABASE_VERSION, {
@@ -37,6 +39,10 @@ function dbPromise() {
 }
 
 function dbPut(db, storeName, value, query) {
+  if (!db) {
+    return Promise.resolve(null);
+  }
+
   try {
     return db.put(storeName, value, query);
   } catch (error) {
@@ -46,6 +52,10 @@ function dbPut(db, storeName, value, query) {
 }
 
 function dbGet(db, storeName, query) {
+  if (!db) {
+    return Promise.resolve(null);
+  }
+
   try {
     return db.get(storeName, query);
   } catch (error) {
@@ -55,6 +65,10 @@ function dbGet(db, storeName, query) {
 }
 
 function dbGetAllKeys(db, storeName) {
+  if (!db) {
+    return Promise.resolve([]);
+  }
+
   try {
     return db.getAllKeys(storeName);
   } catch (error) {
@@ -67,108 +81,150 @@ function contentKey(profile, key) {
   return `${profile}:${key}`;
 }
 
+function* processLoadingData(loadingData, profile) {
+  let db = null;
+  try {
+    db = yield call(dbPromise, {});
+  } catch {
+  }
+
+  const {
+    themes,
+    buttonColors,
+    backgrounds,
+    config,
+    account,
+    ...data
+  } = loadingData;
+
+  let keys = yield call(dbGetAllKeys, db, CONTENT_STORE);
+
+  const tracks = data.catalogItems.filter(c => c.audio && c.audio.startsWith("http")).map(c => c.audio);
+  const cachedTracks = tracks.filter(t => keys.includes(contentKey(profile, t)));
+  const trackCaches = yield all(cachedTracks.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
+
+  const cimages = data.catalogItems.filter(c => c.image && c.image.startsWith("http")).map(c => c.image);
+  const cachedCImages = cimages.filter(t => keys.includes(contentKey(profile, t)));
+  const cimageCaches = yield all(cachedCImages.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
+
+  const simages = data.stories.filter(c => c.image && c.image.startsWith("http")).map(c => c.image);
+  const cachedSImages = simages.filter(t => keys.includes(contentKey(profile, t)));
+  const simageCaches = yield all(cachedSImages.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
+
+  cachedTracks.forEach((a, i) => {
+    let cachedBlob = trackCaches[i];
+    if (cachedBlob) {
+      data.catalogItems.filter(c => c.audio === a).forEach(c => {
+        c.audio = cachedBlob;
+      });
+    }
+  });
+
+  cachedCImages.forEach((a, i) => {
+    let cachedBlob = cimageCaches[i];
+    if (cachedBlob) {
+      data.catalogItems.filter(c => c.image === a).forEach(c => {
+        c.image = cachedBlob;
+      });
+    }
+  });
+
+  cachedSImages.forEach((a, i) => {
+    let cachedBlob = simageCaches[i];
+    if (cachedBlob) {
+      data.stories.filter(c => c.image === a).forEach(c => {
+        c.image = cachedBlob;
+      });
+    }
+  });
+
+  const preloadingAvatars = [];
+  if (data.avatar && keys.includes(contentKey(profile, data.avatar))) {
+    data.avatar = yield call(dbGet, db, CONTENT_STORE, contentKey(profile, data.avatar));
+  } else if (data.avatar) {
+    preloadingAvatars.push({ url: data.avatar, type: "image" });
+  }
+  if (data.avatarPreview && keys.includes(contentKey(profile, data.avatarPreview))) {
+    data.avatarPreview = yield call(dbGet, db, CONTENT_STORE, contentKey(profile, data.avatarPreview));
+  } else if (data.avatarPreview) {
+    preloadingAvatars.push({ url: data.avatarPreview, type: "image" });
+  }
+
+  yield put({
+    type: SET_DATA,
+    themes,
+    buttonColors,
+    backgrounds,
+    config,
+    account,
+    data
+  });
+
+  const preloading = [...new Set(
+    tracks.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "audio" }})
+      .concat(cimages.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "image" }}))
+      .concat(simages.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "image" }}))
+      .concat(preloadingAvatars))];
+  if (preloading.length > 0) {
+    yield put({
+      type: PRELOAD_DATA,
+      profile,
+      contentUrls: preloading
+    });
+  }
+}
+
 function* loadConfig({ profile }) {
   try {
     let loadingData = null;
-    let db = yield call(dbPromise, {});
+    let db = null;
+    try
+    {
+      db = yield call(dbPromise, {});
+    } catch { }
+
+    loadingData = yield call(dbGet, db, PROFILE_STORE, profile);
+    if (!loadingData) {
+      yield loadConfigOnline({ profile });
+
+      loadingData = yield call(dbGet, db, PROFILE_STORE, profile);
+
+      if (!loadingData) {
+        yield put({ type: LOADING_ERROR, error: "No data" });
+      }
+    } else {
+      yield call(processLoadingData, loadingData, profile);
+
+      yield put({ type: CONFIG_LOAD_ONLINE, profile });
+    }
+  }
+  catch (error) {
+    yield put({ type: LOADING_ERROR, error });
+  }
+}
+
+function* loadConfigOnline({ profile }) {
+  try {
+    let loadingData = null;
+    let db = null;
+    try {
+      db = yield call(dbPromise, {});
+    } catch { }
+    const loadingDataOffline = yield call(dbGet, db, PROFILE_STORE, profile);
+
     let loading = 0;
-    while (!loadingData && loading < 10) {
+    while (!loadingData && loading < LOADING_ATTEMPTS) {
       loadingData = yield call(API.getData, {});
       if (loadingData != null) {
+        if (loadingDataOffline && JSON.stringify(loadingDataOffline) === JSON.stringify(loadingData)) {
+          return;
+        }
         yield call(dbPut, db, PROFILE_STORE, loadingData, profile);
-      } else {
-        loadingData = yield call(dbGet, db, PROFILE_STORE, profile);
       }
       loading++;
     }
-    if (!loadingData) {
-      yield put({ type: LOADING_ERROR, error: "No data" });
-    } else 
-    {
-      const {
-        themes,
-        buttonColors,
-        backgrounds,
-        config,
-        account,
-        ...data
-      } = loadingData;
-
-      let keys = yield call(dbGetAllKeys, db, CONTENT_STORE);
-
-      const tracks = data.catalogItems.filter(c => c.audio && c.audio.startsWith("http")).map(c => c.audio);
-      const cachedTracks = tracks.filter(t => keys.includes(contentKey(profile, t)));
-      const trackCaches = yield all(cachedTracks.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
-
-      const cimages = data.catalogItems.filter(c => c.image && c.image.startsWith("http")).map(c => c.image);
-      const cachedCImages = cimages.filter(t => keys.includes(contentKey(profile, t)));
-      const cimageCaches = yield all(cachedCImages.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
-
-      const simages = data.stories.filter(c => c.image && c.image.startsWith("http")).map(c => c.image);
-      const cachedSImages = simages.filter(t => keys.includes(contentKey(profile, t)));
-      const simageCaches = yield all(cachedSImages.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
-
-      cachedTracks.forEach((a, i) => {
-        let cachedBlob = trackCaches[i];
-        if (cachedBlob) {
-          data.catalogItems.filter(c => c.audio === a).forEach(c => {
-            c.audio = cachedBlob;
-          });
-        }
-      });
-
-      cachedCImages.forEach((a, i) => {
-        let cachedBlob = cimageCaches[i];
-        if (cachedBlob) {
-          data.catalogItems.filter(c => c.image === a).forEach(c => {
-            c.image = cachedBlob;
-          });
-        }
-      });
-
-      cachedSImages.forEach((a, i) => {
-        let cachedBlob = simageCaches[i];
-        if (cachedBlob) {
-          data.stories.filter(c => c.image === a).forEach(c => {
-            c.image = cachedBlob;
-          });
-        }
-      });
-
-      const preloadingAvatars = [];
-      if (data.avatar && keys.includes(contentKey(profile, data.avatar))) {
-        data.avatar = yield call(dbGet, db, CONTENT_STORE, contentKey(profile, data.avatar));
-      } else if (data.avatar) {
-        preloadingAvatars.push({ url: data.avatar, type: "image" });
-      }
-      if (data.avatarPreview && keys.includes(contentKey(profile, data.avatarPreview))) {
-        data.avatarPreview = yield call(dbGet, db, CONTENT_STORE, contentKey(profile, data.avatarPreview));
-      } else if (data.avatarPreview) {
-        preloadingAvatars.push({ url: data.avatarPreview, type: "image" });
-      }
-
-      yield put({
-        type: SET_DATA,
-        themes,
-        buttonColors,
-        backgrounds,
-        config,
-        account,
-        data
-      });
-
-      const preloading = [...new Set(
-        tracks.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "audio" }})
-          .concat(cimages.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "image" }}))
-          .concat(simages.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "image" }}))
-          .concat(preloadingAvatars))];
-      if (preloading.length > 0) {
-        yield put({
-          type: PRELOAD_DATA,
-          profile,
-          contentUrls: preloading
-        });
-      }
+    if (loadingData) {
+      yield call(processLoadingData, loadingData, profile);
     }
   }
   catch (error) {
@@ -212,5 +268,6 @@ function* preloadData({ profile, contentUrls}) {
 
 export default function* config() {
   yield takeEvery(CONFIG_LOAD, loadConfig);
+  yield takeEvery(CONFIG_LOAD_ONLINE, loadConfigOnline);
   yield takeEvery(PRELOAD_DATA, preloadData);
 }

@@ -1,6 +1,7 @@
 export const LOADING_ERROR = 'LOADING_ERROR';
 
 export const CONFIG_LOAD = 'CONFIG_LOAD';
+export const CONFIG_LOAD_ONLINE = 'CONFIG_LOAD_ONLINE';
 export const SET_DATA = 'SET_DATA';
 export const PRELOAD_DATA = 'PRELOAD_DATA';
 export const CACHE_DATA = 'CACHE_DATA';
