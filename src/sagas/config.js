@@ -111,6 +111,10 @@ function* processLoadingData(loadingData, profile) {
   const cachedSImages = simages.filter(t => keys.includes(contentKey(profile, t)));
   const simageCaches = yield all(cachedSImages.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
 
+  const bimages = data.blocks.filter(c => c.image && c.image.startsWith("http")).map(c => c.image);
+  const cachedBImages = bimages.filter(t => keys.includes(contentKey(profile, t)));
+  const bimageCaches = yield all(cachedBImages.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
+
   cachedTracks.forEach((a, i) => {
     let cachedBlob = trackCaches[i];
     if (cachedBlob) {
@@ -133,6 +137,15 @@ function* processLoadingData(loadingData, profile) {
     let cachedBlob = simageCaches[i];
     if (cachedBlob) {
       data.stories.filter(c => c.image === a).forEach(c => {
+        c.image = cachedBlob;
+      });
+    }
+  });
+
+  cachedBImages.forEach((a, i) => {
+    let cachedBlob = bimageCaches[i];
+    if (cachedBlob) {
+      data.blocks.filter(c => c.image === a).forEach(c => {
         c.image = cachedBlob;
       });
     }
@@ -164,6 +177,7 @@ function* processLoadingData(loadingData, profile) {
     tracks.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "audio" }})
       .concat(cimages.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "image" }}))
       .concat(simages.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "image" }}))
+      .concat(bimages.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "image" }}))
       .concat(preloadingAvatars))];
   if (preloading.length > 0) {
     yield put({

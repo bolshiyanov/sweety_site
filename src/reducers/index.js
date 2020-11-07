@@ -141,7 +141,7 @@ const reducer = handleActions({
   },
 
   [CACHE_DATA] : (state, { cached }) => {
-    const { catalogItems, stories, avatar, avatarPreview } = state.data;
+    const { catalogItems, stories, blocks, avatar, avatarPreview } = state.data;
     catalogItems.forEach(ci => {
       if (ci.audio && cached[ci.audio]) {
         ci.audio = cached[ci.audio];
@@ -157,6 +157,12 @@ const reducer = handleActions({
       }
     });
 
+    blocks.forEach(b => {
+      if (b.image && cached[b.image]) {
+        b.image = cached[b.image];
+      }
+    });
+
     return {
       ...state,
       data: {
@@ -164,6 +170,7 @@ const reducer = handleActions({
         avatar: avatar && cached[avatar] ? cached[avatar] : avatar,
         avatarPreview: avatarPreview && cached[avatarPreview] ? cached[avatarPreview] : avatarPreview,
         stories,
+        blocks,
         catalogItems
       }
     }
