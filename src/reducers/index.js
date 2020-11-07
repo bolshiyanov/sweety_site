@@ -161,8 +161,8 @@ const reducer = handleActions({
       ...state,
       data: {
         ...state.data,
-        /*avatar: avatar && cached[avatar] ? cached[avatar] : avatar,
-        avatarPreview: avatarPreview && cached[avatarPreview] ? cached[avatarPreview] : avatarPreview,*/
+        avatar: avatar && cached[avatar] ? cached[avatar] : avatar,
+        avatarPreview: avatarPreview && cached[avatarPreview] ? cached[avatarPreview] : avatarPreview,
         stories,
         catalogItems
       }
