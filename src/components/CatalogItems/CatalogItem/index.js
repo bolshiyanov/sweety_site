@@ -176,7 +176,7 @@ const CatalogItem = (props) => {
           )}
           {(text && !textAlt && !seek) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem__title">{text}</div>
+              <div className="catalogItem__title">{audio?.substring(0, 15) ?? text}</div>
             </div>
           )}
           {(text && (textAlt || seek)) && (price || number) && (
