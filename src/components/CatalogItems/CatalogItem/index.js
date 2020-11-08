@@ -46,6 +46,7 @@ const CatalogItem = (props) => {
   const [ seekInterval, setSeekInterval ] = useState(null);
   const [ playItem, setPlayItem ] = useState(!playlist ? null : playlist[0]);
   const [ playingAudio, setPlayingAudio ] = useState(audio);
+  const [ autoplay, setAutoplay ] = useState(false);
 
   const text = playlist ? "" : translatedProperty(props, "text");
   const textAlt = translatedProperty(props, "textAlt");
@@ -62,7 +63,6 @@ const CatalogItem = (props) => {
         index++;
         if (index >= playlist.length) index = 0;
         setPlayItem(playlist[index]);
-
       }
     },
     onerror: () => {
@@ -91,6 +91,9 @@ const CatalogItem = (props) => {
       sound.unload(true);
       sound._src = playingAudio;
       sound.load();
+      if (autoplay) {
+        handlePlay();
+      }
     }
   }, [sound, playingAudio]);
 
@@ -141,9 +144,15 @@ const CatalogItem = (props) => {
   const handleAudioClick = (e) => {
     e.stopPropagation();
     if (!isPlaying) {
+      if (playlist) {
+        setAutoplay(true);
+      }
       handlePlay();
     } else {
       handleStop();
+      if (playlist) {
+        setAutoplay(false);
+      }
     }
   }
 
