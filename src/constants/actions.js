@@ -38,4 +38,4 @@ export const CATALOG_PLAY = 'CATALOG_PLAY';
 
 export const CATALOG_PAUSE = 'CATALOG_PAUSE';
 
-export const CATALOG_PLAYED = 'CATALOG_PLAYED';
+export const CATALOG_NEXT = 'CATALOG_NEXT';

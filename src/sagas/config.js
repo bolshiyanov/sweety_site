@@ -154,14 +154,27 @@ function* processLoadingData(loadingData, profile) {
     }
   });
 
-  const playlists = data.catalogItems.filter(ci => ci.text?.startsWith("https://docs.google.com")).map(ci => ci.text);
+  data.catalogItems.forEach(ci => {
+    if (ci.text?.startsWith("https://docs.google.com")) {
+      ci.playlistUrl = ci.text;
+      ci.text = null;
+      ci.textEn = null;
+      ci.textEs = null;
+      ci.textRu = null;
+      ci.textIt = null;
+      ci.textDe = null;
+      ci.textFr = null;
+    }
+  });
+  const playlists = data.catalogItems.filter(ci => ci.playlistUrl).map(ci => ci.playlistUrl);
   const cachedPlaylists = playlists.filter(t => keys.includes(contentKey(profile, t)));
   const playlistCaches = yield all(cachedPlaylists.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
-  data.catalogItems.forEach(ci => {
-    if (ci.text && playlists.includes(ci.text)) {
-      const cachedIndex = cachedPlaylists.indexOf(ci.text);
-      ci.playlist = cachedIndex > -1 ? playlistCaches[cachedIndex] : [];
-    }
+  data.catalogItems.filter(ci => ci.playlistUrl).forEach(ci => {
+    const cachedIndex = cachedPlaylists.indexOf(ci.playlistUrl);
+    ci.playlist = cachedIndex > -1 ? playlistCaches[cachedIndex] : [];
+    ci.audio = ci.playlist[0]?.audio;
+    ci.text = ci.playlist[0]?.text;
+    // TODO. Find appropriate track
   });
 
   const preloadingAvatars = [];

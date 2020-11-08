@@ -21,8 +21,9 @@ import {
   CACHE_PLAYLISTS,
   CATALOG_PLAY,
   CATALOG_PAUSE,
-  CATALOG_PLAYED
+  CATALOG_NEXT
 } from 'constants/actions';
+import CatalogItem from 'components/CatalogItems/CatalogItem';
 
 const defaultTheme = new Theme({ name: 'Default' });
 const initialState = {
@@ -180,11 +181,13 @@ const reducer = handleActions({
   [CACHE_PLAYLISTS] : (state, { cached }) => {
     const { catalogItems } = state.data;
     catalogItems.forEach(ci => {
-      if (ci.text && cached[ci.text]) {
-        ci.playlist = cached[ci.text];
+      if (ci.playlistUrl && cached[ci.playlistUrl]) {
+        ci.playlist = cached[ci.playlistUrl];
+        ci.audio = ci.playlist[0]?.audio;
+        ci.text = ci.playlist[0]?.text;
       }
     });
-    
+
     return {
       ...state,
       data: {
@@ -206,15 +209,29 @@ const reducer = handleActions({
       playingGuid: state.playingGuid === guid ? null : state.playingGuid
     }
   },
-  [CATALOG_PLAYED] : (state, { guid }) => {
+  [CATALOG_NEXT] : (state, { guid }) => {
     const { catalogItems } = state.data;
-    const sorted = catalogItems.sort((a, b) => a.order < b.order ? 1 : -1);
-    const playedInd = sorted.map((e, i) => { return { guid: e.guid, i} }).filter(e => e.guid === guid)[0].i;
-    const playingGuid = playedInd === sorted.length - 1 ? sorted[0].guid : sorted[playedInd + 1].guid;
+    const catalogItem = catalogItems.filter(ci => ci.guid === guid)[0];
+    if (catalogItem?.playlist) {
+      if (catalogItem.playlist.length <= 1) {
+        catalogItem.audio = catalogItem.playlist[0]?.audio;
+        catalogItem.text = catalogItem.playlist[0]?.text;
+      } else {
+        const playedInd = catalogItem.playlist.map((a, i) => { return { a, i } }).filter(e => e.a === catalogItem.audio)[0]?.i;
+        console.log(playedInd);
+        if (playedInd >= catalogItem.playlist.length - 1) {
+          catalogItem.audio = catalogItem.playlist[0].audio;
+          catalogItem.text = catalogItem.playlist[0].text;
+        } else {
+          catalogItem.audio = catalogItem.playlist[playedInd + 1].audio;
+          catalogItem.text = catalogItem.playlist[playedInd + 1].text;
+        }
+      }
+    }
 
     return {
       ...state,
-      playingGuid
+      catalogItems
     }
   },
 }, initialState);

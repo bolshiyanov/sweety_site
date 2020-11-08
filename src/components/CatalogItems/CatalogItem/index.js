@@ -17,12 +17,11 @@ import {
   CATALOG_RIGHT,
 } from 'constants/catalogTypes';
 
-import { CATALOG_ORDER, CATALOG_PLAY, CATALOG_PLAYED, CATALOG_PAUSE } from 'constants/actions';
+import { CATALOG_ORDER, CATALOG_PLAY, CATALOG_NEXT, CATALOG_PAUSE } from 'constants/actions';
 import { parse } from 'superagent';
 import { translatedProperty } from 'utils/translation';
 
-const CatalogItem = (props) => {
-  const {
+const CatalogItem = ({
     guid,
     animation,
     image,
@@ -32,11 +31,25 @@ const CatalogItem = (props) => {
     number,
     outOfStock,
     type,
+    text,
+    textEn,
+    textRu,
+    textEs,
+    textIt,
+    textDe,
+    textFr,
+    textAlt,
+    textAltEn,
+    textAltRu,
+    textAltEs,
+    textAltIt,
+    textAltDe,
+    textAltFr,
     onClick,
     className,
     technical,
     playlist
-  } = props;
+  }) => {
   const dispatch = useDispatch();
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
   const { playingGuid } = useSelector((state) => state.config);
@@ -44,27 +57,26 @@ const CatalogItem = (props) => {
   const [ audioError, setAudioError ] = useState(false);
   const [ seek, setSeek ] = useState(false);
   const [ seekInterval, setSeekInterval ] = useState(null);
-  const [ playItem, setPlayItem ] = useState(!playlist ? null : playlist[0]);
-  const [ playingAudio, setPlayingAudio ] = useState(audio);
   const [ autoplay, setAutoplay ] = useState(false);
 
-  const text = playlist ? "" : translatedProperty(props, "text");
-  const [ playingText, setPlayingText ] = useState(text);
-  const textAlt = translatedProperty(props, "textAlt");
-  const [ playingTextAlt, setPlayingTextAlt ] = useState(textAlt);
+  const translatedText = playlist && !audio ? "" : 
+    translatedProperty({ text, textEn, textEs, textRu, textDe, textFr, textIt}, "text");
+  const [ playingText, setPlayingText ] = useState(translatedText);
+  const translatedTextAlt = translatedProperty({ textAlt, textAltEn, textAltEs, textAltRu, textAltDe, textAltFr, textAltIt}, "textAlt");
+  const [ playingTextAlt, setPlayingTextAlt ] = useState(translatedTextAlt);
 
-  let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio, {
+  const isAudioPlayer = audio || playlist;
+
+  let [play, { stop, isPlaying, duration, sound }] = useSound(audio, {
     autoUnlock: true,
     format: "mpeg",
-    preload: audio && !audio.startsWith("http"),
+    preload: true,
+    html5: true,
     onend: () => {
       setSeek(null);
       clearInterval(seekInterval);
       if (playlist) {
-        let index = playlist.indexOf(playItem);
-        index++;
-        if (index >= playlist.length) index = 0;
-        setPlayItem(playlist[index]);
+        dispatch({ type: CATALOG_NEXT, guid });
       }
     },
     onerror: () => {
@@ -75,21 +87,16 @@ const CatalogItem = (props) => {
   useEffect(() => {
     if (isPlaying && playingGuid !== guid) {
       handleStop();
-    } else if (!isPlaying && sound && duration && playingGuid === guid) {
+      setAutoplay(false);
+    } else if (!isPlaying && autoplay && audio && playingGuid === guid) {
       handlePlay();
     }
-  }, [playingGuid, sound, duration]);
+    if (playlist) {
+      setPlayingText(text);
+    }
+  }, [playingGuid, sound, duration, audio]);
 
-  useEffect(() => {
-    setPlayingAudio(playItem?.audio ?? audio);
-    setPlayingText((playItem?.text ? playItem.text.substring(0, 20) : null) ?? text);
-  }, [playItem]);
-
-  useEffect(() => {
-    setPlayItem(!playlist ? null : playlist[0]);
-  }, [playlist]);
-
-  useEffect(() => {
+  /*useEffect(() => {
     if (playingAudio && sound && JSON.stringify(sound._src) !== JSON.stringify(playingAudio)) {
       sound.unload(true);
       sound._src = playingAudio;
@@ -98,10 +105,10 @@ const CatalogItem = (props) => {
         handlePlay();
       }
     }
-  }, [sound, playingAudio]);
+  }, [sound, playingAudio]);*/
 
   const pad = (num) => {
-    var s = "0" + Math.round(num);
+    var s = "0" + Math.round(num ?? 0);
     return s.substr(s.length - 2);
   }
 
@@ -171,6 +178,7 @@ const CatalogItem = (props) => {
         setSeekInterval(setInterval(() => {
           if (sound?.seek()) {
             setSeek(sound?.seek() ?? 0);
+            setPlayingTextAlt((seek ?? 0) > 0 ? `${seekMin}:${seekSec} / ${durationMin}:${durationSec}` : translatedTextAlt);
           }
         }, 1000));
       }
@@ -203,30 +211,30 @@ const CatalogItem = (props) => {
             className
           ])}
           key={guid}
-          onClick={(e) => { playingAudio ? handleAudioClick(e) : onClick() }}
+          onClick={(e) => { isAudioPlayer ? handleAudioClick(e) : onClick() }}
         >
           {image && (price || number) && (
-            <img src={image} alt={text} />
+            <img src={image} alt={translatedText} />
           )}
           {(!price && !number) && playingText && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-left-title-without-button">{playingText}</div>
             </div>
           )}
-          {(playingText && !textAlt && !seek) && (price || number) && (
+          {(playingText && !playingTextAlt) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem__title">{playingText}</div>
             </div>
           )}
-          {(playingText && (textAlt || seek)) && (price || number) && (
+          {(playingText && playingTextAlt) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem__title">{playingText}</div>
-              <div className="catalogItem-text-en">{(seek ?? 0) > 0 ? `${seekMin}:${seekSec} / ${durationMin}:${durationSec}` : textAlt}</div>
+              <div className="catalogItem-text-en">{playingTextAlt}</div>
             </div>
           )}
 
-          {(price || number) && !playingAudio && (
+          {(price || number) && !isAudioPlayer && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
@@ -239,7 +247,7 @@ const CatalogItem = (props) => {
             </div>
           )}
 
-          {!!playingAudio && (
+          {isAudioPlayer && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
@@ -250,7 +258,7 @@ const CatalogItem = (props) => {
         </div>
       );
 
-      if (price || number || !!playingAudio)
+      if (price || number || isAudioPlayer)
         return (
           <div >
             <Button className="button-in-catalogItem-left " isPulse={animation} technical={technical}>
@@ -275,14 +283,14 @@ const CatalogItem = (props) => {
             { 'catalogItem__center__with-button': (price || number) },
             { 'catalogItem__center__with-image__with-button': image && (price || number) },
             { 'catalogItem__center__with-image__without-button': image && (!price & !number) },
-            { 'catalogItem-withimage-wihout-title': image && (!price & !number & !text) },
+            { 'catalogItem-withimage-wihout-title': image && (!price & !number & !translatedText) },
             className
           ])}
           style={style}
           key={guid}
           onClick={onClick}
         >
-          <div className="catalogItem__title">{text}
+          <div className="catalogItem__title">{translatedText}
             {(price || number) && (
               <div className="catalogItem-preorder-flex-column-center">
                 <div className="catalogItem-preorder-flex-row">
@@ -329,16 +337,16 @@ const CatalogItem = (props) => {
           onClick={onClick}
         >
           {image && (price || number) && (
-            <img src={image} alt={text} />
+            <img src={image} alt={translatedText} />
           )}
-          {(!price && !number) && text && (
-            <div className="catalogItem-right-title-without-button">{text}</div>
+          {(!price && !number) && translatedText && (
+            <div className="catalogItem-right-title-without-button">{translatedText}</div>
           )}
-          {(text) && (price || number) && (
+          {(translatedText) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
 
-              <div className="catalogItem__title">{text}</div>
-              {textAlt && <div className="catalogItem-text-en">{textAlt}</div>}
+              <div className="catalogItem__title">{translatedText}</div>
+              {translatedTextAlt && <div className="catalogItem-text-en">{translatedTextAlt}</div>}
             </div>
           )}
 
@@ -388,6 +396,8 @@ CatalogItem.propTypes = {
   guid: PropTypes.string,
   animation: PropTypes.bool,
   image: PropTypes.string,
+  audio: PropTypes.string,
+  playlist: PropTypes.array,
   text: PropTypes.string,
   textEn: PropTypes.string,
   price: PropTypes.number,
