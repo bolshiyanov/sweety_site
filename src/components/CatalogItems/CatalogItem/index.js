@@ -44,7 +44,7 @@ const CatalogItem = (props) => {
   const [ audioError, setAudioError ] = useState(false);
   const [ seek, setSeek ] = useState(false);
   const [ seekInterval, setSeekInterval ] = useState(null);
-  const [ playItem, setPlayItem ] = useState(playlist[0]);
+  const [ playItem, setPlayItem ] = useState(!playlist ? null : playlist[0]);
   const [ playingAudio, setPlayingAudio ] = useState(audio);
 
   const text = playlist ? "" : translatedProperty(props, "text");
@@ -83,7 +83,7 @@ const CatalogItem = (props) => {
   }, [playItem]);
 
   useEffect(() => {
-    setPlayItem(playlist[0]);
+    setPlayItem(!playlist ? null : playlist[0]);
   }, [playlist]);
 
   useEffect(() => {
