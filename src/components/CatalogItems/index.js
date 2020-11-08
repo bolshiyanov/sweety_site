@@ -72,9 +72,9 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
     <React.Fragment>
       <div id={SCROLL_CATALOG_ID}>{
         data.filter(checkCatalogItem).map((catalogItem) =>
-          <LazyLoadComponent key={catalogItem.guid + ((catalogItem.audio?.startsWith("http") ?? true) ? "" : "c")} scrollPosition={scrollPosition} threshold={10}>
+          <LazyLoadComponent key={catalogItem.guid/* + ((catalogItem.audio?.startsWith("http") ?? true) ? "" : "c")*/} scrollPosition={scrollPosition} threshold={10}>
             <CatalogItem
-              key={catalogItem.guid + ((catalogItem.audio?.startsWith("http") ?? true) ? "" : "c")}
+              key={catalogItem.guid/* + ((catalogItem.audio?.startsWith("http") ?? true) ? "" : "c")*/}
               {...catalogItem}
               scrollPosition={scrollPosition}
               onClick={catalogItem.price || catalogItem.number ? (() => onOpenCatalogItemSettings(catalogItem.guid)) : null}  />

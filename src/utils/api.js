@@ -192,7 +192,9 @@ const API = {
         xhr.onerror = function () {
           resolve(null);
         };
-        xhr.open('GET', url);
+        const loadingUrl = window.location.hostname !== "localhost" ? url :
+          "https://cors-anywhere.herokuapp.com/" + url;
+        xhr.open('GET', loadingUrl);
         xhr.responseType = 'blob';
         xhr.send();
       })

@@ -45,8 +45,10 @@ const CatalogItem = (props) => {
   const [ seek, setSeek ] = useState(false);
   const [ seekInterval, setSeekInterval ] = useState(null);
 
-  let [play, { stop, isPlaying, duration, sound }] = useSound(audio?.startsWith("http") ? null : audio, {
+  let [play, { stop, isPlaying, duration, sound }] = useSound(/*audio?.startsWith("http") ? null : */audio, {
     autoUnlock: true,
+    format: "mpeg",
+    preload: audio && !audio.startsWith("http"),
     onend: () => {
       setSeek(null);
       clearInterval(seekInterval);
@@ -67,7 +69,15 @@ const CatalogItem = (props) => {
     }
   }, [playingGuid, sound, duration]);
 
-   const pad = (num) => {
+  useEffect(() => {
+    if (audio && sound && JSON.stringify(sound._src) !== JSON.stringify(audio)) {
+      sound.unload(true);
+      sound._src = audio;
+      sound.load();
+    }
+  }, [sound, audio]);
+
+  const pad = (num) => {
     var s = "0" + Math.round(num);
     return s.substr(s.length - 2);
   }
@@ -122,7 +132,7 @@ const CatalogItem = (props) => {
 
   const handlePlay = (e) => {
     if (!isPlaying) {
-      if (sound && duration) {
+      if (sound) {
         play();
         if (seek) {
           sound.seek(seek);
@@ -176,7 +186,8 @@ const CatalogItem = (props) => {
           )}
           {(text && !textAlt && !seek) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem__title">{(audio ? (sound?._src ? JSON.stringify(sound._src).substring(1, 15) : null) :null) ?? text}</div>
+              <div className="catalogItem__title">{(audio ? (sound?._src ? sound._src.length : null) :null) ?? text}</div>
+              {audio && <div className="catalogItem-text-en">{audio?.substring(0, 15)}</div>}
             </div>
           )}
           {(text && (textAlt || seek)) && (price || number) && (
@@ -204,7 +215,7 @@ const CatalogItem = (props) => {
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
-                <Button isInline noStyled ><Icon type={!(!!sound && duration) ? "sync" : !isPlaying || audioError ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
+                <Button isInline noStyled ><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
               </div>
             </div>
           )}
