@@ -45,7 +45,7 @@ const CatalogItem = (props) => {
   const [ seek, setSeek ] = useState(false);
   const [ seekInterval, setSeekInterval ] = useState(null);
 
-  let [play, { stop, isPlaying, duration, sound }] = useSound(audio, {
+  let [play, { stop, isPlaying, duration, sound }] = useSound(audio?.startsWith("http") ? null : audio, {
     autoUnlock: true,
     onend: () => {
       setSeek(null);
