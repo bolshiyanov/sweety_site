@@ -5,6 +5,7 @@ export const CONFIG_LOAD_ONLINE = 'CONFIG_LOAD_ONLINE';
 export const SET_DATA = 'SET_DATA';
 export const PRELOAD_DATA = 'PRELOAD_DATA';
 export const CACHE_DATA = 'CACHE_DATA';
+export const CACHE_PLAYLISTS = 'CACHE_PLAYLISTS';
 export const PRELOAD_PLAYLISTS = 'PRELOAD_PLAYLISTS';
 
 export const CHANGE_THEME = 'CHANGE_THEME';

@@ -18,6 +18,7 @@ import {
   CATALOG_ORDER,
   CATALOG_ORDER_CLEAR,
   CACHE_DATA,
+  CACHE_PLAYLISTS,
   CATALOG_PLAY,
   CATALOG_PAUSE,
   CATALOG_PLAYED
@@ -171,6 +172,23 @@ const reducer = handleActions({
         avatarPreview: avatarPreview && cached[avatarPreview] ? cached[avatarPreview] : avatarPreview,
         stories,
         blocks,
+        catalogItems
+      }
+    }
+  },
+
+  [CACHE_PLAYLISTS] : (state, { cached }) => {
+    const { catalogItems } = state.data;
+    catalogItems.forEach(ci => {
+      if (ci.text && cached[ci.text]) {
+        ci.playlist = cached[ci.text];
+      }
+    });
+    
+    return {
+      ...state,
+      data: {
+        ...state.data,
         catalogItems
       }
     }

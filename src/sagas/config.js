@@ -9,6 +9,7 @@ import {
   SET_DATA,
   PRELOAD_DATA,
   CACHE_DATA,
+  CACHE_PLAYLISTS,
   PRELOAD_PLAYLISTS
 } from 'constants/actions';
 
@@ -325,6 +326,15 @@ function* preloadPlaylists({ profile, playlists}) {
   yield all(contentList.map(e => call(dbPut, db, CONTENT_STORE, 
     e.items,
     contentKey(profile, e.url))));
+
+  const cached = {};
+  contentList.forEach(e => {
+    cached[e.url] = e.items
+  });
+
+  if (Object.keys(cached).length > 0) {
+    yield put({ type: CACHE_PLAYLISTS, cached });
+  }
 
   const keys = yield call(dbGetAllKeys, db, CONTENT_STORE);
   const preloading = [];

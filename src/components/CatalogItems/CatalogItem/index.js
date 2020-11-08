@@ -47,7 +47,7 @@ const CatalogItem = (props) => {
   const [ playItem, setPlayItem ] = useState(playlist[0]);
   const [ playingAudio, setPlayingAudio ] = useState(audio);
 
-  const text = translatedProperty(props, "text");
+  const text = playlist ? "" : translatedProperty(props, "text");
   const textAlt = translatedProperty(props, "textAlt");
 
   let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio, {
@@ -81,6 +81,10 @@ const CatalogItem = (props) => {
   useEffect(() => {
     setPlayingAudio(playItem?.audio);
   }, [playItem]);
+
+  useEffect(() => {
+    setPlayItem(playlist[0]);
+  }, [playlist]);
 
   useEffect(() => {
     if (playingAudio && sound && JSON.stringify(sound._src) !== JSON.stringify(playingAudio)) {
