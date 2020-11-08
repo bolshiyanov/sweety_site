@@ -1,5 +1,6 @@
 import { takeEvery, put, call, all } from 'redux-saga/effects';
 import { openDB } from 'idb';
+import { uuid } from 'uuidv4';
 
 import {
   CONFIG_LOAD,
@@ -7,7 +8,8 @@ import {
   LOADING_ERROR,
   SET_DATA,
   PRELOAD_DATA,
-  CACHE_DATA
+  CACHE_DATA,
+  PRELOAD_PLAYLISTS
 } from 'constants/actions';
 
 import API from 'utils/api';
@@ -151,6 +153,16 @@ function* processLoadingData(loadingData, profile) {
     }
   });
 
+  const playlists = data.catalogItems.filter(ci => ci.text?.startsWith("https://docs.google.com")).map(ci => ci.text);
+  const cachedPlaylists = playlists.filter(t => keys.includes(contentKey(profile, t)));
+  const playlistCaches = yield all(cachedPlaylists.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
+  data.catalogItems.forEach(ci => {
+    if (ci.text && playlists.includes(ci.text)) {
+      const cachedIndex = cachedPlaylists.indexOf(ci.text);
+      ci.playlist = cachedIndex > -1 ? playlistCaches[cachedIndex] : [];
+    }
+  });
+
   const preloadingAvatars = [];
   if (data.avatar && keys.includes(contentKey(profile, data.avatar))) {
     data.avatar = yield call(dbGet, db, CONTENT_STORE, contentKey(profile, data.avatar));
@@ -184,6 +196,16 @@ function* processLoadingData(loadingData, profile) {
       type: PRELOAD_DATA,
       profile,
       contentUrls: preloading
+    });
+  }
+
+  const preloadingPlaylists = [...new Set(
+    playlists.filter(t => !keys.includes(contentKey(profile, t))))];
+  if (preloadingPlaylists.length > 0) {
+    yield put({
+      type: PRELOAD_PLAYLISTS,
+      profile,
+      playlists: preloadingPlaylists
     });
   }
 }
@@ -280,8 +302,52 @@ function* preloadData({ profile, contentUrls}) {
   }
 }
 
+function* preloadPlaylists({ profile, playlists}) {
+  const db = yield call(dbPromise, {});
+
+  const googleSheets = yield all(playlists.map(l => call(API.getGoogleSpreadSheet, l)));
+  const contentList = googleSheets.map((rows, i) => {
+    const items = rows.filter(row => row.audio).map(row => {
+      return {
+        guid: uuid(),
+        number: row.number?.trim(),
+        timeFrom: row.timeFrom?.trim(),
+        timeTo: row.timeTo?.trim(),
+        text: row.text?.trim(),
+        audio: row.audio?.trim(),
+      };
+    });
+    return {
+      url: playlists[i],
+      items
+    };
+  });
+  yield all(contentList.map(e => call(dbPut, db, CONTENT_STORE, 
+    e.items,
+    contentKey(profile, e.url))));
+
+  const keys = yield call(dbGetAllKeys, db, CONTENT_STORE);
+  const preloading = [];
+  contentList.forEach(l => {
+    l.items.forEach(e => {
+      if (e.audio && !keys.includes(contentKey(profile, e.audio))) {
+        preloading.push(e.audio);
+      }
+    });
+  });
+
+  /*if (preloading.length > 0) {
+    yield put({
+      type: PRELOAD_DATA,
+      profile,
+      contentUrls: [...new Set(preloading)].map(url => { return { url, type: "audio" } })
+    });
+  }*/
+}
+
 export default function* config() {
   yield takeEvery(CONFIG_LOAD, loadConfig);
   yield takeEvery(CONFIG_LOAD_ONLINE, loadConfigOnline);
   yield takeEvery(PRELOAD_DATA, preloadData);
+  yield takeEvery(PRELOAD_PLAYLISTS, preloadPlaylists);
 }

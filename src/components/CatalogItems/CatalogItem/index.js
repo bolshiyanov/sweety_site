@@ -34,28 +34,37 @@ const CatalogItem = (props) => {
     type,
     onClick,
     className,
-    technical
+    technical,
+    playlist
   } = props;
   const dispatch = useDispatch();
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
   const { playingGuid } = useSelector((state) => state.config);
-  const text = translatedProperty(props, "text");
-  const textAlt = translatedProperty(props, "textAlt");
+
   const [ audioError, setAudioError ] = useState(false);
   const [ seek, setSeek ] = useState(false);
   const [ seekInterval, setSeekInterval ] = useState(null);
+  const [ playItem, setPlayItem ] = useState(playlist[0]);
+  const [ playingAudio, setPlayingAudio ] = useState(audio);
 
-  let [play, { stop, isPlaying, duration, sound }] = useSound(/*audio?.startsWith("http") ? null : */audio, {
+  const text = translatedProperty(props, "text");
+  const textAlt = translatedProperty(props, "textAlt");
+
+  let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio, {
     autoUnlock: true,
     format: "mpeg",
     preload: audio && !audio.startsWith("http"),
     onend: () => {
       setSeek(null);
       clearInterval(seekInterval);
-      if (duration < 30 * 60 * 1000) {
-        dispatch({ type: CATALOG_PLAYED, guid });
+      if (playlist) {
+        let index = playlist.indexOf(playItem);
+        index++;
+        if (index >= playlist.length) index = 0;
+        setPlayItem(playlist[index]);
+
       }
-    }, 
+    },
     onerror: () => {
       setAudioError(true);
     } 
@@ -70,12 +79,16 @@ const CatalogItem = (props) => {
   }, [playingGuid, sound, duration]);
 
   useEffect(() => {
-    if (audio && sound && JSON.stringify(sound._src) !== JSON.stringify(audio)) {
+    setPlayingAudio(playItem.audio);
+  }, [playItem]);
+
+  useEffect(() => {
+    if (playingAudio && sound && JSON.stringify(sound._src) !== JSON.stringify(playingAudio)) {
       sound.unload(true);
-      sound._src = audio;
+      sound._src = playingAudio;
       sound.load();
     }
-  }, [sound, audio]);
+  }, [sound, playingAudio]);
 
   const pad = (num) => {
     var s = "0" + Math.round(num);
@@ -174,31 +187,30 @@ const CatalogItem = (props) => {
             className
           ])}
           key={guid}
-          onClick={(e) => { audio ? handleAudioClick(e) : onClick() }}
+          onClick={(e) => { playingAudio ? handleAudioClick(e) : onClick() }}
         >
           {image && (price || number) && (
             <img src={image} alt={text} />
           )}
-          {(!price && !number) && text && (
+          {(!price && !number) && (playItem?.text ?? text) && (
             <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem-left-title-without-button">{text}</div>
+              <div className="catalogItem-left-title-without-button">{playItem?.text ?? text}</div>
             </div>
           )}
-          {(text && !textAlt && !seek) && (price || number) && (
+          {((playItem?.text ?? text) && !textAlt && !seek) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem__title">{(audio ? (sound?._src ? sound._src.length : null) :null) ?? text}</div>
-              {audio && <div className="catalogItem-text-en">{audio?.substring(0, 15)}</div>}
+              <div className="catalogItem__title">{playItem?.text ?? text}</div>
             </div>
           )}
-          {(text && (textAlt || seek)) && (price || number) && (
+          {((playItem?.text ?? text) && (textAlt || seek)) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
-              <div className="catalogItem__title">{text}</div>
+              <div className="catalogItem__title">{playItem?.text ?? text}</div>
               <div className="catalogItem-text-en">{(seek ?? 0) > 0 ? `${seekMin}:${seekSec} / ${durationMin}:${durationSec}` : textAlt}</div>
             </div>
           )}
 
-          {(price || number) && !audio && (
+          {(price || number) && !playingAudio && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
@@ -211,7 +223,7 @@ const CatalogItem = (props) => {
             </div>
           )}
 
-          {!!audio && (
+          {!!playingAudio && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
               <div className="catalogItem-preorder-flex-row">
@@ -222,7 +234,7 @@ const CatalogItem = (props) => {
         </div>
       );
 
-      if (price || number || !!audio)
+      if (price || number || !!playingAudio)
         return (
           <div >
             <Button className="button-in-catalogItem-left " isPulse={animation} technical={technical}>
