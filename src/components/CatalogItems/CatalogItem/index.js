@@ -79,7 +79,7 @@ const CatalogItem = (props) => {
   }, [playingGuid, sound, duration]);
 
   useEffect(() => {
-    setPlayingAudio(playItem.audio);
+    setPlayingAudio(playItem?.audio);
   }, [playItem]);
 
   useEffect(() => {
