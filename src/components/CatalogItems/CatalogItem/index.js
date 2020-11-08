@@ -49,7 +49,9 @@ const CatalogItem = (props) => {
   const [ autoplay, setAutoplay ] = useState(false);
 
   const text = playlist ? "" : translatedProperty(props, "text");
+  const [ playingText, setPlayingText ] = useState(text);
   const textAlt = translatedProperty(props, "textAlt");
+  const [ playingTextAlt, setPlayingTextAlt ] = useState(textAlt);
 
   let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio, {
     autoUnlock: true,
@@ -80,6 +82,7 @@ const CatalogItem = (props) => {
 
   useEffect(() => {
     setPlayingAudio(playItem?.audio ?? audio);
+    setPlayingText((playItem?.text ? playItem.text.substring(0, 20) : null) ?? text);
   }, [playItem]);
 
   useEffect(() => {
@@ -205,20 +208,20 @@ const CatalogItem = (props) => {
           {image && (price || number) && (
             <img src={image} alt={text} />
           )}
-          {(!price && !number) && (playItem?.text ?? text) && (
+          {(!price && !number) && playingText && (
             <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem-left-title-without-button">{playItem?.text ?? text}</div>
+              <div className="catalogItem-left-title-without-button">{playingText}</div>
             </div>
           )}
-          {((playItem?.text ?? text) && !textAlt && !seek) && (price || number) && (
+          {(playingText && !textAlt && !seek) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem__title">{playItem?.text ?? text}</div>
+              <div className="catalogItem__title">{playingText}</div>
             </div>
           )}
-          {((playItem?.text ?? text) && (textAlt || seek)) && (price || number) && (
+          {(playingText && (textAlt || seek)) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
               <div className="catalogItem-price-empty"></div>
-              <div className="catalogItem__title">{playItem?.text ?? text}</div>
+              <div className="catalogItem__title">{playingText}</div>
               <div className="catalogItem-text-en">{(seek ?? 0) > 0 ? `${seekMin}:${seekSec} / ${durationMin}:${durationSec}` : textAlt}</div>
             </div>
           )}
