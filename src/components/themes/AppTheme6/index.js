@@ -119,6 +119,7 @@ const AppTheme6 = () => {
           <HeaderTheme6 />
           <AvatarTheme3 />
           <TitleTheme6 />
+          <Messengers />
           <Blocks data={data.blocks} />
           {needSticky && <StickyContainer>
             <Sticky>
@@ -140,7 +141,6 @@ const AppTheme6 = () => {
             <CatalogItems data={data.catalogItems} profile={profile} />
           </>}
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
-          <Messengers />
           <Rss />
           <SocialSharingButtons />
           <Social />
