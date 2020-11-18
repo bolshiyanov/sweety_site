@@ -13,6 +13,7 @@ import Order from 'components/Order';
 import HeaderTheme6 from 'components/themes/AppTheme6/HeaderTheme6';
 import AvatarTheme3 from 'components/themes/AppTheme3/AvatarTheme3';
 import TitleTheme6 from 'components/themes/AppTheme6/TitleTheme6';
+import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import Stories from 'components/Stories';
 import Messengers from 'components/Messengers';
 import CatalogItems from 'components/CatalogItems';
@@ -118,6 +119,7 @@ const AppTheme6 = () => {
           <HeaderTheme6 />
           <AvatarTheme3 />
           <TitleTheme6 />
+          <Blocks data={data.blocks} />
           {needSticky && <StickyContainer>
             <Sticky>
               {({
@@ -127,17 +129,16 @@ const AppTheme6 = () => {
               }) => {
                 const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
                 return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
-                  <Stories data={data.stories} />
+                  <StoriesTheme2 isSticky={stickyBlock} data={data.stories} />
                 </div>);
               }}
             </Sticky>
             <CatalogItems data={data.catalogItems} profile={profile} />
           </StickyContainer>}
           {!needSticky && <>
-            <Stories data={data.stories} />
+            <StoriesTheme2 data={data.stories} />
             <CatalogItems data={data.catalogItems} profile={profile} />
           </>}
-          <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
           <Messengers />
           <Rss />

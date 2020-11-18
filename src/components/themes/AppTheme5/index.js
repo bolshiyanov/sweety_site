@@ -13,6 +13,7 @@ import Order from 'components/Order';
 import AvatarTheme5 from 'components/themes/AppTheme5/AvatarTheme5';
 import MessengersTheme4 from 'components/themes/AppTheme4/MessengersTheme4';
 import TitleTheme4 from 'components/themes/AppTheme3/TitleTheme3';
+import StoriesTheme5 from 'components/themes/AppTheme5/StoriesTheme5';
 import Stories from 'components/Stories';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
@@ -114,31 +115,28 @@ const AppTheme5 = () => {
                 <div className="app-container">
                     <Pwaupbanner profile={profile} />
                     <Order />
+                    <AvatarTheme5 />
+                    <MessengersTheme4 />
+                    <TitleTheme4 />
                     {needSticky && <StickyContainer>
-                        <Sticky>
-                        {({
-                            style,
-                            isSticky,
-                            distanceFromBottom 
-                        }) => {
-                            const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
-                            return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
-                                <Stories data={data.stories} />
-                            </div>);
-                        }}
-                        </Sticky>
-                        <AvatarTheme5 />
-                        <MessengersTheme4 />
-                        <TitleTheme4 />
-                        <CatalogItems data={data.catalogItems} profile={profile} />
-                    </StickyContainer>}
-                    {!needSticky && <>
-                        <Stories data={data.stories} />
-                        <AvatarTheme5 />
-                        <MessengersTheme4 />
-                        <TitleTheme4 />
-                        <CatalogItems data={data.catalogItems} profile={profile} />
-                    </>}
+            <Sticky>
+              {({
+                  style,
+                  isSticky,
+                  distanceFromBottom 
+              }) => {
+                const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
+                return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
+                  <StoriesTheme5 isSticky={stickyBlock} data={data.stories} />
+                </div>);
+              }}
+            </Sticky>
+            <CatalogItems data={data.catalogItems} profile={profile} />
+          </StickyContainer>}
+          {!needSticky && <>
+            <StoriesTheme5 data={data.stories} />
+            <CatalogItems data={data.catalogItems} profile={profile} /> 
+          </>}
                     <Blocks data={data.blocks} />
                     {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
                     <Rss />
