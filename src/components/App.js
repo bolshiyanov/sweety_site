@@ -22,6 +22,7 @@ import Admin from 'components/Admin';
 import Landing from 'components/Landing';
 import Rss from 'components/Rss';
 import Start from 'components/Start';
+import Stories from 'components/Stories'; 
 import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import StoriesTheme5 from 'components/themes/AppTheme5/StoriesTheme5';
 import PwaInstall from "components/PwaInstall";
@@ -164,7 +165,7 @@ const App = () => {
               <Title />
               <Blocks data={data.blocks} />
               {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
-              <StoriesTheme2 data={data.stories} profile={profile} />
+              <Stories data={data.stories} profile={profile} />
               <StoriesTheme5 data={data.stories} profile={profile} />
               <CatalogItems data={data.catalogItems} profile={profile} />
               <Messengers />
