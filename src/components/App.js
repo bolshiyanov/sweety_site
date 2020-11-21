@@ -22,7 +22,7 @@ import Admin from 'components/Admin';
 import Landing from 'components/Landing';
 import Rss from 'components/Rss';
 import Start from 'components/Start';
-import Stories from 'components/Stories'; 
+import Stories from 'components/Stories';
 import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import StoriesTheme5 from 'components/themes/AppTheme5/StoriesTheme5';
 import PwaInstall from "components/PwaInstall";
@@ -40,7 +40,7 @@ import AppTheme7 from "components/themes/AppTheme7";
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
 import GoogleAnalytics from 'utils/googleAnalytics';
-import {__} from 'utils/translation';
+import { __ } from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
 
@@ -123,7 +123,7 @@ const App = () => {
 
   return (
     <React.Fragment>
-      
+
 
       {nameTheme === "theme1" && (
         <AppTheme1 />
@@ -165,8 +165,8 @@ const App = () => {
               <Title />
               <Blocks data={data.blocks} />
               {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
-              <Stories data={data.stories} profile={profile} />
               <StoriesTheme5 data={data.stories} profile={profile} />
+              <Stories data={data.stories} profile={profile} />
               <CatalogItems data={data.catalogItems} profile={profile} />
               <Messengers />
               <Rss />
