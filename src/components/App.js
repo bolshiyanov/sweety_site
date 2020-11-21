@@ -22,7 +22,8 @@ import Admin from 'components/Admin';
 import Landing from 'components/Landing';
 import Rss from 'components/Rss';
 import Start from 'components/Start';
-import Stories from 'components/Stories'; 
+import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
+import StoriesTheme5 from 'components/themes/AppTheme5/StoriesTheme5';
 import PwaInstall from "components/PwaInstall";
 import PwaInstallIOs from "components/PwaInstallIOs";
 import Pwaupbanner from 'components/Pwaupbanner';
@@ -160,31 +161,13 @@ const App = () => {
                 avatarPreview={data.avatarPreview}
                 profile={profile}
               />
-              {needSticky && <StickyContainer>
-                <Sticky>
-                  {({
-                      style,
-                      isSticky,
-                      distanceFromBottom 
-                  }) => {
-                    const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
-                    return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
-                      <Stories data={data.stories} profile={profile} />
-                    </div>);
-                  }}
-                </Sticky>
-                <Title />
-                <Messengers />
-                <CatalogItems data={data.catalogItems} profile={profile} />
-              </StickyContainer>}
-              {!needSticky && <>
-                <Stories data={data.stories} profile={profile} />
-                <Title />
-                <Messengers />
-                <CatalogItems data={data.catalogItems} profile={profile} />
-              </>}
+              <Title />
               <Blocks data={data.blocks} />
               {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
+              <StoriesTheme2 data={data.stories} profile={profile} />
+              <StoriesTheme5 data={data.stories} profile={profile} />
+              <CatalogItems data={data.catalogItems} profile={profile} />
+              <Messengers />
               <Rss />
               <SocialSharingButtons />
               <Social />
@@ -200,6 +183,7 @@ const App = () => {
           </div>
 
         )}
+
 
     </React.Fragment>
   );
