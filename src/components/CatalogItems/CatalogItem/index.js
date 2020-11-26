@@ -15,6 +15,7 @@ import {
   CATALOG_LEFT,
   CATALOG_CENTER,
   CATALOG_RIGHT,
+  CATALOG_HEADER,
 } from 'constants/catalogTypes';
 
 import { CATALOG_ORDER, CATALOG_PLAY, CATALOG_NEXT, CATALOG_PAUSE } from 'constants/actions';
@@ -267,6 +268,32 @@ const CatalogItem = ({
           </div>
         );
       return catalogItem;
+    }
+
+    case CATALOG_HEADER: {
+      const style = {};
+      if (image)
+        style.backgroundImage = `URL(${image})`;
+
+      const catalogItem = (
+        <div
+          className={classnames([
+            'catalogItem',
+            'catalogItem__center',
+            { 'catalogItem__center__with-image': image },
+            { 'catalogItem__center__with-image__without-button': (price || number) },
+            { 'catalogItem__center__with-image__without-button': image && (price || number) },
+            { 'catalogItem__center__with-image__without-button': image && (!price & !number) },
+            { 'catalogItem-withimage-wihout-title': image && (!price & !number & !translatedText) },
+            className
+          ])}
+          style={style}
+          key={guid}
+          onClick={onClick}
+        >
+          <div className="catalogItem__title">{translatedText}</div>
+        </div>
+      );
     }
 
     case CATALOG_CENTER: {
