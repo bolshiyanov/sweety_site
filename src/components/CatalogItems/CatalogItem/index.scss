@@ -126,8 +126,9 @@
       .catalogItem__title {
         color: #fff !important;
         max-width: 100% ;
-        font-size: 20px;
-        font-weight: normal; 
+        font-size: 36px;
+        font-weight: bold; 
+        text-transform: uppercase;
       }
 
       &__with-button {
@@ -140,6 +141,7 @@
         margin: 0px ;
         width: 100%;
         padding: 48px 12px;
+        margin-bottom: 4px;
      
       }
 

@@ -294,6 +294,7 @@ const CatalogItem = ({
           <div className="catalogItem__title">{translatedText}</div>
         </div>
       );
+      return catalogItem;
     }
 
     case CATALOG_CENTER: {
