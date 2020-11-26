@@ -26,7 +26,7 @@ import StoriesTheme5 from 'components/themes/AppTheme5/StoriesTheme5';
 import PwaInstall from "components/PwaInstall";
 import PwaInstallIOs from "components/PwaInstallIOs";
 import Pwaupbanner from 'components/Pwaupbanner';
-import SocialSharingButtons from "components/SocialSharingButtons";
+import SocialSharingButtons from "components/SocialSharingButtons"; 
 import AppTheme1 from "components/themes/AppTheme1";
 import AppTheme2 from "components/themes/AppTheme2";
 import AppTheme3 from "components/themes/AppTheme3";
