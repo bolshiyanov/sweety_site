@@ -212,7 +212,8 @@ const Order = () => {
                             <div>{address}{phone}</div>
 
                         </React.Fragment>}
-                    <React.Fragment>
+                        {!hasEmail &&    
+                        <React.Fragment>
                         <a href="#" onClick={() => window.open(`sms:${hasPhone}` + `&body=
                     ${orderItems.map(orderItem => {
                             const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
@@ -222,8 +223,8 @@ const Order = () => {
                                     <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
                             );
                         })}`
-                            , '_self')} >order send </a> <br />
-                    </React.Fragment>
+                            , '_self')} >order send !!!</a> <br />
+                    </React.Fragment>}
 
                 </Slider>}
         </div>
