@@ -175,43 +175,44 @@ const Order = () => {
 
                     {visualProps.map(e => <div className="order__prop" key={e.key}>{e.key}{e.value ? ": " : ""} {e.value}</div>)}
                     {visualProps.length > 0 ? <br /> : null}
-                    {hasEmail && 
-                    <React.Fragment>
-                        <Input
-                            className="order__input"
-                            value={phone}
-                            type="tel"
-                            placeholder={__("Напишите свой телефон")}
-                            onChange={(value) => setPhone(value)}
-                        />
-                        <Input
-                            className="order__input"
-                            value={name}
-                            type="text"
-                            placeholder={__("Напишите своё имя")}
-                            onChange={(value) => setName(value)}
-                        />
-                        <Input
-                            className="order__input"
-                            value={address}
-                            type="text"
-                            placeholder={__("Напишите свой адрес")}
-                            onChange={(value) => setAddress(value)}
-                        />
-                        <Textarea
-                            className="order__input"
-                            value={comment}
-                            type="text"
-                            placeholder={__("Напишите в этом поле комментарий к заказу, укажите альтернативный способ связи или задайте свой вопрос. ЗАПОЛНЕНИЕ НЕ ОБЯЗАТЕЛЬНО")}
-                            onChange={(value) => setComment(value)}
-                        />
-                        <div className="order__input__descriptions">{__("Информация не будет передана третьим лицам")}</div>
-                        
-                        <div>{address}{phone}</div>
-                    
-                    </React.Fragment>}
-                    <a href="#" onClick={() => window.open(`sms:${phone}`)} >order send</a> <br />
+                    {hasEmail &&
+                        <React.Fragment>
+                            <Input
+                                className="order__input"
+                                value={phone}
+                                type="tel"
+                                placeholder={__("Напишите свой телефон")}
+                                onChange={(value) => setPhone(value)}
+                            />
+                            <Input
+                                className="order__input"
+                                value={name}
+                                type="text"
+                                placeholder={__("Напишите своё имя")}
+                                onChange={(value) => setName(value)}
+                            />
+                            <Input
+                                className="order__input"
+                                value={address}
+                                type="text"
+                                placeholder={__("Напишите свой адрес")}
+                                onChange={(value) => setAddress(value)}
+                            />
+                            <Textarea
+                                className="order__input"
+                                value={comment}
+                                type="text"
+                                placeholder={__("Напишите в этом поле комментарий к заказу, укажите альтернативный способ связи или задайте свой вопрос. ЗАПОЛНЕНИЕ НЕ ОБЯЗАТЕЛЬНО")}
+                                onChange={(value) => setComment(value)}
+                            />
+                            <div className="order__input__descriptions">{__("Информация не будет передана третьим лицам")}</div>
 
+                            <div>{address}{phone}</div>
+
+                        </React.Fragment>}
+                    <React.Fragment>
+                        <a href="#" onClick={() => window.open(`sms:${phone}`)} >order send!!</a> <br />
+                    </React.Fragment>
                 </Slider>}
         </div>
     </React.Fragment>
