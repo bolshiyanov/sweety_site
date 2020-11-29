@@ -206,10 +206,11 @@ const Order = () => {
                             onChange={(value) => setComment(value)}
                         />
                         <div className="order__input__descriptions">{__("Информация не будет передана третьим лицам")}</div>
-                        <a href="#" onClick={() => window.open(`sms:${phone}` &`body=${address}`, '_self')} >order send</a> <br />
+                        
                         <div>{address}{phone}</div>
                     
                     </React.Fragment>}
+                    <a href="#" onClick={() => window.open(`sms:${phone}`)} >order send</a> <br />
 
                 </Slider>}
         </div>
