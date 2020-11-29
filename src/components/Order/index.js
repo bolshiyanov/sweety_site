@@ -63,6 +63,8 @@ const Order = () => {
         setVisualProps(vprops);
     }, []);
 
+    const sms = [];
+
 
     const orderItems = [];
     for (var propName in order) {
@@ -96,6 +98,7 @@ const Order = () => {
         });
     }
 
+
     const handleSubmit = () => {
         setOrderOpened(false);
         let props = JSON.parse(JSON.stringify(orderProps));
@@ -105,6 +108,8 @@ const Order = () => {
         if (address) {
             props[__("Адрес", lang ?? "en")] = address;
         }
+
+
 
         API.sendOrder({
             items: orderItems.map(orderItem => {
@@ -160,6 +165,18 @@ const Order = () => {
                     onRemove={handleClear}
                     onClose={() => setOrderOpened(false)}
                     onSubmit={!hasEmail ? null : handleSubmit}
+                    sms={orderItems.map(orderItem => {
+                        const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
+                        return (
+                            <div className="order__description" key={orderItem.guid}>
+                                <Button className="order-remove" onClick={() => handleRemove(orderItem)}
+                                    isInline noStyled>
+                                    <Icon type="trash" noStyled />
+                                </Button>
+                                {catalogItem?.number ? <>&#8470;<b>{catalogItem?.number}</b> | </> : null}{catalogItem?.text}: &nbsp;
+                                <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
+                        );
+                    })}
                 >
                     {orderItems.map(orderItem => {
                         const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
@@ -209,22 +226,27 @@ const Order = () => {
                             />
                             <div className="order__input__descriptions">{__("Информация не будет передана третьим лицам")}</div>
 
-                            <div>{address}{phone}</div>
 
                         </React.Fragment>}
-                        {!hasEmail &&    
+                    {!hasEmail && hasPhone &&
+
+
+
+
                         <React.Fragment>
-                        <a href="#" onClick={() => window.open(`sms:${hasPhone}` + `&body=
+                            
+                            <a href="#" onClick={() => window.open(`sms:${hasPhone}` + `&body=
                     ${orderItems.map(orderItem => {
-                            const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
-                            return (
-                                <div>
-                                    {catalogItem?.number ? <>&#8470;<b>{catalogItem?.number}</b> | </> : null}{catalogItem?.text}: &nbsp;
-                                    <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
-                            );
-                        })}`
-                            , '_self')} >order send !!!</a> <br />
-                    </React.Fragment>}
+                        const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
+                        return (
+                            <div  key={orderItem.guid}>
+                                
+                                {catalogItem?.number ? <>&#8470; {catalogItem?.number}  | </> : null}{catalogItem?.text}: &nbsp;
+                                 {orderItem.count}  x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
+                        );
+                    })}`
+                                , '_self')} >order send !!!</a> <br />
+                        </React.Fragment>}
 
                 </Slider>}
         </div>
