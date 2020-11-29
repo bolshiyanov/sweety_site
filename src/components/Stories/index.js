@@ -77,12 +77,12 @@ const Stories = ({ data, profile, scrollPosition }) => {
        <div className="stories">
           <div className="stories-picker">
             {data.map((story) => 
-            <Story className={classnames(['stories-picker-item'])}  
+            <Story className={classnames(['stories-picker-item'])}   
               onClick={() => handleStoryClick(story.guid)} 
               key={story.guid} {...story} 
               selected={storyGuid === story.guid}
               scrollPosition={scrollPosition} />)}
-          </div>
+          </div> 
         </div> 
       {settingsOpened && <Slider
         opened={settingsOpened}

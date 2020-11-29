@@ -74,7 +74,6 @@
           } 
         }
       }
-
       
       .stories-theme5-picker-item {
         display: inline-block;
@@ -86,17 +85,10 @@
         box-sizing: content-box;
         align-items: center;
         justify-content: center;
-        border-radius: 15px;
+        border-radius: 15px; 
+      }   
 
 
-        
-      } 
-  
-     
-      
-     
-  
-  
       &::-webkit-scrollbar {
         height: 0px;
         background-color: #F5F5F5;
