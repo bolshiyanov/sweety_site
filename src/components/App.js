@@ -164,7 +164,7 @@ const App = () => {
             <Messengers />
             {needSticky && <StickyContainer>
               <Sticky>
-                {({
+                {({ 
                     style,
                     isSticky,
                     distanceFromBottom 
