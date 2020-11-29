@@ -29,6 +29,8 @@ const Order = () => {
     const [visualProps, setVisualProps] = useState([]);
 
     const { messengers } = useSelector((state) => state.config.data);
+    const phoneMessenger = messengers.filter(e => e.title === "Phone")[0];
+    const hasPhone = phoneMessenger?.value;
     const emailMessenger = messengers.filter(e => e.title === "Email")[0];
     const hasEmail = emailMessenger?.value;
     const params = getSearchParams(window.location.search);
@@ -211,7 +213,7 @@ const Order = () => {
 
                         </React.Fragment>}
                     <React.Fragment>
-                        <a href="#" onClick={() => window.open(`sms:${phone}` + `&body=
+                        <a href="#" onClick={() => window.open(`sms:${hasPhone}` + `&body=
                     ${orderItems.map(orderItem => {
                             const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
                             return (
@@ -220,7 +222,7 @@ const Order = () => {
                                     <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
                             );
                         })}`
-                            , '_self')} >order send!!!</a> <br />
+                            , '_self')} >order send </a> <br />
                     </React.Fragment>
 
                 </Slider>}
