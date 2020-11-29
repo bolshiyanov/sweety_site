@@ -211,7 +211,20 @@ const Order = () => {
                     
                     </React.Fragment>}
                     <React.Fragment>
-                    <a href="#" onClick={() => window.open(`sms:${phone}` + `&body=${address}`, '_self')} >order send!!</a> <br />
+                    <a href="#" onClick={() => window.open(`sms:${phone}` + 
+                    `&body=${orderItems.map(orderItem => {
+                        const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
+                        return (
+                            <div className="order__description" key={orderItem.guid}>
+                                <Button className="order-remove" onClick={() => handleRemove(orderItem)}
+                                    isInline noStyled>
+                                    <Icon type="trash" noStyled />
+                                </Button>
+                                {catalogItem?.number ? <>&#8470;<b>{catalogItem?.number}</b> | </> : null}{catalogItem?.text}: &nbsp;
+                                <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
+                        );
+                    })}`
+                , '_self')} >order send!!</a> <br />
                     </React.Fragment>
 
                 </Slider>}
