@@ -86,7 +86,7 @@ const Order = () => {
 
     const handleRemove = (orderItem) => {
         dispatch({
-            type: CATALOG_ORDER, 
+            type: CATALOG_ORDER,
             guid: orderItem.guid,
             count: 0,
             sum: 0,
@@ -103,7 +103,7 @@ const Order = () => {
         if (address) {
             props[__("Адрес", lang ?? "en")] = address;
         }
-  
+
         API.sendOrder({
             items: orderItems.map(orderItem => {
                 const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
@@ -171,16 +171,16 @@ const Order = () => {
                                 <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
                         );
                     })}
-
                     <div className="order__total">{__("Итого:")} {orderSum.toFixed(2)} {currency}</div>
 
                     {visualProps.map(e => <div className="order__prop" key={e.key}>{e.key}{e.value ? ": " : ""} {e.value}</div>)}
                     {visualProps.length > 0 ? <br /> : null}
-                    {hasEmail && <React.Fragment>
+                    {hasEmail && 
+                    <React.Fragment>
                         <Input
                             className="order__input"
                             value={phone}
-                            type="text"
+                            type="tel"
                             placeholder={__("Напишите свой телефон")}
                             onChange={(value) => setPhone(value)}
                         />
@@ -206,7 +206,8 @@ const Order = () => {
                             onChange={(value) => setComment(value)}
                         />
                         <div className="order__input__descriptions">{__("Информация не будет передана третьим лицам")}</div>
-
+                        <a href="#" onClick={() => window.open('sms:34672442251&body={items}{Address}', '_self')} >order send</a> <br />
+                    
                     </React.Fragment>}
 
                 </Slider>}

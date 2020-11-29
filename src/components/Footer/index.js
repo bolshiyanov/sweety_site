@@ -67,8 +67,8 @@ const Footer = () => {
           <div className="brends-items"><IonIcon size="small" icon={logoAndroid} /></div>
           <div className="brends-items"><IonIcon size="amall" icon={logoWindows} /></div>
         </div>
-        {/* <a href={startUrl} className="textlogofooter">&reg;SWEETY.LINK&nbsp;2015-2020!</a> <br/><br/> */}
-        <a href="#" onClick={() => window.open('sms:34672442251&body=textGoesHere', '_self')} >order send</a> <br/>
+       <a href={startUrl} className="textlogofooter">&reg;SWEETY.LINK&nbsp;2015-2020!</a> <br/><br/>
+        
         
     </footer>
   );
