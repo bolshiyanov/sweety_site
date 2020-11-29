@@ -121,69 +121,86 @@ const App = () => {
 
   return (
     <React.Fragment>
+      
 
-
-      {nameTheme === "theme1" && (
-        <AppTheme1 />
-      )}
-      {nameTheme === "theme2" && (
-        <AppTheme2 />
-      )}
-      {nameTheme === "theme3" && (
-        <AppTheme3 />
-      )}
-      {nameTheme === "theme4" && (
-        <AppTheme4 />
-      )}
-      {nameTheme === "theme5" && (
-        <AppTheme5 />
-      )}
-      {nameTheme === "theme6" && (
-        <AppTheme6 />
-      )}
-      {nameTheme === "theme8" && (
-        <AppTheme7 />
-      )}
-      {
-        nameTheme !== "theme1" && nameTheme !== "theme2" &&
-        nameTheme !== "theme3" && nameTheme !== "theme4" &&
-        nameTheme !== "theme5" && nameTheme !== "theme6" &&
-        nameTheme !== "theme8" && (
-          <div className="app" style={backgroundStyles}>
-            {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
-            <div className="app-container">
-              <Pwaupbanner profile={profile} />
-              <Order />
-              <Header
-                name={data.name}
-                avatar={data.avatar}
-                avatarPreview={data.avatarPreview}
-                profile={profile}
-              />
-              <Title />
-              <Blocks data={data.blocks} />
-              {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
+    {nameTheme === "theme1" && (
+      <AppTheme1 />
+    )}
+    {nameTheme === "theme2" && (
+      <AppTheme2 />
+    )}
+    {nameTheme === "theme3" && (
+      <AppTheme3 />
+    )}
+    {nameTheme === "theme4" && (
+      <AppTheme4 />
+    )}
+    {nameTheme === "theme5" && (
+      <AppTheme5 />
+    )}
+    {nameTheme === "theme6" && (
+      <AppTheme6 />
+    )}
+    {nameTheme === "theme8" && (
+      <AppTheme7 />
+    )}
+    {
+      nameTheme !== "theme1" && nameTheme !== "theme2" &&
+      nameTheme !== "theme3" && nameTheme !== "theme4" &&
+      nameTheme !== "theme5" && nameTheme !== "theme6" &&
+      nameTheme !== "theme8" && (
+        <div className="app" style={backgroundStyles}>
+          {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
+          <div className="app-container">
+            <Pwaupbanner profile={profile} />
+            <Order />
+            <Header
+              name={data.name}
+              avatar={data.avatar}
+              avatarPreview={data.avatarPreview}
+              profile={profile}
+            />
+            <Title />
+            <Messengers />
+            {needSticky && <StickyContainer>
+              <Sticky>
+                {({
+                    style,
+                    isSticky,
+                    distanceFromBottom 
+                }) => {
+                  const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
+                  return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
+                    <StoriesTheme5 data={data.stories} profile={profile} />
+                  </div>);
+                }}
+              </Sticky>
+              <CatalogItems data={data.catalogItems} profile={profile} />
+            </StickyContainer>}
+            {!needSticky && <>
               <StoriesTheme5 data={data.stories} profile={profile} />
               <CatalogItems data={data.catalogItems} profile={profile} />
-              <Messengers />
-              <Rss />
-              <SocialSharingButtons />
-              <Social />
-              <Footer />
-              {!isDemo && <div className="cookie-box" >
-                <CookieBanner styles={styles}
-                  message={__('Мы используем Cookies для Google analytics. Мы не собираем персональные данные')}
-                  buttonMessage={__('Закрыть')}
-                  link={<a href={__('https://ru.wikipedia.org/wiki/Cookie')} target="_blank">{__("Что это: COOKIES")}</a>}
-                />
-              </div>}
-            </div>
+            </>}
+            <Blocks data={data.blocks} />
+            <Rss />
+            <SocialSharingButtons />
+            <Social />
+            <Footer />
+            {!isDemo && <div className="cookie-box" >
+              <CookieBanner styles={styles}
+                message={__('Мы используем Cookies для Google analytics. Мы не собираем персональные данные')}
+                buttonMessage={__('Закрыть')}
+                link={<a href={__('https://ru.wikipedia.org/wiki/Cookie')} target="_blank">{__("Что это: COOKIES")}</a>}
+              />
+            </div>}
           </div>
+        </div>
 
-        )}
+      )}
 
+  </React.Fragment>
 
-    </React.Fragment>
+    
   );
 };
 const Router = () => (
