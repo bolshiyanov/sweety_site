@@ -68,7 +68,7 @@ const CatalogItem = ({
 
   const isAudioPlayer = audio || playlist;
 
-  let [play, { stop, isPlaying, duration, sound }] = useSound(audio, {
+  let [play, { stop, isPlaying, duration, sound }] = useSound(audio && audio.startsWith("https://sweety.link/") ? null : audio, {
     autoUnlock: true,
     format: "mpeg",
     preload: true,

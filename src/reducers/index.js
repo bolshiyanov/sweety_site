@@ -217,8 +217,7 @@ const reducer = handleActions({
         catalogItem.audio = catalogItem.playlist[0]?.audio;
         catalogItem.text = catalogItem.playlist[0]?.text;
       } else {
-        const playedInd = catalogItem.playlist.map((a, i) => { return { a, i } }).filter(e => e.a === catalogItem.audio)[0]?.i;
-        console.log(playedInd);
+        const playedInd = catalogItem.playlist.map((a, i) => { return { a, i } }).filter(e => e.a.audio === catalogItem.audio)[0]?.i;
         if (playedInd >= catalogItem.playlist.length - 1) {
           catalogItem.audio = catalogItem.playlist[0].audio;
           catalogItem.text = catalogItem.playlist[0].text;
