@@ -234,17 +234,19 @@ const Order = () => {
 
 
                         <React.Fragment>
-                            
+                           
                             <a href="#" onClick={() => window.open(`sms:${hasPhone}` + `&body=
-                    ${orderItems.map(orderItem => {
+                    ${
+                        orderItems.map(orderItem => {
                         const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
-                        return (
+                        return <React.Fragment>
                             <div  key={orderItem.guid}>
                                 
                                 {catalogItem?.number ? <>&#8470; {catalogItem?.number}  | </> : null}{catalogItem?.text}: &nbsp;
                                  {orderItem.count}  x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
-                        );
-                    })}`
+                                 </React.Fragment>;
+                    })
+                }`
                                 , '_self')} >order send !!!</a> <br />
                         </React.Fragment>}
 
