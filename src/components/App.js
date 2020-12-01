@@ -11,7 +11,7 @@ import { getPlatform } from "components/PwaInstall/platforms";
 import Loading from 'components/common/Loading';
 
 import Order from 'components/Order';
-import Header from 'components/Header';
+import HeaderTheme2 from 'components/themes/AppTheme2/HeaderTheme2';
 import Messengers from 'components/Messengers';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
@@ -26,7 +26,7 @@ import StoriesTheme6 from 'components/themes/AppTheme6/StoriesTheme6';
 import PwaInstall from "components/PwaInstall";
 import PwaInstallIOs from "components/PwaInstallIOs";
 import Pwaupbanner from 'components/Pwaupbanner';
-import SocialSharingButtons from "components/SocialSharingButtons"; 
+import SocialSharingButtons from "components/SocialSharingButtons";
 import AppTheme1 from "components/themes/AppTheme1";
 import AppTheme2 from "components/themes/AppTheme2";
 import AppTheme3 from "components/themes/AppTheme3";
@@ -121,86 +121,68 @@ const App = () => {
 
   return (
     <React.Fragment>
-      
 
-    {nameTheme === "theme1" && (
-      <AppTheme1 />
-    )}
-    {nameTheme === "theme2" && (
-      <AppTheme2 />
-    )}
-    {nameTheme === "theme3" && (
-      <AppTheme3 />
-    )}
-    {nameTheme === "theme4" && (
-      <AppTheme4 />
-    )}
-    {nameTheme === "theme5" && (
-      <AppTheme5 />
-    )}
-    {nameTheme === "theme6" && (
-      <AppTheme6 />
-    )}
-    {nameTheme === "theme8" && (
-      <AppTheme7 />
-    )}
-    {
-      nameTheme !== "theme1" && nameTheme !== "theme2" &&
-      nameTheme !== "theme3" && nameTheme !== "theme4" &&
-      nameTheme !== "theme5" && nameTheme !== "theme6" &&
-      nameTheme !== "theme8" && (
-        <div className="app" style={backgroundStyles}>
-          {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
-          <div className="app-container">
-            <Pwaupbanner profile={profile} />
-            <Order />
-            <Header
-              name={data.name}
-              avatar={data.avatar}
-              avatarPreview={data.avatarPreview}
-              profile={profile}
-            />
-            <Title />
-            <Messengers />
-            {needSticky && <StickyContainer>
-              <Sticky>
-                {({ 
-                    style,
-                    isSticky,
-                    distanceFromBottom 
-                }) => {
-                  const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
-                  return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
-                    <StoriesTheme6 data={data.stories} profile={profile} />
-                  </div>);
-                }}
-              </Sticky>
-              <CatalogItems data={data.catalogItems} profile={profile} />
-            </StickyContainer>}
-            {!needSticky && <>
+
+      {nameTheme === "theme1" && (
+        <AppTheme1 />
+      )}
+      {nameTheme === "theme2" && (
+        <AppTheme2 />
+      )}
+      {nameTheme === "theme3" && (
+        <AppTheme3 />
+      )}
+      {nameTheme === "theme4" && (
+        <AppTheme4 />
+      )}
+      {nameTheme === "theme5" && (
+        <AppTheme5 />
+      )}
+      {nameTheme === "theme6" && (
+        <AppTheme6 />
+      )}
+      {nameTheme === "theme8" && (
+        <AppTheme7 />
+      )}
+      {
+        nameTheme !== "theme1" && nameTheme !== "theme2" &&
+        nameTheme !== "theme3" && nameTheme !== "theme4" &&
+        nameTheme !== "theme5" && nameTheme !== "theme6" &&
+        nameTheme !== "theme8" && (
+          <div className="app" style={backgroundStyles}>
+            {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
+            <div className="app-container">
+              <Pwaupbanner profile={profile} />
+              <Order />
+              <HeaderTheme2
+                name={data.name}
+                avatar={data.avatar}
+                avatarPreview={data.avatarPreview}
+                profile={profile} />
               <StoriesTheme6 data={data.stories} profile={profile} />
               <CatalogItems data={data.catalogItems} profile={profile} />
-            </>}
-            <Blocks data={data.blocks} />
-            <Rss />
-            <SocialSharingButtons />
-            <Social />
-            <Footer />
-            {!isDemo && <div className="cookie-box" >
-              <CookieBanner styles={styles}
-                message={__('Мы используем Cookies для Google analytics. Мы не собираем персональные данные')}
-                buttonMessage={__('Закрыть')}
-                link={<a href={__('https://ru.wikipedia.org/wiki/Cookie')} target="_blank">{__("Что это: COOKIES")}</a>}
-              />
-            </div>}
+              <Title />
+              <Messengers />
+              <Blocks data={data.blocks} />
+              <Rss />
+              <SocialSharingButtons />
+              <Social />
+              <Footer />
+              {!isDemo && <div className="cookie-box" >
+                <CookieBanner styles={styles}
+                  message={__('Мы используем Cookies для Google analytics. Мы не собираем персональные данные')}
+                  buttonMessage={__('Закрыть')}
+                  link={<a href={__('https://ru.wikipedia.org/wiki/Cookie')} target="_blank">{__("Что это: COOKIES")}</a>}
+                />
+              </div>}
+            </div>
           </div>
-        </div>
 
-      )}
+        )}
 
-  </React.Fragment>
+    </React.Fragment>
 
-    
+
   );
 };
 const Router = () => (

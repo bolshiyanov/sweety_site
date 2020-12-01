@@ -329,7 +329,7 @@
         "de": "Für nur 39 Euro werden wir Ihr Geschäft untersuchen und ein verkaufendes Design für Ihre Kostenlose App erstellen. Klicken Sie auf den Link https://sweety.link und Bewerbung hinterlassen",
         "it": "In soli 39 euros, studieremo la tua attività e creeremo un design di vendita per la tua applicazione gratuita. Segui il link https://sweety.link e lasciare l'applicazione"
     },
-
+    
     {
         "code": "share.title",
         "en": "Share our app",
@@ -339,6 +339,15 @@
         "de": "Teilen Sie unsere App",
         "it": "Condividi la nostra app"
     }, {
+        "code": "share.text1",
+        "en": "Invita a un amigo, envía un enlace a través de mensajeros instantáneos",
+        "ru": "Пригласи друга, отправь ссылку через мессенджеры",
+        "es": "Invita a un amigo, envía un enlace a través de mensajeros instantáneos",
+        "fr": "Invitez un ami, envoyez un lien via des messageries instantanées",
+        "de": "Laden Sie einen Freund ein, senden Sie einen Link über boten",
+        "it": "Invita un amico, Invia un link tramite messaggeri"
+    }, 
+     {
         "code": "share.text",
         "en": "I came across a new app for smartphone, I think you will be interested. You can put it on your home screen and then watch it ... Look at this link ",
         "ru": "Попалось новенькое приложение для смартфона, мне кажется тебе будет интересно. Его можно поставить на домашний экран и потом посмотреть... Посмотри по этой ссылке ",
@@ -346,7 +355,8 @@
         "fr": "Je suis tombé sur une toute nouvelle application pour smartphone, je pense que cela vous intéressera. Vous pouvez le mettre sur votre écran d'accueil, puis le regarder ... Regardez ce lien ",
         "de": "Ich bin auf eine brandneue Smartphone-Anwendung gestoßen. Ich denke, Sie werden interessiert sein. Sie können es auf Ihrem Startbildschirm platzieren und dann ansehen ... Schauen Sie sich diesen Link an ",
         "it": "Mi sono imbattuto in una nuovissima applicazione per smartphone, penso che ti interesserà. Puoi metterlo sulla schermata iniziale e guardarlo ... Guarda questo link "
-    }, {
+    },
+    {
         "code": "share.email.title",
         "en": "Check out a new app for smartphone ",
         "ru": "Посмотри новенькое приложение для смартфона ",

@@ -4,7 +4,7 @@ import { useCookies } from 'react-cookie';
 import PropTypes from 'prop-types';
 
 import Avatar from 'components/common/Avatar';
-import Slider from 'components/common/Slider';
+import {__} from 'utils/translation';
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import API, { getAdminSite } from 'utils/api';
@@ -54,7 +54,7 @@ const Header = ({ avatar, avatarPreview, name, className, profile }) => {
         setDirectUrl(response.directUrl);
       }
       setRecoverSent(true);
-      setRecoverSending(false);
+      setRecoverSending(false); 
     });
   };
 
@@ -67,7 +67,7 @@ const Header = ({ avatar, avatarPreview, name, className, profile }) => {
     const onShare = () => {
       navigator.share({
           title: {title}, // Заголовок
-          text: 'Установи мое приложение по этой ссылке', // Текст
+          text:  __("Пригласи друга, отправь ссылку через мессенджеры"), // Текст
           url: window.location.href, // ссылка
         });
       };
@@ -78,12 +78,6 @@ const Header = ({ avatar, avatarPreview, name, className, profile }) => {
         <Avatar image={avatar} imagePreview={avatarPreview} />
         <div className="user-name" >{name|| "Твой бренд будет здесь"} </div>
         <span className="flex-delimiter" />
-        
-        {/* {!active && !isStandalone &&
-        <Button onClick={handleClick} isInline className={classnames["pulse2", "tooltip"]}>
-          <Icon type="edit" />
-          {inviteId &&<span class="tooltip__text">Только вы можете редактировать эту страницу</span>}
-        </Button>} */}
 
         {navigator.share && <Button onClick={onShare} isInline className={classnames["pulse2", "tooltip"]}>
           <Icon type="shareSquare" /></Button>}
