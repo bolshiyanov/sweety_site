@@ -1,95 +1,108 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { uuid } from 'uuidv4';
-import { useSelector, useDispatch } from 'react-redux';
+import { trackWindowScroll } from 'react-lazy-load-image-component';
+import { useCookies } from 'react-cookie';
+import addedAvatar from 'images/addedAvatar2.png';
 import Slider from 'components/common/Slider';
-
-import { EDIT_STORY, REMOVE_STORY, ROTATE_STORY } from 'constants/actions';
-
+import Button from 'components/common/Button';
 import StorySettings from 'components/Stories/StorySettings';
-import Story from 'components/themes/AppTheme6/StoryTheme6';
+import Story from 'components/themes/AppTheme6/StoryTheme6'
 
+import { scrollTo } from 'utils/scrolling';
+import { SCROLL_CATALOG_ID } from 'constants/scrolls';
+import { CATALOG_FILTER } from 'constants/actions';
+
+import './index.scss';
 import 'components/Stories/index.scss';
 
 const emptySettings = {
-    guid: null,
-    type: 'preview-text',
-    order: null,
-    linkUrl: '',
-    description: '',
-    image: '',
+  guid: null,
+  type: 'preview-text',
+  linkUrl: '',
+  description: '',
+  image: '',
 };
 
-const StoriesTheme6 = ({ data }) => {
-    const [settingsOpened, setSettingsOpened] = useState(null);
-    const [storyData, setStoryData] = useState(emptySettings);
+const StoriesTheme6 = ({ data, profile, isSticky, scrollPosition }) => {
+  const [settingsOpened, setSettingsOpened] = useState(null);
+  const [storyData, setStoryData] = useState(emptySettings);
+  const [cookies] = useCookies();
 
-    const closeStoriesSettings = () => {
-        setSettingsOpened(null);
-    };
+  const closeStoriesSettings = () => {
+    setSettingsOpened(null);
+  };
 
-    const onOpenStorySettings = (storyId) => {
-        setSettingsOpened(storyId);
-    };
+  const { active } = useSelector((state) => state.config.account);
 
-    const dispatch = useDispatch();
-    const submitSettings = () => {
-        if (storyData.description || storyData.image)
-            dispatch({ type: EDIT_STORY, payload: storyData });
-        closeStoriesSettings();
-    };
+  const { stories } = useSelector((state) => state.config.data);
+  const { catalogItems } = useSelector((state) => state.config.data);
+  const { storyGuid } = useSelector((state) => state.config);
 
-    const removeSettings = () => {
-        dispatch({ type: REMOVE_STORY, guid: storyData.guid });
-        closeStoriesSettings();
-    };
+  const dispatch = useDispatch();
 
-    const { stories } = useSelector((state) => state.config.data);
-    const { active, paymentData } = useSelector((state) => state.config.account);
+  const handleStoryClick = (storyId) => {
+    if (catalogItems.filter(e => e.storyGuid === storyId).length > 0) {
+      scrollTo(SCROLL_CATALOG_ID, () => {
+        dispatch({ type: CATALOG_FILTER, storyGuid: storyGuid !== storyId ? storyId : null });
+      });
+    } else {
+      setSettingsOpened(storyId);
+    }
+  }
 
-    useEffect(() => {
-        const currentStory = stories.find((story) => story.guid === settingsOpened);
-        const settings = currentStory || { ...emptySettings };
-        if (!settings.guid)
-            settings.guid = uuid();
-        setStoryData({ ...settings });
-    }, [settingsOpened, stories]);
+  var inviteId = cookies[profile];
+  if (inviteId === "undefined") {
+    inviteId = null;
+  }
 
-    const onRotate = (guid, order) => {
-        dispatch({ type: ROTATE_STORY, guid, order });
-    };
+  useEffect(() => {
+    const currentStory = stories.find((story) => story.guid === settingsOpened);
+    const settings = currentStory || { ...emptySettings };
+    if (!settings.guid)
+      settings.guid = uuid();
+    setStoryData({ ...settings });
+  }, [settingsOpened, stories]);
 
-    stories.sort((a, b) => b.order - a.order);
-    return (
-        <React.Fragment>
-            <div className="stories">
-                <div className="stories-picker">
-                    {data.map((story) =>
-                        <Story className={classnames(['stories-theme6-picker-item'])}
-                            onClick={() => onOpenStorySettings(story.guid)}
-                            key={story.guid} {...story} />)}
-                </div>
-            </div>
-            <Slider
-                opened={settingsOpened !== null}
-                onClose={closeStoriesSettings}
+  if (!inviteId && !active) {
+    return null;
+  }
+  stories.sort((a, b) => b.order - a.order);
+  const stickyPart = !isSticky ? "-theme6" : "";
 
-                onSubmit={submitSettings}
-            >
-                <StorySettings {...storyData} onRotate={onRotate} onChange={(settings) => setStoryData({ ...storyData, ...settings })} />
-            </Slider>
+  return (
+    <React.Fragment>
+      <div className={`stories${stickyPart}`}>
+        <div className={`stories${stickyPart}-picker`}>
+          {data.map((story) =>
+            <Story className={classnames([`stories${stickyPart}-picker-item`])}
+              onClick={() => handleStoryClick(story.guid)}
+              isSticky={isSticky}
+              key={story.guid} {...story}
+              selected={storyGuid === story.guid}
+              scrollPosition={scrollPosition} />)}
+        </div>
+      </div>
+      <Slider
+        opened={settingsOpened}
+        onClose={closeStoriesSettings}
+        onSubmit={closeStoriesSettings}
+      >
+        <StorySettings {...storyData} />
+      </Slider>
 
-        </React.Fragment>
-    );
+    </React.Fragment>
+  );
 };
 
 StoriesTheme6.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({}))
+  data: PropTypes.arrayOf(PropTypes.shape({}))
 };
 
 StoriesTheme6.defaultProps = {
-    data: []
+  data: []
 };
 
-export default StoriesTheme6;
+export default StoriesTheme6; 

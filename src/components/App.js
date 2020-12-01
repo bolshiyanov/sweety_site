@@ -22,7 +22,7 @@ import Admin from 'components/Admin';
 import Landing from 'components/Landing';
 import Rss from 'components/Rss';
 import Start from 'components/Start';
-import StoriesTheme5 from 'components/themes/AppTheme5/StoriesTheme5';
+import StoriesTheme6 from 'components/themes/AppTheme6/StoriesTheme6';
 import PwaInstall from "components/PwaInstall";
 import PwaInstallIOs from "components/PwaInstallIOs";
 import Pwaupbanner from 'components/Pwaupbanner';
@@ -171,14 +171,14 @@ const App = () => {
                 }) => {
                   const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
                   return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
-                    <StoriesTheme5 data={data.stories} profile={profile} />
+                    <StoriesTheme6 data={data.stories} profile={profile} />
                   </div>);
                 }}
               </Sticky>
               <CatalogItems data={data.catalogItems} profile={profile} />
             </StickyContainer>}
             {!needSticky && <>
-              <StoriesTheme5 data={data.stories} profile={profile} />
+              <StoriesTheme6 data={data.stories} profile={profile} />
               <CatalogItems data={data.catalogItems} profile={profile} />
             </>}
             <Blocks data={data.blocks} />
