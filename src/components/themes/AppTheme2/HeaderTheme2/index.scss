@@ -17,7 +17,7 @@
         flex-wrap: nowrap;
         justify-content: center;
         max-width: 600px;
-        margin-top: 1px;
+        margin-top: -5px;
         min-height: 70px;
     
     &__flex2 {
@@ -29,14 +29,12 @@
 
         .avatar {
             margin-left: 8px;
-            margin-top: 8px;
             width: 55px !important;
             height: 55px !important;
             border-radius: 10px;
           }
         
-          .user-name {
-            padding-top: 6px; 
+          .user-name { 
             max-width: 60%;
             font-family: 'Duru Sans', sans-serif;
             font-size: 16px;
