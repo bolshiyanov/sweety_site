@@ -9,6 +9,8 @@
     flex-flow: row;
     flex-wrap: wrap;
     justify-content: center;
+    position: absolute;
+    bottom: 0;
   
     &__flex {
         display: flex;
