@@ -11,21 +11,25 @@ import 'components/Stories/Story/index.scss';
 const StoryTheme6 = ({
     title,
     image,
+    description,
     onClick,
     className,
-    selected,
-    isSticky,
     scrollPosition
 }) => {
+
+    if (!description) {
+        return null;
+        };
+
     const story = (
         <LazyLoadComponent scrollPosition={scrollPosition} threshold={10}>
             <div className={classnames([!image ? "" : 'story-theme6-picture', className])}
                 onClick={onClick}
             >
-                <div className={`story-theme6-picture__box${selected ? "-selected" : ""}`} style={{ backgroundImage: `URL(${image})` }} />
-                <div onClick={onClick} className={`story-theme6-picture-title${selected ? "-selected" : ""}`}>{title}</div>
+                <div className={'story-theme6-picture__box'} style={{ backgroundImage: `URL(${image})` }} />
+    <div onClick={onClick} className={'story-theme6-picture-title'}>{title}</div>
             </div>
-        </LazyLoadComponent>
+        </LazyLoadComponent> 
     );
     return story;
 }

@@ -15,8 +15,14 @@ const StoryTheme7 = ({
     className,
     selected,
     isSticky,
+    description,
     scrollPosition
 }) => {
+
+    if (description) {
+        return null;
+        };
+
     const story = (
         <LazyLoadComponent scrollPosition={scrollPosition} threshold={10}>
             <div className={classnames([!image ? "" : 'story-theme7-picture', className])}
