@@ -8,6 +8,8 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    flex: 0 0 200px;
 
     
   
@@ -33,13 +35,13 @@
   height: 125px;
   border-radius: 15px;
   border: 0;
-  font-size: 20px;
-  font-family: 'Russo One', sans-serif;
+  font-size: 16px;
   line-height: 1;
+  font-weight: 500;
   white-space: pre-line;
-  padding: 10px 10px 30px 10px;
-  display: flex;  
-  align-items: flex-end;
+  padding: 10px ;
+  position: absolute;
+  top: 70px;
   
 }
 

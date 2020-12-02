@@ -169,7 +169,8 @@ const App = () => {
               <Rss />
               <SocialSharingButtons />
               <Social />
-              <FooterTheme2 />
+              <FooterTheme2 
+              name={data.name}/>
               {!isDemo && <div className="cookie-box" >
                 <CookieBanner styles={styles}
                   message={__('Мы используем Cookies для Google analytics. Мы не собираем персональные данные')}
