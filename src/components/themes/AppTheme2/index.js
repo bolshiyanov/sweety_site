@@ -9,7 +9,7 @@ import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 import Loading from 'components/common/Loading';
 import Pwaupbanner from 'components/Pwaupbanner';
 import Order from 'components/Order';
-import HeaderTheme2 from 'components/themes/AppTheme2/HeaderTheme2';
+import Header from 'components/Header';
 import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import Messengers from 'components/Messengers';
 import CatalogItems from 'components/CatalogItems';
@@ -114,7 +114,7 @@ const AppTheme2 = () => {
         <div className="app-container">
           <Pwaupbanner profile={profile} />
           <Order />
-          <HeaderTheme2
+          <Header
             name={data.name}
             avatar={data.avatar}
             avatarPreview={data.avatarPreview}

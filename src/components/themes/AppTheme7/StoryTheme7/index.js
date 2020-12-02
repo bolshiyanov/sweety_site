@@ -23,7 +23,7 @@ const StoryTheme7 = ({
                 onClick={onClick}
             >
                 <div className={`story-theme7-picture__box${selected ? "-selected" : ""}`} style={{ backgroundImage: `URL(${image})` }} >
-                    <Button onClick={onClick} className={`story-theme7-picture-title${selected ? "-selected" : ""}`}>{title}</Button>
+                    <div onClick={onClick} className={`story-theme7-picture-title${selected ? "-selected" : ""}`}>{title}</div>
                 </div>
             </div>
 

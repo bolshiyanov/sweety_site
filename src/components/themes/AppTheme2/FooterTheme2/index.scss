@@ -1,0 +1,53 @@
+.footer-theme2-background {
+    border-radius: 0;
+    min-width: 140%;
+    margin-left: -20%;
+    height: 130px;
+    border-top-left-radius: 70% 100%;
+    border-top-right-radius: 70% 100%;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  
+    &__flex {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        max-width: 600px;
+    
+    &__flex2 {
+        display: flex;
+        flex-flow: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+        }
+     }
+  }        
+  
+  .footer-theme2 {
+      text-align: center;
+    }
+    
+    .footer-theme2-brends-box-items {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          margin: 10px 30%;
+          width: 100%;
+          min-width: 250px;
+        }
+    
+        .footer-theme2-brends-box-items-icon-icon {
+            font-size: 38px;
+          }
+    
+          .textlogofooter {
+            font-size: 8px;
+          }
+  
+         
+          

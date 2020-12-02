@@ -16,13 +16,14 @@ import Messengers from 'components/Messengers';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
 import Social from 'components/Social';
-import Footer from 'components/Footer';
+import FooterTheme2 from 'components/themes/AppTheme2/FooterTheme2';
 import Title from 'components/Title';
 import Admin from 'components/Admin';
 import Landing from 'components/Landing';
 import Rss from 'components/Rss';
 import Start from 'components/Start';
 import StoriesTheme6 from 'components/themes/AppTheme6/StoriesTheme6';
+import StoriesTheme7 from 'components/themes/AppTheme7/StoriesTheme7';
 import PwaInstall from "components/PwaInstall";
 import PwaInstallIOs from "components/PwaInstallIOs";
 import Pwaupbanner from 'components/Pwaupbanner';
@@ -161,13 +162,14 @@ const App = () => {
                 profile={profile} />
               <StoriesTheme6 data={data.stories} profile={profile} />
               <CatalogItems data={data.catalogItems} profile={profile} />
+              <StoriesTheme7 data={data.stories} profile={profile} />
               <Title />
               <Messengers />
               <Blocks data={data.blocks} />
               <Rss />
               <SocialSharingButtons />
               <Social />
-              <Footer />
+              <FooterTheme2 />
               {!isDemo && <div className="cookie-box" >
                 <CookieBanner styles={styles}
                   message={__('Мы используем Cookies для Google analytics. Мы не собираем персональные данные')}
