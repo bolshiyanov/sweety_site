@@ -23,48 +23,48 @@ import { parse } from 'superagent';
 import { translatedProperty } from 'utils/translation';
 
 const CatalogItem = ({
-    guid,
-    animation,
-    image,
-    audio,
-    price,
-    currency,
-    number,
-    outOfStock,
-    type,
-    text,
-    textEn,
-    textRu,
-    textEs,
-    textIt,
-    textDe,
-    textFr,
-    textAlt,
-    textAltEn,
-    textAltRu,
-    textAltEs,
-    textAltIt,
-    textAltDe,
-    textAltFr,
-    onClick,
-    className,
-    technical,
-    playlist
-  }) => {
+  guid,
+  animation,
+  image,
+  audio,
+  price,
+  currency,
+  number,
+  outOfStock,
+  type,
+  text,
+  textEn,
+  textRu,
+  textEs,
+  textIt,
+  textDe,
+  textFr,
+  textAlt,
+  textAltEn,
+  textAltRu,
+  textAltEs,
+  textAltIt,
+  textAltDe,
+  textAltFr,
+  onClick,
+  className,
+  technical,
+  playlist
+}) => {
   const dispatch = useDispatch();
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
   const { playingGuid } = useSelector((state) => state.config);
 
-  const [ audioError, setAudioError ] = useState(false);
-  const [ seek, setSeek ] = useState(false);
-  const [ seekInterval, setSeekInterval ] = useState(null);
-  const [ autoplay, setAutoplay ] = useState(false);
+  const [audioError, setAudioError] = useState(false);
+  const [seek, setSeek] = useState(false);
+  const [seekInterval, setSeekInterval] = useState(null);
+  const [autoplay, setAutoplay] = useState(false);
 
-  const translatedText = playlist && !audio ? "" : 
-    translatedProperty({ text, textEn, textEs, textRu, textDe, textFr, textIt}, "text");
-  const [ playingText, setPlayingText ] = useState(translatedText);
-  const translatedTextAlt = translatedProperty({ textAlt, textAltEn, textAltEs, textAltRu, textAltDe, textAltFr, textAltIt}, "textAlt");
-  const [ playingTextAlt, setPlayingTextAlt ] = useState(translatedTextAlt);
+  const translatedText = playlist && !audio ? "" :
+    translatedProperty({ text, textEn, textEs, textRu, textDe, textFr, textIt }, "text");
+  const [playingText, setPlayingText] = useState(translatedText);
+  const translatedTextAlt = translatedProperty({ textAlt, textAltEn, textAltEs, textAltRu, textAltDe, textAltFr, textAltIt }, "textAlt");
+  const [playingTextAlt, setPlayingTextAlt] = useState(translatedTextAlt);
 
   const isAudioPlayer = audio || playlist;
 
@@ -82,7 +82,7 @@ const CatalogItem = ({
     },
     onerror: () => {
       setAudioError(true);
-    } 
+    }
   });
 
   useEffect(() => {
@@ -249,12 +249,9 @@ const CatalogItem = ({
           )}
 
           {isAudioPlayer && (
-            <div className="catalogItem-preorder-flex-column">
-              <div className="catalogItem-price-empty"></div>
-              <div className="catalogItem-preorder-flex-row">
-                <Button isInline noStyled ><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} className="catalogItem-add-button" /> </Button>
-              </div>
-            </div>
+                <Button isInline noStyled ><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} className="catalogItem-sound-button" /> </Button>
+              
+           
           )}
         </div>
       );
@@ -362,13 +359,15 @@ const CatalogItem = ({
             className
           ])}
           key={guid}
-          onClick={onClick}
+          onClick={(e) => { isAudioPlayer ? handleAudioClick(e) : onClick() }}
         >
           {image && (price || number) && (
             <img src={image} alt={translatedText} />
           )}
-          {(!price && !number) && translatedText && (
-            <div className="catalogItem-right-title-without-button">{translatedText}</div>
+          {(!price && !number) && playingText && (
+            <div className="catalogItem-preorder-flex-column">
+              <div className="catalogItem-right-title-without-button">{playingText}</div>
+            </div>
           )}
           {(translatedText) && (price || number) && (
             <div className="catalogItem-preorder-flex-column">
@@ -378,7 +377,7 @@ const CatalogItem = ({
             </div>
           )}
 
-          {(price || number) && price && (
+          {(price || number) && price && !isAudioPlayer && (
             <div className="catalogItem-preorder-flex-column">
 
               <div className="catalogItem-preorder-flex-row">
@@ -393,7 +392,7 @@ const CatalogItem = ({
 
             </div>
           )}
-          {(price || number) && !price && (
+          {(price || number) && !price && !isAudioPlayer && (
             <div className="catalogItem-preorder-flex-column">
 
               <div className="catalogItem-preorder-flex-row">
@@ -403,11 +402,17 @@ const CatalogItem = ({
             </div>
           )}
 
+          {isAudioPlayer && (
+                <Button ><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"}  /> </Button>
+              
+            
+          )}
+
         </div>
 
       );
 
-      if (price || number)
+      if (price || number || isAudioPlayer)
         return (
           <div >
             <Button className="button-in-catalogItem-right " isPulse={animation} technical={technical}>

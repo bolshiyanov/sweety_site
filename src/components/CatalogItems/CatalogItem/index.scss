@@ -12,7 +12,7 @@
 }
 
 .button-in-catalogItem-right {
-  margin: 2px 12px 0;
+  margin: 6px 12px 6px;
   width: calc(100% - 24px);
   border-radius: 8px;
   position: relative;
@@ -167,7 +167,8 @@
     img {
       max-width: 50px;
       max-height: 50px;
-      border: 2px solid;
+      border: 3px solid;
+      border-radius: 5px;
     }
     
     .catalogItem__title {
@@ -273,6 +274,17 @@
   background-color:  white;
   height: 25px;
   width: 24px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.catalogItem-sound-button {
+  color:  rgb(255, 179, 0);
+  border: 2px solid white;
+  background-color:  white;
+  height: 25px;
+  min-width: 25px;
+  padding: 2px 0 2px 6px;
   border-radius: 50%;
   z-index: 2;
 }

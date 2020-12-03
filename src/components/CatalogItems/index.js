@@ -49,8 +49,8 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
     const settings = currentCatalogItem || { ...emptySettings };
     if (!settings.guid)
       settings.guid = uuid();
-      setCatalogItemData({ ...settings });
-  }, [settingsOpened, catalogItems]);
+      setCatalogItemData({ ...settings }); 
+  }, [settingsOpened, catalogItems]); 
 
   const hour = new Date().getHours();
   const checkCatalogItem = (e) => {
@@ -80,6 +80,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
               onClick={catalogItem.price || catalogItem.number ? (() => onOpenCatalogItemSettings(catalogItem.guid)) : null}  />
           </LazyLoadComponent>)
       }</div>
+      <div className="empty-catalogItems-box"></div>
       <Slider
         opened={settingsOpened}
         onClose={closeCatalogItemsSettings}
