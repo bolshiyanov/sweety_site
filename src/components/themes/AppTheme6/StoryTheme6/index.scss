@@ -39,14 +39,16 @@ border-bottom-right-radius: 15px;
 border: 0;
 border-top-right-radius: 0;
 border-top-left-radius: 0;
-font-size: 20px;
-font-family: 'Russo One', sans-serif;
+font-size: 26px;
+font-family: 'Fira Sans', sans-serif;
 line-height: 1;
 white-space: pre-line;
 padding: 10px;
+color: white !important;
 position: absolute;
 bottom: 0;
 
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@600&display=swap');
