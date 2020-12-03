@@ -19,7 +19,7 @@ const StoryTheme7 = ({
     scrollPosition
 }) => {
 
-    if (description) {
+    if (!description) {
         return null;
         };
 
