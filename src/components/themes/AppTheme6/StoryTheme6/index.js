@@ -17,9 +17,9 @@ const StoryTheme6 = ({
     scrollPosition
 }) => {
 
-    // if (description) {
-    //     return null;
-    //     };
+    if (description) {
+        return null;
+        };
 
     const story = (
         <LazyLoadComponent scrollPosition={scrollPosition} threshold={10}>
