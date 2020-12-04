@@ -63,7 +63,6 @@ const Order = () => {
         setVisualProps(vprops);
     }, []);
 
-    const sms = [];
 
 
     const orderItems = [];
@@ -228,7 +227,7 @@ const Order = () => {
 
 
                         </React.Fragment>}
-                    {!hasEmail && hasPhone &&
+                    {/* {!hasEmail && hasPhone &&
 
 
 
@@ -248,7 +247,7 @@ const Order = () => {
                     })
                 }`
                                 , '_self')} >order send !!!</a> <br />
-                        </React.Fragment>}
+                        </React.Fragment>} */}
 
                 </Slider>}
         </div>
