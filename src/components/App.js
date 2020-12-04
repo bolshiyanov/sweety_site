@@ -163,7 +163,7 @@ const App = () => {
               <StoriesTheme6 data={data.stories} profile={profile} />
               <CatalogItems data={data.catalogItems} profile={profile} />
               <StoriesTheme7 data={data.stories} profile={profile} />
-              {!StoriesTheme6 && <div className="empty-box"></div>}
+              {!needSticky && <div className="empty-box"></div>}
               <Title />
               <Messengers />
               <Blocks data={data.blocks} />
