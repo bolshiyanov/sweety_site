@@ -101,7 +101,7 @@ const StartPwaInstallIos = ({ profile }) => {
                         <div className="startPwaInstallIos-iconsBox__sutitle">{__("Поддерживается")}</div>
                     </div>
 
-                    <div className="startPwaInstallIos-descriotionsTitle">{__("Описание")}
+                    <div className="startPwaInstallIos-descriotionsTitle">{__("Описание:")}
                     <div className="startPwaInstallIos-descriotions">
                             {title} &nbsp; {description}
                         </div>
