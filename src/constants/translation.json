@@ -854,5 +854,13 @@
         "fr": "Votre commande sera envoyée par SMS depuis votre téléphone. Le service est payant et facturé selon votre tarif. Le coût du SMS sera compensé par l'octroi d'une réduction.",
         "de": "Ihre Bestellung wird per SMS von Ihrem Telefon gesendet werden. Der Service ist kostenpflichtig und wird entsprechend Ihrem tarif berechnet. Die SMS-Kosten werden durch die Gewährung eines Rabatts kompensiert.",
         "it": "Il vostro ordine verrà inviato via SMS dal telefono. Il servizio è a pagamento e viene addebitato in base alla tariffa. Il costo di SMS sarà compensato, fornendo uno sconto."
+    }, {
+        "code": "order.without button",
+        "en": "Call our employee and show them your order.",
+        "ru": "Подзовите нашего сотрудника и покажите ему ваш заказ.",
+        "es": "Llame a nuestro empleado y Muéstrele su pedido.",
+        "fr": "Appelez notre employé et montrez-lui votre commande.",
+        "de": "Rufen Sie unseren Mitarbeiter an und zeigen Sie ihm Ihre Bestellung.",
+        "it": "Chiama il nostro dipendente e mostragli il tuo ordine."
     }
 ] 

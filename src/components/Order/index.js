@@ -226,15 +226,15 @@ const Order = () => {
                     onRemove={handleClear}
                     onClose={() => setOrderOpened(false)}
                     hasPhone={hasPhone}
-                    sms={orderItems.map(orderItem =>
-                        {const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
+                    sms={orderItems.map(orderItem => {
+                        const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
                         return (
                             <span key={orderItem.guid}>
                                 {catalogItem?.number ? <>&#8470;{catalogItem?.number} | </> : null}{catalogItem?.text}: &nbsp;
                                 {orderItem.count} x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency};&nbsp;</span>
-                               );
-                        })} 
-                        
+                        );
+                    })}
+
                 >
                     {orderItems.map(orderItem => {
                         const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
@@ -254,8 +254,35 @@ const Order = () => {
                     {visualProps.length > 0 ? <br /> : null}
 
                 </Slider>}
+{/* Слайдер когда нет емаил , НЕТ  телефон НЕ ВЫВОДИМ КНОПКУ*/}
+            {!sent && orderOpened && !hasEmail && !hasPhone &&
+                <Slider
+                    opened={orderOpened}
+                    title={__("Ваш предварительный заказ")}
+                    subtitle={__("Подзовите нашего сотрудника и покажите ему ваш заказ.")}
+                    submitTitle={__("ОТПРАВИТЬ").toUpperCase()}
+                    onRemove={handleClear}
+                    onClose={() => setOrderOpened(false)}
+                    
+                >
+                    {orderItems.map(orderItem => {
+                        const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
+                        return (
+                            <div className="order__description" key={orderItem.guid}>
+                                <Button className="order-remove" onClick={() => handleRemove(orderItem)}
+                                    isInline noStyled>
+                                    <Icon type="trash" noStyled />
+                                </Button>
+                                {catalogItem?.number ? <>&#8470;<b>{catalogItem?.number}</b> | </> : null}{catalogItem?.text}: &nbsp;
+                                <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
+                        );
+                    })}
+                    <div className="order__total">{__("Итого:")} {orderSum.toFixed(2)} {currency}</div>
 
+                    {visualProps.map(e => <div className="order__prop" key={e.key}>{e.key}{e.value ? ": " : ""} {e.value}</div>)}
+                    {visualProps.length > 0 ? <br /> : null}
 
+                </Slider>}
         </div>
     </React.Fragment>
 
