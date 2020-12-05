@@ -57,7 +57,6 @@ const Slider = ({
                 </Button>
               </div>
             )}
-            <div>{sms}</div>
           </div>
         </div>
       </div>}

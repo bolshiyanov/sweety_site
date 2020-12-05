@@ -162,11 +162,11 @@ const App = () => {
                 profile={profile} />
               <StoriesTheme6 data={data.stories} profile={profile} />
               <CatalogItems data={data.catalogItems} profile={profile} />
+              <Blocks data={data.blocks} />
               <StoriesTheme7 data={data.stories} profile={profile} />
               {!needSticky && <div className="empty-box"></div>}
               <Title />
               <Messengers />
-              <Blocks data={data.blocks} />
               <Rss />
               <SocialSharingButtons />
               <Social />
