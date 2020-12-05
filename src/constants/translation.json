@@ -846,5 +846,13 @@
         "fr": "Envoyé depuis le site",
         "de": "Eingereicht von der Website",
         "it": "Inviato dal sito"
+    }, {
+        "code": "order.sms",
+        "en": "Your order will be sent via SMS from your phone. The service is paid and charged according to your tariff. The cost of SMS will be compensated by providing a discount.",
+        "ru": "Ваш заказ будет отправлен через SMS с вашего телефона. Услуга платная и тарифицируется согласно вашего тарифа. Стоимость SMS будет компенсирована, за счет предоставления скидки.",
+        "es": "Su pedido será enviado a través de SMS desde su Teléfono. El Servicio es de pago y se cobra según su tarifa. El costo de SMS será compensado, proporcionando un descuento.",
+        "fr": "Votre commande sera envoyée par SMS depuis votre téléphone. Le service est payant et facturé selon votre tarif. Le coût du SMS sera compensé par l'octroi d'une réduction.",
+        "de": "Ihre Bestellung wird per SMS von Ihrem Telefon gesendet werden. Der Service ist kostenpflichtig und wird entsprechend Ihrem tarif berechnet. Die SMS-Kosten werden durch die Gewährung eines Rabatts kompensiert.",
+        "it": "Il vostro ordine verrà inviato via SMS dal telefono. Il servizio è a pagamento e viene addebitato in base alla tariffa. Il costo di SMS sarà compensato, fornendo uno sconto."
     }
 ] 

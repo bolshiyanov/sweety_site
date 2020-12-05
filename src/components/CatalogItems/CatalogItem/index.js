@@ -249,9 +249,9 @@ const CatalogItem = ({
           )}
 
           {isAudioPlayer && (
-                <Button isInline noStyled ><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} className="catalogItem-sound-button" /> </Button>
-              
-           
+            <Button isInline noStyled ><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} className="catalogItem-sound-button" /> </Button>
+
+
           )}
         </div>
       );
@@ -315,10 +315,12 @@ const CatalogItem = ({
           key={guid}
           onClick={onClick}
         >
+          <div> {count > 0 && <div className="catalogItem-number-item">{count}</div>} </div>
           <div className="catalogItem__title">{translatedText}
             {(price || number) && (
+
               <div className="catalogItem-preorder-flex-column-center">
-                <div className="catalogItem-preorder-flex-row">
+                {/* <div className="catalogItem-preorder-flex-row">
                   <Input
                     className="catalogItem-input"
                     value={count}
@@ -327,11 +329,13 @@ const CatalogItem = ({
                     min={0}
                     onChange={(value) => handleSetCount(value)}
                   />
-                </div>
+                </div> */}
                 {price && <div className="catalogItem-price-currency">{sumValue}&nbsp;{currency}</div>}
                 {!price && <div className="catalogItem-price-empty"></div>}
               </div>
+
             )}
+
           </div>
         </div>
       );
@@ -403,9 +407,9 @@ const CatalogItem = ({
           )}
 
           {isAudioPlayer && (
-                <Button ><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"}  /> </Button>
-              
-            
+            <Button ><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} /> </Button>
+
+
           )}
 
         </div>

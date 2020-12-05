@@ -20,8 +20,8 @@
 
 .catalogItem-number-item {
   position: absolute;
-  margin-left: 8px;
-  margin-top: -4px;
+  left: 0;
+  top: 0;
   height: 33px;
   width: 33px;
   border-radius: 50%;
@@ -29,7 +29,8 @@
   border: 2px solid whitesmoke;
   font-weight: bold;
   text-align: center;
-  padding-top: 2px;
+  font-size: 24px;
+  padding-top: 1px;
   z-index: 2;
 
 }

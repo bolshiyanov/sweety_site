@@ -155,7 +155,8 @@ const Order = () => {
                 </Button>}
 
 
-            {!sent && orderOpened &&
+ {/* Слайдер когда есть емаил , не важно есть ли  телефон, выводим форму и кнопку */}
+            {!sent && orderOpened && hasEmail &&
                 <Slider
                     opened={orderOpened}
                     title={__("Ваш предварительный заказ")}
@@ -163,19 +164,7 @@ const Order = () => {
                     submitTitle={__("ОТПРАВИТЬ").toUpperCase()}
                     onRemove={handleClear}
                     onClose={() => setOrderOpened(false)}
-                    onSubmit={!hasEmail ? null : handleSubmit}
-                    sms={orderItems.map(orderItem => {
-                        const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
-                        return (
-                            <div className="order__description" key={orderItem.guid}>
-                                <Button className="order-remove" onClick={() => handleRemove(orderItem)}
-                                    isInline noStyled>
-                                    <Icon type="trash" noStyled />
-                                </Button>
-                                {catalogItem?.number ? <>&#8470;<b>{catalogItem?.number}</b> | </> : null}{catalogItem?.text}: &nbsp;
-                                <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
-                        );
-                    })}
+                    onSubmit={handleSubmit}
                 >
                     {orderItems.map(orderItem => {
                         const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
@@ -193,63 +182,80 @@ const Order = () => {
 
                     {visualProps.map(e => <div className="order__prop" key={e.key}>{e.key}{e.value ? ": " : ""} {e.value}</div>)}
                     {visualProps.length > 0 ? <br /> : null}
-                    {hasEmail &&
-                        <React.Fragment>
-                            <Input
-                                className="order__input"
-                                value={phone}
-                                type="tel"
-                                placeholder={__("Напишите свой телефон")}
-                                onChange={(value) => setPhone(value)}
-                            />
-                            <Input
-                                className="order__input"
-                                value={name}
-                                type="text"
-                                placeholder={__("Напишите своё имя")}
-                                onChange={(value) => setName(value)}
-                            />
-                            <Input
-                                className="order__input"
-                                value={address}
-                                type="text"
-                                placeholder={__("Напишите свой адрес")}
-                                onChange={(value) => setAddress(value)}
-                            />
-                            <Textarea
-                                className="order__input"
-                                value={comment}
-                                type="text"
-                                placeholder={__("Напишите в этом поле комментарий к заказу, укажите альтернативный способ связи или задайте свой вопрос. ЗАПОЛНЕНИЕ НЕ ОБЯЗАТЕЛЬНО")}
-                                onChange={(value) => setComment(value)}
-                            />
-                            <div className="order__input__descriptions">{__("Информация не будет передана третьим лицам")}</div>
-
-
-                        </React.Fragment>}
-                    {/* {!hasEmail && hasPhone &&
-
-
-
-
-                        <React.Fragment>
-                           
-                            <a href="#" onClick={() => window.open(`sms:${hasPhone}` + `&body=
-                    ${
-                        orderItems.map(orderItem => {
-                        const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
-                        return <React.Fragment>
-                            <div  key={orderItem.guid}>
-                                
-                                {catalogItem?.number ? <>&#8470; {catalogItem?.number}  | </> : null}{catalogItem?.text}: &nbsp;
-                                 {orderItem.count}  x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
-                                 </React.Fragment>;
-                    })
-                }`
-                                , '_self')} >order send !!!</a> <br />
-                        </React.Fragment>} */}
+                    <React.Fragment>
+                        <Input
+                            className="order__input"
+                            value={phone}
+                            type="tel"
+                            placeholder={__("Напишите свой телефон")}
+                            onChange={(value) => setPhone(value)}
+                        />
+                        <Input
+                            className="order__input"
+                            value={name}
+                            type="text"
+                            placeholder={__("Напишите своё имя")}
+                            onChange={(value) => setName(value)}
+                        />
+                        <Input
+                            className="order__input"
+                            value={address}
+                            type="text"
+                            placeholder={__("Напишите свой адрес")}
+                            onChange={(value) => setAddress(value)}
+                        />
+                        <Textarea
+                            className="order__input"
+                            value={comment}
+                            type="text"
+                            placeholder={__("Напишите в этом поле комментарий к заказу, укажите альтернативный способ связи или задайте свой вопрос. ЗАПОЛНЕНИЕ НЕ ОБЯЗАТЕЛЬНО")}
+                            onChange={(value) => setComment(value)}
+                        />
+                        <div className="order__input__descriptions">{__("Информация не будет передана третьим лицам")}</div>
+                    </React.Fragment>
 
                 </Slider>}
+
+{/* Слайдер когда нет емаил , но есть  телефон, выводим   кнопку  ОТПРАВИТЬ ЗАКАЗ ЧЕРЕЗ СМС*/}
+            {!sent && orderOpened && !hasEmail && hasPhone &&
+                <Slider
+                    opened={orderOpened}
+                    title={__("Ваш предварительный заказ")}
+                    subtitle={__("Ваш заказ будет отправлен через SMS с вашего телефона. Услуга платная и тарифицируется согласно вашего тарифа. Стоимость SMS будет компенсирована, за счет предоставления скидки.")}
+                    submitTitle={__("ОТПРАВИТЬ").toUpperCase()}
+                    onRemove={handleClear}
+                    onClose={() => setOrderOpened(false)}
+                    hasPhone={hasPhone}
+                    sms={orderItems.map(orderItem =>
+                        {const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
+                        return (
+                            <span key={orderItem.guid}>
+                                {catalogItem?.number ? <>&#8470;{catalogItem?.number} | </> : null}{catalogItem?.text}: &nbsp;
+                                {orderItem.count} x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency};&nbsp;</span>
+                               );
+                        })} 
+                        
+                >
+                    {orderItems.map(orderItem => {
+                        const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
+                        return (
+                            <div className="order__description" key={orderItem.guid}>
+                                <Button className="order-remove" onClick={() => handleRemove(orderItem)}
+                                    isInline noStyled>
+                                    <Icon type="trash" noStyled />
+                                </Button>
+                                {catalogItem?.number ? <>&#8470;<b>{catalogItem?.number}</b> | </> : null}{catalogItem?.text}: &nbsp;
+                                <b>{orderItem.count}</b> x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency}</div>
+                        );
+                    })}
+                    <div className="order__total">{__("Итого:")} {orderSum.toFixed(2)} {currency}</div>
+
+                    {visualProps.map(e => <div className="order__prop" key={e.key}>{e.key}{e.value ? ": " : ""} {e.value}</div>)}
+                    {visualProps.length > 0 ? <br /> : null}
+
+                </Slider>}
+
+
         </div>
     </React.Fragment>
 
