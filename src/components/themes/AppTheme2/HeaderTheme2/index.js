@@ -78,7 +78,7 @@ const HeaderTheme2 = ({ avatar, avatarPreview, name, className, profile }) => {
                 <div className="header-theme2-background__flex">
                     <div className="header-theme2-background__flex__flex2">
                         <Avatar image={avatar} />
-                        <div className="user-name" >{name || __("Твой бренд")} </div>
+                        <div className="user-name" >{name} </div>
                     </div>
                 </div>
                
