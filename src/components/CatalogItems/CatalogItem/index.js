@@ -58,7 +58,7 @@ const CatalogItem = ({
   const [audioError, setAudioError] = useState(false);
   const [seek, setSeek] = useState(false);
   const [seekInterval, setSeekInterval] = useState(null);
-  const [autoplay, setAutoplay] = useState(false);
+  const [autoplay, setAutoplay] = useState(false); 
 
   const translatedText = playlist && !audio ? "" :
     translatedProperty({ text, textEn, textEs, textRu, textDe, textFr, textIt }, "text");
