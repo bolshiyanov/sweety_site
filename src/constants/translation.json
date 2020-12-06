@@ -538,12 +538,12 @@
         "it": "Ora riceverai le nostre migliori offerte"
     }, {
         "code": "install.desc.title",
-        "en": "Description:",
-        "ru": "Описание:",
-        "es": "Descripción:",
-        "fr": "Description:",
-        "de": "Beschreibung:",
-        "it": "Descrizione:"
+        "en": "Description",
+        "ru": "Описание",
+        "es": "Descripción",
+        "fr": "Description",
+        "de": "Beschreibung",
+        "it": "Descrizione"
     }, {
         "code": "install.desc",
         "en": "Installation will be done through your BROWSER. No credit card required, no registration required, mailing is not technically possible",
