@@ -287,6 +287,29 @@
   z-index: 2;
 }
 
+.catalogItem-add-sound-center {
+  color:  rgb(255, 179, 0);
+  height: 15px;
+  width: 14px;
+  border-radius: 50%;
+  padding : 2px;
+  margin: 0;
+  z-index: 2;
+}
+
+.catalogItem-add-sound-center-button {
+  height: auto;
+  width: 80px;
+  border-radius: 4px;
+  margin: 0;
+  padding: 3px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
 .catalogItem-check-button {
   color:  green;
   border: 2px solid white;

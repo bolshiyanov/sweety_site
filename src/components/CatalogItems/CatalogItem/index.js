@@ -317,34 +317,32 @@ const CatalogItem = ({
           ])}
           style={style}
           key={guid}
-          onClick={onClick}
+          onClick={(e) => { isAudioPlayer ? handleAudioClick(e) : onClick() }}
         >
           <div> {count > 0 && <div className="catalogItem-number-item">{count}</div>} </div>
           <div className="catalogItem__title">{translatedText}
-            {(price || number) && (
+            {(price || number) && !isAudioPlayer && (
 
               <div className="catalogItem-preorder-flex-column-center">
-                {/* <div className="catalogItem-preorder-flex-row">
-                  <Input
-                    className="catalogItem-input"
-                    value={count}
-                    name="fieldInputCount"
-                    type="number"
-                    min={0}
-                    onChange={(value) => handleSetCount(value)}
-                  />
-                </div> */}
                 {price && <div className="catalogItem-price-currency">{sumValue}&nbsp;{currency}</div>}
                 {!price && <div className="catalogItem-price-empty"></div>}
               </div>
 
             )}
 
+            {isAudioPlayer && (
+              <div className="catalogItem-preorder-flex-column-center">
+                <div className="catalogItem-preorder-flex-row">
+                  <Button className="catalogItem-add-sound-center-button" ><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} className="catalogItem-add-sound-center" />{audioError ? "CROSS" : !(!!sound && duration) ? "SYNC" : !isPlaying ? "PLAY" : "PAUSE"}</Button>
+                </div>
+                <div className="catalogItem-price-empty"></div>
+              </div>
+            )}
           </div>
         </div>
       );
 
-      if (price || number)
+      if (price || number || isAudioPlayer)
         return (
           <div >
             <Button className="button-in-catalogItem-center " isPulse={animation} technical={technical}>
