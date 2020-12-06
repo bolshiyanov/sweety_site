@@ -18,7 +18,7 @@ import {
   CATALOG_HEADER,
 } from 'constants/catalogTypes';
 
-import { CATALOG_ORDER, CATALOG_PLAY, CATALOG_NEXT, CATALOG_PAUSE } from 'constants/actions';
+import { CATALOG_ORDER, CATALOG_PLAY, CATALOG_NEXT, CATALOG_PAUSE, CATALOG_FILTER_HEADER } from 'constants/actions';
 import { parse } from 'superagent';
 import { translatedProperty } from 'utils/translation';
 
@@ -53,7 +53,7 @@ const CatalogItem = ({
 }) => {
   const dispatch = useDispatch();
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
-  const { playingGuid } = useSelector((state) => state.config);
+  const { playingGuid, headerGuid } = useSelector((state) => state.config);
 
   const [audioError, setAudioError] = useState(false);
   const [seek, setSeek] = useState(false);
@@ -67,6 +67,10 @@ const CatalogItem = ({
   const [playingTextAlt, setPlayingTextAlt] = useState(translatedTextAlt);
 
   const isAudioPlayer = audio || playlist;
+
+  const handleHeaderClick = () => {
+    dispatch({ type: CATALOG_FILTER_HEADER, headerGuid: headerGuid === guid ? null : guid });
+  }
 
   let [play, { stop, isPlaying, duration, sound }] = useSound(audio && audio.startsWith("https://sweety.link/") ? null : audio, {
     autoUnlock: true,
@@ -286,7 +290,7 @@ const CatalogItem = ({
           ])}
           style={style}
           key={guid}
-          onClick={onClick}
+          onClick={handleHeaderClick}
         >
           <div className="catalogItem__title">{translatedText}</div>
         </div>

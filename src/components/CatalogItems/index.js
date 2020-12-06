@@ -29,7 +29,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
   const { active } = useSelector((state) => state.config.account);
 
   const { catalogItems } = useSelector((state) => state.config.data);
-  const { storyGuid } = useSelector((state) => state.config);
+  const { storyGuid, headerGuid } = useSelector((state) => state.config);
 
   const closeCatalogItemsSettings = () => {
     setSettingsOpened(null);
@@ -60,7 +60,8 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
         (e.timeFrom && e.timeTo && parseInt(e.timeFrom) <= hour && parseInt(e.timeTo) >= hour) ||
         (e.timeFrom && e.timeTo && parseInt(e.timeFrom) > parseInt(e.timeTo) && (parseInt(e.timeFrom) <= hour || parseInt(e.timeTo) <= hour)) ||
         (e.timeFrom && !e.timeTo && parseInt(e.timeFrom) <= hour) ||
-        (!e.timeFrom && e.timeTo && parseInt(e.timeTo) >= hour));
+        (!e.timeFrom && e.timeTo && parseInt(e.timeTo) >= hour))
+      && (!e.headerGuid || storyGuid || e.headerGuid === headerGuid);
   }
 
   if (!inviteId && !active) { 

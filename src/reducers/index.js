@@ -14,6 +14,7 @@ import {
   SET_INSTAGRAM_FEED,
   SET_YOUTUBE_FEED,
   CATALOG_FILTER,
+  CATALOG_FILTER_HEADER,
   CATALOG_SET_STORY,
   CATALOG_ORDER,
   CATALOG_ORDER_CLEAR,
@@ -24,6 +25,10 @@ import {
   CATALOG_NEXT
 } from 'constants/actions';
 import CatalogItem from 'components/CatalogItems/CatalogItem';
+
+import {
+  CATALOG_HEADER,
+} from 'constants/catalogTypes';
 
 const defaultTheme = new Theme({ name: 'Default' });
 const initialState = {
@@ -37,6 +42,7 @@ const initialState = {
   config: {},
   account: {},
   storyGuid : null,
+  headerGuid: null,
   order: {},
   playingGuid: null
 };
@@ -71,6 +77,20 @@ const reducer = handleActions({
       const selectedButtonColor = buttonColors.find((buttonColor) => data.settings.color === buttonColor.name);
       if (selectedButtonColor)
         currentTheme = new Theme({ ...currentTheme, button: selectedButtonColor });
+    }
+
+    let headerGuid = null;
+    let storyGuid = null;
+    if (data.catalogItems) {
+      for (let i = data.catalogItems.length - 1; i >= 0; i--) {
+        let item = data.catalogItems[i];
+        if (item.type === CATALOG_HEADER) {
+          headerGuid = item.guid;
+          storyGuid = item.storyGuid;
+        } else if (item.storyGuid === storyGuid) {
+          item.headerGuid = headerGuid;
+        }
+      }
     }
 
     return {
@@ -124,6 +144,12 @@ const reducer = handleActions({
     }
   },
 
+  [CATALOG_FILTER_HEADER] : (state, { headerGuid }) => {
+    return {
+      ...state,
+      headerGuid
+    }
+  },
 
   [CATALOG_ORDER] : (state, { guid, count, sum, currency }) => {
     return {
