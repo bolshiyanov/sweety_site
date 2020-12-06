@@ -28,7 +28,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
   const [cookies] = useCookies();
   const { active } = useSelector((state) => state.config.account);
 
-  const { catalogItems } = useSelector((state) => state.config.data);
+  const { catalogItems, stories } = useSelector((state) => state.config.data);
   const { storyGuid, headerGuid } = useSelector((state) => state.config);
 
   const closeCatalogItemsSettings = () => {
@@ -54,7 +54,7 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
 
   const hour = new Date().getHours();
   const checkCatalogItem = (e) => {
-    return storyGuid 
+    return (storyGuid || (stories?.length ?? 0) === 0) 
       && (!storyGuid || !e.storyGuid || e.storyGuid === storyGuid) 
       && !e.outOfStock
       && ((!e.timeFrom && !e.timeTo) ||
