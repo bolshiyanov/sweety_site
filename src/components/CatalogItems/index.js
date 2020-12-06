@@ -54,14 +54,15 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
 
   const hour = new Date().getHours();
   const checkCatalogItem = (e) => {
-    return (!storyGuid || !e.storyGuid || e.storyGuid === storyGuid) 
+    return storyGuid 
+      && (!storyGuid || !e.storyGuid || e.storyGuid === storyGuid) 
       && !e.outOfStock
       && ((!e.timeFrom && !e.timeTo) ||
         (e.timeFrom && e.timeTo && parseInt(e.timeFrom) <= hour && parseInt(e.timeTo) >= hour) ||
         (e.timeFrom && e.timeTo && parseInt(e.timeFrom) > parseInt(e.timeTo) && (parseInt(e.timeFrom) <= hour || parseInt(e.timeTo) <= hour)) ||
         (e.timeFrom && !e.timeTo && parseInt(e.timeFrom) <= hour) ||
         (!e.timeFrom && e.timeTo && parseInt(e.timeTo) >= hour))
-      && (!e.headerGuid || storyGuid || e.headerGuid === headerGuid);
+      && (!e.headerGuid || e.headerGuid === headerGuid);
   }
 
   if (!inviteId && !active) { 
