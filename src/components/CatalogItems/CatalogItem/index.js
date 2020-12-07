@@ -292,7 +292,7 @@ const CatalogItem = ({
           key={guid}
           onClick={handleHeaderClick}
         >
-          <div className="catalogItem__title">{translatedText}</div>
+          <div className="catalogItem__title">{translatedText}<br/><Icon type={headerGuid ? "angleDoubleUp" : "angleDoubleDown"}/></div>
         </div>
       );
       return catalogItem;
