@@ -292,7 +292,7 @@ const CatalogItem = ({
           key={guid}
           onClick={handleHeaderClick}
         >
-          <div className="catalogItem__title">{translatedText}</div>
+          <div className="catalogItem__title">{translatedText}<br/><Icon type={headerGuid ? "angleDoubleUp" : "angleDoubleDown"}/></div>
         </div>
       );
       return catalogItem;
@@ -333,7 +333,9 @@ const CatalogItem = ({
             {isAudioPlayer && (
               <div className="catalogItem-preorder-flex-column-center">
                 <div className="catalogItem-preorder-flex-row">
-                  <Button className="catalogItem-add-sound-center-button" ><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} className="catalogItem-add-sound-center" />{audioError ? "CROSS" : !(!!sound && duration) ? "SYNC" : !isPlaying ? "PLAY" : "PAUSE"}</Button>
+                  <Button className="catalogItem-add-sound-center-button" >
+                    <Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} className="catalogItem-add-sound-center" />
+                    {audioError ? "CROSS" : !(!!sound && duration) ? "SYNC" : !isPlaying ? "PLAY" : "PAUSE"}</Button>
                 </div>
                 <div className="catalogItem-price-empty"></div>
               </div>
@@ -346,7 +348,6 @@ const CatalogItem = ({
         return (
           <div >
             <Button className="button-in-catalogItem-center " isPulse={animation} technical={technical}>
-              {catalogItem}
             </Button>
           </div>
         );
