@@ -4,19 +4,22 @@
     word-wrap: none;
     overflow: hidden;
     font-family: 'Oswald';
-    padding: 0;
+    padding: 3px;
     margin: 0 -6px;
     white-space: nowrap;
+    z-index: 2;
   }
   
   .story-picture-title-theme1-selected {
     text-align: center;
     font-size: 13px;
+    padding: 3px;
     word-wrap: none;
     overflow: hidden;
     font-family: 'Oswald';
     white-space: nowrap;
     border-bottom: 3px solid rgb(30, 144, 255) !important;
+    z-index: 2;
   }
   
   @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');

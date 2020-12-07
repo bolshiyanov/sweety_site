@@ -1,7 +1,7 @@
 .story-theme2-picture {
     flex-grow: 1;
     margin: 12px 0;
-    width: 151px;
+    width: 200px;
     overflow: hidden;
     padding: 0;
     display: flex;
@@ -10,7 +10,7 @@
     align-items: center;
 
     &__box-selected {
-      height: 151px;
+      height: 300px;
       box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
       border-radius: 15px;
       border: 5px solid rgb(30, 144, 255) !important;
@@ -24,7 +24,7 @@
     
   
     &__box {
-        height: 151px;
+        height: 300px;
         border: 1px solid rgba(0, 0, 0, .2);
         box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
         border-radius: 15px;
@@ -40,7 +40,7 @@
   
 .story-theme2-picture-title {
   text-align: left;
-  width: 151px;
+  width: 200px;
   height: 80px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -63,7 +63,7 @@
 
 .story-theme2-picture-title-selected {
 text-align: left;
-width: 151px;
+width: 200px;
 height: 80px;
 border-bottom-left-radius: 15px;
 border-bottom-right-radius: 15px;

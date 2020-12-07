@@ -1,6 +1,9 @@
 .stories-theme5 {
   display: block;
-  max-width: 100%;
+  width: calc(100%+22px);
+  margin-left: -11px;
+  margin-right: -11px;
+  w
   
   
   
@@ -43,7 +46,7 @@
 
         &__title {
           text-align: left;
-          width: 200px;
+          width: 153px;
           height: 80px;
           border-bottom-left-radius: 15px;
           border-bottom-right-radius: 15px;
@@ -79,7 +82,7 @@
     .stories-theme5-picker-item {
       display: inline-block;
       position: relative;
-      width: 200px; 
+      width: 153px; 
       height: 200px;
       margin: 5px;
       overflow: hidden;

@@ -14,29 +14,18 @@ const StoryTheme2 = ({
     onClick,
     className,
     selected,
-    isSticky,
     scrollPosition
 }) => {
     const story = (
         <LazyLoadComponent scrollPosition={scrollPosition} threshold={10}>
-        {!isSticky && (
+        
             <div className={classnames([!image ? "" : 'story-theme2-picture', className])}
                 onClick={onClick}
             >
                 <div className={`story-theme2-picture__box${selected ? "-selected" : ""}`} style={{ backgroundImage: `URL(${image})` }} />
                 <Button onClick={onClick} className={`story-theme2-picture-title${selected ? "-selected" : ""}`}>{title}</Button>
             </div>
-        )}
-        {isSticky && (
-            <div className={classnames([`story-picture${selected ? "-selected" : ""}`, className])}
-            onClick={onClick}>
-
-            {image && (
-                <LazyLoadImage src={image} alt={title} scrollPosition={scrollPosition} threshold={10} />
-            )}
-            <div className="story-picture-title">{title}</div>
-            </div>
-        )}
+      
         </LazyLoadComponent>
     );
     return story;

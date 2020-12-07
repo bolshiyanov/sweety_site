@@ -108,7 +108,7 @@ const AppTheme2 = () => {
 
   return (
     <React.Fragment>
-     
+
       <div className="app" style={backgroundStyles}>
         {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
         <div className="app-container">
@@ -120,27 +120,9 @@ const AppTheme2 = () => {
             avatarPreview={data.avatarPreview}
             profile={profile}
           />
-          {needSticky && <StickyContainer>
-            <Sticky>
-              {({
-                  style,
-                  isSticky,
-                  distanceFromBottom 
-              }) => {
-                const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
-                return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
-                  <StoriesTheme2 isSticky={stickyBlock} data={data.stories} />
-                </div>);
-              }}
-            </Sticky>
-            <TitleTheme2 />
-            <CatalogItems data={data.catalogItems} profile={profile} />
-          </StickyContainer>}
-          {!needSticky && <>
-            <StoriesTheme2 data={data.stories} />
-            <TitleTheme2 />
-            <CatalogItems data={data.catalogItems} profile={profile} />
-          </>}
+          <StoriesTheme2 data={data.stories} />
+          <CatalogItems data={data.catalogItems} profile={profile} />
+          <TitleTheme2 />
           <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
           <Messengers />

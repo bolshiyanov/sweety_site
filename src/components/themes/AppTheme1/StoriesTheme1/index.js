@@ -46,9 +46,9 @@ const StoriesTheme1 = ({ data, profile, scrollPosition }) => {
 
     const handleStoryClick = (storyId) => {
         if (catalogItems.filter(e => e.storyGuid === storyId).length > 0) {
-            scrollTo(SCROLL_CATALOG_ID, () => {
+           
                 dispatch({ type: CATALOG_FILTER, storyGuid: storyGuid !== storyId ? storyId : null });
-            });
+           
         } else {
             setSettingsOpened(storyId);
         }

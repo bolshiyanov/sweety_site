@@ -45,7 +45,7 @@
 
           &__title {
             text-align: left;
-            width: 151px;
+            width: 200px;
             height: 80px;
             border-bottom-left-radius: 15px;
             border-bottom-right-radius: 15px;
@@ -63,7 +63,7 @@
 
           &__box {
             width: 100%;
-            height: 151px;
+            height: 300px;
             border: 1px solid rgba(0, 0, 0, .2);
             box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
             border-radius: 15px;
@@ -81,8 +81,8 @@
       .stories-theme2-picker-item {
         display: inline-block;
         position: relative;
-        width: 151px; 
-        height: 220px;
+        width: 200px; 
+        height: 300px;
         margin: 5px;
         overflow: hidden;
         box-sizing: content-box;
