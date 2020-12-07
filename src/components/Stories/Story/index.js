@@ -23,7 +23,7 @@ const Story = ({
           {image && (
             <LazyLoadImage src={image} alt={title} scrollPosition={scrollPosition} threshold={10} />
           )}
-          <div className="story-picture-title">{title}</div>
+          <div className="story-picture-title">{title}</div> 
         </div>
       )}
 

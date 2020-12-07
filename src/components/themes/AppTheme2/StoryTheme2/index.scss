@@ -1,7 +1,7 @@
 .story-theme2-picture {
     flex-grow: 1;
     margin: 12px 0;
-    width: 200px;
+    width: 151px;
     overflow: hidden;
     padding: 0;
     display: flex;
@@ -10,9 +10,10 @@
     align-items: center;
 
     &__box-selected {
-      height: 300px;
+      height: 151px;
       box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
       border-radius: 15px;
+      border: 5px solid rgb(30, 144, 255) !important;
       background: {
           size: cover;
           repeat: no-repeat;
@@ -23,7 +24,7 @@
     
   
     &__box {
-        height: 300px;
+        height: 151px;
         border: 1px solid rgba(0, 0, 0, .2);
         box-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
         border-radius: 15px;
@@ -39,14 +40,14 @@
   
 .story-theme2-picture-title {
   text-align: left;
-  width: 200px;
+  width: 151px;
   height: 80px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
   border: 0;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
-  font-size: 20px;
+  font-size: 16px;
   font-family: 'Russo One', sans-serif;
   line-height: 1;
   white-space: pre-line;
@@ -62,14 +63,16 @@
 
 .story-theme2-picture-title-selected {
 text-align: left;
-width: 200px;
+width: 151px;
 height: 80px;
 border-bottom-left-radius: 15px;
 border-bottom-right-radius: 15px;
-border: 5px solid rgb(30, 144, 255) !important;
+border-bottom: 5px solid rgb(30, 144, 255) !important;
+border-left: 5px solid rgb(30, 144, 255) !important;
+border-right: 5px solid rgb(30, 144, 255) !important;
 border-top-right-radius: 0;
 border-top-left-radius: 0;
-font-size: 22px;
+font-size: 16px;
 font-family: 'Russo One', sans-serif;
 line-height: 1;
 white-space: pre-line;

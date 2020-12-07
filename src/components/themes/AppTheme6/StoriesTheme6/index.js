@@ -45,9 +45,9 @@ const StoriesTheme6 = ({ data, profile, isSticky, scrollPosition }) => {
 
   const handleStoryClick = (storyId) => {
     if (catalogItems.filter(e => e.storyGuid === storyId).length > 0) {
-      scrollTo(SCROLL_CATALOG_ID, () => {
+      
         dispatch({ type: CATALOG_FILTER, storyGuid: storyGuid !== storyId ? storyId : null });
-      });
+     
     } else {
       setSettingsOpened(storyId);
     }
@@ -74,12 +74,11 @@ const StoriesTheme6 = ({ data, profile, isSticky, scrollPosition }) => {
 
   return (
     <React.Fragment>
-      <div className={`stories${stickyPart}`}>
-        <div className={`stories${stickyPart}-picker`}>
+      <div className='stories-theme6'>
+        <div className='stories-theme6-picker'>
           {data.map((story) =>
-            <Story className={classnames([`stories${stickyPart}-picker-item`])}
+            <Story className={classnames([`stories-theme6-picker-item`])}
               onClick={() => handleStoryClick(story.guid)}
-              isSticky={isSticky}
               key={story.guid} {...story}
               selected={storyGuid === story.guid}
               scrollPosition={scrollPosition} />)}

@@ -1,7 +1,9 @@
 .stories {
     display: block;
-    max-width: 100%;
+    max-width: calc(100%+22px);
     margin-top: 12px;
+    margin-left: -11px;
+    margin-right: -11px;
     
     
     
@@ -32,28 +34,16 @@
       .stories-picker-item {
         display: inline-block;
         position: relative;
-        width: 100px;
+        width: 153px;
         height: auto;
         margin: 5px;
         overflow: hidden;
         box-sizing: content-box;
-        align-items: center;
+        align-items: center; 
         justify-content: center;
         
       } 
 
-      .stories-theme6-picker-item {
-        display: inline-block;
-        position: relative;
-        width: 54px;
-        height: auto;
-        margin: 5px;
-        overflow: hidden;
-        box-sizing: content-box;
-        align-items: center;
-        justify-content: center;
-      } 
-  
       .stories-picker-buttom {
         position: -webkit-sticky;
         position: sticky;
