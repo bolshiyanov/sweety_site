@@ -19,14 +19,14 @@ const StoryTheme2 = ({
     const story = (
         <LazyLoadComponent scrollPosition={scrollPosition} threshold={10}>
         
-            <div className={classnames([!image ? "" : 'story-theme2-picture', className])}
+            <div className={classnames(["story-theme2-picture", className])}
                 onClick={onClick}
             >
-                <div className={`story-theme2-picture__box${selected ? "-selected" : ""}`} style={{ backgroundImage: `URL(${image})` }} />
+                <div className="story-theme2-picture__box" style={{ backgroundImage: `URL(${image})` }} />
                 <Button onClick={onClick} className={`story-theme2-picture-title${selected ? "-selected" : ""}`}>{title}</Button>
             </div>
       
-        </LazyLoadComponent>
+        </LazyLoadComponent> 
     );
     return story;
 }
