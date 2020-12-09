@@ -66,9 +66,7 @@ const StoriesTheme5 = ({ data, profile, isSticky, scrollPosition }) => {
     setStoryData({ ...settings });
   }, [settingsOpened, stories]);
 
-  if (!inviteId && !active) {
-    return null;
-  }
+  
   stories.sort((a, b) => b.order - a.order);
   const stickyPart = !isSticky ? "-theme5" : "";
 
