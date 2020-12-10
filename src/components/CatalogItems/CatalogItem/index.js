@@ -202,6 +202,11 @@ const CatalogItem = ({
   const sumValue = count !== 0 ? sum.toFixed(2) :
     parseFloat(price).toFixed(2);
 
+
+  if (audio) {
+    return null;
+  }
+
   switch (type) {
     case CATALOG_LEFT:
     default: {
@@ -292,7 +297,7 @@ const CatalogItem = ({
           key={guid}
           onClick={handleHeaderClick}
         >
-          <div className="catalogItem__title">{translatedText}<br/><Icon type={headerGuid ? "angleDoubleUp" : "angleDoubleDown"}/></div>
+          <div className="catalogItem__title">{translatedText}<br /><Icon type={headerGuid ? "angleDoubleUp" : "angleDoubleDown"} /></div>
         </div>
       );
       return catalogItem;

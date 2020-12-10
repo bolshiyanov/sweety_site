@@ -13,6 +13,7 @@ import Order from 'components/Order';
 import HeaderTheme6 from 'components/themes/AppTheme6/HeaderTheme6';
 import AvatarTheme3 from 'components/themes/AppTheme3/AvatarTheme3';
 import TitleTheme7 from 'components/themes/AppTheme7/TitleTheme7';
+// import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
 import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import Stories from 'components/Stories';
 import Messengers from 'components/Messengers';
@@ -132,6 +133,9 @@ const AppTheme7 = () => {
               }}
             </Sticky>
             <CatalogItems data={data.catalogItems} profile={profile} />
+
+            {/* <CatalogItemsTheme7 data={data.catalogItems} profile={profile} /> */}
+
           </StickyContainer>}
           {!needSticky && <>
             <StoriesTheme2 data={data.stories} />

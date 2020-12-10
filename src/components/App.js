@@ -13,6 +13,7 @@ import Loading from 'components/common/Loading';
 import Order from 'components/Order';
 import HeaderTheme2 from 'components/themes/AppTheme2/HeaderTheme2';
 import Messengers from 'components/Messengers';
+import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
 import Social from 'components/Social';
@@ -161,6 +162,7 @@ const App = () => {
                 avatarPreview={data.avatarPreview}
                 profile={profile} />
               <StoriesTheme6 data={data.stories} profile={profile} />
+              <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
               <CatalogItems data={data.catalogItems} profile={profile} />
               <Blocks data={data.blocks} />
               <StoriesTheme7 data={data.stories} profile={profile} />
