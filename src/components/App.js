@@ -25,8 +25,6 @@ import Rss from 'components/Rss';
 import Start from 'components/Start';
 import StoriesTheme6 from 'components/themes/AppTheme6/StoriesTheme6';
 import StoriesTheme7 from 'components/themes/AppTheme7/StoriesTheme7';
-import PwaInstall from "components/PwaInstall";
-import PwaInstallIOs from "components/PwaInstallIOs";
 import Pwaupbanner from 'components/Pwaupbanner';
 import SocialSharingButtons from "components/SocialSharingButtons";
 import AppTheme1 from "components/themes/AppTheme1";
@@ -160,7 +158,7 @@ const App = () => {
                 name={data.name}
                 avatar={data.avatar}
                 avatarPreview={data.avatarPreview}
-                profile={profile} />
+                profile={profile} /> 
               <StoriesTheme6 data={data.stories} profile={profile} />
               <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
               <CatalogItems data={data.catalogItems} profile={profile} />

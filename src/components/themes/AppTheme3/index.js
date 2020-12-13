@@ -14,6 +14,7 @@ import HeaderTheme3 from 'components/themes/AppTheme3/HeaderTheme3';
 import StoriesTheme3 from 'components/themes/AppTheme3/StoriesTheme3';
 import AvatarTheme3 from 'components/themes/AppTheme3/AvatarTheme3';
 import Messengers from 'components/Messengers';
+import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
 import Pwaupbanner from 'components/Pwaupbanner'; 
@@ -132,12 +133,14 @@ const AppTheme3 = () => {
             </Sticky>
             <AvatarTheme3 />
             <TitleTheme3 />
+            <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
             <CatalogItems data={data.catalogItems} profile={profile} />
           </StickyContainer>}
           {!needSticky && <>
             <StoriesTheme3 data={data.stories} />
             <AvatarTheme3 />
             <TitleTheme3 />
+            <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
             <CatalogItems data={data.catalogItems} profile={profile} />
           </>}
           <Blocks data={data.blocks} />

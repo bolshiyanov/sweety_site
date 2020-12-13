@@ -14,6 +14,7 @@ import AvatarTheme4 from 'components/themes/AppTheme4/AvatarTheme4';
 import MessengersTheme4 from 'components/themes/AppTheme4/MessengersTheme4';
 import TitleTheme4 from 'components/themes/AppTheme4/TitleTheme4';
 import StoriesTheme4 from 'components/themes/AppTheme4/StoriesTheme4';
+import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
 import Social from 'components/Social';
@@ -130,10 +131,12 @@ const AppTheme4 = () => {
                             </div>);
                         }}
                         </Sticky>
+                        <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
                         <CatalogItems data={data.catalogItems} profile={profile} />
                     </StickyContainer>}
                     {!needSticky && <>
                         <StoriesTheme4 data={data.stories} />
+                        <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
                         <CatalogItems data={data.catalogItems} profile={profile} />
                     </>}
                     <Blocks data={data.blocks} />

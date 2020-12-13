@@ -12,6 +12,7 @@ import Order from 'components/Order';
 import Header from 'components/Header';
 import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import Messengers from 'components/Messengers';
+import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
 import Social from 'components/Social';
@@ -121,6 +122,7 @@ const AppTheme2 = () => {
             profile={profile}
           />
           <StoriesTheme2 data={data.stories} />
+          <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
           <CatalogItems data={data.catalogItems} profile={profile} />
           <TitleTheme2 />
           <Blocks data={data.blocks} />

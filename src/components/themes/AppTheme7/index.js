@@ -8,12 +8,12 @@ import StartPwaInstallIos from 'components/StartPwaInstallIos';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 
 import Loading from 'components/common/Loading';
-import Pwaupbanner from 'components/Pwaupbanner'; 
+import Pwaupbanner from 'components/Pwaupbanner';
 import Order from 'components/Order';
 import HeaderTheme6 from 'components/themes/AppTheme6/HeaderTheme6';
 import AvatarTheme3 from 'components/themes/AppTheme3/AvatarTheme3';
 import TitleTheme7 from 'components/themes/AppTheme7/TitleTheme7';
-// import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
+import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
 import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import Stories from 'components/Stories';
 import Messengers from 'components/Messengers';
@@ -29,7 +29,7 @@ import SocialSharingButtons from "components/SocialSharingButtons";
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
 import GoogleAnalytics from 'utils/googleAnalytics';
-import {__} from 'utils/translation';
+import { __ } from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
 
@@ -122,23 +122,22 @@ const AppTheme7 = () => {
           {needSticky && <StickyContainer>
             <Sticky>
               {({
-                  style,
-                  isSticky,
-                  distanceFromBottom 
+                style,
+                isSticky,
+                distanceFromBottom
               }) => {
                 const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
-                return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
+                return (<div id="sticky" style={!stickyBlock ? {} : { ...backgroundStyles, ...style, zIndex: 10 }}>
                   <StoriesTheme2 isSticky={stickyBlock} data={data.stories} />
                 </div>);
               }}
             </Sticky>
+            <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
             <CatalogItems data={data.catalogItems} profile={profile} />
-
-            {/* <CatalogItemsTheme7 data={data.catalogItems} profile={profile} /> */}
-
           </StickyContainer>}
           {!needSticky && <>
             <StoriesTheme2 data={data.stories} />
+            <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
             <CatalogItems data={data.catalogItems} profile={profile} />
           </>}
           <Blocks data={data.blocks} />
