@@ -11,7 +11,7 @@ import Loading from 'components/common/Loading';
 import Pwaupbanner from 'components/Pwaupbanner';
 import Order from 'components/Order';
 import AvatarTheme4 from 'components/themes/AppTheme4/AvatarTheme4';
-import MessengersTheme4 from 'components/themes/AppTheme4/MessengersTheme4';
+import MessengersTheme4 from 'components/themes/AppTheme4/MessengersTheme4'; 
 import TitleTheme4 from 'components/themes/AppTheme4/TitleTheme4';
 import StoriesTheme4 from 'components/themes/AppTheme4/StoriesTheme4';
 import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';

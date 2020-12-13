@@ -15,7 +15,7 @@ import AvatarTheme3 from 'components/themes/AppTheme3/AvatarTheme3';
 import TitleTheme6 from 'components/themes/AppTheme6/TitleTheme6';
 import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import Messengers from 'components/Messengers';
-import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
+import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7'; 
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
 import Social from 'components/Social';

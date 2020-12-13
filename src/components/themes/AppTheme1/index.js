@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Switch, useParams } from 'react-router-dom';
 import CookieBanner from 'react-cookie-banner';
-import { StickyContainer, Sticky } from 'react-sticky';
+import { StickyContainer, Sticky } from 'react-sticky'; 
 
 import StartPwaInstallIos from 'components/StartPwaInstallIos';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';

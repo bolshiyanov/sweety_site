@@ -112,7 +112,7 @@ const AppTheme7 = () => {
   return (
     <React.Fragment>
       <div className="app" style={backgroundStyles}>
-        {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
+        {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />} 
         <div className="app-container">
           <Pwaupbanner profile={profile} />
           <Order />

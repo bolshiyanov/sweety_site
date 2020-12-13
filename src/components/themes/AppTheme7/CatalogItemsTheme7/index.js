@@ -92,7 +92,7 @@ const CatalogItemsTheme7 = ({ data, profile, scrollPosition }) => {
 };
 
 CatalogItemsTheme7.propTypes = {
-  data: PropTypes.arrayOf(PropTypes.shape({}))
+  data: PropTypes.arrayOf(PropTypes.shape({})) 
 };
 
 CatalogItemsTheme7.defaultProps = {

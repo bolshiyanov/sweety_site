@@ -14,7 +14,7 @@ import Order from 'components/Order';
 import HeaderTheme2 from 'components/themes/AppTheme2/HeaderTheme2';
 import Messengers from 'components/Messengers';
 import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
-import CatalogItems from 'components/CatalogItems';
+import CatalogItems from 'components/CatalogItems'; 
 import Blocks from 'components/Blocks';
 import Social from 'components/Social';
 import FooterTheme2 from 'components/themes/AppTheme2/FooterTheme2';

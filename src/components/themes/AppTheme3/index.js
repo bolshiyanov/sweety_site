@@ -105,7 +105,7 @@ const AppTheme3 = () => {
 
   var isDemo = getSearchString(window.location.search, 'demo') === "preview";
   if (!isDemo && supported() && !isInstalled())
-    return <StartPwaInstallIos profile={profile} />;
+    return <StartPwaInstallIos profile={profile} />; 
 
   const needSticky = (data.stories?.length ?? 0) > 0 && (data.catalogItems?.length ?? 0) > 0;
 

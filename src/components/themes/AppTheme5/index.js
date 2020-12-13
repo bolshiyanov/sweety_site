@@ -118,7 +118,7 @@ const AppTheme5 = () => {
                     <AvatarTheme5 />
                     <MessengersTheme4 />
                     <TitleTheme4 />
-                    {needSticky && <StickyContainer>
+                    {needSticky && <StickyContainer> 
             <Sticky>
               {({
                   style,

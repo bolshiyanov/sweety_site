@@ -132,7 +132,7 @@ const AppTheme2 = () => {
           <SocialSharingButtons />
           <Social />
           <Footer />
-          {!isDemo && <div className="cookie-box" >
+          {!isDemo && <div className="cookie-box" > 
             <CookieBanner styles={styles}
               message={__('Мы используем Cookies для Google analytics. Мы не собираем персональные данные')}
               buttonMessage={__('Закрыть')}
