@@ -12,6 +12,7 @@ import logo512 from 'images/referrer_avatar.jpg';
 import backgroundImage0 from 'images/background.jpg';
 import { isIDevice } from 'utils/browser';
 import PwaInstall from "components/PwaInstall";
+import AppTheme2 from "components/themes/AppTheme2";
 import AvatarBase from 'components/common/AvatarBase';
 import {__} from 'utils/translation';
 import './index.scss';
@@ -78,8 +79,8 @@ const StartPwaInstallIos = ({ profile }) => {
                     
                     <div className="startPwaInstallIos-itemsBox">
 
-                        <div className="startPwaInstallIos-itemsBox-items"
-                            style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
+                        <div className="startPwaInstallIos-itemsBox-items" >
+                           <AppTheme2 />
                             <div className="startPwaInstallIos-itemsBox-items-title">{__("Приложение")}</div>
                         </div>
 
