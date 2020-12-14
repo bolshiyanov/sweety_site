@@ -30,10 +30,10 @@ const Block = ({
 
   const video = (!isVideo ? null :
     <div className={classnames([
-        'block',
-        'video',
-        { hidden: showBlock }
-      ])}>
+      'block',
+      'video',
+      { hidden: showBlock }
+    ])}>
       <iframe src={link} title="siteFrame" frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture;" rel="0" allowFullScreen></iframe>
     </div>);
 
@@ -45,8 +45,7 @@ const Block = ({
     if (isVideo) {
       setShowBlock(false);
     }
-    else
-    {
+    else {
       window.open(link, "_blank");
     }
   };
@@ -93,14 +92,14 @@ const Block = ({
               { 'block__text__with-image': image },
               { 'block__text__with-button': link },
               { 'block__text__with-image__with-button': image && link },
-              
+
               className
             ])}
             style={style}
             onClick={onClick}
           >
             {text && image && (
-              <div className="block-text-with-text"/>
+              <div className="block-text-with-text" />
             )}
 
             <div className="block__title">{text}</div>
@@ -126,26 +125,33 @@ const Block = ({
           ])}
           onClick={onClick}
         >
-          {image && (
+          {image && !link && (
             <p className="block__title"><LazyLoadImage src={image} alt={text} scrollPosition={scrollPosition} />{text}</p>
-            )}
-           {!image && (
+          )}
+
+          {image && link && (
+            <div className="block-preview-with-image-with-button">
+              <LazyLoadImage src={image} alt={text} scrollPosition={scrollPosition} />
+              <div className="block-preview-with-image-with-button__title">{text}</div>
+            </div>
+          )}
+          {!image && (
             <div className="block-preview-without-image-with-button">{text}</div>
-          )}  
+          )}
         </div>
       );
     }
   }
 
   if (link) {
-    block = (<Button 
+    block = (<Button
       className={classnames([
         'button-in-block',
         { hidden: !showBlock }
       ])}
       isPulse={animation} onClick={clickHandle} technical={technical}>
       {block}
-      </Button>);
+    </Button>);
   }
 
   if (isVideo) {
