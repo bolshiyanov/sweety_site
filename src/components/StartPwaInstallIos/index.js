@@ -79,10 +79,10 @@ const StartPwaInstallIos = ({ profile }) => {
                     
                     <div className="startPwaInstallIos-itemsBox">
 
-                        <div className="startPwaInstallIos-itemsBox-items" >
+                        {/* <div className="startPwaInstallIos-itemsBox-items" >
                            <AppTheme2 />
                             <div className="startPwaInstallIos-itemsBox-items-title">{__("Приложение")}</div>
-                        </div>
+                        </div> */}
 
 
                         <div className="startPwaInstallIos-itemsBox-items" >
