@@ -226,14 +226,14 @@ const Order = () => {
                     onRemove={handleClear}
                     onClose={() => setOrderOpened(false)}
                     hasPhone={hasPhone}
-                    sms={orderItems.map(orderItem => {
+                    sms={`My order:${orderItems.map(orderItem => {
                         const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
                         return (
                             <span key={orderItem.guid}>
                                 {catalogItem?.number ? <>&#8470;{catalogItem?.number} | </> : null}{catalogItem?.text}: &nbsp;
                                 {orderItem.count} x {catalogItem?.price} {orderItem.currency} = {parseFloat(orderItem.sum).toFixed(2)} {orderItem.currency};&nbsp;</span>
                         );
-                    })}
+                    })}`}
 
                 >
                     {orderItems.map(orderItem => {
