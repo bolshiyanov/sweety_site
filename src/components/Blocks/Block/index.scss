@@ -183,7 +183,7 @@
     align-items: flex-start;
     text-align: left; 
     padding: 14px 14px 14px 0;
-    min-width: 100%;
+    width: calc(100%-42px);
   }
 }  
 
