@@ -49,7 +49,7 @@ const Pwaupbanner = ({
   const onCopy = () => {
     copy(url);
     setUrlCopied(true);
-    setTimeout(() => setUrlCopied(false), 2000);
+    setTimeout(() => setUrlCopied(false), 20000);
   }
 
   const handleClose = (e) => {

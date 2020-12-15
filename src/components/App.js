@@ -114,8 +114,8 @@ const App = () => {
 
   const isDemo = getSearchString(window.location.search, 'demo') === "preview";
   const isDemoInstall = getSearchString(window.location.search, 'demo') === "install";
-  // if ((!isDemo && supported() && !isInstalled()) || isDemoInstall)
-  //   return <StartPwaInstallIos profile={profile} />;
+  if ((!isDemo && supported() && !isInstalled()) || isDemoInstall)
+    return <StartPwaInstallIos profile={profile} />;
 
   const needSticky = (data.stories?.length ?? 0) > 0 && (data.catalogItems?.length ?? 0) > 0;
 
