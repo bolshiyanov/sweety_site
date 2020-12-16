@@ -14,7 +14,7 @@ import { isIDevice } from 'utils/browser';
 import PwaInstall from "components/PwaInstall";
 import AppTheme2 from "components/themes/AppTheme2";
 import AvatarBase from 'components/common/AvatarBase';
-import {__} from 'utils/translation';
+import { __ } from 'utils/translation';
 import './index.scss';
 
 const StartPwaInstallIos = ({ profile }) => {
@@ -40,12 +40,12 @@ const StartPwaInstallIos = ({ profile }) => {
                         </div>
 
                         <div className="startPwaInstallIos-heder-right-box" >
-                            <div className="startPwaInstallIos-heder-title">{title || "Sweety app creator" }</div>
+                            <div className="startPwaInstallIos-heder-title">{title || "Sweety app creator"}</div>
                             <div className="startPwaInstallIos-heder-subtitle"><a href={demoUrl}>{__("Открыть без установки приложения")}</a></div>
                             <div className="startPwaInstallIos-heder-buttons-flexBox">
                                 <div className="startPwaInstallIos-heder-button-install"><PwaInstall profile={profile} /></div>
-                                {navigator.share && 
-                                <div className="startPwaInstallIos-heder-button-share" onClick={onShare}><Icon type="shareSquare" /></div>} 
+                                {navigator.share &&
+                                    <div className="startPwaInstallIos-heder-button-share" onClick={onShare}><Icon type="shareSquare" /></div>}
                             </div>
                         </div>
                     </div>
@@ -76,19 +76,16 @@ const StartPwaInstallIos = ({ profile }) => {
                     </div>
 
                     <div className="startPwaInstallIos-previewTitle">{__("Предпросмотр")}</div>
-                    
+
                     <div className="startPwaInstallIos-itemsBox">
 
-                    {/* <div className="startPwaInstallIos-itemsBox-items"
-                            style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
-                            <div className="startPwaInstallIos-itemsBox-items-title">{__("Приложение")}</div>
-                        </div> */}
-
                         <div className="startPwaInstallIos-itemsBox-items">
-                            
-                        <iframe scrolling="no" src={demoUrl} height="760px" width="400"></iframe>
-                            <div className="startPwaInstallIos-itemsBox-items-title">{__("Приложение")}</div>
+                            <div className="startPwaInstallIos-itemsBox-items__iframeBox">
+                                <iframe scrolling="no" src={demoUrl} height="760px" width="400"></iframe>
+                            </div>
                         </div>
+
+
 
 
 
@@ -110,7 +107,7 @@ const StartPwaInstallIos = ({ profile }) => {
                     </div>
 
                     <div className="startPwaInstallIos-descriotionsTitle">{__("Описание")}
-                    <div className="startPwaInstallIos-descriotions">
+                        <div className="startPwaInstallIos-descriotions">
                             {title} &nbsp; {description}
                         </div>
                     </div>
@@ -118,8 +115,8 @@ const StartPwaInstallIos = ({ profile }) => {
 
 
                     <div className="startPwaInstallIos-descriotionsTitle">{__("Дополнительно")}
-                    <div className="startPwaInstallIos-descriotions">
-                            <p> &mdash;&nbsp;{__("Установите наше приложение, чтобы вы могли в любой момент найти нас в своем телефоне. Вы будете получать накопительную скидку. Вы сможете узнать о наших акциях и горящих предложениях.")} 
+                        <div className="startPwaInstallIos-descriotions">
+                            <p> &mdash;&nbsp;{__("Установите наше приложение, чтобы вы могли в любой момент найти нас в своем телефоне. Вы будете получать накопительную скидку. Вы сможете узнать о наших акциях и горящих предложениях.")}
                             </p>
 
                         </div>
