@@ -86,7 +86,7 @@ const StartPwaInstallIos = ({ profile }) => {
 
                         <div className="startPwaInstallIos-itemsBox-items">
                             
-                        <iframe scrolling="no" src="https://sweety.link/es" height="760px" width="400"></iframe>
+                        <iframe scrolling="no" src={demoUrl} height="760px" width="400"></iframe>
                             <div className="startPwaInstallIos-itemsBox-items-title">{__("Приложение")}</div>
                         </div>
 
