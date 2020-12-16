@@ -79,8 +79,14 @@ const StartPwaInstallIos = ({ profile }) => {
                     
                     <div className="startPwaInstallIos-itemsBox">
 
-                    <div className="startPwaInstallIos-itemsBox-items"
+                    {/* <div className="startPwaInstallIos-itemsBox-items"
                             style={{ backgroundImage: `URL(https://api.sweety.link/api/profiles/${profile}/screenshot)` }}>
+                            <div className="startPwaInstallIos-itemsBox-items-title">{__("Приложение")}</div>
+                        </div> */}
+
+                        <div className="startPwaInstallIos-itemsBox-items">
+                            
+                        <iframe scrolling="no" src="https://sweety.link/es" height="760px" width="400"></iframe>
                             <div className="startPwaInstallIos-itemsBox-items-title">{__("Приложение")}</div>
                         </div>
 
