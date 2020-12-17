@@ -65,9 +65,9 @@ const CatalogItems = ({ data, profile, scrollPosition }) => {
       && (!e.headerGuid || e.headerGuid === headerGuid);
   }
 
-  if (!inviteId && !active) { 
-    return null;  
-  }
+  // if (!inviteId && !active) { 
+  //   return null;  
+  // }
 
   catalogItems.sort((a, b) => b.order - a.order);
   return (
