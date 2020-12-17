@@ -7,6 +7,7 @@ import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 import PwaInstall from "components/PwaInstall";
+import StartPwaInstallIos from 'components/StartPwaInstallIos';
 import logo512 from 'images/referrer_avatar.jpg';
 import raiting from 'images/raiting.png';
 import { IonIcon } from '@ionic/react';
@@ -63,8 +64,10 @@ const Pwaupbanner = ({
     }
     setOpened(true);
   }
-
   const toBrowser = isIDevice() ? "Safari" : "Chrome";
+  
+  if (!supported()) 
+    return null;
 
   return (
     <div>

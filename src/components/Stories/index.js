@@ -69,6 +69,10 @@ const Stories = ({ data, profile, scrollPosition }) => {
 
   
   stories.sort((a, b) => b.order - a.order);
+  
+  if (stories.length < 1 )
+  return null;
+
   return (
     <React.Fragment>
        <div className="stories">

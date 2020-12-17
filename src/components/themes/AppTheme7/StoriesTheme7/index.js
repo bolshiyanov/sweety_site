@@ -68,7 +68,10 @@ const StoriesTheme7 = ({ data, profile, isSticky, scrollPosition }) => {
 
   stories.sort((a, b) => b.order - a.order);
   const stickyPart = !isSticky ? "-theme7" : "";
-
+  
+  if (stories.length < 1 )
+  return null;
+  
   return (
     <React.Fragment>
       <div className={`stories${stickyPart}`}>

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -68,25 +69,24 @@ const StoriesTheme4 = ({ data, profile, scrollPosition }) => {
     }, [settingsOpened, stories]);
 
     stories.sort((a, b) => b.order - a.order);
+
+    if (stories.length < 1)
+        return null;
+
     return (
         <React.Fragment>
             <div className="stories-theme4-box">
-
                 <div className="stories-theme4">
-                    
-
-                    {data.length > 0 && (
-                        <div className="stories-theme4__box-story">
-                            <div className="stories-theme4__box">
-                                {(theme === "theme4" ? data.slice(0, 3) : data).map((story) =>
-                                    <Story className='stories-theme4__box__item'
-                                        onClick={() => handleStoryClick(story.guid)}
-                                        key={story.guid} {...story}
-                                        selected={storyGuid === story.guid}
-                                        scrollPosition={scrollPosition} />)}
-                            </div>
+                    <div className="stories-theme4__box-story">
+                        <div className="stories-theme4__box">
+                            {(theme === "theme4" ? data.slice(0, 3) : data).map((story) =>
+                                <Story className='stories-theme4__box__item'
+                                    onClick={() => handleStoryClick(story.guid)}
+                                    key={story.guid} {...story}
+                                    selected={storyGuid === story.guid}
+                                    scrollPosition={scrollPosition} />)}
                         </div>
-                    )}
+                    </div>
                 </div>
             </div>
 

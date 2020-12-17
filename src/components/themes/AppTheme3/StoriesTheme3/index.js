@@ -67,25 +67,24 @@ const StoriesTheme3 = ({ data, profile, scrollPosition }) => {
     }, [settingsOpened, stories]);
 
     stories.sort((a, b) => b.order - a.order);
+
+    if (stories.length < 1)
+        return null;
+
     return (
         <React.Fragment>
             <div className="stories-theme3-box">
-
                 <div className="stories-theme3">
-                    
-
-                    {data.length > 0 && (
-                        <div className="stories-theme3__box-story">
-                            <div className="stories-theme3__box">
-                                {(theme === "theme3" || theme === "theme5" ? data.slice(0, 4) : data).map((story) =>
-                                    <Story className='stories-theme3__box__item'
-                                        onClick={() => handleStoryClick(story.guid)}
-                                        key={story.guid} {...story}
-                                        selected={storyGuid === story.guid}
-                                        scrollPosition={scrollPosition} />)}
-                            </div>
+                    <div className="stories-theme3__box-story">
+                        <div className="stories-theme3__box">
+                            {(theme === "theme3" || theme === "theme5" ? data.slice(0, 4) : data).map((story) =>
+                                <Story className='stories-theme3__box__item'
+                                    onClick={() => handleStoryClick(story.guid)}
+                                    key={story.guid} {...story}
+                                    selected={storyGuid === story.guid}
+                                    scrollPosition={scrollPosition} />)}
                         </div>
-                    )}
+                    </div>
                 </div>
             </div>
 
