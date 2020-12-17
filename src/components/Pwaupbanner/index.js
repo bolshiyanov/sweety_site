@@ -66,8 +66,8 @@ const Pwaupbanner = ({
   }
   const toBrowser = isIDevice() ? "Safari" : "Chrome";
   
-  if (!supported()) 
-    return null;
+  // if (!supported()) 
+  //   return null;
 
   return (
     <div>
