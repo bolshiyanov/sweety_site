@@ -62,32 +62,31 @@
   
       
     
-        &::-webkit-scrollbar {
-          height: 0px;
-          background-color: #F5F5F5;
-        }
-         
-        &::-webkit-scrollbar-track {
-          border-radius: 10px;
-          background: rgba(0,0,0,0.1);
-          border: 1px solid #ccc;
-        }
-        
-        &::-webkit-scrollbar-thumb {
-          border-radius: 10px;
-          background: linear-gradient(left, #fff, #e4e4e4);
-          border: 0px solid #aaa;
-        }
-        
-        &::-webkit-scrollbar-thumb:hover {
-          background: #fff;
-        }
-        
-        &::-webkit-scrollbar-thumb:active {
-          background: linear-gradient(left, #22ADD4, #1E98BA);
-        }
+      &::-webkit-scrollbar {
+        height: 4px;
+        background-color: #000000;
       }
-    
+       
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background: rgba(0,0,0,0.1);
+        border: 1px solid #ffffff;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background: linear-gradient(left, #fff, #000000);
+        border: 4px solid #aaa;
+      }
+      
+      &::-webkit-scrollbar-thumb:hover {
+        background: #fff;
+      }
+      
+      &::-webkit-scrollbar-thumb:active {
+        background: linear-gradient(left, #22ADD4, #1E98BA);
+      }
+    }
     
     
     .story-input-descriptions {

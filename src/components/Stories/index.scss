@@ -60,7 +60,7 @@
       }
 
       &::-webkit-scrollbar {
-        height: 0px;
+        height: 4px;
         background-color: #F5F5F5;
       }
        
@@ -73,7 +73,7 @@
       &::-webkit-scrollbar-thumb { 
         border-radius: 10px;
         background: linear-gradient(left, #fff, #e4e4e4);
-        border: 0px solid #aaa;
+        border: 4px solid #aaa;
       }
       
       &::-webkit-scrollbar-thumb:hover {
