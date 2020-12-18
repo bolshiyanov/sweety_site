@@ -13,7 +13,7 @@ import Order from 'components/Order';
 import AvatarTheme5 from 'components/themes/AppTheme5/AvatarTheme5';
 import MessengersTheme4 from 'components/themes/AppTheme4/MessengersTheme4';
 import TitleTheme4 from 'components/themes/AppTheme3/TitleTheme3';
-import StoriesTheme5 from 'components/themes/AppTheme5/StoriesTheme5';
+import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
@@ -118,7 +118,7 @@ const AppTheme5 = () => {
                     <AvatarTheme5 />
                     <MessengersTheme4 />
                     <TitleTheme4 />
-                    <StoriesTheme5 data={data.stories} />
+                    <StoriesTheme2 data={data.stories} />
                     <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
                     <CatalogItems data={data.catalogItems} profile={profile} />
                     <Blocks data={data.blocks} />

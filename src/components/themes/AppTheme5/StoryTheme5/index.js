@@ -18,9 +18,10 @@ const StoryTheme5 = ({
 }) => {
     const story = (
         <LazyLoadComponent scrollPosition={scrollPosition} threshold={10}>
-            <div className={classnames([!image ? "" : 'story-theme5-picture', className])}
+            <div className={classnames([!image ? "" : 'story-theme5-picture', className])} 
                 onClick={onClick}
             >
+                <div className= 'story-theme5-picture__box' style={{ backgroundImage: `URL(${image})` }} />
                 <Button onClick={onClick} className={`story-theme5-picture-title${selected ? "-selected" : ""}`}>{title}</Button>
             </div>
         </LazyLoadComponent>
