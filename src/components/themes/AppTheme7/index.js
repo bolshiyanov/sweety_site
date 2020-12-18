@@ -119,27 +119,9 @@ const AppTheme7 = () => {
           <HeaderTheme6 />
           <AvatarTheme3 />
           <TitleTheme7 />
-          {needSticky && <StickyContainer>
-            <Sticky>
-              {({
-                style,
-                isSticky,
-                distanceFromBottom
-              }) => {
-                const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
-                return (<div id="sticky" style={!stickyBlock ? {} : { ...backgroundStyles, ...style, zIndex: 10 }}>
-                  <StoriesTheme2 isSticky={stickyBlock} data={data.stories} />
-                </div>);
-              }}
-            </Sticky>
-            <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
-            <CatalogItems data={data.catalogItems} profile={profile} />
-          </StickyContainer>}
-          {!needSticky && <>
-            <StoriesTheme2 data={data.stories} />
-            <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
-            <CatalogItems data={data.catalogItems} profile={profile} />
-          </>}
+          <StoriesTheme2 data={data.stories} />
+          <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
+          <CatalogItems data={data.catalogItems} profile={profile} />
           <Blocks data={data.blocks} />
           {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
           <Messengers />

@@ -68,17 +68,16 @@ const StoriesTheme5 = ({ data, profile, isSticky, scrollPosition }) => {
 
   
   stories.sort((a, b) => b.order - a.order);
-  const stickyPart = !isSticky ? "-theme5" : "";
 
   if (stories.length < 1 )
   return null;
 
   return (
     <React.Fragment>
-      <div className={`stories${stickyPart}`}>
-        <div className={`stories${stickyPart}-picker`}>
+      <div className={`stories-theme5`}>
+        <div className={`stories-theme5-picker`}>
           {data.map((story) =>
-            <Story className={classnames([`stories${stickyPart}-picker-item`])}
+            <Story className={classnames([`stories-theme5-picker-item`])}
               onClick={() => handleStoryClick(story.guid)}
               isSticky={isSticky}
               key={story.guid} {...story}

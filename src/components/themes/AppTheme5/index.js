@@ -27,7 +27,7 @@ import SocialSharingButtons from "components/SocialSharingButtons";
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
 import GoogleAnalytics from 'utils/googleAnalytics';
-import {__} from 'utils/translation';
+import { __ } from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
 
@@ -68,7 +68,7 @@ const AppTheme5 = () => {
             backgroundSize: '30px 30px',
             backgroundColor: '',
             fontSize: '14px',
-            zIndex:1000,
+            zIndex: 1000,
             fontWeight: 600
         },
         button: {
@@ -109,7 +109,7 @@ const AppTheme5 = () => {
 
     return (
         <React.Fragment>
-            
+
             <div className="app" style={backgroundStyles}>
                 {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
                 <div className="app-container">
@@ -118,27 +118,9 @@ const AppTheme5 = () => {
                     <AvatarTheme5 />
                     <MessengersTheme4 />
                     <TitleTheme4 />
-                    {needSticky && <StickyContainer> 
-            <Sticky>
-              {({
-                  style,
-                  isSticky,
-                  distanceFromBottom 
-              }) => {
-                const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
-                return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
-                  <StoriesTheme5 isSticky={stickyBlock} data={data.stories} />
-                </div>);
-              }}
-            </Sticky>
-            <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
-            <CatalogItems data={data.catalogItems} profile={profile} />
-          </StickyContainer>}
-          {!needSticky && <>
-            <StoriesTheme5 data={data.stories} />
-            <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
-            <CatalogItems data={data.catalogItems} profile={profile} /> 
-          </>}
+                    <StoriesTheme5 data={data.stories} />
+                    <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
+                    <CatalogItems data={data.catalogItems} profile={profile} />
                     <Blocks data={data.blocks} />
                     {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
                     <Rss />
