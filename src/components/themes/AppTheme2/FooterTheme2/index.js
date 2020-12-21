@@ -4,7 +4,7 @@ import Button from 'components/common/Button';
 import { logoPwa, logoApple, logoAndroid, logoWindows } from 'ionicons/icons';
 
 import './index.scss';
-const FooterTheme2 = ({  name }) => {
+const FooterTheme2 = ({ name }) => {
 
     const startUrl = 'https://dash.sweety.link'
 

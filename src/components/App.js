@@ -37,7 +37,7 @@ import AppTheme7 from "components/themes/AppTheme7";
 
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
-import GoogleAnalytics from 'utils/googleAnalytics';
+import ReactGA from 'react-ga';
 import { __ } from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
@@ -65,6 +65,8 @@ const App = () => {
   if (!data) {
     return <Loading />;
   }
+  const googleAnalytics = data.googleAnalytics;
+  ReactGA.initialize({googleAnalytics});
 
   const nameTheme = currentTheme.name;
 
@@ -114,7 +116,7 @@ const App = () => {
 
   const isDemo = getSearchString(window.location.search, 'demo') === "preview";
   const isDemoInstall = getSearchString(window.location.search, 'demo') === "install";
-  if ((!isDemo && supported() && !isInstalled()) || isDemoInstall)
+  if ((!isDemo && !supported() && !isInstalled()) || isDemoInstall)
     return <StartPwaInstallIos profile={profile} />;
 
   const needSticky = (data.stories?.length ?? 0) > 0 && (data.catalogItems?.length ?? 0) > 0;
@@ -150,7 +152,7 @@ const App = () => {
         nameTheme !== "theme5" && nameTheme !== "theme6" &&
         nameTheme !== "theme8" && (
           <div className="app" style={backgroundStyles}>
-            {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
+            
             <div className="app-container">
               <Pwaupbanner profile={profile} />
               <Order />
@@ -167,6 +169,7 @@ const App = () => {
               {!needSticky && <div className="empty-box"></div>}
               <Title />
               <Messengers />
+              {googleAnalytics}
               <Rss />
               <SocialSharingButtons />
               <Social />
