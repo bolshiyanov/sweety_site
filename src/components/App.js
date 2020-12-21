@@ -155,7 +155,7 @@ const App = () => {
             
             <div className="app-container">
               <Pwaupbanner profile={profile} />
-              <Order />
+              <Order /> 
               <HeaderTheme2
                 name={data.name}
                 avatar={data.avatar}
