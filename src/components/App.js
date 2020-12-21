@@ -37,7 +37,7 @@ import AppTheme7 from "components/themes/AppTheme7";
 
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
-import ReactGA from 'react-ga';
+import GoogleAnalytics from 'components/GoogleAnalytics';
 import { __ } from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
@@ -55,7 +55,7 @@ const App = () => {
 
   const { data = {} } = useSelector((state) => state.config);
   const { currentTheme } = useSelector((state) => state.config);
-
+  
   const ua = navigator.userAgent || navigator.vendor || navigator.opera;
   if (ua.indexOf("Instagram") > -1 && !(ua.indexOf("iPad") > -1 || ua.indexOf("iPhone") > -1 || ua.indexOf("iPod") > -1)) {
     window.location.href = `https://api.sweety.link/redirect/dummy/${profile}`;
@@ -65,8 +65,7 @@ const App = () => {
   if (!data) {
     return <Loading />;
   }
-  const googleAnalytics = data.googleAnalytics;
-  ReactGA.initialize({googleAnalytics});
+  
 
   const nameTheme = currentTheme.name;
 
@@ -155,6 +154,7 @@ const App = () => {
             
             <div className="app-container">
               <Pwaupbanner profile={profile} />
+              <GoogleAnalytics />
               <Order /> 
               <HeaderTheme2
                 name={data.name}
@@ -169,7 +169,7 @@ const App = () => {
               {!needSticky && <div className="empty-box"></div>}
               <Title />
               <Messengers />
-              {googleAnalytics}
+              <GoogleAnalytics />
               <Rss />
               <SocialSharingButtons />
               <Social />

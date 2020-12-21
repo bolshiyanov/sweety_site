@@ -17,7 +17,7 @@ import Messengers from 'components/Messengers';
 import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
-import Pwaupbanner from 'components/Pwaupbanner'; 
+import Pwaupbanner from 'components/Pwaupbanner';
 import Social from 'components/Social';
 import Footer from 'components/Footer';
 import TitleTheme3 from 'components/themes/AppTheme3/TitleTheme3';
@@ -28,8 +28,8 @@ import Start from 'components/Start';
 import SocialSharingButtons from "components/SocialSharingButtons";
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
-import GoogleAnalytics from 'utils/googleAnalytics';
-import {__} from 'utils/translation';
+import GoogleAnalytics from 'components/GoogleAnalytics';
+import { __ } from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
 
@@ -70,7 +70,7 @@ const AppTheme3 = () => {
       backgroundSize: '30px 30px',
       backgroundColor: '',
       fontSize: '14px',
-      zIndex:1000,
+      zIndex: 1000,
       fontWeight: 600
     },
     button: {
@@ -105,15 +105,15 @@ const AppTheme3 = () => {
 
   var isDemo = getSearchString(window.location.search, 'demo') === "preview";
   if (!isDemo && supported() && !isInstalled())
-    return <StartPwaInstallIos profile={profile} />; 
+    return <StartPwaInstallIos profile={profile} />;
 
   const needSticky = (data.stories?.length ?? 0) > 0 && (data.catalogItems?.length ?? 0) > 0;
 
   return (
     <React.Fragment>
-      
+
       <div className="app" style={backgroundStyles}>
-        {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
+        <GoogleAnalytics />
         <div className="app-container">
           <Pwaupbanner profile={profile} />
           <Order />
@@ -121,12 +121,12 @@ const AppTheme3 = () => {
           {needSticky && <StickyContainer>
             <Sticky>
               {({
-                  style,
-                  isSticky,
-                  distanceFromBottom 
+                style,
+                isSticky,
+                distanceFromBottom
               }) => {
                 const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
-                return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
+                return (<div id="sticky" style={!stickyBlock ? {} : { ...backgroundStyles, ...style, zIndex: 10 }}>
                   <StoriesTheme3 data={data.stories} />
                 </div>);
               }}

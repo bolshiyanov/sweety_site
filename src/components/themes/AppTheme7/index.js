@@ -28,7 +28,7 @@ import Start from 'components/Start';
 import SocialSharingButtons from "components/SocialSharingButtons";
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
-import GoogleAnalytics from 'utils/googleAnalytics';
+import GoogleAnalytics from 'components/GoogleAnalytics';
 import { __ } from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
@@ -112,7 +112,7 @@ const AppTheme7 = () => {
   return (
     <React.Fragment>
       <div className="app" style={backgroundStyles}>
-        {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />} 
+        <GoogleAnalytics />
         <div className="app-container">
           <Pwaupbanner profile={profile} />
           <Order />

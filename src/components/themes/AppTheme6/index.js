@@ -8,14 +8,14 @@ import StartPwaInstallIos from 'components/StartPwaInstallIos';
 import { useReactPWAInstall } from 'components/PwaInstall/component.js';
 
 import Loading from 'components/common/Loading';
-import Pwaupbanner from 'components/Pwaupbanner'; 
+import Pwaupbanner from 'components/Pwaupbanner';
 import Order from 'components/Order';
 import HeaderTheme6 from 'components/themes/AppTheme6/HeaderTheme6';
 import AvatarTheme3 from 'components/themes/AppTheme3/AvatarTheme3';
 import TitleTheme6 from 'components/themes/AppTheme6/TitleTheme6';
 import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import Messengers from 'components/Messengers';
-import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7'; 
+import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
 import CatalogItems from 'components/CatalogItems';
 import Blocks from 'components/Blocks';
 import Social from 'components/Social';
@@ -27,8 +27,8 @@ import Start from 'components/Start';
 import SocialSharingButtons from "components/SocialSharingButtons";
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
-import GoogleAnalytics from 'utils/googleAnalytics';
-import {__} from 'utils/translation';
+import GoogleAnalytics from 'components/GoogleAnalytics';
+import { __ } from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
 
@@ -110,9 +110,9 @@ const AppTheme6 = () => {
 
   return (
     <React.Fragment>
-      
+
       <div className="app" style={backgroundStyles}>
-        {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
+        <GoogleAnalytics />
         <div className="app-container">
           <Pwaupbanner profile={profile} />
           <Order />

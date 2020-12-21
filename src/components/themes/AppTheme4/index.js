@@ -11,7 +11,7 @@ import Loading from 'components/common/Loading';
 import Pwaupbanner from 'components/Pwaupbanner';
 import Order from 'components/Order';
 import AvatarTheme4 from 'components/themes/AppTheme4/AvatarTheme4';
-import MessengersTheme4 from 'components/themes/AppTheme4/MessengersTheme4'; 
+import MessengersTheme4 from 'components/themes/AppTheme4/MessengersTheme4';
 import TitleTheme4 from 'components/themes/AppTheme4/TitleTheme4';
 import StoriesTheme4 from 'components/themes/AppTheme4/StoriesTheme4';
 import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
@@ -26,7 +26,7 @@ import Start from 'components/Start';
 import SocialSharingButtons from "components/SocialSharingButtons";
 import API from 'utils/api';
 import { getSearchString } from 'utils/url';
-import GoogleAnalytics from 'utils/googleAnalytics';
+import GoogleAnalytics from 'components/GoogleAnalytics';
 import { __ } from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
@@ -109,9 +109,9 @@ const AppTheme4 = () => {
 
     return (
         <React.Fragment>
-            
+
             <div className="app" style={backgroundStyles}>
-                {GoogleAnalytics.init() && <GoogleAnalytics.RouteTracker />}
+                <GoogleAnalytics />
                 <div className="app-container">
                     <Pwaupbanner profile={profile} />
                     <Order />
@@ -120,16 +120,16 @@ const AppTheme4 = () => {
                     <TitleTheme4 />
                     {needSticky && <StickyContainer>
                         <Sticky>
-                        {({
-                            style,
-                            isSticky,
-                            distanceFromBottom 
-                        }) => {
-                            const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
-                            return (<div id="sticky" style={!stickyBlock ? {} : {...backgroundStyles, ...style, zIndex: 10}}>
-                                <StoriesTheme4 data={data.stories} />
-                            </div>);
-                        }}
+                            {({
+                                style,
+                                isSticky,
+                                distanceFromBottom
+                            }) => {
+                                const stickyBlock = isSticky || (distanceFromBottom ?? 0) < 0;
+                                return (<div id="sticky" style={!stickyBlock ? {} : { ...backgroundStyles, ...style, zIndex: 10 }}>
+                                    <StoriesTheme4 data={data.stories} />
+                                </div>);
+                            }}
                         </Sticky>
                         <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
                         <CatalogItems data={data.catalogItems} profile={profile} />

@@ -1,16 +1,21 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import ReactGA from 'react-ga';
 
 const GoogleAnalytics = () => {
 
-    // useEffect(() => {
+    const { data = {} } = useSelector((state) => state.config);
+    const googleAnalytics = data.googleAnalytics;
 
-    //     ReactGA.initialize('UA-000000-01')
-    // }, [])
+    useEffect(() => {
+
+        ReactGA.initialize(googleAnalytics);
+        ReactGA.pageview(window.location.pathname + window.location.search);
+    }, [])
 
     return (
-        <div>123456</div>
+        <div></div>
     );
 }
 
-export default GoogleAnalytics;
+export default GoogleAnalytics; 
