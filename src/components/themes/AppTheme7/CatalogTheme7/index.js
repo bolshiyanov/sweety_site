@@ -13,7 +13,7 @@ import './index.scss';
 import {
   CATALOG_LEFT,
   CATALOG_CENTER,
-  CATALOG_RIGHT,
+  CATALOG_RIGHT, 
   CATALOG_HEADER,
 } from 'constants/catalogTypes';
 
@@ -25,7 +25,7 @@ const CatalogTheme7 = ({
   guid,
   animation,
   image,
-  audio,
+  audio, 
   price,
   currency,
   number,
@@ -380,7 +380,7 @@ const CatalogTheme7 = ({
           
 
           {isAudioPlayer && (
-            <Button ><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} /> </Button>
+            <Button className="button-sound-right"><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} /> </Button>
 
 
           )}

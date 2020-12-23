@@ -29,7 +29,7 @@
   border: 2px solid whitesmoke;
   font-weight: bold;
   text-align: center;
-  padding-top: 2px;
+  padding-top: 2px; 
   z-index: 2;
 
 }
@@ -311,9 +311,17 @@
 .button-sound-left {
   border: 0;
   height: 52px;
-  width: 52px;
+  min-width: 52px;
   border-radius: 50%;
   margin-top: 13px;
+}
+
+.button-sound-right {
+  border: 1px solid;
+  height: 52px;
+  min-width: 52px;
+  border-radius: 8px;
+  margin-top: 2px;
 }
 
 
