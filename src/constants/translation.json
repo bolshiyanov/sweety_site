@@ -211,16 +211,40 @@
         "fr": "Continuez le dernier",
         "de": "Setzen Sie den letzten fort",
         "it": "Continua l'ultimo"
+    }, {
+        "code": "landing.text1",
+        "en": "Free PWA creator",
+        "ru": "Бесплатный конструктор PWA",
+        "es": "Creador de PWA gratuito",
+        "fr": "Créateur PWA gratuit",
+        "de": "Kostenloser PWA-Ersteller",
+        "it": "Creatore PWA gratuito"
+    }, {
+        "code": "landing.text2",
+        "en": "Create FREE a progressive web app for IOS, Android or Windows yourself in the SWEETY designer in 10 minutes, without programmers, without registration, without subscriptions, for free, to increase the number of repeated requests from your customers to 300%",
+        "ru": "Бесплатно создавайте прогрессивное веб-приложение для IOS, Android или Windows самостоятельно в конструкторе SWEETY за 10 минут, без программистов, без регистрации, без подписок, бесплатно, чтобы увеличить количество повторных запросов от ваших клиентов до 300% ",
+        "es": "Cree GRATIS una aplicación web progresiva para IOS, Android o Windows usted mismo en el diseñador SWEETY en 10 minutos, sin programadores, sin registro, sin suscripciones, de forma gratuita, para aumentar el número de solicitudes repetidas de sus clientes a 300%",
+        "fr": "Créez gratuitement une application web progressive pour IOS, Android ou Windows vous-même dans SWEETY designer en 10 minutes, sans programmeurs, sans inscription, sans abonnements, gratuitement, pour augmenter le nombre de demandes répétées de vos clients à 300%",
+        "de": "Erstellen Sie KOSTENLOS eine progressive web-app für IOS, Android oder Windows selbst im SWEETY designer in 10 Minuten, ohne Programmierer, ohne Registrierung, ohne Abonnements, kostenlos, um die Anzahl der wiederholten Anfragen Ihrer Kunden auf 300 zu erhöhen%",
+        "it": "Crea gratuitamente un'app Web progressiva per IOS, Android o Windows da solo nel designer SWEETY in 10 minuti, senza programmatori, senza registrazione, senza abbonamenti, gratuitamente, per aumentare il numero di richieste ripetute dai tuoi clienti a 300%"
+    },{
+        "code": "landing.text3",
+        "en": "Create free your PWA in 10 minutes",
+        "ru": "Создайте бесплатно свое PWA за 10 минут",
+        "es": "Crea tu PWA gratis en 10 minutos",
+        "fr": "Créez gratuitement votre PWA en 10 minutes",
+        "de": "Erstellen Sie kostenlos Ihre PWA in 10 Minuten",
+        "it": "Crea gratuitamente il tuo PWA in 10 minuti"
     },
     
     {
         "code": "landing.constructor",
-        "en": "Mobile App Builder",
-        "ru": "Конструктор мобильных приложений",
-        "es": "Generador de aplicaciones móviles",
-        "fr": "Créateur d'applications mobiles",
-        "de": "Builder für mobile Apps",
-        "it": "Generatore di mobili app"
+        "en": "Mobile PWA Builder",
+        "ru": "Конструктор PWA приложений",
+        "es": "Generador de aplicaciones PWA",
+        "fr": "Créateur d'applications PWA",
+        "de": "Builder für PWA Apps",
+        "it": "Generatore di PWA app"
     }, {
         "code": "landing.desc",
         "en": "Free, create it yourself in 10 minutes, no programmers, no registration, no subscriptions. No credit card required.",
