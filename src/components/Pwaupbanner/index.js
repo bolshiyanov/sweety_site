@@ -86,8 +86,8 @@ const Pwaupbanner = ({
           <AvatarBase avatar={avatar} avatarPreview={avatarPreview} avatarDefault={logo512} wrapperImageClass="pwaupbanner-heder-avatar" />
         </div>
         <div className="titleBox">
-          <div className="firstBox">{title}</div>
-          <div className="secondBox">{description}</div>
+          <div className="firstBox">{name}</div>
+          <div className="secondBox">{title}</div>
           <div className="thirdBox" style={{ backgroundImage: `URL(${raiting})` }} />
           <div className="fourthBox">{__("без регистрации, бесплатно, мгновенно")}</div>
         </div>
