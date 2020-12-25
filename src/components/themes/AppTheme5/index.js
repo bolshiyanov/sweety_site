@@ -12,7 +12,7 @@ import Pwaupbanner from 'components/Pwaupbanner';
 import Order from 'components/Order';
 import AvatarTheme5 from 'components/themes/AppTheme5/AvatarTheme5';
 import MessengersTheme4 from 'components/themes/AppTheme4/MessengersTheme4';
-import TitleTheme4 from 'components/themes/AppTheme3/TitleTheme3';
+import TitleTheme4 from 'components/themes/AppTheme4/TitleTheme4';
 import StoriesTheme2 from 'components/themes/AppTheme2/StoriesTheme2';
 import CatalogItemsTheme7 from 'components/themes/AppTheme7/CatalogItemsTheme7';
 import CatalogItems from 'components/CatalogItems';

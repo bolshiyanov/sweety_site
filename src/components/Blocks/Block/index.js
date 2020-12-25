@@ -83,7 +83,7 @@ const Block = ({
       if (image)
         style.backgroundImage = `URL(${image})`;
 
-      block = (
+      block = ( 
         <div className="box-block-text">
           <div
             className={classnames([
