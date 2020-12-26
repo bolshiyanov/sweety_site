@@ -153,7 +153,6 @@ const App = () => {
           <div className="app" style={backgroundStyles}>
             
             <div className="app-container">
-              <Pwaupbanner profile={profile} />
               <GoogleAnalytics />
               <Order /> 
               <HeaderTheme2
@@ -172,6 +171,7 @@ const App = () => {
               <GoogleAnalytics />
               <Rss />
               <SocialSharingButtons />
+              <Pwaupbanner profile={profile} />
               <Social />
               <FooterTheme2
                 name={data.name} />

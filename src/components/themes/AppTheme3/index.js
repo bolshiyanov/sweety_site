@@ -115,7 +115,6 @@ const AppTheme3 = () => {
       <div className="app" style={backgroundStyles}>
         <GoogleAnalytics />
         <div className="app-container">
-          <Pwaupbanner profile={profile} />
           <Order />
           <HeaderTheme3 />
           {needSticky && <StickyContainer>
@@ -148,6 +147,7 @@ const AppTheme3 = () => {
           <Messengers />
           <Rss />
           <SocialSharingButtons />
+          <Pwaupbanner profile={profile} />
           <Social />
           <Footer />
           {!isDemo && <div className="cookie-box" >

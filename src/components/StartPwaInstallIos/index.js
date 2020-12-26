@@ -69,7 +69,7 @@ const StartPwaInstallIos = ({ profile }) => {
                         </div>
 
                         <div className="startPwaInstallIos-ratingBox">
-                            <div className="startPwaInstallIos-rating">18+&nbsp;
+                            <div className="startPwaInstallIos-rating">10+&nbsp;
                             </div>
                             <div className="startPwaInstallIos-rating__descriptions">{__("Возраст")}</div>
                         </div>

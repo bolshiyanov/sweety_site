@@ -113,7 +113,6 @@ const AppTheme4 = () => {
             <div className="app" style={backgroundStyles}>
                 <GoogleAnalytics />
                 <div className="app-container">
-                    <Pwaupbanner profile={profile} />
                     <Order />
                     <AvatarTheme4 />
                     <MessengersTheme4 />
@@ -143,6 +142,7 @@ const AppTheme4 = () => {
                     {data.ads && data.ads.length !== 0 && <Blocks data={data.ads} referrerTitle={data?.referrer?.title} />}
                     <Rss />
                     <SocialSharingButtons />
+                    <Pwaupbanner profile={profile} />
                     <Social />
                     <Footer />
                     {!isDemo && <div className="cookie-box" >
