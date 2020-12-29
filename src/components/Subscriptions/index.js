@@ -69,7 +69,7 @@ const Subscriptions = ({ name }) => {
                 >
                     <div className="subscriptions-body">
                         <div className="subscriptions-title-rates">{__("ШАГ 1 из 2: ВВЕДИТЕ СВОЙ ЕМАЙЛ")}</div>
-                        <div className="subscriptions-input-bottomline" />
+
 
                         <Input
                             className="subscriptions-settings-settings-input"
@@ -79,7 +79,7 @@ const Subscriptions = ({ name }) => {
                         // onChange={(value) => updateSettings('subscriptionemail', value)}
                         />
                         <div className="subscriptions-input-descriptions">{__("Укажите электронный адрес, на который будет отправлена ссылка на оплату. Также на этот адрес вы получите подтверждение оплаты и электронный чек.")}</div>
-
+                        <div className="subscriptions-input-bottomline" />
                         <div className="subscriptions-title-rates">{__("ШАГ 2 из 2: ВЫБЕРИТЕ ТАРИФ")}</div>
                         <Button
                             key="subscribes30days"
@@ -115,8 +115,8 @@ const Subscriptions = ({ name }) => {
         );
     };
 
-   return (null);
-    
+    return (null);
+
 }
 
 export default Subscriptions
