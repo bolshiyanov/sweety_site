@@ -147,11 +147,11 @@ const StartPwaInstallIos = ({ profile }) => {
                     </div>
                     <div className="startPwaInstallIos-infoFlexItems">
                         <div className="startPwaInstallIos-infoFlexItems__item-left">{__("Возраст")}</div>
-                        <div className="startPwaInstallIos-infoFlexItems__item-right">18+</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-right">10+</div>
                     </div>
                     <div className="startPwaInstallIos-infoFlexItems">
                         <div className="startPwaInstallIos-infoFlexItems__item-left">{__("Разработчик приложения")}</div>
-                        <div className="startPwaInstallIos-infoFlexItems__item-right"> https://sweety.link ltd.Imec-Pro</div>
+                        <div className="startPwaInstallIos-infoFlexItems__item-right">bolshiyanov@gmail.com</div>
                     </div>
                 </div>
             </div>

@@ -21,6 +21,8 @@ const Slider = ({
   hasPhone,
   children
 }) => (
+
+  
     <>
       {opened && <div className={classnames(['slider-container', { opened }])}>
         <div className="slider-background" onClick={onClose} />
@@ -53,7 +55,7 @@ const Slider = ({
               <div className="slider-header-submitbody-submit">
                 <Button className="slider-header-submit"
                   onClick={() => window.open(`sms:${hasPhone}` + `&body=
-                  ${sms}`, '_self')}
+                  ${(sms.toString())}`, '_self')}
                   isInline noStyled>
                   &nbsp;{submitTitle}
                 </Button>
