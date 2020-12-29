@@ -41,6 +41,7 @@ import GoogleAnalytics from 'components/GoogleAnalytics';
 import { __ } from 'utils/translation';
 
 import { CONFIG_LOAD } from 'constants/actions';
+import Subscriptions from './Subscriptions';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -162,6 +163,7 @@ const App = () => {
                 profile={profile} /> 
               <StoriesTheme6 data={data.stories} profile={profile} />
               <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
+              <Subscriptions name={data.name}/>
               <CatalogItems data={data.catalogItems} profile={profile} />
               <Blocks data={data.blocks} />
               <StoriesTheme7 data={data.stories} profile={profile} />

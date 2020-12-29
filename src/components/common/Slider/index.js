@@ -17,6 +17,7 @@ const Slider = ({
   subtitle,
   submitTitle,
   sms,
+  timer,
   hasPhone,
   children
 }) => (
@@ -32,6 +33,7 @@ const Slider = ({
             )}
             <div className="slider__header__title">{title}</div>
             <div className="slider__header__subtitle">{subtitle}</div>
+            {timer && (<div className="slider__header__timer">{timer}</div>)}
             {onClose && (
               <Button className="slider__header__submit" onClick={onClose} isInline noStyled>
                 <Icon type="checkCircle" noStyled />
@@ -68,6 +70,7 @@ Slider.propTypes = {
   onSubmit: PropTypes.func,
   onRemove: PropTypes.func,
   title: PropTypes.string,
+  timer: PropTypes.string,
   sms: PropTypes.string,
   hasPhone: PropTypes.string,
   children: PropTypes.node
@@ -79,6 +82,7 @@ Slider.defaultProps = {
   onSubmit: undefined,
   onRemove: undefined,
   title: '',
+  timer: '',
   sms: '',
   hasPhone: '',
   children: null

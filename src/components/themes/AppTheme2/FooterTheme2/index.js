@@ -21,7 +21,7 @@ const FooterTheme2 = ({ name }) => {
                                 <div className="brends-items"><IonIcon size="small" icon={logoAndroid} /></div>
                                 <div className="brends-items"><IonIcon size="amall" icon={logoWindows} /></div>
                             </div>
-                            <a href={startUrl} className="textlogofooter">&reg;SWEETY.LINK&nbsp;2015-2020</a>
+                            <a href={startUrl} className="textlogofooter" target="_blank" rel="noopener noreferrer" >TRY IT FREE&reg;SWEETY</a> <br/><br/>
                             
                         </div>
                     </div>
@@ -29,7 +29,7 @@ const FooterTheme2 = ({ name }) => {
 
             </footer>
 
-        </React.Fragment>
+        </React.Fragment> 
     );
 };
 
