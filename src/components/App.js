@@ -163,7 +163,7 @@ const App = () => {
                 profile={profile} /> 
               <StoriesTheme6 data={data.stories} profile={profile} />
               <CatalogItemsTheme7 data={data.catalogItems} profile={profile} />
-              <Subscriptions name={data.name}/>
+              {data.subscriptions && <Subscriptions data={data.subscriptions} />}
               <CatalogItems data={data.catalogItems} profile={profile} />
               <Blocks data={data.blocks} />
               <StoriesTheme7 data={data.stories} profile={profile} />

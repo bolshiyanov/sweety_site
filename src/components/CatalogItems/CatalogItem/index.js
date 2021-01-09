@@ -27,6 +27,7 @@ const CatalogItem = ({
   animation,
   image,
   audio,
+  audioPaid,
   price,
   currency,
   number,
@@ -53,7 +54,7 @@ const CatalogItem = ({
 }) => {
   const dispatch = useDispatch();
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
-  const { playingGuid, headerGuid } = useSelector((state) => state.config);
+  const { playingGuid, headerGuid, isSubscriber } = useSelector((state) => state.config);
 
   const [audioError, setAudioError] = useState(false);
   const [seek, setSeek] = useState(false);
@@ -72,7 +73,9 @@ const CatalogItem = ({
     dispatch({ type: CATALOG_FILTER_HEADER, headerGuid: headerGuid === guid ? null : guid });
   }
 
-  let [play, { stop, isPlaying, duration, sound }] = useSound(audio && audio.startsWith("https://sweety.link/") ? null : audio, {
+  const playingAudio = isSubscriber && audioPaid ? audioPaid : audio;
+
+  let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio && playingAudio.startsWith("https://sweety.link/") ? null : playingAudio, {
     autoUnlock: true,
     format: "mpeg",
     preload: true,
@@ -441,6 +444,7 @@ CatalogItem.propTypes = {
   animation: PropTypes.bool,
   image: PropTypes.string,
   audio: PropTypes.string,
+  audioPaid: PropTypes.string,
   playlist: PropTypes.array,
   text: PropTypes.string,
   textEn: PropTypes.string,

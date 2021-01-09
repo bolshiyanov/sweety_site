@@ -10,6 +10,7 @@ const host = 'https://api.sweety.link';
 const adminSite = "https://dash.sweety.link";
 const cookieDomain = "sweety.link";
 let profile = null;
+let ownerId = null;
 
 const gapiEmail = "catalog@sweetyimport.iam.gserviceaccount.com";
 const gapiKey = "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCPbQ9bbKiiPmAi\nM4OJxvcPYQX4dOEcjA/zflguCelELC+CptGh8Ye1GrzfhoMudR2ea1lBhZ35tBzS\nzpI+e3fyrYjrKh2CTB41xp4En37NCDUfaVD5ni5QEwyLvuq5pw+wvv4nocnRrEtc\n0c7RD61Ij6E4+sSIBHrBAZAlNBaimbfgqVGn6Y4wWZK6CawTe7lsOc8Ujaarc21o\nYIOg9rW5idxFYAJUMJAcy62V7hz86ROXF2lkl9gjBuH2Npz6q0oV3JVbTveBFt5u\nfYeJj4pBWQtRD1rWS86O4Y4r1K+8fmVxwsRX3CAshONgW27wniL5qT2P21s3Kadt\nijclltj1AgMBAAECggEAKRauWpuzZ9+EvOeTHGpypuY9xqL9Rqddfn1Il8/hEtWx\nurU9wy4lmZ2SVFr9w9ZraNIKHPpBeqK9yyrAvMO0ZkKOwggrsgNKeE9xP5PNyME8\nLsaGGyzUyb3bT0GfjxYsKY9d0k7IOZgpcursW/oow2vaXS+CFBFsdVSUTgQxI92G\nAoplOOyKCfTazMQghdU7bDMwGMYNlULNNQEwAS5WJ32PDe3PBM4+1qK5L2sBD4to\nAn2Ma4He0E4FXlmfhokd2iAPD4GJI1qK7MZJYMIHeur8XhuuVI3/9OrEEiFpte6K\nSCPE8f5O4txR0Q23BAKD5aaJ2zwHGFAT+Wfk2yTSFQKBgQDCA76RdmiJ3Q2skMfR\nkaAl8Ra4lUv6WV7a4RAsWzZAv3MjUh5cn3gCTZAdfaCm8/oI6mfaE0Q/aCAygIhD\nMx1zP99M29q8O4GyD/UUBfbeZpy/ed9N7hDLdi/Wp7hqTmK+R86q6f20qiRIIUxv\nkTn72dh8M4h492/i8Nly/ttwFwKBgQC9P7m1Vd9G9517REh57hVRRsUOSgzVAO6s\nhRKBX2+OFOLAX+4za91cLd3Z1Pg4oNmq+IfQiKrs5cI3P0Nl9BrgPaieuAgjCyyP\nhRAlbMd6QB7D84xTwI+06eN1Q6aFK3S6gL2Vt4JC+DygroFM0vSeWQlHnY5QnvAE\nlE7xrbX60wKBgERhAXdPHkUIrdsWI/bOtnzo3bMsm1yexvmpvQOFGjfzwea++Ih4\ng9l78MEUF9z/vC4MP5HynGkkj8R83ImiqEyIRHFYQ114M5vIV/44o+t6iuBJWdSj\nhTPQccfb0PlWqyKZOFOwqIRWOvdZFRF1Q9Rp0QzlNMI9oyd+74TCIiD9AoGAdxZa\nrhlTXz0CBEd7s/51u6dk6RD/8imcB0PV2UNM14OdDKFRK1p8+TyDlkfFyxys3EF4\ndWkK5ffOtyVALC/nmaQzL21u8V5etBFvj51cCTnAIl5nt2w9AgML9waTCsnFsnbA\n1i2b8rhyrkohY058UAiHJmGm5GSfdMI+yyYclbECgYBTEz5uHO1tXshG0+E33mRG\nzWdP13a9IeMSzbCRKc5uz3cS3idMJTIuUnK6oU50c1qwAH9s3zk+2SLZ8lerLNh3\n3sMYeIh0y0b1ZsddaBi5SThBdl1gs4pWpYi31VxQhlXCDEsnRb+CEH5Kx57sbEGa\ntbk2c9Xz9SCfLYDg9stzsQ==\n-----END PRIVATE KEY-----\n";
@@ -18,7 +19,11 @@ const gssPrefix = "https://docs.google.com/spreadsheets/d/";
 const setProfile = (newProfile) => {
   profile = newProfile;
 };
-  
+
+const setOwner = (newOwnerId) => {
+  ownerId = newOwnerId;
+};
+
 export const getInvite = () => {
   return getSearchString(window.location.search, 'invid');
 };
@@ -64,16 +69,16 @@ const handleError = (e) => {
 };
 
 const requests = {
-  get: (url, params) => superagent.get(`${host}${url}`).query(params)
+  get: (url, params) => superagent.get(`${host}${url}`).set('X-OwnerId', ownerId).query(params)
     .catch(handleError)
     .then(responseBody),
-  post: (url, params) => superagent.post(`${host}${url}`).send(params)
+  post: (url, params) => superagent.post(`${host}${url}`).set('X-OwnerId', ownerId).send(params)
     .catch(handleError)
     .then(responseBody),
-  put: (url, params) => superagent.put(`${host}${url}`).send(params)
+  put: (url, params) => superagent.put(`${host}${url}`).set('X-OwnerId', ownerId).send(params)
     .catch(handleError)
     .then(responseBody),
-  del: (url, params) => superagent.del(`${host}${url}`).send(params)
+  del: (url, params) => superagent.del(`${host}${url}`).set('X-OwnerId', ownerId).send(params)
     .catch(handleError)
     .then(responseBody)
 };
@@ -81,6 +86,9 @@ const requests = {
 const API = {
   updateProfile: (value) => {
     setProfile(value);
+  },
+  updateOwner: (value) => {
+    setOwner(value);
   },
   getData: () => requests.get(`/api/profiles/pages/public/${profile}`),
   register: (data) => requests.post('/api/users/register', { ...data, lang: getDefaultLanguage() }),

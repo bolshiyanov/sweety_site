@@ -962,29 +962,107 @@
 
     , {
         "code": "subscribes.text10",
-        "en": "30-DAY SUBSCRIPTION",
-        "ru": "ПОДПИСКА НА 30 ДНЕЙ",
-        "es": "SUSCRIPCIÓN DE 30 DÍAS",
-        "fr": "ABONNEMENT DE 30 JOURS",
-        "de": "30 TAGE ABONNEMENT",
-        "it": "ABBONAMENTO DI 30 GIORNI"
+        "en": "{period}-DAY SUBSCRIPTION",
+        "ru": "ПОДПИСКА НА {period} ДНЕЙ",
+        "es": "SUSCRIPCIÓN DE {period} DÍAS",
+        "fr": "ABONNEMENT DE {period} JOURS",
+        "de": "{period} TAGE ABONNEMENT",
+        "it": "ABBONAMENTO DI {period} GIORNI"
     }, {
+        "code": "subscribes.text10.1",
+        "en": "{period}-DAY SUBSCRIPTION",
+        "ru": "ПОДПИСКА НА 1 ДЕНЬ",
+        "es": "SUSCRIPCIÓN DE {period} DÍA",
+        "fr": "ABONNEMENT DE {period} JOUR",
+        "de": "{period} TAGE ABONNEMENT",
+        "it": "ABBONAMENTO DI {period} GIORNO"
+    }, {
+        "code": "subscribes.text10.2",
+        "en": "{period}-DAY SUBSCRIPTION",
+        "ru": "ПОДПИСКА НА {period} ДНЯ",
+        "es": "SUSCRIPCIÓN DE {period} DÍAS",
+        "fr": "ABONNEMENT DE {period} JOURS",
+        "de": "{period} TAGE ABONNEMENT",
+        "it": "ABBONAMENTO DI {period} GIORNI"
+    }, {
+        "code": "subscribes.text10.3",
+        "en": "{period}-DAY SUBSCRIPTION",
+        "ru": "ПОДПИСКА НА {period} ДЕНЬ",
+        "es": "SUSCRIPCIÓN DE {period} DÍAS",
+        "fr": "ABONNEMENT DE {period} JOURS",
+        "de": "{period} TAGE ABONNEMENT",
+        "it": "ABBONAMENTO DI {period} GIORNI"
+    },
+    
+    {
         "code": "subscribes.text11",
-        "en": "90-DAY SUBSCRIPTION",
-        "ru": "ПОДПИСКА НА 90 ДНЕЙ",
-        "es": "SUSCRIPCIÓN DE 90 DÍAS",
-        "fr": "ABONNEMENT DE 90 JOURS",
-        "de": "90 TAGE ABONNEMENT",
-        "it": "ABBONAMENTO DI 90 GIORNI"
+        "en": "{period}-MONTH SUBSCRIPTION",
+        "ru": "ПОДПИСКА НА {period} МЕСЯЦЕВ",
+        "es": "SUSCRIPCIÓN DE {period} MESES",
+        "fr": "ABONNEMENT DE {period} MOIS",
+        "de": "{period} MONAT ABONNEMENT",
+        "it": "ABBONAMENTO DI {period} MESI"
     }, {
+        "code": "subscribes.text11.1",
+        "en": "{period}-MONTH SUBSCRIPTION",
+        "ru": "ПОДПИСКА НА 1 МЕСЯЦ",
+        "es": "SUSCRIPCIÓN DE {period} MES",
+        "fr": "ABONNEMENT DE {period} MOIS",
+        "de": "{period} MONAT ABONNEMENT",
+        "it": "ABBONAMENTO DI {period} MESE"
+    }, {
+        "code": "subscribes.text11.2",
+        "en": "{period}-MONTH SUBSCRIPTION",
+        "ru": "ПОДПИСКА НА {period} МЕСЯЦА",
+        "es": "SUSCRIPCIÓN DE {period} MESES",
+        "fr": "ABONNEMENT DE {period} MOIS",
+        "de": "{period} MONAT ABONNEMENT",
+        "it": "ABBONAMENTO DI {period} MESI"
+    }, {
+        "code": "subscribes.text11.3",
+        "en": "{period}-MONTH SUBSCRIPTION",
+        "ru": "ПОДПИСКА НА {period} МЕСЯЦ",
+        "es": "SUSCRIPCIÓN DE {period} MESES",
+        "fr": "ABONNEMENT DE {period} MOIS",
+        "de": "{period} MONAT ABONNEMENT",
+        "it": "ABBONAMENTO DI {period} MESI"
+    }, 
+    
+    {
         "code": "subscribes.text12",
-        "en": "365-DAY SUBSCRIPTION",
-        "ru": "ПОДПИСКА НА 365 ДНЕЙ",
-        "es": "SUSCRIPCIÓN DE 365 DÍAS",
-        "fr": "ABONNEMENT DE 365 JOURS",
-        "de": "30 TAGE ABONNEMENT",
-        "it": "ABBONAMENTO DI 365 GIORNI"
+        "en": "{period}-YEAR SUBSCRIPTION",
+        "ru": "ПОДПИСКА НА {period} ЛЕТ",
+        "es": "SUSCRIPCIÓN DE {period} AÑOS",
+        "fr": "ABONNEMENT DE {period} ANS",
+        "de": "{period} JAHRE ABONNEMENT",
+        "it": "ABBONAMENTO DI {period} ANNI"
     }, {
+        "code": "subscribes.text12.1",
+        "en": "{period}-YEAR SUBSCRIPTION",
+        "ru": "ПОДПИСКА НА 1 ГОД",
+        "es": "SUSCRIPCIÓN DE {period} AÑO",
+        "fr": "ABONNEMENT DE {period} AN",
+        "de": "{period} JAHR ABONNEMENT",
+        "it": "ABBONAMENTO DI {period} ANNO"
+    }, {
+        "code": "subscribes.text12.2",
+        "en": "{period}-YEAR SUBSCRIPTION",
+        "ru": "ПОДПИСКА НА {period} ГОДА",
+        "es": "SUSCRIPCIÓN DE {period} AÑOS",
+        "fr": "ABONNEMENT DE {period} ANS",
+        "de": "{period} JAHRE ABONNEMENT",
+        "it": "ABBONAMENTO DI {period} ANNI"
+    }, {
+        "code": "subscribes.text12.3",
+        "en": "{period}-YEAR SUBSCRIPTION",
+        "ru": "ПОДПИСКА НА {period} ГОД",
+        "es": "SUSCRIPCIÓN DE {period} AÑOS",
+        "fr": "ABONNEMENT DE {period} ANS",
+        "de": "{period} JAHRE ABONNEMENT",
+        "it": "ABBONAMENTO DI {period} ANNI"
+    }, 
+    
+    {
         "code": "subscribes.text13",
         "en": "STEP 2 of 2: CHOOSE A PRICING PLAN",
         "ru": "",

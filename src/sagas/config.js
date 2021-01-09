@@ -10,7 +10,8 @@ import {
   PRELOAD_DATA,
   CACHE_DATA,
   CACHE_PLAYLISTS,
-  PRELOAD_PLAYLISTS
+  PRELOAD_PLAYLISTS,
+  CACHE_KEY_OWNER
 } from 'constants/actions';
 
 import API from 'utils/api';
@@ -100,11 +101,31 @@ function* processLoadingData(loadingData, profile) {
     ...data
   } = loadingData;
 
+  if (loadingData.subscriptions && loadingData.subscriptions.length > 0) {
+    let ownerId = call(dbGet, db, PROFILE_STORE, CACHE_KEY_OWNER);
+    if (!ownerId) {
+      ownerId = uuid();
+      call(dbPut, db, CONTENT_STORE, ownerId, CACHE_KEY_OWNER);
+    }
+  }
+
+  let isSubscriber = false;
+  if (data?.settings?.subscriberPeriod) {
+    let subscribedUntil = data.settings.subscriberPeriod.indexOf("-") === -1 ? "" :
+      data.settings.subscriberPeriod.substr(data.settings.subscriberPeriod.indexOf("-") + 1);
+    isSubscriber = !subscribedUntil || (Date.parse(subscribedUntil) + 1 >= new Date());
+  }
+
   let keys = yield call(dbGetAllKeys, db, CONTENT_STORE);
 
   const tracks = data.catalogItems.filter(c => c.audio && c.audio.startsWith("http")).map(c => c.audio);
   const cachedTracks = tracks.filter(t => keys.includes(contentKey(profile, t)));
   const trackCaches = yield all(cachedTracks.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
+
+  const paidTracks = !isSubscriber ? [] :
+    data.catalogItems.filter(c => c.audioPaid && c.audioPaid.startsWith("http")).map(c => c.audioPaid);
+  const paidCachedTracks = paidTracks.filter(t => keys.includes(contentKey(profile, t)));
+  const paidTrackCaches = yield all(paidCachedTracks.map(a => call(dbGet, db, CONTENT_STORE, contentKey(profile, a))));
 
   const cimages = data.catalogItems.filter(c => c.image && c.image.startsWith("http")).map(c => c.image);
   const cachedCImages = cimages.filter(t => keys.includes(contentKey(profile, t)));
@@ -123,6 +144,15 @@ function* processLoadingData(loadingData, profile) {
     if (cachedBlob) {
       data.catalogItems.filter(c => c.audio === a).forEach(c => {
         c.audio = cachedBlob;
+      });
+    }
+  });
+
+  paidCachedTracks.forEach((a, i) => {
+    let cachedBlob = paidTrackCaches[i];
+    if (cachedBlob) {
+      data.catalogItems.filter(c => c.audioPaid === a).forEach(c => {
+        c.audioPaid = cachedBlob;
       });
     }
   });
@@ -196,11 +226,13 @@ function* processLoadingData(loadingData, profile) {
     backgrounds,
     config,
     account,
-    data
+    data,
+    isSubscriber
   });
 
   const preloading = [...new Set(
     tracks.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "audio" }})
+      .concat(paidTracks.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "audio" }}))
       .concat(cimages.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "image" }}))
       .concat(simages.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "image" }}))
       .concat(bimages.filter(t => !keys.includes(contentKey(profile, t))).map(url => { return { url, type: "image" }}))
@@ -262,6 +294,11 @@ function* loadConfigOnline({ profile }) {
     } catch { }
     const loadingDataOffline = yield call(dbGet, db, PROFILE_STORE, profile);
 
+    let ownerId = yield call(dbGet, db, PROFILE_STORE, CACHE_KEY_OWNER);
+    if (ownerId) {
+      yield call(API.updateOwner, ownerId);
+    }
+  
     let loading = 0;
     while (!loadingData && loading < LOADING_ATTEMPTS) {
       loadingData = yield call(API.getData, {});
@@ -329,6 +366,7 @@ function* preloadPlaylists({ profile, playlists}) {
         timeTo: row.timeTo?.trim(),
         text: row.text?.trim(),
         audio: row.audio?.trim(),
+        audioPaid: row.audioPaid?.trim(),
       };
     });
     return {

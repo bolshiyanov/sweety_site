@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 import Button from 'components/common/Button';
 import Icon from 'components/common/Icon';
 import classnames from 'classnames';
@@ -8,7 +9,11 @@ import Input from 'components/common/Input';
 import Accordeon from 'components/common/Accordeon';
 import './index.scss';
 
-const Subscriptions = ({ name }) => {
+const Subscriptions = ({
+    data
+}) => {
+    const { name } = useSelector((state) => state.config.data);
+    const { isSubscriber } = useSelector((state) => state.config);
 
     const [settingsOpened, setSettingsOpened] = useState(false);
 
@@ -19,8 +24,39 @@ const Subscriptions = ({ name }) => {
     const closeSubscriptionsSettings = () => {
         setSettingsOpened(false);
     };
+
+    const getPeriodValue = (period) => {
+        return parseInt(period.substr(0, period.length - 1));
+    }
+
+    const getTranslateTemplate = (period) => {
+        if (["1d", "1m", "1y"].includes(period)) {
+            return period.endsWith("d") ? "ПОДПИСКА НА 1 ДЕНЬ" :
+                period.endsWith("m") ? "ПОДПИСКА НА 1 МЕСЯЦ" :
+                period.endsWith("y") ? "ПОДПИСКА НА 1 ГОД" :
+                "";
+        }
+
+        let count = getPeriodValue(period);
+        if (count / 10 > 1 && count % 10 === 1) {
+            return period.endsWith("d") ? "ПОДПИСКА НА {period} ДЕНЬ" :
+                period.endsWith("m") ? "ПОДПИСКА НА {period} МЕСЯЦ" :
+                period.endsWith("y") ? "ПОДПИСКА НА {period} ГОД" :
+                "";
+        } else if (count < 5 || (count / 10 > 1 && count % 10 < 5)) {
+            return period.endsWith("d") ? "ПОДПИСКА НА {period} ДНЯ" :
+                period.endsWith("m") ? "ПОДПИСКА НА {period} МЕСЯЦА" :
+                period.endsWith("y") ? "ПОДПИСКА НА {period} ГОДА" :
+                "";
+        } else {
+            return period.endsWith("d") ? "ПОДПИСКА НА {period} ДНЕЙ" :
+                period.endsWith("m") ? "ПОДПИСКА НА {period} МЕСЯЦЕВ" :
+                period.endsWith("y") ? "ПОДПИСКА НА {period} ЛЕТ" :
+                "";
+        }
+    }
+
     const timer = '00:00:00';
-    const nameMediSi = 'MediSi';
     const items = [
         {
             id: 'Term',
@@ -44,79 +80,66 @@ const Subscriptions = ({ name }) => {
         },
     ]
 
-    if (name == nameMediSi) {
-        return (
-            <React.Fragment>
-                <div className="subscriptions">
-                    <Button
-                        key="add-button"
-                        onClick={() => openSubscriptionsSettings('')}
-                        className={classnames(['subscriptions-button', 'tech-button'])}
-                    >
-                        {/* <Icon type="plus" /> */}
-                        <span>{__("ВАШИ ПОДПИСКИ")}</span>
-                    </Button>
-                </div>
+    if (!data || data.length === 0 || isSubscriber) {
+        return null;
+    }
 
-
-                <Slider
-                    opened={settingsOpened}
-                    onClose={closeSubscriptionsSettings}
-                    onSubmit={() => setSettingsOpened(false)}
-                    title={__("Выберите свой тарифный план, чтобы прослушивать все аудио")}
-                    subtitle={__("Мы рекомендуем продлевать свой тариф заранее, чтобы сохранить прогресс. До окончания оплаченного периода у Вас осталось:")}
-                    timer={timer}
+    return (
+        <React.Fragment>
+            <div className="subscriptions">
+                <Button
+                    key="add-button"
+                    onClick={() => openSubscriptionsSettings('')}
+                    className={classnames(['subscriptions-button', 'tech-button'])}
                 >
-                    <div className="subscriptions-body">
-                        <div className="subscriptions-title-rates">{__("ШАГ 1 из 2: ВВЕДИТЕ СВОЙ ЕМАЙЛ")}</div>
+                    {/* <Icon type="plus" /> */}
+                    <span>{__("ВАШИ ПОДПИСКИ")}</span>
+                </Button>
+            </div>
 
 
-                        <Input
-                            className="subscriptions-settings-settings-input"
-                            // value={subscriptionemail}
-                            type="email"
-                            placeholder="e-mail"
-                        // onChange={(value) => updateSettings('subscriptionemail', value)}
-                        />
-                        <div className="subscriptions-input-descriptions">{__("Укажите электронный адрес, на который будет отправлена ссылка на оплату. Также на этот адрес вы получите подтверждение оплаты и электронный чек.")}</div>
-                        <div className="subscriptions-input-bottomline" />
-                        <div className="subscriptions-title-rates">{__("ШАГ 2 из 2: ВЫБЕРИТЕ ТАРИФ")}</div>
+            <Slider
+                opened={settingsOpened}
+                onClose={closeSubscriptionsSettings}
+                onSubmit={() => setSettingsOpened(false)}
+                title={__("Выберите свой тарифный план, чтобы прослушивать все аудио")}
+                subtitle={__("Мы рекомендуем продлевать свой тариф заранее, чтобы сохранить прогресс. До окончания оплаченного периода у Вас осталось:")}
+                timer={timer}
+            >
+                <div className="subscriptions-body">
+                    <div className="subscriptions-title-rates">{__("ШАГ 1 из 2: ВВЕДИТЕ СВОЙ ЕМАЙЛ")}</div>
+
+
+                    <Input
+                        className="subscriptions-settings-settings-input"
+                        // value={subscriptionemail}
+                        type="email"
+                        placeholder="e-mail"
+                    // onChange={(value) => updateSettings('subscriptionemail', value)}
+                    />
+                    <div className="subscriptions-input-descriptions">{__("Укажите электронный адрес, на который будет отправлена ссылка на оплату. Также на этот адрес вы получите подтверждение оплаты и электронный чек.")}</div>
+                    <div className="subscriptions-input-bottomline" />
+                    <div className="subscriptions-title-rates">{__("ШАГ 2 из 2: ВЫБЕРИТЕ ТАРИФ")}</div>
+                    
+                    {data.map(s => <React.Fragment key={s.guid}>
                         <Button
-                            key="subscribes30days"
                             onClick={() => { }}
                         >
-                            <span>&nbsp;{__("ПОДПИСКА НА 30 ДНЕЙ")}</span>
+                            <span>&nbsp;{s.title ?? __(getTranslateTemplate(s.period)).replace("{period}", getPeriodValue(s.period))}</span>
                         </Button>
 
-                        <div className="subscriptions-input-descriptions">Стоимость подписки на 30 дней составляет 300 рублей.</div>
-                        <Button
-                            key="subscribes90days"
-                            onClick={() => { }}
-                        >
-                            <span>&nbsp;{__("ПОДПИСКА НА 90 ДНЕЙ")}</span>
-                        </Button>
-                        <div className="subscriptions-input-descriptions">Стоимость подписки на 90 дней составляет 800 рублей.</div>
-                        <Button
-                            key="subscribes365days"
-                            onClick={() => { }}
-                        >
-                            <span>&nbsp;{__("ПОДПИСКА НА 365 ДНЕЙ")}</span>
-                        </Button>
-                        <div className="subscriptions-input-descriptions">Стоимость подписки на 365 дней составляет 2500 рублей.</div>
+                        <div className="subscriptions-input-descriptions">Стоимость составляет {s.amount} руб.</div>
+                    </React.Fragment>)}
 
-                        <div className="subscriptions-input-bottomline" />
-                        <Accordeon items={items} />
-                        <div className="subscriptions-textlogofooter" target="_blank" rel="noopener noreferrer" >&reg;{name}</div> <br /><br />
-                    </div>
-                </Slider>
+                    <div className="subscriptions-input-bottomline" />
+                    <Accordeon items={items} />
+                    <div className="subscriptions-textlogofooter" target="_blank" rel="noopener noreferrer" >&reg;{name}</div> <br /><br />
+                </div>
+            </Slider>
 
-            </React.Fragment>
+        </React.Fragment>
 
-        );
-    };
-
-    return (null);
-
+    );
 }
 
 export default Subscriptions

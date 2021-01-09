@@ -44,7 +44,8 @@ const initialState = {
   storyGuid : null,
   headerGuid: null,
   order: {},
-  playingGuid: null
+  playingGuid: null,
+  isSubscriber: false
 };
 
 const reducer = handleActions({
@@ -59,7 +60,8 @@ const reducer = handleActions({
     buttonColors,
     config,
     account,
-    data
+    data,
+    isSubscriber
   }) => {
     const selectedTheme = themes.find((theme) => data.settings.theme === theme.name)
       || (themes[0] && { ...themes[0] })
@@ -102,7 +104,8 @@ const reducer = handleActions({
       account,
       data,
       currentTheme,
-      error: null
+      error: null,
+      isSubscriber
     };
   },
 
@@ -173,6 +176,9 @@ const reducer = handleActions({
     catalogItems.forEach(ci => {
       if (ci.audio && cached[ci.audio]) {
         ci.audio = cached[ci.audio];
+      }
+      if (ci.audioPaid && cached[ci.audioPaid]) {
+        ci.audioPaid = cached[ci.audioPaid];
       }
       if (ci.image && cached[ci.image]) {
         ci.image = cached[ci.image];
