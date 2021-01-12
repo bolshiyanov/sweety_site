@@ -26,6 +26,7 @@ const CatalogTheme7 = ({
   animation,
   image,
   audio, 
+  audioPaid,
   price,
   currency,
   number,
@@ -52,7 +53,7 @@ const CatalogTheme7 = ({
 }) => {
   const dispatch = useDispatch();
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
-  const { playingGuid, headerGuid } = useSelector((state) => state.config);
+  const { playingGuid, headerGuid, isSubscriber } = useSelector((state) => state.config);
 
   const [audioError, setAudioError] = useState(false);
   const [seek, setSeek] = useState(false);
@@ -71,7 +72,9 @@ const CatalogTheme7 = ({
     dispatch({ type: CATALOG_FILTER_HEADER, headerGuid: headerGuid === guid ? null : guid });
   }
 
-  let [play, { stop, isPlaying, duration, sound }] = useSound(audio && audio.startsWith("https://sweety.link/") ? null : audio, {
+  const playingAudio = isSubscriber && audioPaid ? audioPaid : audio;
+
+  let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio && playingAudio.startsWith("https://sweety.link/") ? null : playingAudio, {
     autoUnlock: true,
     format: "mpeg",
     preload: true,
@@ -410,9 +413,9 @@ CatalogTheme7.propTypes = {
   playlist: PropTypes.array,
   text: PropTypes.string,
   textEn: PropTypes.string,
-  price: PropTypes.number,
+  price: PropTypes.string,
   currency: PropTypes.string,
-  number: PropTypes.number,
+  number: PropTypes.string,
   outOfStock: PropTypes.bool,
   type: PropTypes.string,
   technical: PropTypes.bool,

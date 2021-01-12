@@ -78,9 +78,9 @@ CatalogItemSettings.propTypes = {
     description: PropTypes.string,
     textEn: PropTypes.string,
     descriptionEn: PropTypes.string,
-    price: PropTypes.number,
+    price: PropTypes.string,
     currency: PropTypes.string,
-    number: PropTypes.number
+    number: PropTypes.string
 };
 
 CatalogItemSettings.defaultProps = {

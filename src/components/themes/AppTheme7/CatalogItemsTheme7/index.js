@@ -30,6 +30,7 @@ const CatalogItemsTheme7 = ({ data, profile, scrollPosition }) => {
 
   const { catalogItems, stories } = useSelector((state) => state.config.data);
   const { storyGuid, headerGuid } = useSelector((state) => state.config);
+  const { playingGuid } = useSelector((state) => state.config);
 
   const closeCatalogItemsSettings = () => {
     setSettingsOpened(null);
@@ -54,7 +55,8 @@ const CatalogItemsTheme7 = ({ data, profile, scrollPosition }) => {
 
   const hour = new Date().getHours();
   const checkCatalogItem = (e) => {
-    return (storyGuid || (stories?.length ?? 0) === 0) 
+    return (e.guid === playingGuid) ||
+      ((storyGuid || (stories?.length ?? 0) === 0) 
       && (!storyGuid || !e.storyGuid || e.storyGuid === storyGuid) 
       && !e.outOfStock
       && ((!e.timeFrom && !e.timeTo) ||
@@ -62,7 +64,7 @@ const CatalogItemsTheme7 = ({ data, profile, scrollPosition }) => {
         (e.timeFrom && e.timeTo && parseInt(e.timeFrom) > parseInt(e.timeTo) && (parseInt(e.timeFrom) <= hour || parseInt(e.timeTo) <= hour)) ||
         (e.timeFrom && !e.timeTo && parseInt(e.timeFrom) <= hour) ||
         (!e.timeFrom && e.timeTo && parseInt(e.timeTo) >= hour))
-      && (!e.headerGuid || e.headerGuid === headerGuid);
+      && (!e.headerGuid || e.headerGuid === headerGuid));
   }
 
   catalogItems.sort((a, b) => b.order - a.order);

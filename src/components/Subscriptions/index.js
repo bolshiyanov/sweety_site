@@ -122,9 +122,7 @@ const Subscriptions = ({
                     <div className="subscriptions-title-rates">{__("ШАГ 2 из 2: ВЫБЕРИТЕ ТАРИФ")}</div>
                     
                     {data.map(s => <React.Fragment key={s.guid}>
-                        <Button
-                            onClick={() => { }}
-                        >
+                        <Button onClick={() => window.location = s.paymentUrl}>
                             <span>&nbsp;{s.title ?? __(getTranslateTemplate(s.period)).replace("{period}", getPeriodValue(s.period))}</span>
                         </Button>
 

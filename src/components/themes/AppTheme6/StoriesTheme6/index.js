@@ -85,7 +85,7 @@ const StoriesTheme6 = ({ data, profile, isSticky, scrollPosition }) => {
         </div>
       </div>
       <Slider
-        opened={settingsOpened}
+        opened={!!settingsOpened}
         onClose={closeStoriesSettings}
         onSubmit={closeStoriesSettings}
       >
