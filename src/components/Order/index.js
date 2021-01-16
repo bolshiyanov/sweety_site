@@ -216,8 +216,8 @@ const Order = () => {
 
                 </Slider>}
 
-{/* Слайдер когда нет емаил , но есть  телефон, выводим   кнопку  ОТПРАВИТЬ ЗАКАЗ ЧЕРЕЗ СМС*/}
-            {!sent && orderOpened && !hasEmail && hasPhone &&
+{/* Слайдер когда нет емаил , но есть  телефон, и нет интернета выводим   кнопку  ОТПРАВИТЬ ЗАКАЗ ЧЕРЕЗ СМС*/}
+            {/* {!sent && orderOpened && !hasEmail && hasPhone &&
                 <Slider
                     opened={orderOpened}
                     title={__("Ваш предварительный заказ")}
@@ -253,7 +253,7 @@ const Order = () => {
                     {visualProps.map(e => <div className="order__prop" key={e.key}>{e.key}{e.value ? ": " : ""} {e.value}</div>)}
                     {visualProps.length > 0 ? <br /> : null}
 
-                </Slider>}
+                </Slider>} */}
 {/* Слайдер когда нет емаил , НЕТ  телефон НЕ ВЫВОДИМ КНОПКУ*/}
             {!sent && orderOpened && !hasEmail && !hasPhone &&
                 <Slider

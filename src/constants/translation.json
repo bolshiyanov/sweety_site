@@ -1060,32 +1060,30 @@
         "fr": "ABONNEMENT DE {period} ANS",
         "de": "{period} JAHRE ABONNEMENT",
         "it": "ABBONAMENTO DI {period} ANNI"
-    }, 
-    
-    {
-        "code": "subscribes.text13",
-        "en": "STEP 2 of 2: CHOOSE A PRICING PLAN",
-        "ru": "",
-        "es": "",
-        "fr": "ÉTAPE 2 sur 2: CHOISISSEZ un TARIF",
-        "de": "SCHRITT 2 von 2: wählen Sie einen TARIF",
-        "it": "Passo 2 di 2: Scegli una tariffa"
-    }, {
-        "code": "subscribes.text14",
-        "en": "STEP 2 of 2: CHOOSE A PRICING PLAN",
-        "ru": "",
-        "es": "PASO 2 de 2: ELIJA una TARIFA",
-        "fr": "ÉTAPE 2 sur 2: CHOISISSEZ un TARIF",
-        "de": "SCHRITT 2 von 2: wählen Sie einen TARIF",
-        "it": "Passo 2 di 2: Scegli una tariffa"
-    }, {
+    },  {
         "code": "subscribes.text15",
-        "en": "",
+        "en": "STEP 2 of 2: CHOOSE A PRICING PLAN",
         "ru": "ШАГ 2 из 2: ВЫБЕРИТЕ ТАРИФ",
         "es": "PASO 2 de 2: ELIJA una TARIFA",
         "fr": "ÉTAPE 2 sur 2: CHOISISSEZ un TARIF",
         "de": "SCHRITT 2 von 2: wählen Sie einen TARIF",
         "it": "Passo 2 di 2: Scegli una tariffa"
+    }, {
+        "code": "subscribes.text16",
+        "en": "The cost is",
+        "ru": "Стоимость составляет",
+        "es": "El costo es",
+        "fr": "Le coût est",
+        "de": "Die Kosten betragen",
+        "it": "Il costo è"
+    }, {
+        "code": "subscribes.text16",
+        "en": "rub.",
+        "ru": "руб.",
+        "es": "rub.",
+        "fr": "rub.",
+        "de": "rub.",
+        "it": "rub."
     }
 
 ] 

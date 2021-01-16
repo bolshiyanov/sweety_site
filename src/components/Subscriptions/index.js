@@ -126,7 +126,7 @@ const Subscriptions = ({
                             <span>&nbsp;{s.title ?? __(getTranslateTemplate(s.period)).replace("{period}", getPeriodValue(s.period))}</span>
                         </Button>
 
-                        <div className="subscriptions-input-descriptions">Стоимость составляет {s.amount} руб.</div>
+                        <div className="subscriptions-input-descriptions">{__("Стоимость составляет")}&nbsp;{s.amount}&nbsp;{__("руб.")}</div>
                     </React.Fragment>)}
 
                     <div className="subscriptions-input-bottomline" />
