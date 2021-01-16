@@ -37,7 +37,7 @@ const AppTheme7 = () => {
   const dispatch = useDispatch();
   const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
   const { profile } = useParams();
-
+console.log(profile);
   useEffect(() => {
     API.updateProfile(profile);
 
@@ -144,6 +144,7 @@ const AppTheme7 = () => {
 const Router = () => (
   <Switch>
     <Route path="/start" component={Start} />
+    <Route path="/apps/:profile" component={AppTheme7} />
     <Route path="/:profile/admin" component={Admin} />
     <Route path="/:profile" component={AppTheme7} />
     <Route component={Landing} />

@@ -142,6 +142,7 @@ const AppTheme1 = () => {
 const Router = () => (
   <Switch>
     <Route path="/start" component={Start} />
+    <Route path="/apps/:profile" component={AppTheme1} />
     <Route path="/:profile/admin" component={Admin} />
     <Route path="/:profile" component={AppTheme1} />
     <Route component={Landing} />
