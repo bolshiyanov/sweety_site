@@ -13,7 +13,7 @@ import './index.scss';
 import {
   CATALOG_LEFT,
   CATALOG_CENTER,
-  CATALOG_RIGHT, 
+  CATALOG_RIGHT,
   CATALOG_HEADER,
 } from 'constants/catalogTypes';
 
@@ -25,7 +25,7 @@ const CatalogTheme7 = ({
   guid,
   animation,
   image,
-  audio, 
+  audio,
   audioPaid,
   price,
   currency,
@@ -205,6 +205,8 @@ const CatalogTheme7 = ({
     parseFloat(price).toFixed(2);
 
 
+  const isAnotherStory = false;
+
   if (!audio) {
     return null;
   }
@@ -246,7 +248,7 @@ const CatalogTheme7 = ({
             </div>
           )}
 
-    
+
 
           {isAudioPlayer && (
             <Button className="button-sound-left" >
@@ -257,10 +259,18 @@ const CatalogTheme7 = ({
         </div>
       );
 
-      if (price || number || isAudioPlayer)
+      if ((price || number || isAudioPlayer) && !isAnotherStory)
         return (
           <div >
             <Button className="button-in-catalogItem-left " isPulse={animation} technical={technical}>
+              {catalogItem}
+            </Button>
+          </div>
+        );
+      if ((price || number || isAudioPlayer) && isAnotherStory)
+        return (
+          <div >
+            <Button className="button-in-catalogItem-left-isAnotherStory " isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
           </div>
@@ -307,7 +317,7 @@ const CatalogTheme7 = ({
             'catalogItem__center',
             { 'catalogItem__center__with-image': image },
             { 'catalogItem__center__with-button': (price || number) },
-            { 'catalogItem__center__with-image__with-button': image && (price || number ) },
+            { 'catalogItem__center__with-image__with-button': image && (price || number) },
             { 'catalogItem__center__with-image__without-button': image && (!price & !number) },
             { 'catalogItem-withimage-wihout-title': image && (!price & !number & !translatedText) },
             className
@@ -340,10 +350,16 @@ const CatalogTheme7 = ({
         </div>
       );
 
-      if (price || number || isAudioPlayer)
+      if ((price || number || isAudioPlayer) && !isAnotherStory)
         return (
-          <div  className="button-in-catalogItem-center " isPulse={animation} technical={technical}>
-              {catalogItem}
+          <div className="button-in-catalogItem-center " isPulse={animation} technical={technical}>
+            {catalogItem}
+          </div>
+        );
+      if ((price || number || isAudioPlayer) && isAnotherStory)
+        return (
+          <div className="button-in-catalogItem-center-isAnotherStory " isPulse={animation} technical={technical}>
+            {catalogItem}
           </div>
         );
       return catalogItem;
@@ -379,23 +395,26 @@ const CatalogTheme7 = ({
             </div>
           )}
 
-          
-          
-
           {isAudioPlayer && (
             <Button className="button-sound-right"><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} /> </Button>
-
-
           )}
 
         </div>
 
       );
 
-      if (price || number || isAudioPlayer)
+      if ((price || number || isAudioPlayer) && !isAnotherStory)
         return (
           <div >
-            <Button className="button-in-catalogItem-right " isPulse={animation} technical={technical}>
+            <Button className="button-in-catalogItem-right" isPulse={animation} technical={technical}>
+              {catalogItem}
+            </Button>
+          </div>
+        );
+        if ((price || number || isAudioPlayer) && isAnotherStory)
+        return (
+          <div >
+            <Button className="button-in-catalogItem-right-isAnotherStory" isPulse={animation} technical={technical}>
               {catalogItem}
             </Button>
           </div>
