@@ -27,7 +27,9 @@ const CatalogItem = ({
   animation,
   image,
   audio,
+  audioCache,
   audioPaid,
+  audioPaidCache,
   price,
   currency,
   number,
@@ -73,7 +75,7 @@ const CatalogItem = ({
     dispatch({ type: CATALOG_FILTER_HEADER, headerGuid: headerGuid === guid ? null : guid });
   }
 
-  const playingAudio = isSubscriber && audioPaid ? audioPaid : audio;
+  const playingAudio = isSubscriber && audioPaid ? (audioPaidCache ?? audioPaid) : (audioCache ?? audio);
 
   let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio && playingAudio.startsWith("https://sweety.link/") ? null : playingAudio, {
     autoUnlock: true,
