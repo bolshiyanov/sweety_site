@@ -77,7 +77,7 @@ const CatalogTheme7 = ({
     dispatch({ type: CATALOG_FILTER_HEADER, headerGuid: headerGuid === guid ? null : guid });
   }
 
-  let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio, {
+  let [play, { stop, isPlaying, duration, sound }] = useSound(null, {
     autoUnlock: true,
     format: "mpeg",
     preload: false,
