@@ -56,7 +56,7 @@ const CatalogTheme7 = ({
 }) => {
   const dispatch = useDispatch();
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
-  const { playingGuid, headerGuid, isSubscriber, storyGuid: currentStoryGuid } = useSelector((state) => state.config);
+  const { playingGuid, stoppingGuid, headerGuid, isSubscriber, storyGuid: currentStoryGuid } = useSelector((state) => state.config);
 
   const [audioError, setAudioError] = useState(false);
   const [seek, setSeek] = useState(false);
@@ -125,13 +125,13 @@ const CatalogTheme7 = ({
       setTimeout(() => {
         dispatch({ type: CATALOG_STOPPED, guid });
       }, 2000);
-    } else if (!isPlaying && autoplay && audio && playingGuid === guid) {
+    } else if (!isPlaying && autoplay && audio && playingGuid === guid && !stoppingGuid) {
       handlePlay();
     }
     if (playlist) {
       setPlayingText(text);
     }
-  }, [playingGuid, sound, duration, audio]);
+  }, [playingGuid, stoppingGuid, sound, duration, audio]);
 
   /*useEffect(() => {
     if (playingAudio && sound && JSON.stringify(sound._src) !== JSON.stringify(playingAudio)) {
