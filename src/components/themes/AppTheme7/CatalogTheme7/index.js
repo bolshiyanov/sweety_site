@@ -33,6 +33,7 @@ const CatalogTheme7 = ({
   currency,
   number,
   outOfStock,
+  storyGuid,
   type,
   text,
   textEn,
@@ -55,7 +56,7 @@ const CatalogTheme7 = ({
 }) => {
   const dispatch = useDispatch();
   const { count, sum } = useSelector((state) => state.config.order[guid] ?? { count: 0, sum: 0 });
-  const { playingGuid, headerGuid, isSubscriber } = useSelector((state) => state.config);
+  const { playingGuid, headerGuid, isSubscriber, storyGuid: currentStoryGuid } = useSelector((state) => state.config);
 
   const [audioError, setAudioError] = useState(false);
   const [seek, setSeek] = useState(false);
@@ -231,7 +232,7 @@ const CatalogTheme7 = ({
 
   const audioIcon = audioError ? "cross" : !sound ? "sync" : state === "loading" || state === "playing" ? "sync" : isPlaying ? "pause" : "play";
 
-  const isAnotherStory = false;
+  const isAnotherStory = storyGuid !== currentStoryGuid;
 
   if (!audio) {
     return null;

@@ -37,7 +37,7 @@ const AppTheme7 = () => {
   const dispatch = useDispatch();
   const { pwaInstall, supported, isInstalled } = useReactPWAInstall();
   const { profile } = useParams();
-console.log(profile);
+
   useEffect(() => {
     API.updateProfile(profile);
 
