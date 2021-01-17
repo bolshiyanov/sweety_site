@@ -17,7 +17,7 @@ import {
   CATALOG_HEADER,
 } from 'constants/catalogTypes';
 
-import { CATALOG_ORDER, CATALOG_PLAY, CATALOG_NEXT, CATALOG_PAUSE, CATALOG_FILTER_HEADER } from 'constants/actions';
+import { CATALOG_ORDER, CATALOG_PLAY, CATALOG_STOPPED, CATALOG_NEXT, CATALOG_PAUSE, CATALOG_FILTER_HEADER } from 'constants/actions';
 import { parse } from 'superagent';
 import { translatedProperty } from 'utils/translation';
 
@@ -91,7 +91,9 @@ const CatalogTheme7 = ({
       if (playlist) {
         dispatch({ type: CATALOG_NEXT, guid });
       }
-      sound.unload();
+      if (sound && sound.state() === 'loaded') {
+        sound.unload();
+      }
     },
     onerror: () => {
       setAudioError(true);
@@ -117,7 +119,12 @@ const CatalogTheme7 = ({
     if (isPlaying && playingGuid !== guid) {
       handleStop();
       setAutoplay(false);
-      sound.unload();
+      if (sound.state() === 'loaded') {
+        sound.unload();
+      }
+      setTimeout(() => {
+        dispatch({ type: CATALOG_STOPPED, guid });
+      }, 2000);
     } else if (!isPlaying && autoplay && audio && playingGuid === guid) {
       handlePlay();
     }
