@@ -205,7 +205,7 @@ const API = {
         xhr.onerror = function () {
           resolve(null);
         };
-        const loadingUrl = window.location.hostname !== "localhost" || !url.startsWith("https://sweety.link") ? url :
+        const loadingUrl = window.location.hostname !== "localhost" || !url.startsWith("https://sweety.link") || !url.includes(".mpeg") ? url :
           "https://cors-anywhere.herokuapp.com/" + url;
         xhr.open('GET', loadingUrl);
         xhr.responseType = 'blob';

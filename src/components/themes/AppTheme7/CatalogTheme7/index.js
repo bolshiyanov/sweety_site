@@ -69,14 +69,13 @@ const CatalogTheme7 = ({
   const [playingText, setPlayingText] = useState(translatedText);
   const translatedTextAlt = translatedProperty({ textAlt, textAltEn, textAltEs, textAltRu, textAltDe, textAltFr, textAltIt }, "textAlt");
   const [playingTextAlt, setPlayingTextAlt] = useState(translatedTextAlt);
+  const [playingAudio, setPlayingAudio] = useState(null);
 
   const isAudioPlayer = audio || playlist;
 
   const handleHeaderClick = () => {
     dispatch({ type: CATALOG_FILTER_HEADER, headerGuid: headerGuid === guid ? null : guid });
   }
-
-  const playingAudio = isSubscriber && audioPaid ? (audioPaid) : (audio);
 
   let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio, {
     autoUnlock: true,
@@ -100,7 +99,13 @@ const CatalogTheme7 = ({
   });
 
   useEffect(() => {
-    if (state === "playing") {
+    if (state === 'preload') {
+      if (!sound._src || !sound._src[0]) {
+        sound._src = [playingAudio];
+      }
+      sound.load();
+      setState(sound.state());
+    } else if (state === "playing") {
       setTimeout(() => {
         play();
         setState(sound.state());
@@ -194,9 +199,9 @@ const CatalogTheme7 = ({
   const handlePlay = (e) => {
     if (!isPlaying) {
       if (sound) {
-        if (sound.state() === "unloaded") {
-          sound.load();
-          setState(sound.state());
+        if (!playingAudio) {
+          setPlayingAudio(isSubscriber && audioPaid ? (audioPaidCache ?? audioPaid) : (audioCache ?? audio));
+          setState('preload');
         }
         dispatch({ type: CATALOG_PLAY, guid });
 
@@ -230,7 +235,9 @@ const CatalogTheme7 = ({
   const sumValue = count !== 0 ? sum.toFixed(2) :
     parseFloat(price).toFixed(2);
 
-  const audioIcon = audioError ? "cross" : !sound ? "sync" : state === "loading" || state === "playing" ? "sync" : isPlaying ? "pause" : "play";
+  const audioIcon = audioError ? "cross" : 
+    !sound || (!audioCache && !audioPaidCache) || state === "loading" || state === "playing" ? "sync" : 
+    isPlaying ? "pause" : "play";
 
   const isAnotherStory = storyGuid !== currentStoryGuid;
 
