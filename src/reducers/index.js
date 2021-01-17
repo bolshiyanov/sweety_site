@@ -175,10 +175,10 @@ const reducer = handleActions({
     const { catalogItems, stories, blocks, avatar, avatarPreview } = state.data;
     catalogItems.forEach(ci => {
       if (ci.audio && cached[ci.audio]) {
-        ci.audio = cached[ci.audio];
+        ci.audioCache = cached[ci.audio];
       }
       if (ci.audioPaid && cached[ci.audioPaid]) {
-        ci.audioPaid = cached[ci.audioPaid];
+        ci.audioPaidCache = cached[ci.audioPaid];
       }
       if (ci.image && cached[ci.image]) {
         ci.image = cached[ci.image];

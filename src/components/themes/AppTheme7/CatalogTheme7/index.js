@@ -26,7 +26,9 @@ const CatalogTheme7 = ({
   animation,
   image,
   audio,
+  audioCache,
   audioPaid,
+  audioPaidCache,
   price,
   currency,
   number,
@@ -59,6 +61,7 @@ const CatalogTheme7 = ({
   const [seek, setSeek] = useState(false);
   const [seekInterval, setSeekInterval] = useState(null);
   const [autoplay, setAutoplay] = useState(false);
+  const [state, setState] = useState('unloaded');
 
   const translatedText = playlist && !audio ? "" :
     translatedProperty({ text, textEn, textEs, textRu, textDe, textFr, textIt }, "text");
@@ -72,19 +75,23 @@ const CatalogTheme7 = ({
     dispatch({ type: CATALOG_FILTER_HEADER, headerGuid: headerGuid === guid ? null : guid });
   }
 
-  const playingAudio = isSubscriber && audioPaid ? audioPaid : audio;
+  const playingAudio = isSubscriber && audioPaid ? (audioPaid ?? audioPaidCache) : (audioCache ?? audio);
 
-  let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio && playingAudio.startsWith("https://sweety.link/") ? null : playingAudio, {
+  let [play, { stop, isPlaying, duration, sound }] = useSound(playingAudio, {
     autoUnlock: true,
     format: "mpeg",
-    preload: true,
+    preload: false,
     html5: true,
+    onload: () => {
+      setState('playing');
+    },
     onend: () => {
       setSeek(null);
       clearInterval(seekInterval);
       if (playlist) {
         dispatch({ type: CATALOG_NEXT, guid });
       }
+      sound.unload();
     },
     onerror: () => {
       setAudioError(true);
@@ -92,9 +99,19 @@ const CatalogTheme7 = ({
   });
 
   useEffect(() => {
+    if (state === "playing") {
+      setTimeout(() => {
+        play();
+        setState(sound.state());
+      }, 1000);
+    }
+  }, [state]);
+
+  useEffect(() => {
     if (isPlaying && playingGuid !== guid) {
       handleStop();
       setAutoplay(false);
+      sound.unload();
     } else if (!isPlaying && autoplay && audio && playingGuid === guid) {
       handlePlay();
     }
@@ -176,9 +193,9 @@ const CatalogTheme7 = ({
   const handlePlay = (e) => {
     if (!isPlaying) {
       if (sound) {
-        play();
-        if (seek) {
-          sound.seek(seek);
+        if (sound.state() === "unloaded") {
+          sound.load();
+          setState(sound.state());
         }
         dispatch({ type: CATALOG_PLAY, guid });
 
@@ -188,6 +205,14 @@ const CatalogTheme7 = ({
             setPlayingTextAlt((seek ?? 0) > 0 ? `${seekMin}:${seekSec} / ${durationMin}:${durationSec}` : translatedTextAlt);
           }
         }, 1000));
+
+        if (sound.state() === "loading") {
+          return;
+        }
+        play();
+        if (seek) {
+          sound.seek(seek);
+        }
       }
     }
   }
@@ -204,6 +229,7 @@ const CatalogTheme7 = ({
   const sumValue = count !== 0 ? sum.toFixed(2) :
     parseFloat(price).toFixed(2);
 
+  const audioIcon = audioError ? "cross" : !sound ? "sync" : state === "loading" || state === "playing" ? "sync" : isPlaying ? "pause" : "play";
 
   const isAnotherStory = false;
 
@@ -252,9 +278,7 @@ const CatalogTheme7 = ({
 
           {isAudioPlayer && (
             <Button className="button-sound-left" >
-              <Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} className="catalogItem-add-sound1" /> </Button>
-
-
+              <Icon type={audioIcon} className="catalogItem-add-sound1" /> </Button>
           )}
         </div>
       );
@@ -341,7 +365,7 @@ const CatalogTheme7 = ({
               <div className="catalogItem-preorder-flex-column-center">
                 <div className="catalogItem-preorder-flex-row">
                   <Button className="catalogItem-add-sound-center-button" >
-                    <Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} className="catalogItem-add-sound-center1" />{audioError ? "CROSS" : !(!!sound && duration) ? "SYNC" : !isPlaying ? "PLAY" : "PAUSE"}</Button>
+                    <Icon type={audioIcon} className="catalogItem-add-sound-center1" />{audioError ? "CROSS" : !(!!sound && duration) ? "SYNC" : !isPlaying ? "PLAY" : "PAUSE"}</Button>
                 </div>
                 <div className="catalogItem-price-empty"></div>
               </div>
@@ -396,7 +420,7 @@ const CatalogTheme7 = ({
           )}
 
           {isAudioPlayer && (
-            <Button className="button-sound-right"><Icon type={audioError ? "cross" : !(!!sound && duration) ? "sync" : !isPlaying ? "play" : "pause"} /> </Button>
+            <Button className="button-sound-right"><Icon type={audioIcon} /> </Button>
           )}
 
         </div>
