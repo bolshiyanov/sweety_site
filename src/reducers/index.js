@@ -21,6 +21,7 @@ import {
   CACHE_DATA,
   CACHE_PLAYLISTS,
   CATALOG_PLAY,
+  CATALOG_STOPPED,
   CATALOG_PAUSE,
   CATALOG_NEXT
 } from 'constants/actions';
@@ -45,6 +46,7 @@ const initialState = {
   headerGuid: null,
   order: {},
   playingGuid: null,
+  stoppingGuid: null,
   isSubscriber: false
 };
 
@@ -175,10 +177,10 @@ const reducer = handleActions({
     const { catalogItems, stories, blocks, avatar, avatarPreview } = state.data;
     catalogItems.forEach(ci => {
       if (ci.audio && cached[ci.audio]) {
-        ci.audio = cached[ci.audio];
+        ci.audioCache = cached[ci.audio];
       }
       if (ci.audioPaid && cached[ci.audioPaid]) {
-        ci.audioPaid = cached[ci.audioPaid];
+        ci.audioPaidCache = cached[ci.audioPaid];
       }
       if (ci.image && cached[ci.image]) {
         ci.image = cached[ci.image];
@@ -232,7 +234,14 @@ const reducer = handleActions({
   [CATALOG_PLAY] : (state, { guid }) => {
     return {
       ...state,
+      stoppingGuid: state.playingGuid !== guid ? state.playingGuid : state.stoppingGuid,
       playingGuid: guid
+    }
+  },
+  [CATALOG_STOPPED] : (state, { guid }) => {
+    return {
+      ...state,
+      stoppingGuid: state.stoppingGuid === guid ? null : state.stoppingGuid
     }
   },
   [CATALOG_PAUSE] : (state, { guid }) => {

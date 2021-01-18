@@ -39,6 +39,8 @@ export const CATALOG_ORDER_CLEAR = 'CATALOG_ORDER_CLEAR';
 
 export const CATALOG_PLAY = 'CATALOG_PLAY';
 
+export const CATALOG_STOPPED = 'CATALOG_STOPPED';
+
 export const CATALOG_PAUSE = 'CATALOG_PAUSE';
 
 export const CATALOG_NEXT = 'CATALOG_NEXT';

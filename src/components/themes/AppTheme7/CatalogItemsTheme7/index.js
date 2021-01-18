@@ -30,7 +30,7 @@ const CatalogItemsTheme7 = ({ data, profile, scrollPosition }) => {
 
   const { catalogItems, stories } = useSelector((state) => state.config.data);
   const { storyGuid, headerGuid } = useSelector((state) => state.config);
-  const { playingGuid } = useSelector((state) => state.config);
+  const { playingGuid, stoppingGuid } = useSelector((state) => state.config);
 
   const closeCatalogItemsSettings = () => {
     setSettingsOpened(null);
@@ -55,7 +55,7 @@ const CatalogItemsTheme7 = ({ data, profile, scrollPosition }) => {
 
   const hour = new Date().getHours();
   const checkCatalogItem = (e) => {
-    return (e.guid === playingGuid) ||
+    return (e.guid === playingGuid || e.guid === stoppingGuid) ||
       ((storyGuid || (stories?.length ?? 0) === 0) 
       && (!storyGuid || !e.storyGuid || e.storyGuid === storyGuid) 
       && !e.outOfStock

@@ -143,7 +143,7 @@ function* processLoadingData(loadingData, profile) {
     let cachedBlob = trackCaches[i];
     if (cachedBlob) {
       data.catalogItems.filter(c => c.audio === a).forEach(c => {
-        c.audio = cachedBlob;
+        c.audioCache = cachedBlob;
       });
     }
   });
@@ -152,7 +152,7 @@ function* processLoadingData(loadingData, profile) {
     let cachedBlob = paidTrackCaches[i];
     if (cachedBlob) {
       data.catalogItems.filter(c => c.audioPaid === a).forEach(c => {
-        c.audioPaid = cachedBlob;
+        c.audioPaidCache = cachedBlob;
       });
     }
   });
