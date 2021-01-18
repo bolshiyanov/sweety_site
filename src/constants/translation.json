@@ -518,6 +518,14 @@
         "fr": "Les informations ne seront pas partagées avec des tiers",
         "de": "Informationen werden nicht an Dritte weitergegeben",
         "it": "Le informazioni non saranno condivise con terze parti"
+    },{
+        "code": "order.texthasPhone",
+        "en": "Call and check the order",
+        "ru": "Позвонить и проверить заказ",
+        "es": "Llame y verifique el pedido",
+        "fr": "Appeler et vérifier la commande",
+        "de": "Rufen Sie an und überprüfen Sie Ihre Bestellung",
+        "it": "Chiama e controlla l'ordine"
     },
 
     {
