@@ -124,7 +124,7 @@ const CatalogTheme7 = ({
       }
       setTimeout(() => {
         dispatch({ type: CATALOG_STOPPED, guid });
-      }, 1000);
+      }, 2000);
     } else if (!isPlaying && autoplay && audio && playingGuid === guid && !stoppingGuid) {
       handlePlay();
     }
