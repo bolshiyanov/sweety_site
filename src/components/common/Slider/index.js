@@ -6,6 +6,7 @@ import Icon from 'components/common/Icon';
 import Button from 'components/common/Button';
 
 import './index.scss';
+import { __ } from 'utils/translation';
 
 const Slider = ({
   opened,
@@ -44,11 +45,24 @@ const Slider = ({
           </div>
           <div className="slider__body">
             {children}
-            {onSubmit && submitTitle && (
+            {onSubmit && submitTitle && !hasPhone && (
               <div className="slider-header-submitbody-submit">
                 <Button className="slider-header-submit" onClick={onSubmit} isInline noStyled>
                   &nbsp;{submitTitle}
                 </Button>
+              </div>
+            )}
+            {onSubmit && submitTitle && hasPhone && (
+              <div className="slider-header-submitbody-submit">
+                <div className="slider-header-submitbody-submit-box">
+                <Button className="slider-header-submit-hasPhone" onClick={onSubmit} isInline noStyled>
+                  &nbsp;{submitTitle}
+                </Button>
+                <br/>
+                <Button className="slider-header-submit-hasPhone" onClick={() => window.open(hasPhone, "_blank")} isInline noStyled>
+                  &nbsp;{__("Позвонить и проверить заказ")}
+                </Button>
+                </div>
               </div>
             )}
             {sms && submitTitle && (
@@ -88,6 +102,6 @@ Slider.defaultProps = {
   sms: '',
   hasPhone: '',
   children: null
-};
+};  
 
 export default Slider;
