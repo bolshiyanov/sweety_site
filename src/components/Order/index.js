@@ -227,7 +227,7 @@ const Order = () => {
                onRemove={handleClear}
                onClose={() => setOrderOpened(false)}
                onSubmit={handleSubmit}
-               hasPhone={hasPhone}
+               hasPhone={hasPhone} 
            >
                {orderItems.map(orderItem => {
                    const catalogItem = catalogItems.filter(e => e.guid === orderItem.guid)[0];
@@ -247,7 +247,7 @@ const Order = () => {
                {visualProps.length > 0 ? <br /> : null}
                <React.Fragment>
                    <Input
-                       className="order__input"
+                       className="order__input" 
                        value={phone}
                        type="tel"
                        placeholder={__("Напишите свой телефон")}

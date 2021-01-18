@@ -102,6 +102,6 @@ Slider.defaultProps = {
   sms: '',
   hasPhone: '',
   children: null
-};
+};  
 
 export default Slider;
