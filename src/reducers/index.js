@@ -143,9 +143,15 @@ const reducer = handleActions({
   },
 
   [CATALOG_FILTER] : (state, { storyGuid } ) => {
+    const { catalogItems } = state.data;
+    const playingItem = !catalogItems ? null :
+      catalogItems.filter(ci => ci.guid === state.playingGuid)[0];
+
     return {
       ...state,
-      storyGuid
+      storyGuid,
+      playingGuid: playingItem?.storyGuid === storyGuid ? state.playingGuid : null,
+      stoppingGuid: playingItem?.storyGuid !== storyGuid ? playingItem?.guid : state.stoppingGuid,
     }
   },
 
